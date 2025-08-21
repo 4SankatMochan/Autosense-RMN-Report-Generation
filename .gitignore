@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.whl
+.venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor files
+*.swp
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Binary/media
+*.gif
+*.mp4
+*.zip
+*.tar.gz
