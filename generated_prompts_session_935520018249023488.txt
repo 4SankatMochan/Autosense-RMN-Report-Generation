@@ -1,0 +1,36 @@
+Prompt 1:
+Summarize the total Actual Spend for the Balisto brand across all campaigns and creatives on the DV360-YOUTUBE platform for the entire duration.
+
+Prompt 2:
+Provide an overview of the total Planned Spend for the Balisto brand across all its campaigns and creatives on the DV360-YOUTUBE platform for all time.
+
+Prompt 3:
+Analyze the budget Variance, which is the difference between Actual Spend and Planned Spend, for the Balisto brand. This analysis should cover all campaigns and creatives on the DV360-YOUTUBE platform across all time periods.
+
+Prompt 4:
+Detail the total number of Impressions generated for the Balisto brand across all campaigns and creatives running on the DV360-YOUTUBE platform throughout their entire lifetime.
+
+Prompt 5:
+What was the total number of Completed Views for all Balisto brand campaigns and creatives on the DV360-YOUTUBE platform for the entire recorded period?
+
+Prompt 6:
+Report on the Total Clicks achieved by the Balisto brand for all its campaigns and creatives on the DV360-YOUTUBE platform across all time.
+
+Prompt 7:
+Calculate and explain the overall Click-Through Rate (CTR %), representing the percentage of impressions that resulted in a click, for the Balisto brand. This should encompass all campaigns and creatives on the DV360-YOUTUBE platform for all time.
+
+Prompt 8:
+Analyze the View Completion Rate (VCR %), which is the percentage of impressions that led to a completed view, for all Balisto brand campaigns and creatives on the DV360-YOUTUBE platform across the entire time frame.
+
+Prompt 9:
+Describe the total Campaign Reach, indicating the number of unique users exposed to the ads, for the Balisto brand across all its campaigns and creatives on the DV360-YOUTUBE platform for all time.
+
+Prompt 10:
+What was the average Campaign Frequency, showing how many times a unique user was exposed to the ads on average, for the Balisto brand? This should cover all campaigns and creatives on the DV360-YOUTUBE platform for the entire duration.
+
+Prompt 11:
+Calculate and provide an analysis of the Cost Per Mille (CPM $), which is the cost per thousand impressions, for the Balisto brand. The analysis should cover all campaigns and creatives on the DV360-YOUTUBE platform across all time.
+
+Prompt 12:
+Determine and explain the Cost Per Completed View (CPCV $), which measures the cost-effectiveness of achieving a completed video view, for the Balisto brand across all its campaigns and creatives on the DV360-YOUTUBE platform for the entire recorded period.
+
