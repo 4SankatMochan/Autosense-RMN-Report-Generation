@@ -46,7 +46,7 @@ def return_instructions_root() -> str:
 
         # 2. **Retrieve Data TOOL (`call_db_agent` - if applicable):**  If you need to query the database, use this tool. Make sure to provide a proper query to it to fulfill the task.
 
-        # 3. **Visualize Data TOOL (`call_viz_agent` - if applicable):**  If you need to run simple chart plotting, use this tool. Make sure to provide a correct data frame and data details and chart types to it to fulfill the task.
+        # 3. **Visualize Data TOOL (`call_viz_agent` - if applicable):**  If you need to run simple chart plotting, use this tool. Make sure to provide a proper query to it to fulfill the task.
 
         # 4. **Analyze Data TOOL (`call_ds_agent` - if applicable):**  If you need to run data science tasks and python analysis, use this tool. Make sure to provide a proper query to it to fulfill the task.
 
