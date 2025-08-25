@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import math
+# import plotly.express as px
 
 import io
 import base64
@@ -34,6 +36,25 @@ async def chart_plotting_tool(
     tool_context.state['title'] = title
     tool_context.state['stages'] = stages
     tool_context.state['subcategories'] = subcategories
+
+    # print('chart_type', chart_type, flush = True)
+    # print('x', x, flush = True)
+    # print('y', y, flush = True)
+    # print('categories', categories, flush = True)
+    # print('values', values, flush = True)
+    # print('title', title, flush = True)
+    # print('stages', stages, flush = True)
+    # print('subcategories', subcategories, flush = True)
+    with open("debug_log.txt", "a") as f:
+        f.write(f"chart_type: {chart_type}\n")
+        f.write(f"x: {x}\n")
+        f.write(f"y: {y}\n")
+        f.write(f"categories: {categories}\n")
+        f.write(f"values: {values}\n")
+        f.write(f"title: {title}\n")    
+        f.write(f"stages: {stages}\n")
+        f.write(f"subcategories: {subcategories}\n")
+        f.write("===="*100)
    
     if chart_type == "bar":
         plt.bar(categories, values, color='skyblue')
@@ -59,8 +80,10 @@ async def chart_plotting_tool(
 
     elif chart_type == "area":
         # print(f"calling from Are matplotlib tool")
-        plt.fill_between(x, y, color='lightgreen', alpha=0.7)
-        plt.plot(x, y, color='green')
+        # plt.fill_between(x, y, color='lightgreen', alpha=0.7)
+        plt.fill_between(categories, values, color='lightgreen', alpha=0.7)
+        # plt.plot(x, y, color='green')
+        plt.plot(categories, values, color='green')
         plt.xlabel("X")
         plt.ylabel("Y")
 
@@ -131,13 +154,10 @@ async def chart_plotting_tool(
         # Pad the values and labels to fill the grid completely
         pad_size = rows * cols - N
         labels += [''] * pad_size
-        labels += [''] * pad_size
-        
+        values += [np.nan] * pad_size
 
         labels_array = np.array(labels).reshape(rows, cols)
         values_array = np.array(values).reshape(rows, cols)
-        labels_array = np.array(labels).reshape(rows, cols)
-        
 
         # Plot
         fig, ax = plt.subplots(figsize=(cols * 2, rows * 1.5))
@@ -147,14 +167,12 @@ async def chart_plotting_tool(
         for i in range(rows):
             for j in range(cols):
                 if labels_array[i, j] != '':
-                    ax.text(j, i, f'{labels_array[i, j]}\n{values_array[i, j]:.0f}',
+                    value_text = f'{values_array[i, j]:.0f}' if not np.isnan(values_array[i, j]) else ''
+                    ax.text(j, i, f'{labels_array[i, j]}\n{value_text}',
                             ha='center', va='center', color='black', fontsize=9)
 
         # Remove axis ticks
         ax.set_xticks([])
-        plt.colorbar(heatmap)   
-
-        # Colorbar
         plt.colorbar(heatmap)
     elif chart_type == "radial gauge":
         sales_val = values[0]
@@ -227,16 +245,40 @@ async def chart_plotting_tool(
         ax2.tick_params(axis='y', labelcolor='red')
         ax2.set_ylim(0, 105)
     elif chart_type == "stacked bar":
-        plt.plot()
+        catDf = pd.DataFrame(categories, columns = ['category']).drop_duplicates()
+        subCatDf = pd.DataFrame(subcategories, columns = ['subcategory']).drop_duplicates()
+        df = pd.merge(catDf, subCatDf, how = 'cross')
+        df['value'] = values
+        # Pivot to make stacking easier
+        pivot_df = df.pivot(index='category', columns='subcategory', values='value').fillna(0)
+
+        # Bottom for stacking
+        bottom = [0] * len(pivot_df)
+        fig, ax = plt.subplots(figsize=(10, 6))
+        # Plot each subcategory
+        for subcategory in pivot_df.columns:
+            ax.bar(pivot_df.index, pivot_df[subcategory], bottom=bottom, label=subcategory)
+            # Update bottom
+            bottom = bottom + pivot_df[subcategory]
+        ax.legend(title='Subcategory', loc='upper right')
+        plt.xticks(rotation=45)
+
+    # elif chart_type== 'sunburst':
+    #     df = pd.DataFrame({'category': categories,
+    #                         'subcategory':subcategories,
+    #                         'value': values})
+    #     # Create sunburst plot
+    #     fig = px.sunburst(
+    #         df,
+    #         path=['category', 'subcategory'],  # Hierarchical order
+    #         values='value',
+    #     )
 
 
-
-    
-    # else:
-    #     raise ValueError(f"Unsupported chart type: {chart_type}")
 
     plt.title(title)
     plt.tight_layout()
+
 
     # Generate timestamped filename
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -252,10 +294,7 @@ async def chart_plotting_tool(
 
     # Create Part object
     image_artifact = Part(
-        inline_data=Blob(
-            data=image_bytes,
-            mime_type="image/png"
-        )
+        inline_data=Blob(data=image_bytes, mime_type="image/png")
     )
 
     # Correct async artifact registration
