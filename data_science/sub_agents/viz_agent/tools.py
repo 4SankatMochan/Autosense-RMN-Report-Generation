@@ -265,35 +265,54 @@ async def chart_plotting_tool(
         ax2.set_ylabel("Cumulative Percentage (%)", color='red')
         ax2.tick_params(axis='y', labelcolor='red')
         ax2.set_ylim(0, 105)
-    elif chart_type == "stacked bar":
-        catDf = pd.DataFrame(categories, columns = ['category']).drop_duplicates()
-        subCatDf = pd.DataFrame(subcategories, columns = ['subcategory']).drop_duplicates()
-        df = pd.merge(catDf, subCatDf, how = 'cross')
+    # elif chart_type == "stacked bar":
+    elif 'stacked' in chart_type.lower():
+        # catDf = pd.DataFrame(categories, columns = ['category']).drop_duplicates()
+        # subCatDf = pd.DataFrame(subcategories, columns = ['subcategory']).drop_duplicates()
+        # df = pd.merge(catDf, subCatDf, how = 'cross')
+        # df['value'] = values
+        # # Pivot to make stacking easier
+        # pivot_df = df.pivot(index='category', columns='subcategory', values='value').fillna(0)
+
+        # # Bottom for stacking
+        # # bottom = [0] * len(pivot_df)
+        # bottom = np.zeros(len(pivot_df))
+        # fig, ax = plt.subplots(figsize=(10, 6))
+        # # Plot each subcategory
+        # for subcategory in pivot_df.columns:
+        #     ax.bar(pivot_df.index, pivot_df[subcategory], bottom=bottom, label=subcategory)
+        #     # Update bottom
+        #     # bottom = bottom + pivot_df[subcategory]
+        #     bottom += np.array(pivot_df[subcategory])
+        # ax.legend(title='Subcategory', loc='upper right')
+        # # ax.set_xticks(catDf['category'].to_list())
+        # plt.xticks(rotation=45)
+        # fig.savefig('stacked.png')
+        # Create DataFrames
+        catDf = pd.DataFrame(categories, columns=['category']).drop_duplicates()
+        subCatDf = pd.DataFrame(subcategories, columns=['subcategory']).drop_duplicates()
+
+        # Cross-join categories and subcategories
+        df = pd.merge(catDf, subCatDf, how='cross')
         df['value'] = values
-        # Pivot to make stacking easier
+
+        # Pivot for plotting
         pivot_df = df.pivot(index='category', columns='subcategory', values='value').fillna(0)
 
-        # Bottom for stacking
-        bottom = [0] * len(pivot_df)
-        fig, ax = plt.subplots(figsize=(10, 6))
-        # Plot each subcategory
+        # Initialize stacking bottom
+        bottom = np.zeros(len(pivot_df))
+
+        # Set figure size
+        plt.figure(figsize=(10, 6))
+
+        # Plot stacked bars using pyplot
         for subcategory in pivot_df.columns:
-            ax.bar(pivot_df.index, pivot_df[subcategory], bottom=bottom, label=subcategory)
-            # Update bottom
-            bottom = bottom + pivot_df[subcategory]
-        ax.legend(title='Subcategory', loc='upper right')
+            plt.bar(pivot_df.index, pivot_df[subcategory], bottom=bottom, label=subcategory)
+            bottom += pivot_df[subcategory].values
+
+        plt.legend(loc='upper right')
         plt.xticks(rotation=45)
 
-    # elif chart_type== 'sunburst':
-    #     df = pd.DataFrame({'category': categories,
-    #                         'subcategory':subcategories,
-    #                         'value': values})
-    #     # Create sunburst plot
-    #     fig = px.sunburst(
-    #         df,
-    #         path=['category', 'subcategory'],  # Hierarchical order
-    #         values='value',
-    #     )
 
 
 
@@ -309,6 +328,8 @@ async def chart_plotting_tool(
     # Save to buffer
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
+        
+
     buf.seek(0)
     image_bytes = buf.read()
     plt.close()
