@@ -63,6 +63,10 @@ def return_instructions_dv() -> str:
         "required": ["values", 'categories'],
         "forbidden": ['x', 'y', 'subcategories', 'stages']
       },
+      'line':{
+          'required': ["x", "y"],
+          "forbidden": ['categories', 'values', 'subcategories', 'stages']
+      }
       "watrefall": {
         "required": ['categories', 'values'],
         "forbidden": ['x', 'y', 'subcategories', 'stages']
