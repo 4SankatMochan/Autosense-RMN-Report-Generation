@@ -57,10 +57,31 @@ async def chart_plotting_tool(
         f.write("===="*100)
    
     if chart_type == "bar":
+        base_width=7 
+        base_points=30
+        height = 4
+        scale_factor = len(x) / base_points
+        width = max(base_width, base_width * scale_factor)
+        plt.figure(figsize=(width, height))
         plt.bar(categories, values, color='skyblue')
+        plt.xticks(rotation=90, fontsize=9)
+        plt.yticks(fontsize=10)
         plt.xlabel("Category")
         plt.ylabel("Value")
-        
+    elif chart_type in ['line', 'trend line']:
+        base_width=7 
+        base_points=30
+        height = 4
+
+        scale_factor = len(x) / base_points
+        width = max(base_width, base_width * scale_factor)
+
+        plt.figure(figsize=(width, height))
+        plt.plot(x,y)
+        plt.xticks(rotation=90, fontsize=10)
+        plt.yticks(fontsize=10)
+        plt.xlabel('x_line')
+        plt.ylabel('y_line')
 
     elif chart_type == "pie":
         plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
@@ -276,7 +297,7 @@ async def chart_plotting_tool(
 
 
 
-    plt.title(title)
+    plt.title(title, fontsize=12)
     plt.tight_layout()
 
 
