@@ -78,7 +78,7 @@ async def chart_plotting_tool(
 
         plt.figure(figsize=(width, height))
         plt.plot(x,y)
-        plt.xticks(rotation=45, fontsize=10)
+        plt.xticks(rotation=90, fontsize=10)
         plt.yticks(fontsize=10)
         plt.xlabel('x_line')
         plt.ylabel('y_line')
