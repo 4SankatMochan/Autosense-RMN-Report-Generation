@@ -33,7 +33,7 @@ chase_sql_constants_dict: immutabledict.immutabledict[str, Any] = (
             # Model to use for generation.
             "model": os.getenv("CHASE_NL2SQL_MODEL"),
             # Temperature for generation.
-            "temperature": 0.5,
+            "temperature": 0.01, #0.5 #update temp
             # Type of SQL generation method.
             "generate_sql_type": "dc",
         }
