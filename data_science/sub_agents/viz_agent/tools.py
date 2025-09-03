@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 import pandas as pd
 import numpy as np
 import math
@@ -14,6 +15,8 @@ from google.adk.tools import ToolContext
 async def chart_plotting_tool(
     chart_type: str,
     title: str,
+    x_axis_label :str,
+    y_axis_label :str,
     categories: List[str] = [],
     values: List[float] = [],
     # values2: List[float] = [],
@@ -27,6 +30,8 @@ async def chart_plotting_tool(
 ) -> dict:
 
     tool_context.state["chart_type"] = chart_type
+    tool_context.state["x_axis_label"] = x_axis_label
+    tool_context.state["y_axis_label"] = y_axis_label
     tool_context.state["x"] = x
     tool_context.state['y'] = y
     tool_context.state['categories'] = categories
@@ -37,16 +42,10 @@ async def chart_plotting_tool(
     tool_context.state['stages'] = stages
     tool_context.state['subcategories'] = subcategories
 
-    # print('chart_type', chart_type, flush = True)
-    # print('x', x, flush = True)
-    # print('y', y, flush = True)
-    # print('categories', categories, flush = True)
-    # print('values', values, flush = True)
-    # print('title', title, flush = True)
-    # print('stages', stages, flush = True)
-    # print('subcategories', subcategories, flush = True)
     with open("debug_log.txt", "a") as f:
         f.write(f"chart_type: {chart_type}\n")
+        f.write(f"x_axis_label: {x_axis_label}\n")
+        f.write(f"y_axis_label: {y_axis_label}\n")
         f.write(f"x: {x}\n")
         f.write(f"y: {y}\n")
         f.write(f"categories: {categories}\n")
@@ -55,63 +54,276 @@ async def chart_plotting_tool(
         f.write(f"stages: {stages}\n")
         f.write(f"subcategories: {subcategories}\n")
         f.write("===="*100)
+    def get_suffix_scale(max_val):
+        # Determine scale and suffix
+        if max_val >= 1000000000000:
+            scale = 1000000000000
+            suffix = 'Trillions'
+        elif max_val >= 1000000000:
+            scale = 1000000000
+            suffix = 'Billions'
+        elif max_val >= 1000000:
+            scale = 1000000
+            suffix = 'Millions'
+        elif max_val >= 1000:
+            scale = 1000
+            suffix = 'Thousands'
+        else:
+            scale = 1
+            suffix = ''
+        return scale, suffix
    
     if chart_type == "bar":
-        base_width=7 
-        base_points=30
-        height = 4
-        scale_factor = len(x) / base_points
-        width = max(base_width, base_width * scale_factor)
-        plt.figure(figsize=(width, height))
-        plt.bar(categories, values, color='skyblue')
+        # base_width=7 
+        # base_points=30
+        # height = 4
+        # scale_factor = len(x) / base_points
+        # width = max(base_width, base_width * scale_factor)
+        # plt.figure(figsize=(width, height))
+        # plt.bar(categories, values, color='skyblue')
+        # plt.xticks(rotation=90, fontsize=9)
+        # plt.yticks(fontsize=10)
+        # plt.xlabel(x_axis_label)
+        # plt.ylabel(y_axis_label)
+        if subcategories:
+            max_val = np.max(values)
+            scale, suffix = get_suffix_scale(max_val)
+            # Formatter function using the detected scale
+            def dynamic_format(num, pos):
+                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+            df = pd.DataFrame({
+                                'categories': categories,
+                                'subcategories': subcategories,
+                                'values': values
+                                    })
+
+            base_width=7 
+            base_points=30
+            height = 4
+            scale_factor = len(df) / base_points
+            width = max(base_width, base_width * scale_factor)
+            plt.figure(figsize=(width, height))
+
+            # Pivot for grouped bar plot
+            pivot_df = df.pivot(index='categories', columns='subcategories', values='values')
+            pivot_df = pivot_df[list(df['subcategories'].unique())]  # Ensure correct order
+
+            # Plot
+            plt.figure(figsize=(width, height))
+            ax = pivot_df.plot(kind='bar', width=0.7)
+
+            # Annotate values on bars
+            for p in ax.patches:
+                height = p.get_height()
+                ax.annotate(f'{height:,.0f}',
+                            (p.get_x() + p.get_width() / 2, height),
+                            ha='center', va='bottom', fontsize=8)
+            # Apply formatter
+            formatter = FuncFormatter(dynamic_format)
+            plt.gca().yaxis.set_major_formatter(formatter)
+        else:
+            max_val = np.max(values)
+            scale, suffix = get_suffix_scale(max_val)
+
+            # Formatter function using the detected scale
+            def dynamic_format(num, pos):
+                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+            df = pd.DataFrame({
+                                'categories': categories,
+                                'values': values
+                            })
+
+                # Plot
+            base_width=7 
+            base_points=30
+            height = 4
+            scale_factor = len(df) / base_points
+            width = max(base_width, base_width * scale_factor)
+            plt.figure(figsize=(width, height))
+
+            ax = plt.bar(df['categories'], df['values'], color='skyblue')
+
+            # Add value labels
+            for i, v in enumerate(df['values']):
+                plt.text(i, v, f'{v:,.0f}', ha='center', va='bottom', fontsize=8)
+            formatter = FuncFormatter(dynamic_format)
+            plt.gca().yaxis.set_major_formatter(formatter)
+
         plt.xticks(rotation=90, fontsize=9)
         plt.yticks(fontsize=10)
-        plt.xlabel("Category")
-        plt.ylabel("Value")
+        plt.xlabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
     elif chart_type in ['line', 'trend line']:
-        base_width=7 
-        base_points=30
-        height = 4
+        # base_width=7 
+        # base_points=30
+        # height = 4
 
-        scale_factor = len(x) / base_points
-        width = max(base_width, base_width * scale_factor)
+        # scale_factor = len(x) / base_points
+        # width = max(base_width, base_width * scale_factor)
 
-        plt.figure(figsize=(width, height))
-        plt.plot(x,y)
+        # plt.figure(figsize=(width, height))
+        # plt.plot(x,y)
+        # plt.xticks(rotation=90, fontsize=10)
+        # plt.yticks(fontsize=10)
+        # plt.xlabel(x_axis_label)
+        # plt.ylabel(y_axis_label)
+        if subcategories:
+            max_val = np.max(y)
+            scale, suffix = get_suffix_scale(max_val)
+
+            # Formatter function using the detected scale
+            def dynamic_format(num, pos):
+                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+            # Create DataFrame
+            df = pd.DataFrame({
+                'x': x,
+                'y': y,
+                'subcategories': subcategories
+            })
+
+            # Figure size scaling
+            base_width = 7
+            base_points = 30
+            height = 4
+            scale_factor = len(df) / base_points
+            width = max(base_width, base_width * scale_factor)
+            # Pivot for line plot
+            pivot_df = df.pivot(index='x', columns='subcategories', values='y')
+            pivot_df = pivot_df[list(df['subcategories'].unique())]  # Preserve order
+            # Plot (this creates its own figure)
+            ax = pivot_df.plot(kind='line', marker='o', figsize=(width, height))
+            # Annotate each point
+            for col in pivot_df.columns:
+                for i, (x_val, y_val) in enumerate(pivot_df[col].items()):
+                    if pd.notna(y_val):
+                        ax.annotate(f'{y_val:,.0f}',
+                                    (i, y_val),
+                                    textcoords="offset points",
+                                    xytext=(0, 5),
+                                    ha='center',
+                                    fontsize=8)
+            formatter = FuncFormatter(dynamic_format)
+            plt.gca().yaxis.set_major_formatter(formatter)
+        else:
+            max_val = np.max(y)
+            scale, suffix = get_suffix_scale(max_val)
+
+            # Formatter function using the detected scale
+            def dynamic_format(num, pos):
+                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+
+            # Create DataFrame
+            df = pd.DataFrame({'x': x, 'y': y})
+
+            # Figure size scaling
+            base_width = 7
+            base_points = 30
+            height = 4
+            scale_factor = len(df) / base_points
+            width = max(base_width, base_width * scale_factor)
+
+            # Plot line chart
+            plt.figure(figsize=(width, height))
+            plt.plot(df['x'], df['y'], marker='o')
+
+            # Annotate each point
+            for i, (x_val, y_val) in enumerate(zip(df['x'], df['y'])):
+                plt.annotate(f'{y_val:,.0f}',
+                            (x_val, y_val),
+                            textcoords="offset points",
+                            xytext=(0, 5),
+                            ha='center',
+                            fontsize=8)
+            formatter = FuncFormatter(dynamic_format)
+            plt.gca().yaxis.set_major_formatter(formatter)
         plt.xticks(rotation=90, fontsize=10)
         plt.yticks(fontsize=10)
-        plt.xlabel('x_line')
-        plt.ylabel('y_line')
+        plt.xlabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == "pie":
-        plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
+        # plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
+        # Create pie chart with labels and percentages
+        wedges, texts, autotexts = plt.pie(
+            values,
+            labels=categories,
+            autopct='%1.1f%%',
+            startangle=90,
+            textprops={'color': 'white'}
+                                    )
+
+        # Create custom legend labels with values
+        legend_labels = [f"{cat}: {val:,.0f}" for cat, val in zip(categories, values)]
+
+        # Add legend
+        plt.legend(wedges, legend_labels, title="Categories", loc="center left", bbox_to_anchor=(1, 0.5))
+
+        # Ensure circle aspect ratio
+        plt.axis('equal')
+
 
     elif chart_type == "waterfall":
+        max_val = np.max(values)
+        scale, suffix = get_suffix_scale(max_val)
+
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         cum_values = np.cumsum([0] + values[:-1])
         colors = ['green' if v >= 0 else 'red' for v in values]
         for i in range(len(values)):
             plt.bar(categories[i], values[i], bottom=cum_values[i], color=colors[i])
-        plt.xlabel("Step")
-        plt.ylabel("Value")
+        
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().xaxis.set_major_formatter(formatter)
+        plt.xlabel(f"{y_axis_label} ({suffix})")
+        plt.xticks(rotation=90, fontsize=9)
+        plt.ylabel(x_axis_label)
 
     elif chart_type == "scatter":
+        max_val = np.max(y)
+        scale, suffix = get_suffix_scale(max_val)
+
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         plt.scatter(x, y, color='purple')
-        plt.xlabel("X")
-        plt.ylabel("Y")
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().yaxis.set_major_formatter(formatter)
+        plt.xlabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == "area":
         # print(f"calling from Are matplotlib tool")
         # plt.fill_between(x, y, color='lightgreen', alpha=0.7)
+        max_val = np.max(values)
+        scale, suffix = get_suffix_scale(max_val)
+
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         plt.fill_between(categories, values, color='lightgreen', alpha=0.7)
         # plt.plot(x, y, color='green')
         plt.plot(categories, values, color='green')
-        plt.xlabel("X")
-        plt.ylabel("Y")
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().yaxis.set_major_formatter(formatter)
+        plt.xlabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == "funnel":
+        max_val = np.max(values)
+        scale, suffix = get_suffix_scale(max_val)
+
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         for i in range(len(stages)):
             plt.barh(stages[i], values[i], color='steelblue', height=0.6)
-        plt.xlabel("Value")
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().xaxis.set_major_formatter(formatter)
+        plt.xlabel(f"{y_axis_label} ({suffix})")
+        plt.xticks(rotation=90, fontsize=9)
+        plt.ylabel(x_axis_label)
 
     elif chart_type == "donut":
         wedges, texts, autotexts = plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
@@ -120,19 +332,45 @@ async def chart_plotting_tool(
         fig.gca().add_artist(centre_circle)
         
     elif chart_type in ["box", "box plot", 'box_plot']:
-    #     df = pd.DataFrame({'category': categories, 'value': values})
-    #     # Group values by category
-    #     grouped_data = [group['value'].values for name, group in df.groupby('category')]
-    #     # Get unique categories to use as labels (sorted for consistency)
-    #     labels = sorted(df['category'].unique())
-    #     plt.boxplot(grouped_data, labels=labels)
-    #     plt.ylabel("Value")
-    #     plt.title("Box Plot by Category")
-    #     plt.show()
-        plt.boxplot(values, patch_artist=True, notch=True, vert=True)
-        # plt.plot()
+        # plt.boxplot(values, patch_artist=True, notch=True, vert=True)
+        # plt.xlabel(x_axis_label)
+        # plt.ylabel(y_axis_label)
+        if subcategories:
+            max_val = np.max(values)
+            scale, suffix = get_suffix_scale(max_val)
+
+            # Formatter function using the detected scale
+            def dynamic_format(num, pos):
+                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+            # Create DataFrame
+            df = pd.DataFrame({'Subcategory': subcategories, 'Value': values})
+            # Group by subcategory
+            grouped = [df[df['Subcategory'] == cat]['Value'] for cat in df['Subcategory'].unique()]
+            plt.figure(figsize=(8, 6))
+            plt.boxplot(grouped, labels=df['Subcategory'].unique(), patch_artist=True, notch=True, vert=True)
+            formatter = FuncFormatter(dynamic_format)
+            plt.gca().yaxis.set_major_formatter(formatter)
+        else:
+            max_val = np.max(values)
+            scale, suffix = get_suffix_scale(max_val)
+
+            # Formatter function using the detected scale
+            def dynamic_format(num, pos):
+                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+            plt.boxplot(values, patch_artist=True, notch=True, vert=True)
+            formatter = FuncFormatter(dynamic_format)
+            plt.gca().yaxis.set_major_formatter(formatter)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
+        
+
     elif chart_type == "bubble":
-        df = pd.DataFrame({'x': x, 'y':y})
+        max_val = np.max(values)
+        scale, suffix = get_suffix_scale(max_val)
+
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+        df = pd.DataFrame({'x': categories, 'y': values})
         # Normalize y between 0.1 and 1
         min_norm = 0.1
         max_norm = 1.0
@@ -143,26 +381,11 @@ async def chart_plotting_tool(
         df['size'] = df['size']*200
         plt.scatter(df['x'], df['y'], s = df['size'], alpha=0.5)
         plt.xticks(df['x'])
-        plt.xlabel("X_bubble")
-        plt.ylabel("Y_bubble")
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().yaxis.set_major_formatter(formatter)
+        plt.xlabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
 
-    # elif chart_type in ["dual_axis",'dual axis']:
-    #     df = pd.DataFrame({'category': categories, 'value1': values, 'value2': values2})
-    #     fig, ax1 = plt.subplots()
-    #     # Plot on the first y-axis
-    #     color1 = 'tab:blue'
-    #     ax1.set_xlabel("Category")
-    #     ax1.set_ylabel("Value 1", color=color1)
-    #     ax1.plot(df['category'], df['value1'], color=color1)
-    #     ax1.tick_params(axis='y', labelcolor=color1)
-
-    #     # Create second y-axis
-    #     ax2 = ax1.twinx()
-    #     color2 = 'tab:red'
-    #     ax2.set_ylabel("Value 2", color=color2)
-    #     # Plot on the second y-axis
-    #     ax2.plot(df['category'], df['value2'], color=color2)
-    #     ax2.tick_params(axis='y', labelcolor=color2)
     elif chart_type == 'heatmap':
         df = pd.DataFrame({'category': categories, 'value': values})
         labels = df['category'].to_list()
@@ -240,7 +463,12 @@ async def chart_plotting_tool(
         
     
     elif chart_type == "pareto":
+        max_val = np.max(values)
+        scale, suffix = get_suffix_scale(max_val)
 
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         df = pd.DataFrame({'category': categories, 'value': values})
         df_sorted = df.sort_values(by='value', ascending=False).reset_index(drop=True)
 
@@ -252,9 +480,11 @@ async def chart_plotting_tool(
 
         # Bar plot for frequencies
         ax1.bar(df_sorted['category'], df_sorted['value'], color='skyblue')
-        ax1.set_xlabel("Category Pareto")
-        ax1.set_ylabel("Frequency Pareto", color='skyblue')
-        ax1.tick_params(axis='y', labelcolor='skyblue')
+        ax1.set_xlabel(x_axis_label)
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().yaxis.set_major_formatter(formatter)
+        ax1.set_ylabel(f"{y_axis_label} ({suffix})", color='blue')
+        ax1.tick_params(axis='y', labelcolor='blue')
         plt.xticks(rotation=45, ha='right')
 
         # Line plot for cumulative percentage on a second y-axis
@@ -267,28 +497,12 @@ async def chart_plotting_tool(
         ax2.set_ylim(0, 105)
     # elif chart_type == "stacked bar":
     elif 'stacked' in chart_type.lower():
-        # catDf = pd.DataFrame(categories, columns = ['category']).drop_duplicates()
-        # subCatDf = pd.DataFrame(subcategories, columns = ['subcategory']).drop_duplicates()
-        # df = pd.merge(catDf, subCatDf, how = 'cross')
-        # df['value'] = values
-        # # Pivot to make stacking easier
-        # pivot_df = df.pivot(index='category', columns='subcategory', values='value').fillna(0)
+        max_val = np.max(values)
+        scale, suffix = get_suffix_scale(max_val)
 
-        # # Bottom for stacking
-        # # bottom = [0] * len(pivot_df)
-        # bottom = np.zeros(len(pivot_df))
-        # fig, ax = plt.subplots(figsize=(10, 6))
-        # # Plot each subcategory
-        # for subcategory in pivot_df.columns:
-        #     ax.bar(pivot_df.index, pivot_df[subcategory], bottom=bottom, label=subcategory)
-        #     # Update bottom
-        #     # bottom = bottom + pivot_df[subcategory]
-        #     bottom += np.array(pivot_df[subcategory])
-        # ax.legend(title='Subcategory', loc='upper right')
-        # # ax.set_xticks(catDf['category'].to_list())
-        # plt.xticks(rotation=45)
-        # fig.savefig('stacked.png')
-        # Create DataFrames
+        # Formatter function using the detected scale
+        def dynamic_format(num, pos):
+            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         catDf = pd.DataFrame(categories, columns=['category']).drop_duplicates()
         subCatDf = pd.DataFrame(subcategories, columns=['subcategory']).drop_duplicates()
 
@@ -309,9 +523,13 @@ async def chart_plotting_tool(
         for subcategory in pivot_df.columns:
             plt.bar(pivot_df.index, pivot_df[subcategory], bottom=bottom, label=subcategory)
             bottom += pivot_df[subcategory].values
+        formatter = FuncFormatter(dynamic_format)
+        plt.gca().yaxis.set_major_formatter(formatter)
 
         plt.legend(loc='upper right')
         plt.xticks(rotation=45)
+        plt.xlabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
 
 
 
