@@ -26,6 +26,8 @@ from .sub_agents import db_agent, ds_agent, dv_agent
 import base64
 from google.genai.types import Part, Blob
 
+import datetime
+import json
 
 async def call_db_agent(
     question: str,
@@ -44,6 +46,53 @@ async def call_db_agent(
         args={"request": question}, tool_context=tool_context
     )
     tool_context.state["db_agent_output"] = db_agent_output
+    ###### logging #######    
+    # Generate log file name with datetime
+    # timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.datetime.now().strftime("%Y%m%d")
+    log_file = f"debug_log_db_agent_{timestamp}.txt"
+    # log_file = "debug_log_db_agent.txt"
+
+    with open(log_file, "a") as f:
+        f.write(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
+        f.write(f"question: {question}\n")
+        f.write("----" * 10 + "\n")
+        # Write only if key exists in tool_context.state
+        for key, label in [
+            ("tool_called", "tool_called"),
+            ("config_used", "config_used"),
+            ("sql_query", "sql_query"),
+            ("SQL Method DC/QP", "SQL Method DC/QP"),
+            ("sql_query_before_transpile", "sql_query_before_transpile"),
+            ("sql_query_after_transpile", "sql_query_after_transpile"),
+        ]:
+            value = tool_context.state.get(key)
+            if value is not None:
+                f.write(f"{label}: {value}\n")
+                f.write("----" * 10 + "\n")
+            else:
+                f.write("\n")  # leave line empty
+                f.write("----" * 10 + "\n")
+
+        # # Print dict values one by one
+        # f.write("db_agent_output:\n")
+        # if isinstance(db_agent_output, dict):
+        #     for k, v in db_agent_output.items():
+        #         f.write(f"  {k}: {v}\n")
+        #         f.write("----" * 10 + "\n")
+        # else:
+        #     f.write(f"  {db_agent_output}\n")
+        #     f.write("----" * 10 + "\n")
+        # Pretty-print JSON dict
+        f.write("db_agent_output:\n")
+        try:
+            f.write(json.dumps(db_agent_output, indent=4, ensure_ascii=False)+ "\n")
+        except Exception:
+            f.write(str(db_agent_output)+ "\n")  # fallback if not serializable
+
+        f.write("====" * 100 + "\n")
+
+    #############
     return db_agent_output
 
 
