@@ -36,9 +36,79 @@ These instructions guide the agent's behavior, workflow, and tool usage.
 #     return instruction_prompt_dv_tool
 
 
+
+
 def return_instructions_dv() -> str:
 
-    instruction_prompt_dv_tool = """ You are a visualization agent equipped with a chart plotting tool. Your task is to understand the user's request for data visualization and generate the appropriate chart using the tool provided (`chart_plotting_tool`).
+  data_schema = """
+    {
+  "chart_mapping": {
+    "bar": {
+      "required": ["categories", "values", "subcategories"],
+      "required_labels": ["x_axis_label", "y_axis_label"],
+      "forbidden": ["x", "y", "stages"]
+    },
+    "pie": {
+      "required": ["values", "categories"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "line": {
+      "required": ["x", "y", "subcategories"],
+      "required_labels": ["x_axis_label", "y_axis_label"],
+      "forbidden": ["categories", "values",  "stages"]
+    },
+    "waterfall": {
+      "required": ["categories", "values"],
+      "required_labels": ["x_axis_label", "y_axis_label"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "scatter": {
+      "required": ["x", "y"],
+      "required_labels": ["x_axis_label", "y_axis_label"],
+      "forbidden": ["categories", "values", "subcategories", "stages"]
+    },
+    "area": {
+      "required": ["categories", "values"],
+      "required_labels": ["x_axis_label", "y_axis_label"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "funnel": {
+      "required": ["stages", "values"],
+      "forbidden": ["x", "y", "subcategories", "categories"]
+    },
+    "donut": {
+      "required": ["categories", "values"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "box": {
+      "required": ["values","subcategories"],
+      "required_labels": ["x_axis_label", "y_axis_label"],
+      "forbidden": ["x", "y", "stages", "categories"]
+    },
+    "bubble": {
+      "required": ["categories", "values"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "heatmap": {
+      "required": ["categories", "values"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "radial gauge": {
+      "required": ["values"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    },
+    "stacked_bar": {
+      "required": ["categories", "subcategories", "values"],
+      "forbidden": ["x", "y"]
+    },
+    "pareto": {
+      "required": ["categories", "values"],
+      "forbidden": ["x", "y", "subcategories", "stages"]
+    }
+  }
+}
+"""
+  instruction_prompt_dv_tool = f""" You are a visualization agent equipped with a chart plotting tool. Your task is to understand the user's request for data visualization and generate the appropriate chart using the tool provided (`chart_plotting_tool`).
 
 **Always follow these steps:**
   Identify the type of chart requested (e.g., bar, line, pie, scatter, area, donut, funnel, stacked bar, waterfall, box plot, pareto, bubble, heatmap, radial gauge etc).
@@ -53,69 +123,9 @@ def return_instructions_dv() -> str:
   Always follow the mapping rules below to decide which fields to assign to which variables in the tool ``chart_plotting_tool``.
  
   ### chart_type → Variable Mapping Rules (Strict)
-  {
-    "chart_mapping": {
-      "bar": {
-        "required": ["categories", "values"],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-      "pie": {
-        "required": ["values", 'categories'],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-      'line':{
-          'required': ["x", "y"],
-          "forbidden": ['categories', 'values', 'subcategories', 'stages']
-      }
-      "watrefall": {
-        "required": ['categories', 'values'],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-      "scatter": {
-        "required": ["x", "y"],
-        "forbidden": ['categories', 'values', 'subcategories', 'stages']
-      },
-      "area": {
-       "required": ['categories', 'values'],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-      "funnel": {
-        "required": ["stages", 'values'],
-        "forbidden": ['x', 'y', 'subcategories', 'categories]
-      },
+  {data_schema}
 
-      "donut": {
-       "required": ['categories', 'values'],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-      "box": {
-        "required": [ "values"],
-        "forbidden": ['x', 'y', 'subcategories', 'stages','categories']
-      },
-      "bubble": {
-        "required": ["x", "y"],
-        'forbidden': ['categories', 'values', 'subcategories', 'stages']
-      },
-      "heatmap": {
-        "required": ["categories", "values'],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-      "radial gauge": {
-        "required": ["values"],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
-    
-      "stacked_bar": {
-        "required": ["categories", 'subcategories',"values"]
-        'forbidden': ['x', 'y']
-      },
-      "pareto": {
-        "required": ["categories", "values"],
-        "forbidden": ['x', 'y', 'subcategories', 'stages']
-      },
 
-    }
-  }
   ### General Rules:
   - Only assign variables that are listed as 'required' for the given chart_type.
   - Never assign any 'forbidden' variables for the given chart_type.
@@ -126,4 +136,4 @@ def return_instructions_dv() -> str:
 
 
   """
-    return instruction_prompt_dv_tool
+  return instruction_prompt_dv_tool
