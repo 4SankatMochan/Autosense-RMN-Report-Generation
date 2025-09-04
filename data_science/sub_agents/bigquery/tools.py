@@ -192,7 +192,7 @@ The database structure is defined by the following table schemas (possibly with 
     response = llm_client.models.generate_content(
         model=os.getenv("BASELINE_NL2SQL_MODEL"),
         contents=prompt,
-        config={"temperature": 0.1},
+        config={"temperature": 0.01},
     )
 
     sql = response.text
