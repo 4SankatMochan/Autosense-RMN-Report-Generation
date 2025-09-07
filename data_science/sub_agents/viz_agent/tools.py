@@ -3,6 +3,7 @@ from matplotlib.ticker import FuncFormatter
 import pandas as pd
 import numpy as np
 import math
+import textwrap  # For automatic line wrapping
 # import plotly.express as px
 
 import io
@@ -54,24 +55,34 @@ async def chart_plotting_tool(
         f.write(f"stages: {stages}\n")
         f.write(f"subcategories: {subcategories}\n")
         f.write("===="*100)
+
     def get_suffix_scale(max_val):
-        # Determine scale and suffix
-        if max_val >= 1000000000000:
-            scale = 1000000000000
-            suffix = 'Trillions'
-        elif max_val >= 1000000000:
-            scale = 1000000000
-            suffix = 'Billions'
-        elif max_val >= 1000000:
-            scale = 1000000
-            suffix = 'Millions'
-        elif max_val >= 1000:
-            scale = 1000
-            suffix = 'Thousands'
+        if max_val >= 1e12:
+            return 1e12, 'T'
+        elif max_val >= 1e9:
+            return 1e9, 'B'
+        elif max_val >= 1e6:
+            return 1e6, 'M'
+        elif max_val >= 1e3:
+            return 1e3, 'K'
         else:
-            scale = 1
-            suffix = ''
-        return scale, suffix
+            return 1, ''
+    # Helper function to format values
+    def legend_formate(num):
+        if num >= 1_000_000_000:
+            return f"{num / 1_000_000_000:.1f}B"
+        elif num >= 1_000_000:
+            return f"{num / 1_000_000:.1f}M"
+        elif num >= 1_000:
+            return f"{num / 1_000:.1f}K"
+        else:
+            return str(num)
+    def format_with_suffix(value):
+        scale_val, suffix_val = get_suffix_scale(value)
+        return f'{value / scale_val:.0f}{suffix_val}'
+    # Formatter function using the detected scale
+    def dynamic_format(num, pos):
+        return f'{num / scale:.1f}' if num != 0 else '0'
    
     if chart_type == "bar":
         # base_width=7 
@@ -89,8 +100,6 @@ async def chart_plotting_tool(
             max_val = np.max(values)
             scale, suffix = get_suffix_scale(max_val)
             # Formatter function using the detected scale
-            def dynamic_format(num, pos):
-                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
             df = pd.DataFrame({
                                 'categories': categories,
                                 'subcategories': subcategories,
@@ -115,19 +124,18 @@ async def chart_plotting_tool(
             # Annotate values on bars
             for p in ax.patches:
                 height = p.get_height()
-                ax.annotate(f'{height:,.0f}',
+                ax.annotate(f'{format_with_suffix(height)}',
                             (p.get_x() + p.get_width() / 2, height),
                             ha='center', va='bottom', fontsize=8)
             # Apply formatter
             formatter = FuncFormatter(dynamic_format)
             plt.gca().yaxis.set_major_formatter(formatter)
+            plt.legend(loc='center left', bbox_to_anchor=(1.02, 0.5), title='Categories')
         else:
             max_val = np.max(values)
             scale, suffix = get_suffix_scale(max_val)
 
             # Formatter function using the detected scale
-            def dynamic_format(num, pos):
-                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
             df = pd.DataFrame({
                                 'categories': categories,
                                 'values': values
@@ -145,7 +153,7 @@ async def chart_plotting_tool(
 
             # Add value labels
             for i, v in enumerate(df['values']):
-                plt.text(i, v, f'{v:,.0f}', ha='center', va='bottom', fontsize=8)
+                plt.text(i, v, format_with_suffix(v), ha='center', va='bottom', fontsize=8)
             formatter = FuncFormatter(dynamic_format)
             plt.gca().yaxis.set_major_formatter(formatter)
 
@@ -170,10 +178,6 @@ async def chart_plotting_tool(
         if subcategories:
             max_val = np.max(y)
             scale, suffix = get_suffix_scale(max_val)
-
-            # Formatter function using the detected scale
-            def dynamic_format(num, pos):
-                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
             # Create DataFrame
             df = pd.DataFrame({
                 'x': x,
@@ -196,7 +200,7 @@ async def chart_plotting_tool(
             for col in pivot_df.columns:
                 for i, (x_val, y_val) in enumerate(pivot_df[col].items()):
                     if pd.notna(y_val):
-                        ax.annotate(f'{y_val:,.0f}',
+                        ax.annotate(f'{format_with_suffix(y_val)}',
                                     (i, y_val),
                                     textcoords="offset points",
                                     xytext=(0, 5),
@@ -204,13 +208,10 @@ async def chart_plotting_tool(
                                     fontsize=8)
             formatter = FuncFormatter(dynamic_format)
             plt.gca().yaxis.set_major_formatter(formatter)
+            plt.legend(loc='center left', bbox_to_anchor=(1.02, 0.5), title='Categories')
         else:
             max_val = np.max(y)
             scale, suffix = get_suffix_scale(max_val)
-
-            # Formatter function using the detected scale
-            def dynamic_format(num, pos):
-                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
 
             # Create DataFrame
             df = pd.DataFrame({'x': x, 'y': y})
@@ -228,7 +229,7 @@ async def chart_plotting_tool(
 
             # Annotate each point
             for i, (x_val, y_val) in enumerate(zip(df['x'], df['y'])):
-                plt.annotate(f'{y_val:,.0f}',
+                plt.annotate(f'{format_with_suffix(y_val)}',
                             (x_val, y_val),
                             textcoords="offset points",
                             xytext=(0, 5),
@@ -244,6 +245,13 @@ async def chart_plotting_tool(
     elif chart_type == "pie":
         # plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
         # Create pie chart with labels and percentages
+        # Dynamic figure width
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+        plt.figure(figsize=(width, height))
         wedges, texts, autotexts = plt.pie(
             values,
             labels=categories,
@@ -253,7 +261,7 @@ async def chart_plotting_tool(
                                     )
 
         # Create custom legend labels with values
-        legend_labels = [f"{cat}: {val:,.0f}" for cat, val in zip(categories, values)]
+        legend_labels = [f"{cat}: {legend_formate(val)}" for cat, val in zip(categories, values)]
 
         # Add legend
         plt.legend(wedges, legend_labels, title="Categories", loc="center left", bbox_to_anchor=(1, 0.5))
@@ -263,62 +271,104 @@ async def chart_plotting_tool(
 
 
     elif chart_type == "waterfall":
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+        plt.figure(figsize=(width, height))
+
         max_val = np.max(values)
         scale, suffix = get_suffix_scale(max_val)
-
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         cum_values = np.cumsum([0] + values[:-1])
         colors = ['green' if v >= 0 else 'red' for v in values]
         for i in range(len(values)):
             plt.bar(categories[i], values[i], bottom=cum_values[i], color=colors[i])
+            # Add text label to each bar
+            y_pos = cum_values[i] + values[i] / 2  # Center of the bar
+            label = f'{format_with_suffix(values[i])}'
+            plt.text(categories[i], y_pos, label, ha='center', va='center', fontsize=8, color='white')
         
         formatter = FuncFormatter(dynamic_format)
-        plt.gca().xaxis.set_major_formatter(formatter)
-        plt.xlabel(f"{y_axis_label} ({suffix})")
+        plt.gca().yaxis.set_major_formatter(formatter)
+        plt.xlabel(x_axis_label)
         plt.xticks(rotation=90, fontsize=9)
-        plt.ylabel(x_axis_label)
+        plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == "scatter":
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(y) / base_points
+        width = max(base_width, base_width * scale_factor)
+
         max_val = np.max(y)
         scale, suffix = get_suffix_scale(max_val)
-
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+        plt.figure(figsize=(width, height))
         plt.scatter(x, y, color='purple')
         formatter = FuncFormatter(dynamic_format)
         plt.gca().yaxis.set_major_formatter(formatter)
         plt.xlabel(x_axis_label)
+        plt.xticks(rotation=90, fontsize=9)
         plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == "area":
         # print(f"calling from Are matplotlib tool")
         # plt.fill_between(x, y, color='lightgreen', alpha=0.7)
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+
         max_val = np.max(values)
         scale, suffix = get_suffix_scale(max_val)
 
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+        plt.figure(figsize=(width, height))
         plt.fill_between(categories, values, color='lightgreen', alpha=0.7)
         # plt.plot(x, y, color='green')
         plt.plot(categories, values, color='green')
         formatter = FuncFormatter(dynamic_format)
         plt.gca().yaxis.set_major_formatter(formatter)
+        for i, val in enumerate(values):
+            label = f'{format_with_suffix(val)}'
+            plt.annotate(
+                label,
+                xy=(categories[i], val),          # Point to annotate
+                xytext=(1, 6),                    # Offset: 5 points above
+                textcoords='offset points',      # Interpret offset in display points
+                ha='center',
+                va='bottom',
+                fontsize=8
+                        )
         plt.xlabel(x_axis_label)
+        plt.xticks(rotation=90, fontsize=9)
         plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == "funnel":
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+
         max_val = np.max(values)
         scale, suffix = get_suffix_scale(max_val)
-
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+        plt.figure(figsize=(width, height))
         for i in range(len(stages)):
             plt.barh(stages[i], values[i], color='steelblue', height=0.6)
+
+            # Create and place the label
+            label = f'{format_with_suffix(values[i])}'
+            plt.text(
+                values[i],               # x position (end of the bar)
+                stages[i],               # y position (same as bar)
+                label,
+                va='center',             # vertically center the text
+                ha='left',               # place it just to the right of the bar
+                fontsize=8,
+                color='black'
+            )
         formatter = FuncFormatter(dynamic_format)
         plt.gca().xaxis.set_major_formatter(formatter)
         plt.xlabel(f"{y_axis_label} ({suffix})")
@@ -326,8 +376,20 @@ async def chart_plotting_tool(
         plt.ylabel(x_axis_label)
 
     elif chart_type == "donut":
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+        plt.figure(figsize=(width, height))
+
         wedges, texts, autotexts = plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140)
         centre_circle = plt.Circle((0, 0), 0.70, fc='white')
+        # Create custom legend labels with values
+        legend_labels = [f"{cat}: {legend_formate(val)}" for cat, val in zip(categories, values)]
+
+        # Add legend
+        plt.legend(wedges, legend_labels, title="Categories", loc="center left", bbox_to_anchor=(1, 0.5))
         fig = plt.gcf()
         fig.gca().add_artist(centre_circle)
         
@@ -336,40 +398,48 @@ async def chart_plotting_tool(
         # plt.xlabel(x_axis_label)
         # plt.ylabel(y_axis_label)
         if subcategories:
+            base_width = 7
+            base_points = 30
+            height = 4
+            scale_factor = len(values) / base_points
+            width = max(base_width, base_width * scale_factor)
             max_val = np.max(values)
             scale, suffix = get_suffix_scale(max_val)
-
-            # Formatter function using the detected scale
-            def dynamic_format(num, pos):
-                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
             # Create DataFrame
             df = pd.DataFrame({'Subcategory': subcategories, 'Value': values})
             # Group by subcategory
             grouped = [df[df['Subcategory'] == cat]['Value'] for cat in df['Subcategory'].unique()]
-            plt.figure(figsize=(8, 6))
+            plt.figure(figsize=(width, height))
             plt.boxplot(grouped, labels=df['Subcategory'].unique(), patch_artist=True, notch=True, vert=True)
             formatter = FuncFormatter(dynamic_format)
             plt.gca().yaxis.set_major_formatter(formatter)
         else:
+            base_width = 7
+            base_points = 30
+            height = 4
+            scale_factor = len(values) / base_points
+            width = max(base_width, base_width * scale_factor)
             max_val = np.max(values)
             scale, suffix = get_suffix_scale(max_val)
-
-            # Formatter function using the detected scale
-            def dynamic_format(num, pos):
-                return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+            plt.figure(figsize=(width, height))
             plt.boxplot(values, patch_artist=True, notch=True, vert=True)
             formatter = FuncFormatter(dynamic_format)
             plt.gca().yaxis.set_major_formatter(formatter)
         plt.ylabel(f"{y_axis_label} ({suffix})")
+        plt.xlabel(x_axis_label)
         
 
     elif chart_type == "bubble":
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+
         max_val = np.max(values)
         scale, suffix = get_suffix_scale(max_val)
 
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
+
         df = pd.DataFrame({'x': categories, 'y': values})
         # Normalize y between 0.1 and 1
         min_norm = 0.1
@@ -379,45 +449,57 @@ async def chart_plotting_tool(
         normalized = (df['y'] - y_min) / (y_max - y_min)
         df['size'] = normalized
         df['size'] = df['size']*200
+        plt.figure(figsize=(width, height))
         plt.scatter(df['x'], df['y'], s = df['size'], alpha=0.5)
         plt.xticks(df['x'])
+        for i, row in df.iterrows():
+            plt.text(row['x'], row['y'], f"{format_with_suffix(row['y'])}", fontsize=9, ha='center', va='center')
         formatter = FuncFormatter(dynamic_format)
         plt.gca().yaxis.set_major_formatter(formatter)
         plt.xlabel(x_axis_label)
         plt.ylabel(f"{y_axis_label} ({suffix})")
 
     elif chart_type == 'heatmap':
+        # Prepare DataFrame and extract labels/values
         df = pd.DataFrame({'category': categories, 'value': values})
         labels = df['category'].to_list()
         values = df['value'].to_list()
         N = len(values)
-        # Determine grid size (cols and rows)
-        cols = math.ceil(math.sqrt(N))  # Try for a square-ish shape
+
+        # Determine grid size
+        cols = math.ceil(math.sqrt(N))
         rows = math.ceil(N / cols)
 
-        # Pad the values and labels to fill the grid completely
+        # Pad lists to fill grid
         pad_size = rows * cols - N
         labels += [''] * pad_size
         values += [np.nan] * pad_size
 
+        # Reshape into 2D arrays
         labels_array = np.array(labels).reshape(rows, cols)
         values_array = np.array(values).reshape(rows, cols)
 
         # Plot
-        fig, ax = plt.subplots(figsize=(cols * 2, rows * 1.5))
-        heatmap = ax.imshow(values_array, cmap= 'YlOrRd')
+        plt.figure(figsize=(cols * 2, rows * 1.5))
+        plt.imshow(values_array, cmap='YlOrRd')
 
-        # Add text labels (label + value)
+        # Annotate cells
+        ax = plt.gca()
         for i in range(rows):
             for j in range(cols):
-                if labels_array[i, j] != '':
-                    value_text = f'{values_array[i, j]:.0f}' if not np.isnan(values_array[i, j]) else ''
-                    ax.text(j, i, f'{labels_array[i, j]}\n{value_text}',
+                label = labels_array[i, j]
+                val = values_array[i, j]
+                if label != '':
+                    # value_text = f'{val:.0f}' if not np.isnan(val) else ''
+                    value_text = f'{format_with_suffix(val)}'
+                    ax.text(j, i, f'{label}\n{value_text}',
                             ha='center', va='center', color='black', fontsize=9)
-
-        # Remove axis ticks
+        # Clean up axes
         ax.set_xticks([])
-        plt.colorbar(heatmap)
+        ax.set_yticks([])
+
+        # Add colorbar
+        plt.colorbar()
     elif chart_type == "radial gauge":
         sales_val = values[0]
         target_val = values[1]
@@ -459,50 +541,64 @@ async def chart_plotting_tool(
         ax.plot([value_angle, value_angle], [0, 0.95], color='black', lw=2)
         ax.plot(0, 0, 'o', markersize=10, color='black')  # center circle
         fig.text(0.5, 0.4, f'{value:.1f}%', fontsize=24, fontweight='bold', ha='center', va='center')
-        fig.text(0.5, 0.3, f'Sales: ${sales_val:,.0f} | Target: ${target_val:,.0f}', fontsize=12, ha='center', va='center')
+        fig.text(0.5, 0.3, f'Value: ${sales_val:,.0f} | Target: ${target_val:,.0f}', fontsize=12, ha='center', va='center')
         
     
     elif chart_type == "pareto":
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+        
         max_val = np.max(values)
         scale, suffix = get_suffix_scale(max_val)
 
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         df = pd.DataFrame({'category': categories, 'value': values})
         df_sorted = df.sort_values(by='value', ascending=False).reset_index(drop=True)
 
         # Calculate cumulative percentage
         df_sorted['cumulative_percentage'] = (df_sorted['value'].cumsum() /
-                                              df_sorted['value'].sum()) * 100
-
+                                            df_sorted['value'].sum()) * 100
+        plt.figure(figsize=(width, height))
         ax1 = plt.gca()
 
         # Bar plot for frequencies
-        ax1.bar(df_sorted['category'], df_sorted['value'], color='skyblue')
+        bars = ax1.bar(df_sorted['category'], df_sorted['value'], color='skyblue')
         ax1.set_xlabel(x_axis_label)
         formatter = FuncFormatter(dynamic_format)
         plt.gca().yaxis.set_major_formatter(formatter)
         ax1.set_ylabel(f"{y_axis_label} ({suffix})", color='blue')
         ax1.tick_params(axis='y', labelcolor='blue')
-        plt.xticks(rotation=45, ha='right')
+        plt.xticks(rotation=90, ha='right')
+        # Annotate bar values
+        for bar, val in zip(bars, df_sorted['value']):
+            ax1.text(bar.get_x() + bar.get_width() / 2,
+                    bar.get_height(),
+                    f"{format_with_suffix(val)}",
+                    ha='center', va='bottom', fontsize=9, color='black')
 
         # Line plot for cumulative percentage on a second y-axis
         ax2 = ax1.twinx()
         ax2.plot(df_sorted['category'],
-                 df_sorted['cumulative_percentage'],
-                 color='red', marker='o', ms=5)
+                df_sorted['cumulative_percentage'],
+                color='red', marker='o', ms=5)
+        for x, y in zip(df_sorted['category'], df_sorted['cumulative_percentage']):
+            ax2.text(x, y + 2, f"{y:.1f}%", ha='center', va='bottom', fontsize=9, color='red')
         ax2.set_ylabel("Cumulative Percentage (%)", color='red')
         ax2.tick_params(axis='y', labelcolor='red')
         ax2.set_ylim(0, 105)
     # elif chart_type == "stacked bar":
     elif 'stacked' in chart_type.lower():
+        base_width = 7
+        base_points = 30
+        height = 4
+        scale_factor = len(values) / base_points
+        width = max(base_width, base_width * scale_factor)
+
         max_val = np.max(values)
         scale, suffix = get_suffix_scale(max_val)
 
-        # Formatter function using the detected scale
-        def dynamic_format(num, pos):
-            return f'{num / scale:.1f}{suffix}' if num != 0 else '0'
         catDf = pd.DataFrame(categories, columns=['category']).drop_duplicates()
         subCatDf = pd.DataFrame(subcategories, columns=['subcategory']).drop_duplicates()
 
@@ -517,7 +613,7 @@ async def chart_plotting_tool(
         bottom = np.zeros(len(pivot_df))
 
         # Set figure size
-        plt.figure(figsize=(10, 6))
+        plt.figure(figsize=(width, height))
 
         # Plot stacked bars using pyplot
         for subcategory in pivot_df.columns:
@@ -526,15 +622,15 @@ async def chart_plotting_tool(
         formatter = FuncFormatter(dynamic_format)
         plt.gca().yaxis.set_major_formatter(formatter)
 
-        plt.legend(loc='upper right')
-        plt.xticks(rotation=45)
+        plt.legend(loc='center left', bbox_to_anchor=(1.02, 0.5), title='Categories')
+        plt.xticks(rotation=90)
         plt.xlabel(x_axis_label)
         plt.ylabel(f"{y_axis_label} ({suffix})")
 
 
 
-
-    plt.title(title, fontsize=12)
+    wrapped_title = "\n".join(textwrap.wrap(title, width=40))  # Wrap every ~40 characters
+    plt.title(wrapped_title, fontsize=12)
     plt.tight_layout()
 
 
