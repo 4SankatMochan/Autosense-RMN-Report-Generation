@@ -93,6 +93,8 @@ async def call_viz_agent(
     """
     print(f'question with data is >>>>>>>:{question_with_data}')
 
+    with open('/home/krishna_bansal/rmn_agent_work/debug_log.txt', 'a') as f:
+        f.write(f'question with data is >>>>>>>:{question_with_data}\n')
     agent_tool = AgentTool(agent=dv_agent)
     dv_agent_output = await agent_tool.run_async(
         args={"request": question_with_data},
