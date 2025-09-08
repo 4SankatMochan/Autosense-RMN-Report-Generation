@@ -406,7 +406,19 @@ async def chart_plotting_tool(
             max_val = np.max(values)
             scale, suffix = get_suffix_scale(max_val)
             # Create DataFrame
-            df = pd.DataFrame({'Subcategory': subcategories, 'Value': values})
+            try:
+                df = pd.DataFrame({'Subcategory': subcategories, 'Value': values})
+            except: # length of values and subcategories are different
+                valDf = pd.DataFrame(values, columns = ['Value'])
+                subCatDf = pd.DataFrame(subcategories, columns = ['Subcategory']).drop_duplicates()
+                # Repeat df2 to match length of df1
+                repeats_needed = -(-len(valDf) // len(subCatDf))  # Ceiling division
+                subcategory_extended = (subCatDf['Subcategory'].to_list() * repeats_needed)[:len(valDf)]
+                # Create the final dataframe
+                df = pd.DataFrame({
+                    'Value': valDf['Value'],
+                    'Subcategory': subcategory_extended
+                })
             # Group by subcategory
             grouped = [df[df['Subcategory'] == cat]['Value'] for cat in df['Subcategory'].unique()]
             plt.figure(figsize=(width, height))
