@@ -1,0 +1,819 @@
+{
+    "campaign metadata": [
+        {
+            "field_name": "advertiser_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the advertiser running the campaign."
+        },
+        {
+            "field_name": "campaign_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the marketing campaign."
+        },
+        {
+            "field_name": "campaign_ad_grp_id",
+            "suggested_field_name": "campaign_ad_group_id",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Identifier for the ad group within the campaign."
+        },
+        {
+            "field_name": "campaign_ad_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique ID for the specific ad within the campaign."
+        },
+        {
+            "field_name": "product_ids",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "List of product identifiers promoted in the campaign."
+        },
+        {
+            "field_name": "brand_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the brand associated with the campaign."
+        },
+        {
+            "field_name": "brand_name",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Name of the brand being advertised."
+        },
+        {
+            "field_name": "media_type",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Type of media used (e.g., display, CTV, email)."
+        },
+        {
+            "field_name": "channels",
+            "suggested_field_name": "marketing_channels",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Marketing channels used for campaign delivery (e.g., On-Site, App, Channel-CTV)."
+        },
+        {
+            "field_name": "objective",
+            "suggested_field_name": "campaign_objective",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Primary goal of the campaign (e.g., awareness, conversions)."
+        },
+        {
+            "field_name": "sub_objective",
+            "suggested_field_name": "campaign_sub_objective",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Secondary or more specific goal under the main objective."
+        },
+        {
+            "field_name": "start_date",
+            "suggested_field_name": "campaign_start_date",
+            "mode": "NULLABLE",
+            "data_type": "DATE",
+            "description": "Scheduled start date of the campaign."
+        },
+        {
+            "field_name": "end_date",
+            "suggested_field_name": "campaign_end_date",
+            "mode": "NULLABLE",
+            "data_type": "DATE",
+            "description": "Scheduled end date of the campaign."
+        },
+        {
+            "field_name": "budget",
+            "suggested_field_name": "campaign_budget",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Total allocated budget for the campaign."
+        },
+        {
+            "field_name": "planned_spend",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Expected spend based on campaign planning."
+        },
+        {
+            "field_name": "strategy_description",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Textual description of the campaign strategy."
+        },
+        {
+            "field_name": "status",
+            "suggested_field_name": "campaign_status",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Current status of the campaign (e.g., Planned, Completed, Active)."
+        },
+        {
+            "field_name": "channel_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique ID for the specific channel used."
+        },
+        {
+            "field_name": "creative_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Identifier for the creative asset used in the campaign."
+        },
+        {
+            "field_name": "strategy_category",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Category or type of strategy employed."
+        },
+        {
+            "field_name": "strategy_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the strategy applied."
+        },
+        {
+            "field_name": "site_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID of the site/platform where the campaign is displayed."
+        }
+    ],
+    "": [
+        {
+            "field_name": "",
+            "suggested_field_name": "",
+            "mode": "",
+            "data_type": "",
+            "description": ""
+        },
+        {
+            "field_name": "",
+            "suggested_field_name": "",
+            "mode": "",
+            "data_type": "",
+            "description": ""
+        },
+        {
+            "field_name": "",
+            "suggested_field_name": "",
+            "mode": "",
+            "data_type": "",
+            "description": ""
+        },
+        {
+            "field_name": "",
+            "suggested_field_name": "",
+            "mode": "",
+            "data_type": "",
+            "description": ""
+        }
+    ],
+    "campaign performance": [
+        {
+            "field_name": "campaign_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID for the marketing campaign."
+        },
+        {
+            "field_name": "campaign_ad_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID for the specific ad within the campaign."
+        },
+        {
+            "field_name": "product_ids",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "List of product identifiers promoted in the campaign."
+        },
+        {
+            "field_name": "brand_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the brand associated with the campaign."
+        },
+        {
+            "field_name": "brand_name",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Name of the brand being advertised."
+        },
+        {
+            "field_name": "media_type",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Type of media used (e.g., display, CTV, email)."
+        },
+        {
+            "field_name": "channels",
+            "suggested_field_name": "marketing_channels",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Marketing or distribution channels used in the campaign."
+        },
+        {
+            "field_name": "total_campaign_budget",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Total allocated budget for the entire campaign."
+        },
+        {
+            "field_name": "planned_spend",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Forecasted spend based on campaign planning."
+        },
+        {
+            "field_name": "objective",
+            "suggested_field_name": "campaign_objective",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Primary goal of the campaign (e.g., awareness, conversion)."
+        },
+        {
+            "field_name": "sub_objective",
+            "suggested_field_name": "campaign_sub_objective",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "More specific or secondary campaign goal."
+        },
+        {
+            "field_name": "impressions",
+            "suggested_field_name": "ad_impressions",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Number of times the ad was displayed to users."
+        },
+        {
+            "field_name": "frequency",
+            "suggested_field_name": "ad_frequency",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Number of times a person is exposed to the same advertisement within a given platform."
+        },
+        {
+            "field_name": "reach",
+            "suggested_field_name": "ad_reach",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Total number of unique users who saw the ad."
+        },
+        {
+            "field_name": "clicks",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Total number of user clicks on the ad."
+        },
+        {
+            "field_name": "ctr_percent",
+            "suggested_field_name": "click_through_rate_percent",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Click-through rate as a percentage of impressions."
+        },
+        {
+            "field_name": "conversions",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Number of desired actions completed by users (e.g., purchases)."
+        },
+        {
+            "field_name": "conversion_rate_percent",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Percentage of users who converted after clicking."
+        },
+        {
+            "field_name": "actual_spend_to_date",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Total amount spent on the campaign up to the current date."
+        },
+        {
+            "field_name": "attributed_sales_value",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Sales revenue attributed to the campaign."
+        },
+        {
+            "field_name": "roas",
+            "suggested_field_name": "return_on_ad_spend",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Return on Ad Spend; ratio of revenue to ad spend."
+        },
+        {
+            "field_name": "cpc",
+            "suggested_field_name": "cost_per_click",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Cost per click; average cost incurred per ad click."
+        },
+        {
+            "field_name": "cpa",
+            "suggested_field_name": "cost_per_acquisition",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Cost per acquisition; average cost per conversion."
+        },
+        {
+            "field_name": "date",
+            "suggested_field_name": "record_date",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "The date associated with the record, used for time-based analysis."
+        },
+        {
+            "field_name": "remaining_budget",
+            "suggested_field_name": "remaining_campaign_budget",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Unspent portion of the campaign budget."
+        },
+        {
+            "field_name": "video_starts",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Number of times a video ad started playing."
+        },
+        {
+            "field_name": "video_plays",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Total number of times the ad started playing"
+        },
+        {
+            "field_name": "video_first_quartile",
+            "suggested_field_name": "video_views_first_quartile",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Number of views reaching 25% of the video."
+        },
+        {
+            "field_name": "video_midpoint",
+            "suggested_field_name": "video_views_midpoint",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Number of views reaching 50% of the video."
+        },
+        {
+            "field_name": "video_third_quartile",
+            "suggested_field_name": "video_views_third_quartile",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Number of views reaching 75% of the video."
+        },
+        {
+            "field_name": "video_completions",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Number of times the video was watched till the end."
+        },
+        {
+            "field_name": "video_completion_rate_percent",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Percentage of video starts that were completed."
+        },
+        {
+            "field_name": "avg_watch_time",
+            "suggested_field_name": "average_video_watch_time",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Average time users spent watching the video ad."
+        },
+        {
+            "field_name": "add_to_cart_events",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Number of times users added products to cart from the ad."
+        },
+        {
+            "field_name": "new_to_brand_conversions",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Purchases by customers who have not bought from the brand in a set period."
+        },
+        {
+            "field_name": "dwell_time",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Average time users spent engaging with the ad or landing page."
+        },
+        {
+            "field_name": "gross_rating_point",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Measure of total ad exposure across the target audience."
+        },
+        {
+            "field_name": "target_audience_rating_point",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "GRP specific to the intended target audience."
+        },
+        {
+            "field_name": "delivered_messages",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Number of media impressions or communications actually sent or served."
+        },
+        {
+            "field_name": "message_opens",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Number of users who opened an email, push, or other message."
+        },
+        {
+            "field_name": "unsubscribe_bounce_rates",
+            "suggested_field_name": "unsubscribe_and_bounce_rates",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "% of users who unsubscribed or whose messages bounced from the total sent."
+        },
+        {
+            "field_name": "audience_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Identifier linking the performance data to a specific audience segment."
+        }
+    ],
+    "clickstream": [
+        {
+            "field_name": "session_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for a user's browsing session."
+        },
+        {
+            "field_name": "user_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique ID representing the user interacting with the site."
+        },
+        {
+            "field_name": "event_type",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Type of user interaction (e.g., page_view, add_to_cart)."
+        },
+        {
+            "field_name": "event_time",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "DATETIME",
+            "description": "Timestamp of when the event occurred."
+        },
+        {
+            "field_name": "page_url",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "URL of the webpage where the event took place."
+        },
+        {
+            "field_name": "referrer_url",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "URL of the page that referred the user to the current page. Generally the social media ID or null in case of organic."
+        },
+        {
+            "field_name": "product_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Id for the product involved in the event."
+        },
+        {
+            "field_name": "campaign_ad_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID linking the event to a specific campaign ad."
+        },
+        {
+            "field_name": "media_type",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Format of the media involved (e.g., image, video, text)."
+        },
+        {
+            "field_name": "channels",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Marketing or traffic channels driving the user to the site."
+        },
+        {
+            "field_name": "device_type",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Type of device used by the user (e.g., mobile, tablet)."
+        },
+        {
+            "field_name": "traffic_source",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Origin of the user traffic (e.g., organic, paid, referral)."
+        },
+        {
+            "field_name": "brand_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the brand associated with the product."
+        },
+        {
+            "field_name": "brand_name",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Name of the brand involved in the event."
+        },
+        {
+            "field_name": "avg_time_on_site_sec",
+            "suggested_field_name": "average_time_on_site_seconds",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Average time the user spent on the site during the session."
+        },
+        {
+            "field_name": "add_to_cart",
+            "suggested_field_name": "is_product_added_to_cart",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "flag indicating if the product was added to cart."
+        },
+        {
+            "field_name": "purchase",
+            "suggested_field_name": "is_product_purchased",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "flag indicating if a purchase was made."
+        },
+        {
+            "field_name": "page_view",
+            "suggested_field_name": "is_page_viewed",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "flag indicating if the page was viewed."
+        },
+        {
+            "field_name": "order_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Identifier for the order placed during the session."
+        }
+    ],
+    "transaction data": [
+        {
+            "field_name": "order_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Unique identifier for the transaction or purchase order."
+        },
+        {
+            "field_name": "transaction_date",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "DATETIME",
+            "description": "Date when the transaction occurred."
+        },
+        {
+            "field_name": "user_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique ID representing the customer who made the purchase."
+        },
+        {
+            "field_name": "sku_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Stock Keeping Unit identifier for the purchased product."
+        },
+        {
+            "field_name": "order_amount",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Total monetary value of the transaction."
+        },
+        {
+            "field_name": "currency",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Currency in which the transaction was made (USD)."
+        },
+        {
+            "field_name": "unit_sold",
+            "suggested_field_name": "units_sold",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Quantity of product units sold in the transaction."
+        },
+        {
+            "field_name": "department_code",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Code representing the department the product belongs to."
+        },
+        {
+            "field_name": "category_code",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Code representing the product category."
+        },
+        {
+            "field_name": "brand_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the brand of the purchased product."
+        },
+        {
+            "field_name": "brand_name",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Name of the brand associated with the product."
+        },
+        {
+            "field_name": "sku_desc",
+            "suggested_field_name": "sku_description",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Description of the product SKU."
+        },
+        {
+            "field_name": "department_desc",
+            "suggested_field_name": "department_description",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Textual description of the department."
+        },
+        {
+            "field_name": "category_desc",
+            "suggested_field_name": "category_description",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Textual description of the product category."
+        },
+        {
+            "field_name": "vendor_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID for the vendor supplying the product."
+        },
+        {
+            "field_name": "vendor_name",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Name of the vendor or supplier."
+        },
+        {
+            "field_name": "campaign_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID of the campaign linked to the transaction."
+        },
+        {
+            "field_name": "campaign_ad_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID of the specific ad that influenced the transaction."
+        },
+        {
+            "field_name": "advertiser_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Identifier for the advertiser associated with the campaign."
+        }
+    ],
+    "audience data": [
+        {
+            "field_name": "audience_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Unique identifier for the audience group or segment."
+        },
+        {
+            "field_name": "audience_segment",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Categorization of the audience based on shared traits or behaviors."
+        },
+        {
+            "field_name": "audience_desc",
+            "suggested_field_name": "audience_description",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Detailed description of the audience segment."
+        },
+        {
+            "field_name": "platform_audience_id",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "ID used by external platforms to reference the audience."
+        },
+        {
+            "field_name": "is_converted",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Flag indicating whether the audience has completed a desired action (e.g., purchase)."
+        },
+        {
+            "field_name": "conversion_value",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "FLOAT",
+            "description": "Value attributed to conversions from the audience (e.g., revenue or score)."
+        },
+        {
+            "field_name": "audience_size",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "INTEGER",
+            "description": "Estimated number of individuals in the audience segment."
+        },
+        {
+            "field_name": "audience_source",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Origin or method used to create or collect the audience data."
+        },
+        {
+            "field_name": "audience_platform",
+            "suggested_field_name": "",
+            "mode": "NULLABLE",
+            "data_type": "STRING",
+            "description": "Platform where the audience is activated or targeted (e.g., Meta, Google)."
+        }
+    ]
+}

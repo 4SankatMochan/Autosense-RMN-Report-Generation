@@ -25,6 +25,7 @@ from .sub_agents import db_agent, ds_agent, dv_agent
 
 import base64
 from google.genai.types import Part, Blob
+import os
 
 from .logging.db_agent_call_logger import log_db_agent
 
@@ -100,6 +101,13 @@ async def call_viz_agent(
     """
     print(f'question with data is >>>>>>>:{question_with_data}')
 
+    # with open('/home/krishna_bansal/rmn_agent_work/debug_log.txt', 'a') as f:
+    #     f.write(f'question with data is >>>>>>>:{question_with_data}\n')
+    home_dir = os.path.expanduser("~")
+    log_file_path = os.path.join(home_dir, "rmn_agent_work", "debug_log.txt")
+
+    with open(log_file_path, 'a') as f:
+        f.write(f'question with data is >>>>>>>:{question_with_data}\n')
     agent_tool = AgentTool(agent=dv_agent)
     dv_agent_output = await agent_tool.run_async(
         args={"request": question_with_data},

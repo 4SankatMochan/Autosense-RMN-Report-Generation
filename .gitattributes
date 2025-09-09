@@ -1,2 +1,31 @@
 # Always prefer our branch’s .env during merges/rebases
 .env merge=ours
+
+# ==============================
+# Line Endings Normalization
+# ==============================
+
+# Always use LF for source & config files
+*.py     text eol=lf
+*.md     text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.json   text eol=lf
+*.sql    text eol=lf
+*.sh     text eol=lf
+
+# Keep CRLF for Windows batch files
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+
+# Binary files (no conversion)
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.pdf    binary
+*.zip    binary
+*.gz     binary
+*.exe    binary
+*.dll    binary

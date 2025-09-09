@@ -32,7 +32,7 @@ project = os.getenv("BQ_PROJECT_ID", None)
 location = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
 llm_client = Client(vertexai=True, project=project, location=location)
 
-MAX_NUM_ROWS = 80
+MAX_NUM_ROWS = 500 # 80 to 500 by Krishna on 5-Sept-2025
 
 
 database_settings = None
@@ -188,8 +188,8 @@ The database structure is defined by the following table schemas (possibly with 
     prompt = prompt_template.format(
         MAX_NUM_ROWS=MAX_NUM_ROWS, SCHEMA=ddl_schema, QUESTION=question
     )
-    config={"temperature": 0.1}
-    # config={"temperature": 0.01}
+    # config={"temperature": 0.1}
+    config={"temperature": 0.01}
     response = llm_client.models.generate_content(
         model=os.getenv("BASELINE_NL2SQL_MODEL"),
         contents=prompt,
