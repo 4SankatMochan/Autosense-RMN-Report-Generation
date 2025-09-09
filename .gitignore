@@ -7,8 +7,7 @@ __pycache__/
 *.env
 
 #logs
-*.debug_log*.txt
-*.debug_log_db_agent.txt
+*debug_log*.txt
 
 # Jupyter
 .ipynb_checkpoints/
