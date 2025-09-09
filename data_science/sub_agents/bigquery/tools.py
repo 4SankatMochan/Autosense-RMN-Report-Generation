@@ -182,19 +182,20 @@ The database structure is defined by the following table schemas (possibly with 
 **Think Step-by-Step:** Carefully consider the schema, question, guidelines, and best practices outlined above to generate the correct BigQuery SQL.
 
    """
-
+    tool_context.state["tool_called"] = "tools py initial_bq_nl2sql"
     ddl_schema = tool_context.state["database_settings"]["bq_ddl_schema"]
 
     prompt = prompt_template.format(
         MAX_NUM_ROWS=MAX_NUM_ROWS, SCHEMA=ddl_schema, QUESTION=question
     )
-
+    # config={"temperature": 0.1}
+    config={"temperature": 0.01}
     response = llm_client.models.generate_content(
         model=os.getenv("BASELINE_NL2SQL_MODEL"),
         contents=prompt,
-        config={"temperature": 0.01},
+        config=config,
     )
-
+    tool_context.state["config_used"]=config
     sql = response.text
     if sql:
         sql = sql.replace("```sql", "").replace("```", "").strip()
@@ -202,7 +203,7 @@ The database structure is defined by the following table schemas (possibly with 
     print("\n sql:", sql)
 
     tool_context.state["sql_query"] = sql
-
+    
     return sql
 
 

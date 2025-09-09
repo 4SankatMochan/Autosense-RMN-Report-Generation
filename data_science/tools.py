@@ -27,6 +27,10 @@ import base64
 from google.genai.types import Part, Blob
 import os
 
+from .logging.db_agent_call_logger import log_db_agent
+
+# import datetime
+# import json
 
 async def call_db_agent(
     question: str,
@@ -44,7 +48,10 @@ async def call_db_agent(
     db_agent_output = await agent_tool.run_async(
         args={"request": question}, tool_context=tool_context
     )
-    tool_context.state["db_agent_output"] = db_agent_output
+    tool_context.state["db_agent_output"] = "db_agent_output"
+    ###### logging #######
+    log_db_agent(question, tool_context, db_agent_output)
+    #####################    
     return db_agent_output
 
 

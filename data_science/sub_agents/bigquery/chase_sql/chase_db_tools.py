@@ -93,6 +93,9 @@ def initial_bq_nl2sql(
       str: An SQL statement to answer this question.
     """
     print("****** Running agent with ChaseSQL algorithm.")
+
+    tool_context.state["tool_called"] = "chase db tools initial_bq_nl2sql"
+    
     ddl_schema = tool_context.state["database_settings"]["bq_ddl_schema"]
     project = tool_context.state["database_settings"]["bq_project_id"]
     db = tool_context.state["database_settings"]["bq_dataset_id"]
@@ -113,22 +116,27 @@ def initial_bq_nl2sql(
     generate_sql_type = tool_context.state["database_settings"]["generate_sql_type"]
 
     if generate_sql_type == GenerateSQLType.DC.value:
+        tool_context.state["SQL Method DC/QP"] = generate_sql_type
         prompt = DC_PROMPT_TEMPLATE.format(
             SCHEMA=ddl_schema, QUESTION=question, BQ_PROJECT_ID=BQ_PROJECT_ID
         )
+        
     elif generate_sql_type == GenerateSQLType.QP.value:
+        tool_context.state["SQL Method DC/QP"] = generate_sql_type
         prompt = QP_PROMPT_TEMPLATE.format(
             SCHEMA=ddl_schema, QUESTION=question, BQ_PROJECT_ID=BQ_PROJECT_ID
         )
+        
     else:
         raise ValueError(f"Unsupported generate_sql_type: {generate_sql_type}")
-
+    config = {"temperature": temperature}
+    tool_context.state["config_used"]=config
     model = GeminiModel(model_name=model, temperature=temperature)
     requests = [prompt for _ in range(number_of_candidates)]
     responses = model.call_parallel(requests, parser_func=parse_response)
     # Take just the first response.
     responses = responses[0]
-
+    tool_context.state["sql_query_before_transpile"] = responses
     # If postprocessing of the SQL to transpile it to BigQuery is required,
     # then do it here.
     if transpile_to_bigquery:
@@ -143,5 +151,5 @@ def initial_bq_nl2sql(
         responses: str = translator.translate(
             responses, ddl_schema=ddl_schema, db=db, catalog=project
         )
-
+        tool_context.state["sql_query_after_transpile"] = responses
     return responses

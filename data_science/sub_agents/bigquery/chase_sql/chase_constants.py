@@ -37,7 +37,7 @@ chase_sql_constants_dict: immutabledict.immutabledict[str, Any] = (
             "temperature": 0.01,
 
             # Type of SQL generation method.
-            "generate_sql_type": "dc",
+            "generate_sql_type": "qp" #"dc",
         }
     )
 )
