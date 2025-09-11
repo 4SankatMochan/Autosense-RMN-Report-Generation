@@ -44,10 +44,20 @@ def return_instructions_bigquery() -> str:
           "sql_results": "raw sql execution query_result from run_bigquery_validation if it's available, otherwise None",
           "nl_results": "Natural language about results, otherwise it's None if generated SQL is invalid"
       ```
+      5. When the user requests week-on-week or week or  quarter-on-quarter or quarter data:
+            - Detect whether it's a week or quarter-based query.
+            - Aggregate metrics (e.g. SUM, AVG, COUNT) by week or quarter.
+            - For week-on-week:
+                * Assign continuous week numbers from the start of the date range.
+            - For quarter-on-quarter:
+                * Use quarter number from the date.
+            - Sort results by week or quarter number.
       You should pass one tool call to another tool call as needed!
 
       NOTE: you should ALWAYS USE THE TOOLS ({db_tool_name} AND run_bigquery_validation) to generate SQL, not make up SQL WITHOUT CALLING TOOLS.
       Keep in mind that you are an orchestration agent, not a SQL expert, so use the tools to help you generate SQL, but do not make up SQL.
+
+      
 
     """
 
