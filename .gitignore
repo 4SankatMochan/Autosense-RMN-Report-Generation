@@ -6,6 +6,11 @@ __pycache__/
 .venv/
 .env
 
+#logs and test results
+*debug_log*.txt
+*evaluation_results*.xlsx
+
+
 # Jupyter
 .ipynb_checkpoints/
 

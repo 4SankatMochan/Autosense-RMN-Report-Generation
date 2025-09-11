@@ -85,6 +85,33 @@ def return_instructions_bigquery() -> str:
   - Trust data_dictionary.json for relationships, enums, and business definitions
 """
 
+    # SQL function guardrails
+    sql_function_rules = """
+## SQL Function Rules
+- Only use BigQuery-supported functions.
+- In BigQuery, you MUST always use `DATE_TRUNC(DATE(field), <interval>)` for time bucketing.
+- Valid intervals: DAY, WEEK, MONTH.
+- Never use TRUNC() for dates or timestamps. It is not supported in BigQuery and will cause errors like “Unrecognized name: WEEK”.
+- Example (weekly aggregation):
+  SELECT DATE_TRUNC(DATE(event_time), WEEK) AS week_start, ...
+- For time bucketing, you MUST use:DATE_TRUNC(DATE(field), <interval>)
+  Example: DATE_TRUNC(DATE(event_time), WEEK)
+- For string handling, escape single quotes properly:
+  Example: `Ben & Jerry's` → `'Ben & Jerry''s'`.
+  If a query fails due to unescaped characters, regenerate it with proper escaping by calling ds_agent, instead of returning an error. 
+  When handling multiple brand names, apply escaping consistently to each name. - Example: ['Ben & Jerry's', 'Sunsilk'] → ('Ben & Jerry''s', 'Sunsilk'). 
+  Return only the SQL query and/or the summarized result, not the database schema. 
+  Example Behavior: User: "Compare conversion rates between Ben & Jerry's and Sunsilk campaigns." SQL to Generate:
+    sql
+    SELECT brand_name,
+        AVG(conversion_rate_percent) AS avg_conversion_rate_percent
+    FROM `acn-cda.RMN_Campaign_Dataset_Dev.campaign_performance`
+    WHERE brand_name IN ('Ben & Jerry''s', 'Sunsilk')
+    GROUP BY brand_name
+    ORDER BY avg_conversion_rate_percent DESC; 
+- Never invent functions or syntax not in BigQuery docs.
+"""
+
     # Validation checklist reinforcement
     validation_checklist = """
 ## Validation Checklist
@@ -117,6 +144,11 @@ Your role: Convert natural language → SQL using tools, schema, and campaign lo
 
 ---
 
+# SQL Function Rules
+{sql_function_rules}
+
+---
+
 # Full Schema & Business Rules
 Below is the complete schema and business rules (from data_dictionary.json).
 Use this alongside live BigQuery schema as the source of truth:
@@ -130,3 +162,5 @@ Use this alongside live BigQuery schema as the source of truth:
 """
 
     return instruction_prompt_bqml_v1
+
+ 
