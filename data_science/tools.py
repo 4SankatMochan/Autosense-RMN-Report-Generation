@@ -103,9 +103,10 @@ async def call_viz_agent(
 
     # with open('/home/krishna_bansal/rmn_agent_work/debug_log.txt', 'a') as f:
     #     f.write(f'question with data is >>>>>>>:{question_with_data}\n')
-    home_dir = os.path.expanduser("~")
-    log_file_path = os.path.join(home_dir, "rmn_agent_work", "debug_log.txt")
-
+    # print(os.getcwd())
+    # home_dir = os.path.expanduser("~")
+    # log_file_path = os.path.join(home_dir, "rmn_agent_work", "debug_log.txt")
+    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         f.write(f'question with data is >>>>>>>:{question_with_data}\n')
     agent_tool = AgentTool(agent=dv_agent)

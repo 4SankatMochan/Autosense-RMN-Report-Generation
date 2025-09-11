@@ -448,28 +448,30 @@ async def chart_plotting_tool(
         scale_factor = len(values) / base_points
         width = max(base_width, base_width * scale_factor)
 
-        max_val = np.max(values)
+        max_val = np.max(y)
         scale, suffix = get_suffix_scale(max_val)
 
 
-        df = pd.DataFrame({'x': categories, 'y': values})
-        # Normalize y between 0.1 and 1
-        min_norm = 0.1
-        max_norm = 1.0
-        y_min = df['y'].min()
-        y_max = df['y'].max()
-        normalized = (df['y'] - y_min) / (y_max - y_min)
-        df['size'] = normalized
-        df['size'] = df['size']*200
+        df = pd.DataFrame({'x': x, 'y': y, 'size': values})
+        # # Normalize y between 0.1 and 1
+        # min_norm = 0.1
+        # max_norm = 1.0
+        # y_min = df['y'].min()
+        # y_max = df['y'].max()
+        # normalized = (df['y'] - y_min) / (y_max - y_min)
+        # df['size'] = normalized
+        # df['size'] = df['size']*200
         plt.figure(figsize=(width, height))
         plt.scatter(df['x'], df['y'], s = df['size'], alpha=0.5)
         plt.xticks(df['x'])
         for i, row in df.iterrows():
-            plt.text(row['x'], row['y'], f"{format_with_suffix(row['y'])}", fontsize=9, ha='center', va='center')
+            plt.text(row['x'], row['y'], f"{format_with_suffix(row['size'])}", fontsize=9, ha='center', va='center')
         formatter = FuncFormatter(dynamic_format)
         plt.gca().yaxis.set_major_formatter(formatter)
         plt.xlabel(x_axis_label)
+        plt.xticks(rotation=90, fontsize=9)
         plt.ylabel(f"{y_axis_label} ({suffix})")
+
 
     elif chart_type == 'heatmap':
         # Prepare DataFrame and extract labels/values

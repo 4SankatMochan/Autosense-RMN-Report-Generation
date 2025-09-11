@@ -62,6 +62,14 @@ def return_instructions_bigquery() -> str:
    - "sql": The final validated SQL string
    - "sql_results": Raw results from the executed SQL
    - "nl_results": Natural language summary of the results for the user
+4. When the user requests week-on-week or week or  quarter-on-quarter or quarter data:
+      - Detect whether it's a week or quarter-based query.
+      - Aggregate metrics (e.g. SUM, AVG, COUNT) by week or quarter.
+      - For week-on-week:
+          * Assign continuous week numbers from the start of the date range.
+      - For quarter-on-quarter:
+          * Use quarter number from the date.
+      - Sort results by week or quarter number.
 """
 
     # Tool usage enforcement
@@ -128,5 +136,4 @@ Use this alongside live BigQuery schema as the source of truth:
 # Validation Checklist
 {validation_checklist}
 """
-
     return instruction_prompt_bqml_v1
