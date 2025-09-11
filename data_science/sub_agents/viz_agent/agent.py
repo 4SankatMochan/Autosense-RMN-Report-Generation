@@ -19,6 +19,9 @@ from google.adk.tools import load_artifacts
 from .prompts import return_instructions_dv
 from .tools import chart_plotting_tool
 
+
+
+
 root_agent = Agent(
     model=os.getenv("VIZ_AGENT_MODEL"),
     name="data_visualization_agent",

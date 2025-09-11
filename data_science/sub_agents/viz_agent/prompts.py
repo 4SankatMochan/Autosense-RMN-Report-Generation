@@ -175,8 +175,8 @@ def return_instructions_dv() -> str:
       "forbidden": ["x", "y", "stages", "categories"]
     },
     "bubble": {
-      "required": ["categories", "values"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
+      "required": ["x", 'y',"values"],
+      "forbidden": ["categories", "subcategories", "stages"]
     },
     "heatmap": {
       "required": ["categories", "values"],
@@ -238,6 +238,7 @@ def return_instructions_dv() -> str:
     - Only assign variables marked as **required** for the given chart_type.
     - Do NOT assign variables marked as **forbidden** for the given chart_type.
     - For **radial gauge plots**, if the user provides target values, assign them in the `values` list at the second index.
+    - For a **bubble** chart, analyze the provided data and select appropriate fields for x, y, and values (where values determines bubble size), as the input data will not have these fields pre-defined, and then pass the selected lists to `chart_plotting_tool`. x or y can be categorical or continuous but values must be numerical.
     - Do NOT assume or generate data that is not explicitly present in the input.
     - The lengths of all assigned lists  **must exactly match** the corresponding input data. Do not generate or assume extra data points and do not hallucinate.
     - Always select data fields that are **most semantically relevant** to the chart type and user’s query.
@@ -265,7 +266,7 @@ def return_instructions_dv() -> str:
     - How to assign fields to variables
     - Or if the user asks for an unsupported chart type
 
-    ➡️ Then call the `ds_agent` to generate and save the plot instead of using `chart_plotting_tool`. It is tool of root agent named as `db_ds_agent`.
+    ➡️ Then call the `ds_agent` to generate and save the plot instead of using `chart_plotting_tool`. It is tool of root agent. Name of root agent is `db_ds_agent`.
 
   """
 
