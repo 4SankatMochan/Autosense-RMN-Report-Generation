@@ -1,24 +1,56 @@
 """
 adk_evaluation_tp.py
 
-- Reads test_cases.xlsx with columns: query, expected_output, expected_sql
-- Calls local ADK at BASE_URL /run
-- Extracts generated_output, generated_sql, generated_meta
-- Canonicalizes both expected and generated SQL (sqlglot + GROUP BY ordinal expansion)
-- Compares SQL: exact canonical equality -> structural set-equality -> embedding similarity (fallback)
-- PASS only if text similarity >= OUTPUT_SIM_THRESHOLD AND SQL check passes
-- Writes results to evaluation_results.xlsx
+End-to-end evaluation harness (configured for your environment).
+
+- Reads INPUT_FILE (Excel) which must contain columns:
+    - query
+    - expected_output
+    - expected_sql
+
+- Calls local ADK at BASE_URL /run using APP_NAME and USER_ID provided below.
+- Extracts:
+    - generated_output  (final human-facing text from the agent)
+    - generated_sql     (last SQL candidate produced by the agent)
+    - generated_meta    (chart metadata: chart_type, x_axis_label, y_axis_label)
+
+- SQL handling:
+    - Canonicalizes both expected_sql and generated_sql using sqlglot (best-effort).
+    - Expands GROUP BY ordinals (e.g., GROUP BY 1) into corresponding SELECT expressions before canonicalization.
+    - Comparison order:
+        1) exact canonical equality
+        2) lightweight structural equality (select-set and group-by-set)
+        3) fallback embedding similarity on canonical SQL strings (threshold SQL_SIM_THRESHOLD)
+
+- Text similarity for generated output is computed with sentence-transformers.
+- PASS only if:
+    - text similarity >= OUTPUT_SIM_THRESHOLD AND
+    - SQL check passes (canonical/structural equality OR fallback similarity >= SQL_SIM_THRESHOLD)
+
+- Timing:
+    - records request_time (UTC, ISO with Z), response_time (UTC, ISO with Z), and latency_mmss (M:SS.mmm)
+
+Configuration values (update these if needed):
+    BASE_URL, APP_NAME, USER_ID
+    INPUT_FILE, OUTPUT_FILE
+    OUTPUT_SIM_THRESHOLD, SQL_SIM_THRESHOLD
+    REQUEST_TIMEOUT (seconds)
+
+Dependencies:
+    pip install sqlglot sentence-transformers requests openpyxl
 """
 
 import json
 import re
 import uuid
+import time
+import datetime
 import requests
 import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 
 # ------------------------
-# Config
+# Config (your provided working values)
 # ------------------------
 BASE_URL = "http://127.0.0.1:8000"
 APP_NAME = "data_science"
@@ -30,7 +62,7 @@ OUTPUT_FILE = "evaluation_results_tp.xlsx"
 OUTPUT_SIM_THRESHOLD = 0.80
 SQL_SIM_THRESHOLD = 0.95   # used only as fallback when canonical/structural checks fail
 
-REQUEST_TIMEOUT = 1000
+REQUEST_TIMEOUT = 1000  # seconds
 
 # ------------------------
 # Init embedding model
@@ -40,6 +72,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 def compute_similarity(a, b):
+    """Compute semantic similarity between two texts using sentence-transformers."""
     if a is None or b is None:
         return 0.0
     a_str = str(a).strip()
@@ -52,7 +85,7 @@ def compute_similarity(a, b):
 
 
 # ------------------------
-# Helpers: code fence strip + top-level comma split
+# Helpers: strip code fences + split top-level commas
 # ------------------------
 def strip_code_fences(s: str) -> str:
     if not isinstance(s, str):
@@ -97,6 +130,7 @@ SELECT_RE = re.compile(
 
 
 def normalize_sql_simple(sql: str) -> str:
+    """Conservative fallback normalization for SQL if sqlglot is unavailable or parse fails."""
     if not sql:
         return ""
     s = strip_code_fences(sql)
@@ -111,6 +145,10 @@ def normalize_sql_simple(sql: str) -> str:
 
 
 def expand_group_by_ordinals(sql: str) -> str:
+    """
+    Expand `GROUP BY 1,2` ordinals into the corresponding SELECT expressions.
+    If expansion cannot be performed, returns original SQL unchanged.
+    """
     if not isinstance(sql, str) or not sql.strip():
         return sql
     s = strip_code_fences(sql)
@@ -148,6 +186,9 @@ def expand_group_by_ordinals(sql: str) -> str:
 
 
 def canonicalize_sql(sql: str, remove_order_limit: bool = True, expand_group_by: bool = True) -> str:
+    """
+    Canonicalize SQL using sqlglot where possible. Falls back to normalize_sql_simple on failure.
+    """
     if not sql:
         return ""
     s = strip_code_fences(sql)
@@ -179,7 +220,7 @@ def canonicalize_sql(sql: str, remove_order_limit: bool = True, expand_group_by:
 
 
 # ------------------------
-# Lightweight structural equality (select/group sets)
+# Lightweight structural equality (select & group-by sets)
 # ------------------------
 def normalize_expr_for_set(expr: str) -> str:
     if not expr:
@@ -195,6 +236,7 @@ def normalize_expr_for_set(expr: str) -> str:
 
 
 def sql_structural_equal(sql_a: str, sql_b: str) -> bool:
+    """Return True if select-set and group-by-set (normalized) are equal, else False."""
     a_can = canonicalize_sql(sql_a)
     b_can = canonicalize_sql(sql_b)
     if not a_can or not b_can:
@@ -224,25 +266,23 @@ def sql_structural_equal(sql_a: str, sql_b: str) -> bool:
 
 
 # ------------------------
-# Extractor (final text, last SQL candidate, chart_meta)
+# Improved Extractor: prefer last human-facing text, last SQL candidate, and chart meta
 # ------------------------
-def try_parse_json_string(s: str):
-    if not isinstance(s, str):
-        return None
-    cleaned = strip_code_fences(s)
-    try:
-        return json.loads(cleaned)
-    except Exception:
-        return None
-
-
 def extract_output(resp_json):
+    """
+    Improved extractor:
+      - scans actions.stateDelta for sql_query and nl_results/explain
+      - scans content.parts[*] for text and functionResponse
+      - handles functionResponse.response as dict and as code-fenced JSON string
+      - returns last discovered SQL candidate and last discovered human text
+    """
     result = {
         "result_text": None,
         "sql": None,
         "chart_meta": {"chart_type": None, "x_axis_label": None, "y_axis_label": None},
         "raw": None
     }
+
     try:
         raw_str = json.dumps(resp_json, default=str)
     except Exception:
@@ -254,22 +294,64 @@ def extract_output(resp_json):
     funcresp_texts = []
     sql_candidates = []
 
-    def scan_part(p):
+    def try_parse_json_string(s: str):
+        if not isinstance(s, str):
+            return None
+        cleaned = strip_code_fences(s)
+        try:
+            return json.loads(cleaned)
+        except Exception:
+            # try to find JSON substring inside
+            m = re.search(r"(\{[\s\S]*\})", cleaned)
+            if m:
+                try:
+                    return json.loads(m.group(1))
+                except Exception:
+                    return None
+            return None
+
+    def scan_state(sd: dict):
+        if not isinstance(sd, dict):
+            return
+        # common state keys that may contain SQL or user-friendly text
+        for tk in ("sql_query", "db_agent_output", "dv_agent_output", "nl_results", "explain"):
+            v = sd.get(tk)
+            if isinstance(v, str) and v.strip():
+                if tk == "sql_query":
+                    sql_candidates.append(v.strip())
+                else:
+                    sd_texts.append(strip_code_fences(v.strip()))
+        # chart metadata in stateDelta
+        for k in ("chart_type", "x_axis_label", "y_axis_label"):
+            if result["chart_meta"].get(k) is None and sd.get(k) is not None:
+                result["chart_meta"][k] = sd.get(k)
+
+    def scan_part(p: dict):
         if not isinstance(p, dict):
             return
+        # plain text content
         t = p.get("text")
         if isinstance(t, str) and t.strip():
             content_texts.append(strip_code_fences(t.strip()))
+
+        # functionResponse handling
         fr = p.get("functionResponse")
         if isinstance(fr, dict):
             resp_obj = fr.get("response")
+            # response is a dict with structured fields
             if isinstance(resp_obj, dict):
-                for tk in ("nl_results", "explain", "text", "result"):
-                    if isinstance(resp_obj.get(tk), str) and resp_obj.get(tk).strip():
-                        funcresp_texts.append(strip_code_fences(resp_obj.get(tk).strip()))
-                        break
+                # direct sql field
                 if isinstance(resp_obj.get("sql"), str) and resp_obj.get("sql").strip():
                     sql_candidates.append(resp_obj.get("sql").strip())
+                # check for textual fields (and JSON inside them)
+                for tk in ("nl_results", "explain", "text", "result", "db_agent_output"):
+                    val = resp_obj.get(tk)
+                    if isinstance(val, str) and val.strip():
+                        funcresp_texts.append(strip_code_fences(val.strip()))
+                        parsed = try_parse_json_string(val)
+                        if isinstance(parsed, dict) and isinstance(parsed.get("sql"), str):
+                            sql_candidates.append(parsed.get("sql").strip())
+            # response is a string (often code-fenced JSON)
             elif isinstance(resp_obj, str):
                 parsed = try_parse_json_string(resp_obj)
                 if isinstance(parsed, dict):
@@ -279,34 +361,24 @@ def extract_output(resp_json):
                         if isinstance(parsed.get(tk), str) and parsed.get(tk).strip():
                             funcresp_texts.append(parsed.get(tk).strip())
                             break
+                # fallback: regex search for SELECT blocks
                 for m in SELECT_RE.finditer(resp_obj):
                     sql_candidates.append(m.group(1).strip())
                 if not sql_candidates and resp_obj.strip():
                     funcresp_texts.append(strip_code_fences(resp_obj.strip()))
+
+        # extract chart metadata if present on a part
         for k in ("chart_type", "x_axis_label", "y_axis_label"):
             if result["chart_meta"].get(k) is None and isinstance(p.get(k), str):
                 result["chart_meta"][k] = p.get(k)
 
-    def scan_state(sd):
-        if not isinstance(sd, dict):
-            return
-        for tk in ("db_agent_output", "dv_agent_output", "nl_results", "explain"):
-            if isinstance(sd.get(tk), str) and sd.get(tk).strip():
-                sd_texts.append(strip_code_fences(sd.get(tk).strip()))
-        if isinstance(sd.get("sql_query"), str) and sd.get("sql_query").strip():
-            sql_candidates.append(sd.get("sql_query").strip())
-        for k in ("chart_type", "x_axis_label", "y_axis_label"):
-            if result["chart_meta"].get(k) is None and sd.get(k) is not None:
-                result["chart_meta"][k] = sd.get(k)
-
+    # resp_json may be dict or list; handle both
     if isinstance(resp_json, dict):
         actions = resp_json.get("actions") or {}
         scan_state(actions.get("stateDelta") or {})
-        if "content" in resp_json:
-            parts = resp_json.get("content", {}).get("parts", []) or []
-            for p in parts:
-                scan_part(p)
-
+        parts = resp_json.get("content", {}).get("parts", []) or []
+        for p in parts:
+            scan_part(p)
     elif isinstance(resp_json, list):
         for item in resp_json:
             if not isinstance(item, dict):
@@ -317,10 +389,12 @@ def extract_output(resp_json):
             for p in parts:
                 scan_part(p)
 
+    # fallback: search entire raw JSON string for SELECT blocks if nothing found yet
     if not sql_candidates:
-        for m in SELECT_RE.finditer(raw_str):
+        for m in SELECT_RE.finditer(result["raw"] or ""):
             sql_candidates.append(m.group(1).strip())
 
+    # choose final result_text preference: last content text > stateDelta > functionResponse > raw snippet
     if content_texts:
         result["result_text"] = content_texts[-1]
     elif sd_texts:
@@ -328,14 +402,16 @@ def extract_output(resp_json):
     elif funcresp_texts:
         result["result_text"] = funcresp_texts[-1]
     else:
-        snippet = raw_str
+        snippet = (result["raw"] or "")
         if len(snippet) > 2000:
             snippet = snippet[:2000] + "..."
         result["result_text"] = snippet
 
+    # pick last SQL candidate if any
     if sql_candidates:
         result["sql"] = sql_candidates[-1]
 
+    # clean empty strings to None
     if isinstance(result["result_text"], str) and not result["result_text"].strip():
         result["result_text"] = None
     if isinstance(result["sql"], str) and not result["sql"].strip():
@@ -355,115 +431,100 @@ def create_session():
     try:
         resp = requests.post(f"{BASE_URL}/apps/{APP_NAME}/users/{USER_ID}/sessions", timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
-        session_id = resp.json().get("id") or str(uuid.uuid4())
-        return session_id
-    except Exception as e:
-        print(f"Session create failed, using fallback UUID: {e}")
+        return resp.json().get("id") or str(uuid.uuid4())
+    except Exception:
         return str(uuid.uuid4())
 
 
 # ------------------------
-# Main loop
+# Main evaluation loop
 # ------------------------
 print(f"Reading test cases from {INPUT_FILE}...")
 df = pd.read_excel(INPUT_FILE)
 
 required_cols = {"query", "expected_output", "expected_sql"}
-if not required_cols.issubset(set(df.columns)):
+if not required_cols.issubset(df.columns):
     raise ValueError(f"Input Excel must have columns: {', '.join(required_cols)}")
 
-generated_texts = []
-generated_sqls = []
-generated_meta_list = []
-output_similarities = []
-sql_similarities = []
-statuses = []
-raw_responses = []
+generated_texts, generated_sqls, generated_meta_list = [], [], []
+output_similarities, sql_similarities, statuses, raw_responses = [], [], [], []
+request_times, response_times, latency_mmss_list = [], [], []
 
 print("Running evaluation...")
 
 for idx, row in df.iterrows():
-    query = row["query"]
-    expected_output = row["expected_output"]
-    expected_sql = row["expected_sql"]
-
+    query, expected_output, expected_sql = row["query"], row["expected_output"], row["expected_sql"]
     session_id = create_session()
 
-    gen_text = None
-    gen_sql = None
-    gen_meta = {"chart_type": None, "x_axis_label": None, "y_axis_label": None}
-    raw_resp_str = None
+    # timestamps in UTC (timezone-aware) with Z suffix
+    req_time_epoch = time.time()
+    req_time_iso = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
 
     try:
         payload = {
             "appName": APP_NAME,
             "userId": USER_ID,
             "sessionId": session_id,
-            "newMessage": {
-                "parts": [{"text": query}],
-                "role": "user"
-            },
+            "newMessage": {"parts": [{"text": query}], "role": "user"},
             "streaming": False
         }
         resp = requests.post(f"{BASE_URL}/run", json=payload, timeout=REQUEST_TIMEOUT)
+
+        resp_time_epoch = time.time()
+        resp_time_iso = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
+
         resp.raise_for_status()
         resp_json = resp.json()
         raw_resp_str = json.dumps(resp_json, default=str)
         parsed = extract_output(resp_json)
-        gen_text = parsed.get("result_text")
-        gen_sql = parsed.get("sql")
-        gen_meta = parsed.get("chart_meta") or gen_meta
+        gen_text, gen_sql, gen_meta = parsed.get("result_text"), parsed.get("sql"), parsed.get("chart_meta")
 
     except Exception as e:
-        gen_text = f"Error: {e}"
-        gen_sql = None
-        gen_meta = {"chart_type": None, "x_axis_label": None, "y_axis_label": None}
+        resp_time_epoch = time.time()
+        resp_time_iso = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
+        gen_text, gen_sql, gen_meta = f"Error: {e}", None, {}
         raw_resp_str = str(e)
 
-    # Text similarity (unchanged)
+    # compute latency (minutes:seconds.milliseconds)
+    latency_secs = resp_time_epoch - req_time_epoch
+    minutes, seconds = divmod(latency_secs, 60)
+    latency_mmss = f"{int(minutes)}:{seconds:06.3f}"
+
+    # Text similarity (generated output)
     out_sim = compute_similarity(expected_output, gen_text)
 
-    # SQL comparison: canonicalize both expected and generated statements
+    # SQL comparison: canonicalize both statements and compare
     expected_canon = canonicalize_sql(expected_sql)
     gen_canon = canonicalize_sql(gen_sql)
 
-    sql_equal = False
-    sql_sim = 0.0
-
-    # 1) exact canonical equality
+    sql_equal, sql_sim = False, 0.0
     if expected_canon and gen_canon and expected_canon == gen_canon:
-        sql_equal = True
-        sql_sim = 1.0
-    else:
-        # 2) structural set-equality (select & group-by sets)
-        try:
-            if sql_structural_equal(expected_sql, gen_sql):
-                sql_equal = True
-                sql_sim = 1.0
-        except Exception:
-            pass
-        # 3) fallback embedding similarity on canonical strings
-        if not sql_equal:
-            if expected_canon and gen_canon:
-                sql_sim = compute_similarity(expected_canon, gen_canon)
-            else:
-                sql_sim = 0.0
+        sql_equal, sql_sim = True, 1.0
+    elif sql_structural_equal(expected_sql, gen_sql):
+        sql_equal, sql_sim = True, 1.0
+    elif expected_canon and gen_canon:
+        sql_sim = compute_similarity(expected_canon, gen_canon)
 
     sql_ok = sql_equal or (sql_sim >= SQL_SIM_THRESHOLD)
     status = "PASS" if (out_sim >= OUTPUT_SIM_THRESHOLD and sql_ok) else "FAIL"
 
-    save_text = strip_code_fences(gen_text) if isinstance(gen_text, str) else gen_text
-    generated_texts.append(save_text)
+    # save outputs
+    generated_texts.append(strip_code_fences(gen_text) if isinstance(gen_text, str) else gen_text)
     generated_sqls.append(gen_sql)
     generated_meta_list.append(json.dumps(gen_meta, ensure_ascii=False))
     output_similarities.append(round(out_sim, 4))
     sql_similarities.append(round(sql_sim, 4))
     statuses.append(status)
     raw_responses.append(raw_resp_str)
+    request_times.append(req_time_iso)
+    response_times.append(resp_time_iso)
+    latency_mmss_list.append(latency_mmss)
 
-    print(f"[{status}] idx={idx} | out_sim={out_sim:.3f} sql_sim={sql_sim:.3f} | query={str(query)[:80]}")
+    print(f"[{status}] idx={idx} | out_sim={out_sim:.3f} sql_sim={sql_sim:.3f} latency={latency_mmss}")
 
-# Save results
+# ------------------------
+# Save results to Excel
+# ------------------------
 df["generated_output"] = generated_texts
 df["generated_sql"] = generated_sqls
 df["generated_meta"] = generated_meta_list
@@ -471,6 +532,9 @@ df["output_similarity"] = output_similarities
 df["sql_similarity"] = sql_similarities
 df["status"] = statuses
 df["raw_response"] = raw_responses
+df["request_time"] = request_times
+df["response_time"] = response_times
+df["latency_mmss"] = latency_mmss_list
 
 df.to_excel(OUTPUT_FILE, index=False)
 print(f"\nEvaluation completed. Results saved to {OUTPUT_FILE}")

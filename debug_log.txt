@@ -906,4 +906,148 @@ values: [5995346, 6031607, 5917203, 5791901, 5624287, 5629257, 5485384, 5326269,
 title: Daily Reach for July 2025
 stages: []
 subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: bar chart of actual spend to date by channel
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'channels': 'Onsite', 'total_actual_spend_to_date': 133455139.97500044}, {'channels': 'App', 'total_actual_spend_to_date': 126214368.35499968}, {'channels': 'Offsite', 'total_actual_spend_to_date': 156833302.079999}, {'channels': 'Channel-CTV', 'total_actual_spend_to_date': 46984040.66000005}, {'channels': 'In-store', 'total_actual_spend_to_date': 32660484.865000207}]
+    
+chart_type: bar
+x_axis_label: Channel
+y_axis_label: Actual Spend ($)
+x: []
+y: []
+categories: ['Onsite', 'App', 'Offsite', 'Channel-CTV', 'In-store']
+values: [133455139.97500044, 126214368.35499968, 156833302.079999, 46984040.66000005, 32660484.865000207]
+title: Actual Spend to Date by Channel
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: Pie chart of conversions by audience segment.
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'audience_segment': 'Cart Abandoners', 'total_conversions': 175430.0}, {'audience_segment': 'Geo-Targeted Shoppers', 'total_conversions': 148821.0}, {'audience_segment': 'Loyalty Program Members', 'total_conversions': 145905.0}, {'audience_segment': 'Frequent Buyers', 'total_conversions': 142301.0}, {'audience_segment': 'Deal Hunters', 'total_conversions': 141497.0}, {'audience_segment': 'Lookalike Audiences', 'total_conversions': 137501.0}, {'audience_segment': 'New to Category', 'total_conversions': 130697.0}, {'audience_segment': 'Promo Responders', 'total_conversions': 122216.0}, {'audience_segment': 'Seasonal Shoppers', 'total_conversions': 112235.0}, {'audience_segment': 'App Engaged Shoppers', 'total_conversions': 106473.0}, {'audience_segment': 'New to Brand', 'total_conversions': 94798.0}, {'audience_segment': 'High-Intent Visitors', 'total_conversions': 93765.0}, {'audience_segment': 'Frequent Browsers', 'total_conversions': 85921.0}, {'audience_segment': 'Brand Interactors', 'total_conversions': 72356.0}, {'audience_segment': 'Category Enthusiasts', 'total_conversions': 72173.0}, {'audience_segment': 'Auto-Replenish Candidates', 'total_conversions': 47004.0}, {'audience_segment': 'Brand Loyalists', 'total_conversions': 43964.0}, {'audience_segment': 'Value Shoppers', 'total_conversions': 39209.0}, {'audience_segment': 'Churn Risk', 'total_conversions': 38452.0}, {'audience_segment': 'Repeat Buyers', 'total_conversions': 34849.0}]
+    
+chart_type: pie
+x_axis_label: 
+y_axis_label: 
+x: []
+y: []
+categories: ['Cart Abandoners', 'Geo-Targeted Shoppers', 'Loyalty Program Members', 'Frequent Buyers', 'Deal Hunters', 'Lookalike Audiences', 'New to Category', 'Promo Responders', 'Seasonal Shoppers', 'App Engaged Shoppers', 'New to Brand', 'High-Intent Visitors', 'Frequent Browsers', 'Brand Interactors', 'Category Enthusiasts', 'Auto-Replenish Candidates', 'Brand Loyalists', 'Value Shoppers', 'Churn Risk', 'Repeat Buyers']
+values: [175430, 148821, 145905, 142301, 141497, 137501, 130697, 122216, 112235, 106473, 94798, 93765, 85921, 72356, 72173, 47004, 43964, 39209, 38452, 34849]
+title: Conversions by Audience Segment
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: bar chart of actual spend to date by channel
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'channels': 'Onsite', 'total_actual_spend_to_date': 133455139.97500044}, {'channels': 'App', 'total_actual_spend_to_date': 126214368.35499968}, {'channels': 'Offsite', 'total_actual_spend_to_date': 156833302.079999}, {'channels': 'Channel-CTV', 'total_actual_spend_to_date': 46984040.66000005}, {'channels': 'In-store', 'total_actual_spend_to_date': 32660484.865000207}]
+    
+chart_type: bar
+x_axis_label: Channel
+y_axis_label: Total Actual Spend to Date ($)
+x: []
+y: []
+categories: ['Onsite', 'App', 'Offsite', 'Channel-CTV', 'In-store']
+values: [133455139.97500044, 126214368.35499968, 156833302.079999, 46984040.66000005, 32660484.865000207]
+title: Actual Spend to Date by Channel
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: Pie chart of conversions by audience segment.
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'audience_segment': 'Cart Abandoners', 'total_conversions': 175430.0}, {'audience_segment': 'Geo-Targeted Shoppers', 'total_conversions': 148821.0}, {'audience_segment': 'Loyalty Program Members', 'total_conversions': 145905.0}, {'audience_segment': 'Frequent Buyers', 'total_conversions': 142301.0}, {'audience_segment': 'Deal Hunters', 'total_conversions': 141497.0}, {'audience_segment': 'Lookalike Audiences', 'total_conversions': 137501.0}, {'audience_segment': 'New to Category', 'total_conversions': 130697.0}, {'audience_segment': 'Promo Responders', 'total_conversions': 122216.0}, {'audience_segment': 'Seasonal Shoppers', 'total_conversions': 112235.0}, {'audience_segment': 'App Engaged Shoppers', 'total_conversions': 106473.0}, {'audience_segment': 'New to Brand', 'total_conversions': 94798.0}, {'audience_segment': 'High-Intent Visitors', 'total_conversions': 93765.0}, {'audience_segment': 'Frequent Browsers', 'total_conversions': 85921.0}, {'audience_segment': 'Brand Interactors', 'total_conversions': 72356.0}, {'audience_segment': 'Category Enthusiasts', 'total_conversions': 72173.0}, {'audience_segment': 'Auto-Replenish Candidates', 'total_conversions': 47004.0}, {'audience_segment': 'Brand Loyalists', 'total_conversions': 43964.0}, {'audience_segment': 'Value Shoppers', 'total_conversions': 39209.0}, {'audience_segment': 'Churn Risk', 'total_conversions': 38452.0}, {'audience_segment': 'Repeat Buyers', 'total_conversions': 34849.0}]
+    
+chart_type: pie
+x_axis_label: Audience Segment
+y_axis_label: Total Conversions
+x: []
+y: []
+categories: ['Cart Abandoners', 'Geo-Targeted Shoppers', 'Loyalty Program Members', 'Frequent Buyers', 'Deal Hunters', 'Lookalike Audiences', 'New to Category', 'Promo Responders', 'Seasonal Shoppers', 'App Engaged Shoppers', 'New to Brand', 'High-Intent Visitors', 'Frequent Browsers', 'Brand Interactors', 'Category Enthusiasts', 'Auto-Replenish Candidates', 'Brand Loyalists', 'Value Shoppers', 'Churn Risk', 'Repeat Buyers']
+values: [175430, 148821, 145905, 142301, 141497, 137501, 130697, 122216, 112235, 106473, 94798, 93765, 85921, 72356, 72173, 47004, 43964, 39209, 38452, 34849]
+title: Conversions by Audience Segment
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: Area chart of daily reach for July 2025.
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'date': '2025-07-01', 'total_daily_reach': 5995346.0}, {'date': '2025-07-02', 'total_daily_reach': 6031607.0}, {'date': '2025-07-03', 'total_daily_reach': 5917203.0}, {'date': '2025-07-04', 'total_daily_reach': 5791901.0}, {'date': '2025-07-05', 'total_daily_reach': 5624287.0}, {'date': '2025-07-06', 'total_daily_reach': 5629257.0}, {'date': '2025-07-07', 'total_daily_reach': 5485384.0}, {'date': '2025-07-08', 'total_daily_reach': 5326269.0}, {'date': '2025-07-09', 'total_daily_reach': 5230622.0}, {'date': '2025-07-10', 'total_daily_reach': 5086002.0}, {'date': '2025-07-11', 'total_daily_reach': 4941544.0}, {'date': '2025-07-12', 'total_daily_reach': 4788686.0}, {'date': '2025-07-13', 'total_daily_reach': 4588218.0}, {'date': '2025-07-14', 'total_daily_reach': 4374487.0}, {'date': '2025-07-15', 'total_daily_reach': 4287538.0}, {'date': '2025-07-16', 'total_daily_reach': 4094771.0}, {'date': '2025-07-17', 'total_daily_reach': 4007549.0}, {'date': '2025-07-18', 'total_daily_reach': 3767491.0}, {'date': '2025-07-19', 'total_daily_reach': 3586414.0}, {'date': '2025-07-20', 'total_daily_reach': 3487322.0}, {'date': '2025-07-21', 'total_daily_reach': 3237921.0}, {'date': '2025-07-22', 'total_daily_reach': 3035686.0}, {'date': '2025-07-23', 'total_daily_reach': 2858238.0}, {'date': '2025-07-24', 'total_daily_reach': 2634915.0}, {'date': '2025-07-25', 'total_daily_reach': 2456400.0}, {'date': '2025-07-26', 'total_daily_reach': 2370349.0}, {'date': '2025-07-27', 'total_daily_reach': 2094288.0}, {'date': '2025-07-28', 'total_daily_reach': 1911266.0}, {'date': '2025-07-29', 'total_daily_reach': 3813140.0}, {'date': '2025-07-30', 'total_daily_reach': 5533606.0}, {'date': '2025-07-31', 'total_daily_reach': 7640471.0}]
+    
+chart_type: area
+x_axis_label: Date
+y_axis_label: Total Daily Reach
+x: []
+y: []
+categories: ['2025-07-01', '2025-07-02', '2025-07-03', '2025-07-04', '2025-07-05', '2025-07-06', '2025-07-07', '2025-07-08', '2025-07-09', '2025-07-10', '2025-07-11', '2025-07-12', '2025-07-13', '2025-07-14', '2025-07-15', '2025-07-16', '2025-07-17', '2025-07-18', '2025-07-19', '2025-07-20', '2025-07-21', '2025-07-22', '2025-07-23', '2025-07-24', '2025-07-25', '2025-07-26', '2025-07-27', '2025-07-28', '2025-07-29', '2025-07-30', '2025-07-31']
+values: [5995346, 6031607, 5917203, 5791901, 5624287, 5629257, 5485384, 5326269, 5230622, 5086002, 4941544, 4788686, 4588218, 4374487, 4287538, 4094771, 4007549, 3767491, 3586414, 3487322, 3237921, 3035686, 2858238, 2634915, 2456400, 2370349, 2094288, 1911266, 3813140, 5533606, 7640471]
+title: Daily Reach for July 2025
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: Show a bar chart of actual spend to date by channel.
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'channels': 'Onsite', 'total_actual_spend_to_date': 133455139.97500044}, {'channels': 'App', 'total_actual_spend_to_date': 126214368.35499968}, {'channels': 'Offsite', 'total_actual_spend_to_date': 156833302.079999}, {'channels': 'Channel-CTV', 'total_actual_spend_to_date': 46984040.66000005}, {'channels': 'In-store', 'total_actual_spend_to_date': 32660484.865000207}]
+    
+chart_type: bar
+x_axis_label: Channel
+y_axis_label: Actual Spend ($)
+x: []
+y: []
+categories: ['Onsite', 'App', 'Offsite', 'Channel-CTV', 'In-store']
+values: [133455139.97500044, 126214368.35499968, 156833302.079999, 46984040.66000005, 32660484.865000207]
+title: Actual Spend to Date by Channel
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: bar chart of actual spend to date by channel
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'channels': 'Onsite', 'total_actual_spend_to_date': 133455139.97500044}, {'channels': 'App', 'total_actual_spend_to_date': 126214368.35499968}, {'channels': 'Offsite', 'total_actual_spend_to_date': 156833302.079999}, {'channels': 'Channel-CTV', 'total_actual_spend_to_date': 46984040.66000005}, {'channels': 'In-store', 'total_actual_spend_to_date': 32660484.865000207}]
+    
+chart_type: bar
+x_axis_label: Channels
+y_axis_label: Total Actual Spend To Date ($)
+x: []
+y: []
+categories: ['Onsite', 'App', 'Offsite', 'Channel-CTV', 'In-store']
+values: [133455139.97500044, 126214368.35499968, 156833302.079999, 46984040.66000005, 32660484.865000207]
+title: Actual Spend to Date by Channel
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: Pie chart of conversions by audience segment.
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'audience_segment': 'Cart Abandoners', 'total_conversions': 175430.0}, {'audience_segment': 'Geo-Targeted Shoppers', 'total_conversions': 148821.0}, {'audience_segment': 'Loyalty Program Members', 'total_conversions': 145905.0}, {'audience_segment': 'Frequent Buyers', 'total_conversions': 142301.0}, {'audience_segment': 'Deal Hunters', 'total_conversions': 141497.0}, {'audience_segment': 'Lookalike Audiences', 'total_conversions': 137501.0}, {'audience_segment': 'New to Category', 'total_conversions': 130697.0}, {'audience_segment': 'Promo Responders', 'total_conversions': 122216.0}, {'audience_segment': 'Seasonal Shoppers', 'total_conversions': 112235.0}, {'audience_segment': 'App Engaged Shoppers', 'total_conversions': 106473.0}, {'audience_segment': 'New to Brand', 'total_conversions': 94798.0}, {'audience_segment': 'High-Intent Visitors', 'total_conversions': 93765.0}, {'audience_segment': 'Frequent Browsers', 'total_conversions': 85921.0}, {'audience_segment': 'Brand Interactors', 'total_conversions': 72356.0}, {'audience_segment': 'Category Enthusiasts', 'total_conversions': 72173.0}, {'audience_segment': 'Auto-Replenish Candidates', 'total_conversions': 47004.0}, {'audience_segment': 'Brand Loyalists', 'total_conversions': 43964.0}, {'audience_segment': 'Value Shoppers', 'total_conversions': 39209.0}, {'audience_segment': 'Churn Risk', 'total_conversions': 38452.0}, {'audience_segment': 'Repeat Buyers', 'total_conversions': 34849.0}]
+    
+chart_type: pie
+x_axis_label: 
+y_axis_label: 
+x: []
+y: []
+categories: ['Cart Abandoners', 'Geo-Targeted Shoppers', 'Loyalty Program Members', 'Frequent Buyers', 'Deal Hunters', 'Lookalike Audiences', 'New to Category', 'Promo Responders', 'Seasonal Shoppers', 'App Engaged Shoppers', 'New to Brand', 'High-Intent Visitors', 'Frequent Browsers', 'Brand Interactors', 'Category Enthusiasts', 'Auto-Replenish Candidates', 'Brand Loyalists', 'Value Shoppers', 'Churn Risk', 'Repeat Buyers']
+values: [175430, 148821, 145905, 142301, 141497, 137501, 130697, 122216, 112235, 106473, 94798, 93765, 85921, 72356, 72173, 47004, 43964, 39209, 38452, 34849]
+title: Conversions by Audience Segment
+stages: []
+subcategories: []
+================================================================================================================================================================================================================================================================================================================================================================================================================question with data is >>>>>>>:
+    Question to answer: Area chart of daily reach for July 2025.
+
+    Actual data to analyze for the previous question is already in the following:
+    [{'date': '2025-07-01', 'total_daily_reach': 5995346.0}, {'date': '2025-07-02', 'total_daily_reach': 6031607.0}, {'date': '2025-07-03', 'total_daily_reach': 5917203.0}, {'date': '2025-07-04', 'total_daily_reach': 5791901.0}, {'date': '2025-07-05', 'total_daily_reach': 5624287.0}, {'date': '2025-07-06', 'total_daily_reach': 5629257.0}, {'date': '2025-07-07', 'total_daily_reach': 5485384.0}, {'date': '2025-07-08', 'total_daily_reach': 5326269.0}, {'date': '2025-07-09', 'total_daily_reach': 5230622.0}, {'date': '2025-07-10', 'total_daily_reach': 5086002.0}, {'date': '2025-07-11', 'total_daily_reach': 4941544.0}, {'date': '2025-07-12', 'total_daily_reach': 4788686.0}, {'date': '2025-07-13', 'total_daily_reach': 4588218.0}, {'date': '2025-07-14', 'total_daily_reach': 4374487.0}, {'date': '2025-07-15', 'total_daily_reach': 4287538.0}, {'date': '2025-07-16', 'total_daily_reach': 4094771.0}, {'date': '2025-07-17', 'total_daily_reach': 4007549.0}, {'date': '2025-07-18', 'total_daily_reach': 3767491.0}, {'date': '2025-07-19', 'total_daily_reach': 3586414.0}, {'date': '2025-07-20', 'total_daily_reach': 3487322.0}, {'date': '2025-07-21', 'total_daily_reach': 3237921.0}, {'date': '2025-07-22', 'total_daily_reach': 3035686.0}, {'date': '2025-07-23', 'total_daily_reach': 2858238.0}, {'date': '2025-07-24', 'total_daily_reach': 2634915.0}, {'date': '2025-07-25', 'total_daily_reach': 2456400.0}, {'date': '2025-07-26', 'total_daily_reach': 2370349.0}, {'date': '2025-07-27', 'total_daily_reach': 2094288.0}, {'date': '2025-07-28', 'total_daily_reach': 1911266.0}, {'date': '2025-07-29', 'total_daily_reach': 3813140.0}, {'date': '2025-07-30', 'total_daily_reach': 5533606.0}, {'date': '2025-07-31', 'total_daily_reach': 7640471.0}]
+    
+chart_type: area
+x_axis_label: Date
+y_axis_label: Total Daily Reach
+x: []
+y: []
+categories: ['2025-07-01', '2025-07-02', '2025-07-03', '2025-07-04', '2025-07-05', '2025-07-06', '2025-07-07', '2025-07-08', '2025-07-09', '2025-07-10', '2025-07-11', '2025-07-12', '2025-07-13', '2025-07-14', '2025-07-15', '2025-07-16', '2025-07-17', '2025-07-18', '2025-07-19', '2025-07-20', '2025-07-21', '2025-07-22', '2025-07-23', '2025-07-24', '2025-07-25', '2025-07-26', '2025-07-27', '2025-07-28', '2025-07-29', '2025-07-30', '2025-07-31']
+values: [5995346, 6031607, 5917203, 5791901, 5624287, 5629257, 5485384, 5326269, 5230622, 5086002, 4941544, 4788686, 4588218, 4374487, 4287538, 4094771, 4007549, 3767491, 3586414, 3487322, 3237921, 3035686, 2858238, 2634915, 2456400, 2370349, 2094288, 1911266, 3813140, 5533606, 7640471]
+title: Daily Reach for July 2025
+stages: []
+subcategories: []
 ================================================================================================================================================================================================================================================================================================================================================================================================================
