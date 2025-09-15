@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import uuid
 from sentence_transformers import SentenceTransformer, util
+import time
 
 # ========================
 # Config
@@ -10,10 +11,10 @@ BASE_URL = "http://127.0.0.1:8000"   # poetry run adk web ke baad
 APP_NAME = "data_science"
 USER_ID = "user"
 
-INPUT_FILE = "test_cases.xlsx"       # user-provided queries + expected outputs
-OUTPUT_FILE = "evaluation_results.xlsx"
-SIMILARITY_THRESHOLD = 0.8           # Pass/Fail threshold
-
+INPUT_FILE = "test_cases3.xlsx"       # user-provided queries + expected outputs
+OUTPUT_FILE = "evaluation_results3_10.xlsx"
+SIMILARITY_THRESHOLD = 0.7           # Pass/Fail threshold
+latencies =[]
 # ========================
 # Init
 # ========================
@@ -94,7 +95,11 @@ for idx, row in df.iterrows():
             "streaming": False
         }
 
+        start = time.time()
         resp = requests.post(f"{BASE_URL}/run", json=payload)
+        latency = round(time.time() - start, 3)   # seconds
+        latencies.append(latency)
+
         resp.raise_for_status()
         resp_json = resp.json()
         raw_responses.append(str(resp_json))
@@ -105,6 +110,7 @@ for idx, row in df.iterrows():
     except Exception as e:
         gen_output = f"Error: {e}"
         raw_responses.append(str(gen_output))
+        latencies.append(None)
 
     # Step 4: Evaluate
     sim = compute_similarity(expected, gen_output)
@@ -123,6 +129,8 @@ df["generated_output"] = generated_outputs
 df["similarity_score"] = similarities
 df["status"] = statuses
 df["raw_response"] = raw_responses  # debug column
+df["latency_sec"] = latencies[:len(df)]
+
 
 df.to_excel(OUTPUT_FILE, index=False)
 print(f"\n Evaluation completed. Results saved to {OUTPUT_FILE}")

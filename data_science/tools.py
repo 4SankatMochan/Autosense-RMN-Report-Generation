@@ -27,6 +27,10 @@ import base64
 from google.genai.types import Part, Blob
 import os
 
+from .logging.db_agent_call_logger import log_db_agent
+
+# import datetime
+# import json
 
 async def call_db_agent(
     question: str,
@@ -44,7 +48,10 @@ async def call_db_agent(
     db_agent_output = await agent_tool.run_async(
         args={"request": question}, tool_context=tool_context
     )
-    tool_context.state["db_agent_output"] = db_agent_output
+    tool_context.state["db_agent_output"] = "db_agent_output"
+    ###### logging #######
+    log_db_agent(question, tool_context, db_agent_output)
+    #####################    
     return db_agent_output
 
 
@@ -96,9 +103,10 @@ async def call_viz_agent(
 
     # with open('/home/krishna_bansal/rmn_agent_work/debug_log.txt', 'a') as f:
     #     f.write(f'question with data is >>>>>>>:{question_with_data}\n')
-    home_dir = os.path.expanduser("~")
-    #log_file_path = os.path.join("C:/Users/aardra.menon/Documents/RMN/rmn_agent_work", "debug_log.txt")
-    log_file_path = os.path.join(home_dir, "rmn_agent_work", "debug_log.txt")
+    # print(os.getcwd())
+    # home_dir = os.path.expanduser("~")
+    # log_file_path = os.path.join(home_dir, "rmn_agent_work", "debug_log.txt")
+    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         f.write(f'question with data is >>>>>>>:{question_with_data}\n')
     agent_tool = AgentTool(agent=dv_agent)
