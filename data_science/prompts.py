@@ -36,7 +36,7 @@ def return_instructions_root() -> str:
     - If the question needs SQL execution and additional analysis, forward it to the database agent and the datascience agent.
     - If the user specifically wants to work on BQML, route to the bqml_agent. 
 
-    - IMPORTANT: be precise! If the user asks for a dataset, provide the name. Don't call any additional agent if not absolutely necessary!
+    - IMPORTANT: be precise! If the user asks for a dataset, provide the name. Don't call any additional agent if not absolutely necessary and never expose schema in the response!
 
     <TASK>
 
