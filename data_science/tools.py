@@ -108,6 +108,7 @@ async def call_viz_agent(
         tool_context=tool_context,
     )
 
+    dv_agent_output = dv_agent_output + '**chart_metaData_json**'+ str(tool_context.state.get('chart_metaData_json')) 
     tool_context.state["dv_agent_output"] = dv_agent_output
 
     text_parts = []

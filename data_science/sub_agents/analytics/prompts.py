@@ -44,6 +44,8 @@ def return_instructions_ds() -> str:
   import numpy as np
   import pandas as pd
   import scipy
+  from datetime import datetime
+  import json
   ```
 
   **Output Visibility:** Always print the output of code execution to visualize results, especially for data exploration and analysis. For example:
@@ -80,8 +82,24 @@ def return_instructions_ds() -> str:
   **Answerability:** Some queries may not be answerable with the available data. In those cases, inform the user why you cannot process their query and suggest what type of data would be needed to fulfill their request.
 
   **WHEN YOU DO PREDICTION / MODEL FITTING, ALWAYS PLOT FITTED LINE AS WELL **
+  **Plot Saving and Chart Metadata (MANDATORY)**
 
+    Whenever you create a visualization using matplotlib:
+    
+    Extract all key metadata used in the chart as json and assign is variable `chart_metaData_json`
+                  chart_metaData_json = {
+                        "chart_type": chart_type,
+                        "x_axis_label": x_axis_label,
+                        "y_axis_label": y_axis_label,
+                        "x": x,
+                        "y": y,
+                        "title": title,
+                        "data": json.loads(chart_data.to_json(orient='records')), # chart_data is data used to develop plot.
+                            }
+  **IMPORTANT (MUST FOLLOW)**: If user query if for visualization, you must return image and chart_metaData_json
+   
 
+  
   TASK:
   You need to assist the user with their queries by looking at the data and the context in the conversation.
     You final answer should summarize the code and code execution relavant to the user query.
