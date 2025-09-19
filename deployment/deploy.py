@@ -140,7 +140,8 @@ def create(env_vars: dict[str, str]) -> None:
         adk_app,
         requirements=[AGENT_WHL_FILE],
         extra_packages=[AGENT_WHL_FILE],
-        env_vars=env_vars
+        env_vars=env_vars,
+        display_name="rmn-MV_testing"
     )
     logger.info("Created remote agent: %s", remote_agent.resource_name)
     print(f"\nSuccessfully created agent: {remote_agent.resource_name}")
@@ -199,6 +200,8 @@ def main(argv: list[str]) -> None:  # pylint: disable=unused-argument
     env_vars["CODE_INTERPRETER_EXTENSION_NAME"] = os.getenv(
         "CODE_INTERPRETER_EXTENSION_NAME")
     env_vars["NL2SQL_METHOD"] = os.getenv("NL2SQL_METHOD")
+    
+    env_vars["VIZ_AGENT_MODEL"] = os.getenv("VIZ_AGENT_MODEL")
 
     logger.info("Using PROJECT: %s", project_id)
     logger.info("Using LOCATION: %s", location)
