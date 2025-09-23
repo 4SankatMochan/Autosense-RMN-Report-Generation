@@ -78,7 +78,7 @@ root_agent = Agent(
     sub_agents=[bqml_agent],
     tools=[
         call_db_agent,
-        call_viz_agent,        
+        call_viz_agent, 
         call_ds_agent,
         load_artifacts,
     ],

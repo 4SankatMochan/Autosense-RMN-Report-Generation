@@ -676,7 +676,7 @@ async def chart_plotting_tool(
         json_data = chart_meta_data(chart_type, x,y, x_axis_label, y_axis_label,title, series_by, db_data)
 
     tool_context.state['chart_metaData_json'] = json_data
-
+    json_string = json.dumps(json_data)
     wrapped_title = "\n".join(textwrap.wrap(title, width=40))  # Wrap every ~40 characters
     plt.title(wrapped_title, fontsize=12)
     plt.tight_layout()
@@ -700,9 +700,17 @@ async def chart_plotting_tool(
     image_artifact = Part(
         inline_data=Blob(data=image_bytes, mime_type="image/png")
     )
+    # Json artifacts
+    json_artifact = Part(
+        inline_data=Blob(
+            mime_type="application/json",
+            data=json_string.encode('utf-8')
+        )
+    )
 
     # Correct async artifact registration
     await tool_context.save_artifact(output_file, image_artifact)
+    await tool_context.save_artifact('data.json', json_artifact)
 
     # Return both artifact reference and base64 image
     return {

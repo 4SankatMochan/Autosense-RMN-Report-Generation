@@ -19,6 +19,8 @@ from google.adk.tools import load_artifacts
 from .prompts import return_instructions_dv
 from .tools import chart_plotting_tool
 from google.adk.tools import ToolContext
+from .ds_tool import call_ds_agent
+
 
 
 
@@ -29,5 +31,6 @@ root_agent = Agent(
     instruction=return_instructions_dv(),
     tools=[
         chart_plotting_tool,
+        call_ds_agent,
         load_artifacts],
 )
