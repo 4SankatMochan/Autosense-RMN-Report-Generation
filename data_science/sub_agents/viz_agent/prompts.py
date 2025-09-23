@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .fewShotExample import Examples
+
 from google.adk.tools import ToolContext
 
 """Module for storing and retrieving agent instructions.
