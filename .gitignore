@@ -4,7 +4,15 @@ __pycache__/
 *.egg-info/
 *.whl
 .venv/
-.env
+*.env
+
+#logs
+*debug_log*.txt
+
+#logs and test results
+*debug_log*.txt
+*evaluation_results*.xlsx
+
 
 # Jupyter
 .ipynb_checkpoints/
