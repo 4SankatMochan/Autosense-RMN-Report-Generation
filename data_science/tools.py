@@ -26,6 +26,7 @@ from .sub_agents import db_agent, ds_agent, dv_agent
 import base64
 from google.genai.types import Part, Blob
 import os
+import json
 
 from .logging.db_agent_call_logger import log_db_agent
 
@@ -73,12 +74,17 @@ async def call_ds_agent(
   {input_data}
 
   """
+    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
+    with open(log_file_path, 'a') as f:
+        f.write(f'ds_agent from root. \n')
 
     agent_tool = AgentTool(agent=ds_agent)
 
     ds_agent_output = await agent_tool.run_async(
         args={"request": question_with_data}, tool_context=tool_context
     )
+
+
     tool_context.state["ds_agent_output"] = ds_agent_output
     return ds_agent_output
 
@@ -114,8 +120,11 @@ async def call_viz_agent(
         args={"request": question_with_data},
         tool_context=tool_context,
     )
-
-    tool_context.state["dv_agent_output"] = dv_agent_output
+    try:
+        dv_agent_output = dv_agent_output + '**chart_metaData_json**'+ str(tool_context.state.get('chart_metaData_json')) 
+        tool_context.state["dv_agent_output"] = dv_agent_output
+    except:
+        tool_context.state["dv_agent_output"] = dv_agent_output
 
     text_parts = []
     image_parts = []
