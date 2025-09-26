@@ -90,7 +90,7 @@ def return_instructions_ds() -> str:
 
     Whenever you create a visualization using matplotlib:
     
-    Extract all key metadata used in the chart as json and assign is variable `chart_metaData_json` and save it in `data.json` file
+    Extract all key metadata used in the chart as json and assign is variable `chart_metaData_json` and save it in `json_path` file
                   chart_metaData_json = {
                         "chart_type": chart_type,
                         "x_axis_label": x_axis_label,
@@ -100,7 +100,7 @@ def return_instructions_ds() -> str:
                         "title": title,
                         "data": json.loads(chart_data.to_json(orient='records')), # chart_data is data used to develop plot.
                             }
-                  with open("data.json", "w") as file:
+                  with open(json_path, "w") as file:
                         json.dump(chart_metaData_json, file, indent=4)
   **IMPORTANT (MUST FOLLOW)**: If user query if for visualization, you must return image and chart_metaData_json.
    

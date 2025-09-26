@@ -42,14 +42,19 @@ async def call_db_agent(
         "\n call_db_agent.use_database:"
         f' {tool_context.state["all_db_settings"]["use_database"]}'
     )
-
+    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
+    with open(log_file_path, 'a') as f:
+        f.write(f"sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
+    # Assign session ID to tool context. (input for summarizer)
+    tool_context.state['session_id'] = tool_context._invocation_context.session.id
     agent_tool = AgentTool(agent=db_agent)
- 
+    ### Db_agent gets different question from
  
     db_agent_output = await agent_tool.run_async(
         args={"request": question}, tool_context=tool_context
     )
     tool_context.state["db_agent_output"] = "db_agent_output"
+
     ###### logging #######
     log_db_agent(question, tool_context, db_agent_output)
     #####################    
@@ -66,7 +71,7 @@ async def call_ds_agent(
         return tool_context.state["db_agent_output"]
 
     input_data = tool_context.state["query_result"]
-
+    tool_context.state['user_query'] = question
     question_with_data = f"""
   Question to answer: {question}
 
@@ -98,33 +103,40 @@ async def call_viz_agent(
         return tool_context.state.get("db_agent_output")
 
     input_data = tool_context.state.get("query_result")
-
+    tool_context.state['user_query'] = question
     question_with_data = f"""
     Question to answer: {question}
 
     Actual data to analyze for the previous question is already in the following:
     {input_data}
     """
-    print(f'question with data is >>>>>>>:{question_with_data}')
-
-    # with open('/home/krishna_bansal/rmn_agent_work/debug_log.txt', 'a') as f:
-    #     f.write(f'question with data is >>>>>>>:{question_with_data}\n')
-    # print(os.getcwd())
-    # home_dir = os.path.expanduser("~")
-    # log_file_path = os.path.join(home_dir, "rmn_agent_work", "debug_log.txt")
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         f.write(f'question with data is >>>>>>>:{question_with_data}\n')
+        f.write(f"sesssion id from call_viz_agent: {tool_context._invocation_context.session.id}\n")
     agent_tool = AgentTool(agent=dv_agent)
     dv_agent_output = await agent_tool.run_async(
         args={"request": question_with_data},
         tool_context=tool_context,
     )
-    try:
-        dv_agent_output = dv_agent_output + '**chart_metaData_json**'+ str(tool_context.state.get('chart_metaData_json')) 
-        tool_context.state["dv_agent_output"] = dv_agent_output
-    except:
-        tool_context.state["dv_agent_output"] = dv_agent_output
+
+    tool_context.state["dv_agent_output"] = dv_agent_output
+
+    # Create plain text artifact
+    text_artifact = Part(
+        inline_data=Blob(
+            mime_type="text/plain",
+            data=str(dv_agent_output).encode("utf-8")
+        )
+    )
+    # Name the artifact file
+    user_query = tool_context.state.get('user_query')
+    folder_name = str(user_query).replace(" ", "_").lower()
+    text_path = f"{folder_name}_viz_agent.txt"
+    # Save the artifact
+    await tool_context.save_artifact(text_path, text_artifact)
+
+
 
     text_parts = []
     image_parts = []

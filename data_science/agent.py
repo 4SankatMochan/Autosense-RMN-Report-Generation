@@ -32,6 +32,7 @@ from .sub_agents.bigquery.tools import (
 )
 from .prompts import return_instructions_root
 from .tools import call_db_agent, call_viz_agent, call_ds_agent
+from .sub_agents import dv_smry_agent
 
 #from .sub_agents.nl2sql.agent import nl2sql_agent
 #from .sub_agents.descriptive_analysis.agent import descriptive_analysis_agent
@@ -75,7 +76,7 @@ root_agent = Agent(
         Todays date: {date_today}
         """
     ),
-    sub_agents=[bqml_agent],
+    sub_agents=[bqml_agent, dv_smry_agent],
     tools=[
         call_db_agent,
         call_viz_agent, 
