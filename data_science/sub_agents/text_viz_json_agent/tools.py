@@ -7,7 +7,7 @@ from typing import List, Optional
 import os
 from google.adk.tools import ToolContext
 
-async def viz_artifact_formatter(tool_context: Optional[ToolContext] = None):
+async def text_viz_json(tool_context: Optional[ToolContext] = None):
     session_id = tool_context.state.get("session_id")
     bucket_name = os.getenv("BUCKET_NAME")
     session_prefix = f'data_science/user/{session_id}/'
@@ -52,49 +52,73 @@ async def viz_artifact_formatter(tool_context: Optional[ToolContext] = None):
             prompt_map[prompt]['chart_blob'] = blob
         elif filename.endswith('_viz_ds_agent.txt'):
             prompt = filename.replace('_viz_ds_agent.txt', '')
-            prompt_map[prompt]['ds_text'] = blob
+            prompt_map[prompt]['viz_ds_text'] = blob
         elif filename.endswith('_viz_agent.txt'):
             prompt = filename.replace('_viz_agent.txt', '')
             prompt_map[prompt]['viz_text'] = blob
+        elif filename.endswith('_db_agent.txt'):
+            prompt = filename.replace('_db_agent.txt', '')
+            prompt_map[prompt]['db_text'] = blob
+        elif filename.endswith('_ds_agent.txt'):
+            prompt = filename.replace('_ds_agent.txt', '')
+            prompt_map[prompt]['ds_text'] = blob
 
     # Step 5: Build result_data
     result_data = {}
     for idx, (prompt, blobs_dict) in enumerate(prompt_map.items(), start=1):
         json_blob = blobs_dict.get('json_blob')
         chart_blob = blobs_dict.get('chart_blob')
-        # viz_ds_blob = blobs_dict.get('ds_text')
+        # viz_ds_blob = blobs_dict.get('viz_ds_text')
         viz_blob = blobs_dict.get('viz_text')
+        db_blob =  blobs_dict.get('db_text')
+        ds_blob =  blobs_dict.get('ds_text')
 
         result_data[f'prompt{idx}'] = {
             'prompt': prompt.replace("_"," "),
-            'chart_base64_string': None,
+            'chart_url': None,
             'json_data': None,
             'viz_text': None,
-            'viz_ds_text': None
+            # 'viz_ds_text': None,
+            'db_text': None,
+            'ds_text': None
         }
 
         # Download chart if present
-        if chart_blob:
-            image_bytes = chart_blob.download_as_bytes()
-            base64_string = base64.b64encode(image_bytes).decode('utf-8')
-            result_data[f'prompt{idx}']['chart_base64_string'] = base64_string
+        if chart_blob:              # If chart is availabe
+            result_data[f'prompt{idx}']['chart_url'] = f'gs://{bucket_name}/{chart_blob.name}'
+            # Download JSON if present
+            if json_blob:
+                result_data[f'prompt{idx}']['json_data'] = f'gs://{bucket_name}/{json_blob.name}'
+                # Download viz agent text if present
+            if viz_blob:
+                viz_string = viz_blob.download_as_text()
+                result_data[f'prompt{idx}']['viz_text'] = viz_string
+            ## Need Alignment: Do we need to add db_text and ds_text as well in chart
+        elif ds_blob:
+            ds_string = ds_blob.download_as_text()
+            result_data[f'prompt{idx}']['ds_text'] = ds_string
 
-        # Download JSON if present
-        if json_blob:
-            json_string = json_blob.download_as_string()
-            result_data[f'prompt{idx}']['json_data'] = json.loads(json_string)
-            # Download viz agent text if present
-        if viz_blob:
-            viz_string = viz_blob.download_as_text()
-            result_data[f'prompt{idx}']['viz_text'] = viz_string
 
-        # # Download DS agent text if present
-        # if viz_ds_blob:
-        #     ds_string = viz_ds_blob.download_as_text()
-        #     result_data[f'prompt{idx}']['viz_ds_text'] = ds_string
-        tool_context.state['viz_smry_json'] = result_data
-        # save json in local as well 
-        json_output = json.dumps(result_data, indent =4)
-        with open("viz_summarizer.json", "w") as f:
-            json.dump(json_output, f, indent=2)
+        elif db_blob:
+            db_string = db_blob.download_as_text()
+            try:
+              # Remove markdown formatting lines if present
+              if db_string.startswith("```json"):
+                  db_string = db_string.split("\n", 1)[1]  # Remove first line
+              if db_string.endswith("```"):
+                  db_string = db_string.rsplit("\n", 1)[0]  # Remove last line
+
+              # Now parse the cleaned JSON string
+              data = json.loads(db_string)
+
+              # Extract channel names from `nl_results`
+              nl_text = data["nl_results"]
+              result_data[f'prompt{idx}']['db_text'] = nl_text
+            except:
+              result_data[f'prompt{idx}']['db_text'] = db_string
+    tool_context.state['text_viz_json'] = result_data
+    # save json in local as well 
+    json_output = json.dumps(result_data, indent =4)
+    with open("text_viz_json.json", "w") as f:
+        json.dump(json_output, f, indent=2)
     return result_data

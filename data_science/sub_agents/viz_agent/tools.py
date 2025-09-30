@@ -689,7 +689,8 @@ async def chart_plotting_tool(
     # Json artifacts
     json_artifact = Part(
         inline_data=Blob(
-            mime_type="application/json",
+            # mime_type="application/json", # multi agent has issue while sending json as artifact in GCS. text is recommended method.
+            mime_type = 'text/plain',
             data=json_string.encode('utf-8')
         )
     )

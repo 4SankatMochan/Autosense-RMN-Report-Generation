@@ -23,73 +23,73 @@ These instructions guide the agent's behavior, workflow, and tool usage.
 
 
 def return_instructions_dv() -> str:
-  data_schema = """
-    {
-  "chart_mapping": {
-    "bar": {
-      "required": ["x", "y", 'categorical_columns','continuous_columns','series_by'],
-      "required_labels": ["x_axis_label", "y_axis_label"],
-    },
-    "pie": {
-      "required": ["values", "categories"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    },
-    "line": {
-      "required": ["x", "y", 'categorical_columns','continuous_columns', 'series_by'],
-      "required_labels": ["x_axis_label", "y_axis_label"],
-      "forbidden": ["categories", "values",  "stages"]
-    },
-    "waterfall": {
-      "required": ["categories", "values"],
-      "required_labels": ["x_axis_label", "y_axis_label"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    },
-    "scatter": {
-      "required": ["x", "y"],
-      "required_labels": ["x_axis_label", "y_axis_label"],
-      "forbidden": ["categories", "values", "subcategories", "stages"]
-    },
-    "area": {
-      "required": ["categories", "values"],
-      "required_labels": ["x_axis_label", "y_axis_label"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    },
-    "funnel": {
-      "required": ["stages", "values"],
-      "forbidden": ["x", "y", "subcategories", "categories"]
-    },
-    "donut": {
-      "required": ["categories", "values"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    },
-    "box": {
-      "required": ["values","subcategories"],
-      "required_labels": ["x_axis_label", "y_axis_label"],
-      "forbidden": ["x", "y", "stages", "categories"]
-    },
-    "bubble": {
-      "required": ["x", 'y',"values"],
-      "forbidden": ["categories", "subcategories", "stages"]
-    },
-    "heatmap": {
-      "required": ["categories", "values"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    },
-    "radial gauge": {
-      "required": ["values"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    },
-    "stacked_bar": {
-      "required": ["categories", "subcategories", "values"],
-      "forbidden": ["x", "y"]
-    },
-    "pareto": {
-      "required": ["categories", "values"],
-      "forbidden": ["x", "y", "subcategories", "stages"]
-    }
-  }
-}
-"""
+#   data_schema = """
+#     {
+#   "chart_mapping": {
+#     "bar": {
+#       "required": ["x", "y", 'categorical_columns','continuous_columns','series_by'],
+#       "required_labels": ["x_axis_label", "y_axis_label"],
+#     },
+#     "pie": {
+#       "required": ["values", "categories"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     },
+#     "line": {
+#       "required": ["x", "y", 'categorical_columns','continuous_columns', 'series_by'],
+#       "required_labels": ["x_axis_label", "y_axis_label"],
+#       "forbidden": ["categories", "values",  "stages"]
+#     },
+#     "waterfall": {
+#       "required": ["categories", "values"],
+#       "required_labels": ["x_axis_label", "y_axis_label"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     },
+#     "scatter": {
+#       "required": ["x", "y"],
+#       "required_labels": ["x_axis_label", "y_axis_label"],
+#       "forbidden": ["categories", "values", "subcategories", "stages"]
+#     },
+#     "area": {
+#       "required": ["categories", "values"],
+#       "required_labels": ["x_axis_label", "y_axis_label"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     },
+#     "funnel": {
+#       "required": ["stages", "values"],
+#       "forbidden": ["x", "y", "subcategories", "categories"]
+#     },
+#     "donut": {
+#       "required": ["categories", "values"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     },
+#     "box": {
+#       "required": ["values","subcategories"],
+#       "required_labels": ["x_axis_label", "y_axis_label"],
+#       "forbidden": ["x", "y", "stages", "categories"]
+#     },
+#     "bubble": {
+#       "required": ["x", 'y',"values"],
+#       "forbidden": ["categories", "subcategories", "stages"]
+#     },
+#     "heatmap": {
+#       "required": ["categories", "values"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     },
+#     "radial gauge": {
+#       "required": ["values"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     },
+#     "stacked_bar": {
+#       "required": ["categories", "subcategories", "values"],
+#       "forbidden": ["x", "y"]
+#     },
+#     "pareto": {
+#       "required": ["categories", "values"],
+#       "forbidden": ["x", "y", "subcategories", "stages"]
+#     }
+#   }
+# }
+# """
   instruction_prompt_dv_tool = f"""
 You are a Visualization Agent equipped with a chart plotting tool named `chart_plotting_tool`. Your task is to analyze the user's request for data visualization and generate the most appropriate chart.
 
@@ -180,6 +180,10 @@ You are a Visualization Agent equipped with a chart plotting tool named `chart_p
     - The correct chart type to use
     - How to assign fields to variables
     - Or if the user asks for an unsupported chart type
+
+    TEXTUAL INFORMATION OF CHART
+    
+    When a chart is generated, do not mention the chart creation process, saving details, file names, or any meta-information. Only provide a concise and clear explanation of the chart content, insights, and what it represents. Do not include phrases like "I have created a chart", "the chart is saved as", "I generated", or similar. Keep the output clean and focused only on data insights.
 
     ➡️ Then call the `ds_agent` to generate and save the plot instead of using `chart_plotting_tool`. It is tool of root agent. Name of root agent is `db_ds_agent`.
 

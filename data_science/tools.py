@@ -44,7 +44,7 @@ async def call_db_agent(
     )
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
-        f.write(f"sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
+        f.write(f"\n sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
     # Assign session ID to tool context. (input for summarizer)
     tool_context.state['session_id'] = tool_context._invocation_context.session.id
     agent_tool = AgentTool(agent=db_agent)
@@ -53,7 +53,21 @@ async def call_db_agent(
     db_agent_output = await agent_tool.run_async(
         args={"request": question}, tool_context=tool_context
     )
-    tool_context.state["db_agent_output"] = "db_agent_output"
+    tool_context.state["db_agent_output"] = db_agent_output
+
+    # Create plain text artifact
+    text_artifact = Part(
+        inline_data=Blob(
+            mime_type="text/plain",
+            data=str(db_agent_output).encode("utf-8")
+        )
+    )
+    tool_context.state['user_query'] = question # Using user_query to name artifacts in GCS Bucket
+    user_query = tool_context.state.get('user_query')
+    folder_name = str(user_query).replace(" ", "_").lower()
+    text_path = f"{folder_name}_db_agent.txt"
+    # Save the artifact
+    await tool_context.save_artifact(text_path, text_artifact)
 
     ###### logging #######
     log_db_agent(question, tool_context, db_agent_output)
@@ -71,7 +85,7 @@ async def call_ds_agent(
         return tool_context.state["db_agent_output"]
 
     input_data = tool_context.state["query_result"]
-    tool_context.state['user_query'] = question
+    # tool_context.state['user_query'] = question   # Present in db_agent
     question_with_data = f"""
   Question to answer: {question}
 
@@ -88,9 +102,20 @@ async def call_ds_agent(
     ds_agent_output = await agent_tool.run_async(
         args={"request": question_with_data}, tool_context=tool_context
     )
-
-
     tool_context.state["ds_agent_output"] = ds_agent_output
+
+        # Create plain text artifact
+    text_artifact = Part(
+        inline_data=Blob(
+            mime_type="text/plain",
+            data=str(ds_agent_output).encode("utf-8")
+        )
+    )
+    user_query = tool_context.state.get('user_query')
+    folder_name = str(user_query).replace(" ", "_").lower()
+    text_path = f"{folder_name}_ds_agent.txt"
+    # Save the artifact
+    await tool_context.save_artifact(text_path, text_artifact)
     return ds_agent_output
 
 async def call_viz_agent(
@@ -103,7 +128,9 @@ async def call_viz_agent(
         return tool_context.state.get("db_agent_output")
 
     input_data = tool_context.state.get("query_result")
-    tool_context.state['user_query'] = question
+    # tool_context.state['user_query'] = question #cmntd by krishna on 26-sept
+    # User query under db_agent and viz_agent are different. Mostly user quries under viz_agent is
+    # similar to user input. 
     question_with_data = f"""
     Question to answer: {question}
 

@@ -16,6 +16,7 @@ from .bqml.agent import root_agent as bqml_agent
 from .analytics.agent import root_agent as ds_agent
 from .viz_agent.agent import root_agent as dv_agent
 from .bigquery.agent import database_agent as db_agent
-from .viz_summarizer.agent import root_agent as dv_smry_agent
+from .report_generation.agent import root_agent as report_generation_agent
 
-__all__ = ["bqml_agent", "ds_agent", "dv_agent", "db_agent","dv_smry_agent"]
+
+__all__ = ["bqml_agent", "ds_agent", "dv_agent", "db_agent", 'report_generation_agent']
