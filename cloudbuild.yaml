@@ -3,7 +3,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build',
-      '-t', 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest',
+      '-t', 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest',
       '.'
     ]
 
@@ -11,7 +11,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest'
+      'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest'
     ]
 
     # Step 3: Deploy to Cloud Run with updated .env vars
@@ -23,7 +23,7 @@ steps:
       - |
         echo "Deploying Cloud Run service using .env..."
         gcloud run deploy rmn-agent \
-          --image us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest \
+          --image us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest \
           --region us-central1 \
           --platform managed \
           --service-account rmn-sa@acn-cda.iam.gserviceaccount.com \
