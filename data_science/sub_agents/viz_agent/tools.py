@@ -23,16 +23,8 @@ async def chart_plotting_tool(
     y : List[str],
     categorical_columns : List[str],
     continuous_columns : List[str],
-    # categories: List[str] = [],
-    # values: List[float] = [],
-    # # values2: List[float] = [],
     x_axis_label: str,
     y_axis_label: str,
-    # x: List[float] = [],
-    # y: List[float] = [],
-    # # dates: List[str] = [],
-    # stages: List[str] = [],
-    # subcategories: List[str] = [],
     series_by: Optional[str] = "",
     tool_context: Optional[ToolContext] = None
 ) -> dict:
@@ -42,13 +34,7 @@ async def chart_plotting_tool(
     tool_context.state["y_axis_label"] = y_axis_label
     tool_context.state["x"] = x
     tool_context.state['y'] = y
-    # tool_context.state['categories'] = categories
-    # tool_context.state['values'] = values
-    # tool_context.state['values[0]'] = values[0]
-    # tool_context.state['values[1]'] = values[1]
     tool_context.state['title'] = title
-    # tool_context.state['stages'] = stages
-    # tool_context.state['subcategories'] = subcategories
     tool_context.state['categorical_columns'] = categorical_columns
     tool_context.state['continuous_columns'] = continuous_columns
     tool_context.state['series_by'] = series_by
@@ -75,16 +61,15 @@ async def chart_plotting_tool(
         f.write(f"y_axis_label: {y_axis_label}\n")
         f.write(f"x: {x}\n")
         f.write(f"y: {y}\n")
-        # f.write(f"categories: {categories}\n")
-        # f.write(f"values: {values}\n")
         f.write(f"title: {title}\n")    
-        # f.write(f"stages: {stages}\n")
-        # f.write(f"subcategories: {subcategories}\n")
         f.write(f'db Data is : {db_data} \n')
         
         f.write(f'categorical column : {categorical_columns} \n')
         f.write(f'continuous column : {continuous_columns} \n')
         f.write(f'series_by: {series_by} \n')
+        f.write(f"user_query: {tool_context.state.get('user_query')}\n")
+        # f.write(f"sesssion : {tool_context._invocation_context.session}\n")
+        f.write(f"sesssion id: {tool_context._invocation_context.session.id}\n")
         f.write("===="*100)
 
 
@@ -162,7 +147,7 @@ async def chart_plotting_tool(
             scale, suffix = get_suffix_scale(max_val)
             # --- Plotting ---
             bar_width = 0.8 / len(value_cols)  # Total width per group is 0.8
-            x = np.arange(len(db_data[category_col]))  # X locations
+            x_loc = np.arange(len(db_data[category_col]))  # X locations
 
             base_width=7
             base_points=30
@@ -176,13 +161,13 @@ async def chart_plotting_tool(
             # Plot each numeric column
             for i, col in enumerate(value_cols):
                 offset = (i - (len(value_cols)-1)/2) * bar_width
-                plt.bar(x + offset, db_data[col], width=bar_width, label=col)
+                plt.bar(x_loc + offset, db_data[col], width=bar_width, label=col)
 
                 # Annotate each bar
-                for xi, val in zip(x, db_data[col]):
+                for xi, val in zip(x_loc, db_data[col]):
                     plt.text(xi + offset, val, format_with_suffix(val),
                             ha='center', va='bottom', fontsize=8)
-            plt.xticks(x, db_data[category_col].squeeze().tolist(), rotation=90)
+            plt.xticks(x_loc, db_data[category_col].squeeze().tolist(), rotation=90)
         # --- Formatting ---
         
         plt.ylabel(f'{y_axis_label} ({suffix})')
@@ -486,7 +471,7 @@ async def chart_plotting_tool(
         scale_factor = len(db_data) / base_points
         width = max(base_width, base_width * scale_factor)
 
-        max_val = np.max(db_data[y].values)
+        max_val = np.max(db_data[y[1]].values)
         scale, suffix = get_suffix_scale(max_val)
         plt.figure(figsize=(width, height))
         plt.scatter(db_data[x], db_data[y[0]], s = db_data[y[1]], alpha=0.5)
@@ -684,7 +669,8 @@ async def chart_plotting_tool(
 
     # Generate timestamped filename
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = f"chart_{timestamp}.png"
+    # output_file = f"chart_{timestamp}.png"
+    output_file = f"VizChart.png"
     plt.savefig(output_file)
 
     # Save to buffer
@@ -703,14 +689,20 @@ async def chart_plotting_tool(
     # Json artifacts
     json_artifact = Part(
         inline_data=Blob(
-            mime_type="application/json",
+            # mime_type="application/json", # multi agent has issue while sending json as artifact in GCS. text is recommended method.
+            mime_type = 'text/plain',
             data=json_string.encode('utf-8')
         )
     )
-
-    # Correct async artifact registration
-    await tool_context.save_artifact(output_file, image_artifact)
-    await tool_context.save_artifact('data.json', json_artifact)
+    user_query = tool_context.state.get('user_query')
+    folder_name = str(user_query).replace(" ","_").lower()
+    image_path = f"{folder_name}_{output_file}"
+    json_path = f"{folder_name}_data.json"
+    # # Correct async artifact registration
+    # await tool_context.save_artifact(output_file, image_artifact)
+    # await tool_context.save_artifact('data.json', json_artifact)
+    await tool_context.save_artifact(image_path, image_artifact)
+    await tool_context.save_artifact(json_path, json_artifact)
 
     # Return both artifact reference and base64 image
     return {

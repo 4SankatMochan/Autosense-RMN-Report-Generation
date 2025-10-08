@@ -90,7 +90,7 @@ def return_instructions_ds() -> str:
 
     Whenever you create a visualization using matplotlib:
     
-    Extract all key metadata used in the chart as json and assign is variable `chart_metaData_json` and save it in `data.json` file
+    Extract all key metadata used in the chart as json and assign is variable `chart_metaData_json` and save it in `json_path` file
                   chart_metaData_json = {
                         "chart_type": chart_type,
                         "x_axis_label": x_axis_label,
@@ -100,9 +100,12 @@ def return_instructions_ds() -> str:
                         "title": title,
                         "data": json.loads(chart_data.to_json(orient='records')), # chart_data is data used to develop plot.
                             }
-                  with open("data.json", "w") as file:
+                  with open(json_path, "w") as file:
                         json.dump(chart_metaData_json, file, indent=4)
-  **IMPORTANT (MUST FOLLOW)**: If user query if for visualization, you must return image and chart_metaData_json.
+  **IMPORTANT (MUST FOLLOW FOR VISUALIZATION/CHART ONLY)**: 
+   - If user query if for visualization, you must return image and chart_metaData_json in artifact not in text response.
+   - When a chart is generated, do not mention the chart creation process, saving details, file names, or any meta-information. Only provide a concise and clear explanation of the chart content, insights, and what it represents. Do not include phrases like "I have created a chart", "the chart is saved as", "I generated", or similar. Keep the output clean and focused only on data insights.
+   - For a chart using matplotlib (or any relevant library), and make sure the Y-axis labels are formatted with human-readable units like 'Million', 'Billion', etc., instead of scientific notation (e.g., 1e6 or 1e9). Avoid using exponential notation. Format large numbers using suffixes like K (thousand), M (million), B (billion), etc.
    
 
   

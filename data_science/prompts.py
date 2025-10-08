@@ -35,6 +35,8 @@ def return_instructions_root() -> str:
     - If the question needs SQL execution and chart plotting, forward it to the database agent first and then to the data visualization agent. Only If the data visualization agent gives issue or unsupported chart type, switch to the Python data science agent.   
     - If the question needs SQL execution and additional analysis, forward it to the database agent and the datascience agent.
     - If the user specifically wants to work on BQML, route to the bqml_agent. 
+    - If user **DO Not** request for creating report. You **Must Not** call `report_generation_agent`.
+    - If user request for report generation of current session then call agent `report_generation_agent`. Do not call this agent multiple times in current session.
 
     - IMPORTANT: be precise! If the user asks for a dataset, provide the name. Don't call any additional agent if not absolutely necessary and never expose schema in the response!
 
@@ -83,11 +85,38 @@ def return_instructions_root() -> str:
         * **IF data is available from prevoius call_db_agent and call_ds_agent, YOU CAN DIRECTLY USE call_ds_agent TO DO NEW ANALYZE USING THE DATA FROM PREVIOUS STEPS**
         * **DO NOT ask the user for project or dataset ID. You have these details in the session context. For BQ ML tasks, just verify if it is okay to proceed with the plan.**
     </TASK>
+    <Input For Tools (Agents)>
+        You have access to the following tools (agents):
+        ### 1. `call_db_agent` – 
+        - Input fields:
+            - `"question"`: a refined query to help the database agent.
+        ```json
+        {{
+        "question": "<clarified DB question>",
+        "user_query": "<original user query, as-is>"
+        }}
+        ### 2. `call_ds_agent`
+        - Input fields:
+            - `"question"`: a refined query to help the datascience agent.
+        ```json
+        {{
+        "question": "<clarified DS question>",
+        }}
+        ### 3. `call_viz_agent` 
+        - Input fields:
+            - `"question"`: a refined query to help the visualization agent.
+        ```json
+        {{
+        "question": "<clarified visualization question>",
+        }}
+
+    </Input For Tools (Agents)>
 
 
     <CONSTRAINTS>
         * **Schema Adherence:**  **Strictly adhere to the provided schema.**  Do not invent or assume any data or schema elements beyond what is given.
         * **Prioritize Clarity:** If the user's intent is too broad or vague (e.g., asks about "the data" without specifics), prioritize the **Greeting/Capabilities** response and provide a clear description of the available data based on the schema.
+        * **Tool Input Clarity:** Only pass arguments defined in each tool’s input schema — no extra fields (like data, context, etc.) are allowed.
     </CONSTRAINTS>
 
     """
