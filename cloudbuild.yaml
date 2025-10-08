@@ -1,18 +1,18 @@
 steps:
-  # Step 1: Build the Docker image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [
-      'build',
-      '-t', 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest',
-      '.'
-    ]
+  # # Step 1: Build the Docker image
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args: [
+  #     'build',
+  #     '-t', 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest',
+  #     '.'
+  #   ]
 
-  # Step 2: Push to Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [
-      'push',
-      'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest'
-    ]
+  # # Step 2: Push to Artifact Registry
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args: [
+  #     'push',
+  #     'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest'
+  #   ]
 
     # Step 3: Deploy to Cloud Run with updated .env vars
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -23,13 +23,13 @@ steps:
       - |
         echo "Deploying Cloud Run service using .env..."
         gcloud run deploy rmn-agent \
-          --image us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest \
+          --source . \
+          --project acn-cda \
           --region us-central1 \
-          --platform managed \
-          --service-account rmn-sa@acn-cda.iam.gserviceaccount.com \
           --env-vars-file .env
 
-
+   #  --image us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest \
+   #   --service-account rmn-sa@acn-cda.iam.gserviceaccount.com \
 # # Step 3: Deploy to Cloud Run service ( private, no unauthenticated access )
 #   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
 #     entrypoint: 'gcloud'
