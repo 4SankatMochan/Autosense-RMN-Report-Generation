@@ -1,0 +1,43 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t', 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest',
+      '.'
+    ]
+
+  # Step 2: Push to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest'
+    ]
+
+    # Step 3: Deploy to Cloud Run with updated .env vars
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-cloud-run'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "Deploying Cloud Run service using .env..."
+        gcloud run deploy rmn-agent \
+          --image us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest \
+          --region us-central1 \
+          --platform managed \
+          --service-account rmn-sa@acn-cda.iam.gserviceaccount.com \
+          --set-env-vars-file .env
+
+
+# # Step 3: Deploy to Cloud Run service ( private, no unauthenticated access )
+#   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#     entrypoint: 'gcloud'
+#     args: [
+#       'run', 'deploy', 'rmn-agent',
+#       '--image', 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo:latest',
+#       '--region', 'us-central1',
+#       '--platform', 'managed',
+#       #'--set-env-vars', 'PORT=8080',
+#       '--service-account', 'rmn-sa@acn-cda.iam.gserviceaccount.com'
+#     ]
