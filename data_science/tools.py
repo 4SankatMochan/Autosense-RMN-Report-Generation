@@ -20,22 +20,28 @@
 
 from google.adk.tools import ToolContext
 from google.adk.tools.agent_tool import AgentTool
-
 from .sub_agents import db_agent, ds_agent, dv_agent
-
 import base64
 from google.genai.types import Part, Blob
 import os
 import json
-
 from .logging.db_agent_call_logger import log_db_agent
+
+
+from pydantic import BaseModel 
+class ToolInput(BaseModel):
+    request: str  
+
+    class Config:
+        extra = "ignore"
 
 # import datetime
 # import json
-
 async def call_db_agent(
     question: str,
     tool_context: ToolContext,
+    **kwargs
+    
 ):
     """Tool to call database (nl2sql) agent."""
     print(
@@ -45,16 +51,18 @@ async def call_db_agent(
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         f.write(f"\n sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
-    # Assign session ID to tool context. (input for summarizer)
+        f.write(f"{tool_context.state.get('user_query')} \n")
+
     tool_context.state['session_id'] = tool_context._invocation_context.session.id
+
     agent_tool = AgentTool(agent=db_agent)
     ### Db_agent gets different question from
- 
+    # Validate and sanitize input
+    validated_input = ToolInput(request=question)
     db_agent_output = await agent_tool.run_async(
-        args={"request": question}, tool_context=tool_context
+        args={"request": validated_input.request}, tool_context=tool_context
     )
     tool_context.state["db_agent_output"] = db_agent_output
-
     # Create plain text artifact
     text_artifact = Part(
         inline_data=Blob(
@@ -62,7 +70,7 @@ async def call_db_agent(
             data=str(db_agent_output).encode("utf-8")
         )
     )
-    tool_context.state['user_query'] = question # Using user_query to name artifacts in GCS Bucket
+    # tool_context.state['user_query'] = question # Using user_query to name artifacts in GCS Bucket
     user_query = tool_context.state.get('user_query')
     folder_name = str(user_query).replace(" ", "_").lower()
     text_path = f"{folder_name}_db_agent.txt"
@@ -78,6 +86,8 @@ async def call_db_agent(
 async def call_ds_agent(
     question: str,
     tool_context: ToolContext,
+    **kwargs
+    
 ):
     """Tool to call data science (nl2py) agent."""
 
@@ -98,10 +108,11 @@ async def call_ds_agent(
         f.write(f'ds_agent from root. \n')
 
     agent_tool = AgentTool(agent=ds_agent)
-
+    validated_input = ToolInput(request=question)
     ds_agent_output = await agent_tool.run_async(
-        args={"request": question_with_data}, tool_context=tool_context
+        args={"request": validated_input.request}, tool_context=tool_context
     )
+
     tool_context.state["ds_agent_output"] = ds_agent_output
 
         # Create plain text artifact
@@ -121,6 +132,8 @@ async def call_ds_agent(
 async def call_viz_agent(
     question: str,
     tool_context: ToolContext,
+    **kwargs
+    
 ):
     """Tool to call data visualization agent (supports LLM or direct chart outputs)."""
 
@@ -141,12 +154,13 @@ async def call_viz_agent(
     with open(log_file_path, 'a') as f:
         f.write(f'question with data is >>>>>>>:{question_with_data}\n')
         f.write(f"sesssion id from call_viz_agent: {tool_context._invocation_context.session.id}\n")
+
     agent_tool = AgentTool(agent=dv_agent)
+    validated_input = ToolInput(request=question)
     dv_agent_output = await agent_tool.run_async(
-        args={"request": question_with_data},
+        args={"request": validated_input.request},
         tool_context=tool_context,
     )
-
     tool_context.state["dv_agent_output"] = dv_agent_output
 
     # Create plain text artifact

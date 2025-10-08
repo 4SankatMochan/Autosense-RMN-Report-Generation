@@ -147,7 +147,7 @@ async def chart_plotting_tool(
             scale, suffix = get_suffix_scale(max_val)
             # --- Plotting ---
             bar_width = 0.8 / len(value_cols)  # Total width per group is 0.8
-            x = np.arange(len(db_data[category_col]))  # X locations
+            x_loc = np.arange(len(db_data[category_col]))  # X locations
 
             base_width=7
             base_points=30
@@ -161,13 +161,13 @@ async def chart_plotting_tool(
             # Plot each numeric column
             for i, col in enumerate(value_cols):
                 offset = (i - (len(value_cols)-1)/2) * bar_width
-                plt.bar(x + offset, db_data[col], width=bar_width, label=col)
+                plt.bar(x_loc + offset, db_data[col], width=bar_width, label=col)
 
                 # Annotate each bar
-                for xi, val in zip(x, db_data[col]):
+                for xi, val in zip(x_loc, db_data[col]):
                     plt.text(xi + offset, val, format_with_suffix(val),
                             ha='center', va='bottom', fontsize=8)
-            plt.xticks(x, db_data[category_col].squeeze().tolist(), rotation=90)
+            plt.xticks(x_loc, db_data[category_col].squeeze().tolist(), rotation=90)
         # --- Formatting ---
         
         plt.ylabel(f'{y_axis_label} ({suffix})')
@@ -471,7 +471,7 @@ async def chart_plotting_tool(
         scale_factor = len(db_data) / base_points
         width = max(base_width, base_width * scale_factor)
 
-        max_val = np.max(db_data[y].values)
+        max_val = np.max(db_data[y[1]].values)
         scale, suffix = get_suffix_scale(max_val)
         plt.figure(figsize=(width, height))
         plt.scatter(db_data[x], db_data[y[0]], s = db_data[y[1]], alpha=0.5)
