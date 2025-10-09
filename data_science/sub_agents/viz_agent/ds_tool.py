@@ -1,7 +1,9 @@
 from google.adk.tools import ToolContext
 from ...sub_agents import ds_agent
 from google.adk.tools.agent_tool import AgentTool
+from google.genai.types import Part, Blob
 import os
+
 
 async def call_ds_agent(
     question: str,
@@ -14,12 +16,17 @@ async def call_ds_agent(
 
     input_data = tool_context.state["query_result"]
 
+    output_file = f"VizChart.png"
+    user_query = tool_context.state.get('user_query')
+    folder_name = str(user_query).replace(" ","_").lower()
+    image_path = f"{folder_name}_{output_file}"
+    json_path = f"{folder_name}_data.json"
     question_with_data = f"""
   Question to answer: {question}
 
   Actual data to analyze prevoius quesiton is already in the following:
   {input_data}
-
+  While saving image and chart metadata name of image must be {image_path} and name of chart metadata must be {json_path}
   """
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
@@ -33,4 +40,17 @@ async def call_ds_agent(
 
 
     tool_context.state["ds_agent_output"] = ds_agent_output
+    # Create plain text artifact
+    text_artifact = Part(
+        inline_data=Blob(
+            mime_type="text/plain",
+            data=str(ds_agent_output).encode("utf-8")
+        )
+    )
+    # Name the artifact file
+    user_query = tool_context.state.get('user_query')
+    folder_name = str(user_query).replace(" ", "_").lower()
+    text_path = f"{folder_name}_viz_ds_agent.txt"
+    # Save the artifact
+    await tool_context.save_artifact(text_path, text_artifact)
     return ds_agent_output

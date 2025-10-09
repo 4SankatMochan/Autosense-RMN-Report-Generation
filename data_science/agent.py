@@ -27,11 +27,14 @@ from google.adk.agents.callback_context import CallbackContext
 from google.adk.tools import load_artifacts
 
 from .sub_agents import bqml_agent
+from .sub_agents import report_generation_agent
 from .sub_agents.bigquery.tools import (
     get_database_settings as get_bq_database_settings,
 )
 from .prompts import return_instructions_root
 from .tools import call_db_agent, call_viz_agent, call_ds_agent
+import logging
+
 
 #from .sub_agents.nl2sql.agent import nl2sql_agent
 #from .sub_agents.descriptive_analysis.agent import descriptive_analysis_agent
@@ -42,7 +45,18 @@ date_today = date.today()
 
 def setup_before_agent_call(callback_context: CallbackContext):
     """Setup the agent."""
+    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
+    with open(log_file_path, 'a') as f:
+        # f.write(f"CallbackContext attributes:, {dir(callback_context)}\n")
+        f.write(f"{callback_context.user_content}\n")
+        f.write(f"{callback_context.user_content.parts[0].text}")
 
+    user_message = callback_context.user_content.parts[0]
+    if user_message.text:
+        original_prompt = user_message.text
+        callback_context.state['user_query'] = original_prompt
+
+           
     # setting up database settings in session.state
     if "database_settings" not in callback_context.state:
         db_settings = dict()
@@ -75,7 +89,7 @@ root_agent = Agent(
         Todays date: {date_today}
         """
     ),
-    sub_agents=[bqml_agent],
+    sub_agents=[bqml_agent, report_generation_agent],
     tools=[
         call_db_agent,
         call_viz_agent, 
