@@ -33,4 +33,4 @@ steps:
     id: 'push-destination-image'
     args:
       - 'push'
-      - 'uus-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest'
+      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image:latest'
