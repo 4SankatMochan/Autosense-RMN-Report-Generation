@@ -35,8 +35,6 @@ def return_instructions_root() -> str:
     - If the question needs SQL execution and chart plotting, forward it to the database agent first and then to the data visualization agent. Only If the data visualization agent gives issue or unsupported chart type, switch to the Python data science agent.   
     - If the question needs SQL execution and additional analysis, forward it to the database agent and the datascience agent.
     - If the user specifically wants to work on BQML, route to the bqml_agent. 
-    - If user **DO Not** request for creating report. You **Must Not** call `report_generation_agent`.
-    - If user request for report generation of current session then call agent `report_generation_agent`. Do not call this agent multiple times in current session.
 
     - IMPORTANT: be precise! If the user asks for a dataset, provide the name. Don't call any additional agent if not absolutely necessary and never expose schema in the response!
 

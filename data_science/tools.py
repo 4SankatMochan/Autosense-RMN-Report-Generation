@@ -26,7 +26,7 @@ from google.genai.types import Part, Blob
 import os
 import json
 from .logging.db_agent_call_logger import log_db_agent
-
+import datetime
 
 from pydantic import BaseModel 
 class ToolInput(BaseModel):
@@ -44,10 +44,12 @@ async def call_db_agent(
     
 ):
     """Tool to call database (nl2sql) agent."""
-    print(
-        "\n call_db_agent.use_database:"
-        f' {tool_context.state["all_db_settings"]["use_database"]}'
-    )
+    print(f"db: at time: {datetime.datetime.now().strftime("%H:%M:%S")} called que: {question}")
+    print(f"sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
+    # print(
+    #     "\n call_db_agent.use_database:"
+    #     f' {tool_context.state["all_db_settings"]["use_database"]}'
+    # )
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         f.write(f"\n sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
@@ -90,7 +92,7 @@ async def call_ds_agent(
     
 ):
     """Tool to call data science (nl2py) agent."""
-
+    print(f"ds: at time: {datetime.datetime.now().strftime("%H:%M:%S")} called que: {question}")
     if question == "N/A":
         return tool_context.state["db_agent_output"]
 
@@ -136,7 +138,8 @@ async def call_viz_agent(
     
 ):
     """Tool to call data visualization agent (supports LLM or direct chart outputs)."""
-
+    print(f" viz:at time: {datetime.datetime.now().strftime("%H:%M:%S")} called que: {question}")
+    print(f"sesssion id from call_viz_agent: {tool_context._invocation_context.session.id}\n")
     if question == "N/A":
         return tool_context.state.get("db_agent_output")
 
