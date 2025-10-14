@@ -52,10 +52,12 @@ async def query(user_id, session_id, user_query):
 async def main():
     user_id = "user1"
     session_id = "1"
-    user_query = "Based on last month, which campaign performed better — CMP_2025_0067 or CMP_2025_0001 — when looking at budget and impressions? Give me the reason too."
+    user_query = "Show how campaign CMP_2025_0067 has weekly trend as a line graph for last month across performance for KPI - Impressions"
     start_time = datetime.now(timezone.utc)
  
     while user_query:
+        
+
         
         session_id, res = await query(user_id, session_id, user_query)
         print(f"session_id: {session_id}")
