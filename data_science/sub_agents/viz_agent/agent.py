@@ -30,7 +30,7 @@ root_agent = Agent(
     name="data_visualization_agent",
     instruction=return_instructions_dv(),
     tools=[
-        #chart_plotting_tool,  # workaround for error
+        chart_plotting_tool,  
         call_ds_agent,
         load_artifacts],
 )
