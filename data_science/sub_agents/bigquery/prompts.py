@@ -28,10 +28,25 @@ def load_data_dictionary() -> dict:
             "tables": [],
             "relationships": []
         }
+    
+def load_column_to_table_mapping() -> dict:
+    """Load JSON schema (Prefix_to_Table_mapping_flat_vw.json) from same folder."""
+    base_dir = os.path.dirname(__file__)
+    json_path = os.path.join(base_dir, "Prefix_to_Table_mapping_flat_vw.json")
+
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {
+            "error": "Prefix_to_Table_mapping_flat_vw.json not found",
+            "tables": [],
+            "relationships": []
+        }
 
 
 DATA_DICTIONARY = load_data_dictionary()
-
+COL2TABLE_MAPPING=load_column_to_table_mapping()
 
 def return_instructions_bigquery() -> str:
     """
@@ -50,6 +65,7 @@ def return_instructions_bigquery() -> str:
         raise ValueError(f"Unknown NL2SQL method: {NL2SQL_METHOD}")
 
     schema_text = json.dumps(DATA_DICTIONARY, indent=2)
+    col_table_mapping=json.dumps(COL2TABLE_MAPPING,indent=2)
     campaign_prompt = return_campaign_logic_prompt()
 
     # Explicit orchestration rules
@@ -164,6 +180,13 @@ Use this alongside live BigQuery schema as the source of truth:
 {schema_text}
 
 ---
+
+# Column to Table Mapping
+Use the JSON mapping below and resolve every column by its prefix (cp_, cm_, cs_, tx_, aud_) to the corresponding full_table. 
+Use this along with schema_text and campaign_prompt to understand the columns and usage.
+{col_table_mapping}
+
+-----
 
 # Validation Checklist
 {validation_checklist}

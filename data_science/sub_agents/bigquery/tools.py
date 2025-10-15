@@ -18,6 +18,7 @@ import datetime
 import logging
 import os
 import re
+import pandas as pd
 
 from data_science.utils.utils import get_env_var
 from google.adk.tools import ToolContext
@@ -25,6 +26,10 @@ from google.cloud import bigquery
 from google.genai import Client
 
 from .chase_sql import chase_constants
+
+from google.cloud import bigquery
+import pandas as pd
+import datetime
 
 # Assume that `BQ_PROJECT_ID` is set in the environment. See the
 # `data_agent` README for more details.
@@ -73,68 +78,121 @@ def update_database_settings():
     return database_settings
 
 
-def get_bigquery_schema(dataset_id, client=None, project_id=None):
-    """Retrieves schema and generates DDL with example values for a BigQuery dataset.
 
-    Args:
-        dataset_id (str): The ID of the BigQuery dataset (e.g., 'my_dataset').
-        client (bigquery.Client): A BigQuery client.
-        project_id (str): The ID of your Google Cloud Project.
 
-    Returns:
-        str: A string containing the generated DDL statements.
+
+
+from google.cloud import bigquery
+import pandas as pd
+import datetime
+
+def get_bigquery_schema(dataset_id, client=None, project_id=None, max_example_rows=5):
     """
-
+    Returns schema + DDL + example rows for:
+      - All tables if dataset contains tables
+      - The materialized view if dataset contains an MV
+    """
     if client is None:
         client = bigquery.Client(project=project_id)
 
-    # dataset_ref = client.dataset(dataset_id)
     dataset_ref = bigquery.DatasetReference(project_id, dataset_id)
-
     ddl_statements = ""
 
-    for table in client.list_tables(dataset_ref):
-        table_ref = dataset_ref.table(table.table_id)
-        table_obj = client.get_table(table_ref)
+    # Get all table-like objects in the dataset
+    tables_objs = [client.get_table(dataset_ref.table(t.table_id)) for t in client.list_tables(dataset_ref)]
 
-        # Check if table is a view
-        if table_obj.table_type != "TABLE":
-            continue
+    # Separate base tables and materialized views
+    base_tables = [t for t in tables_objs if t.table_type == "TABLE"]
+    mvs = [t for t in tables_objs if t.table_type == "MATERIALIZED_VIEW"]
 
-        ddl_statement = f"CREATE OR REPLACE TABLE `{table_ref}` (\n"
+    # If dataset has base tables
+    if base_tables:
+        for table_obj in base_tables:
+            table_ref = table_obj.reference
+            ddl_statement = f"CREATE OR REPLACE TABLE `{table_ref}` (\n"
+            for field in table_obj.schema:
+                ddl_statement += f"  `{field.name}` {field.field_type}"
+                if field.mode == "REPEATED":
+                    ddl_statement += " ARRAY"
+                if field.description:
+                    ddl_statement += f" COMMENT '{field.description.replace('\'','\'\'')}'"
+                ddl_statement += ",\n"
+            ddl_statement = ddl_statement[:-2] + "\n);\n\n" if table_obj.schema else ddl_statement[:-2] + "\n);\n\n"
 
+            # Example rows
+            rows = client.list_rows(table_ref, max_results=max_example_rows).to_dataframe()
+            if not rows.empty:
+                ddl_statement += f"-- Example values for table `{table_ref}`:\n"
+                for _, row in rows.iterrows():
+                    row_str = "("
+                    for val in row.values:
+                        if pd.isna(val):
+                            row_str += "NULL,"
+                        elif isinstance(val, str):
+                            row_str += f"'{val.replace('\'','\'\'')}',"
+                        elif isinstance(val, (datetime.date, datetime.datetime)):
+                            row_str += f"'{val.isoformat()}',"
+                        elif isinstance(val, bool):
+                            row_str += "TRUE," if val else "FALSE,"
+                        else:
+                            row_str += str(val) + ","
+                    row_str = row_str[:-1] + ");\n\n"
+                    ddl_statement += f"INSERT INTO `{table_ref}` VALUES\n" + row_str
+
+            ddl_statements += ddl_statement
+        return ddl_statements
+
+    # If dataset has an MV
+    elif mvs:
+        table_obj = mvs[0]  # Assuming only one MV per dataset
+        table_ref = table_obj.reference
+        fq_name = f"{table_ref.project}.{table_ref.dataset_id}.{table_ref.table_id}"
+
+        # 1) Schema block
+        ddl_statement = f"CREATE OR REPLACE TABLE `{fq_name}` (\n"
         for field in table_obj.schema:
             ddl_statement += f"  `{field.name}` {field.field_type}"
             if field.mode == "REPEATED":
                 ddl_statement += " ARRAY"
             if field.description:
-                ddl_statement += f" COMMENT '{field.description}'"
+                desc = field.description.replace("'", "''")
+                ddl_statement += f" COMMENT '{desc}'"
             ddl_statement += ",\n"
+        ddl_statement = ddl_statement[:-2] + "\n);\n\n" if table_obj.schema else ddl_statement[:-2] + "\n);\n\n"
 
-        ddl_statement = ddl_statement[:-2] + "\n);\n\n"
+        # 2) Materialized view DDL
+        view_query = getattr(table_obj, "view_query", None) or f"SELECT * FROM `{fq_name}` LIMIT 0"
+        ddl_statement += f"CREATE OR REPLACE MATERIALIZED VIEW `{fq_name}` AS\n{view_query};\n\n"
 
-        # Add example values if available (limited to first row)
-        rows = client.list_rows(table_ref, max_results=5).to_dataframe()
-        if not rows.empty:
-            ddl_statement += f"-- Example values for table `{table_ref}`:\n"
-            for _, row in rows.iterrows():  # Iterate over DataFrame rows
-                ddl_statement += f"INSERT INTO `{table_ref}` VALUES\n"
-                example_row_str = "("
-                for value in row.values:  # Now row is a pandas Series and has values
-                    if isinstance(value, str):
-                        example_row_str += f"'{value}',"
-                    elif value is None:
-                        example_row_str += "NULL,"
-                    else:
-                        example_row_str += f"{value},"
-                example_row_str = (
-                    example_row_str[:-1] + ");\n\n"
-                )  # remove trailing comma
-                ddl_statement += example_row_str
+        # 3) Example rows
+        try:
+            df = client.query(f"SELECT * FROM `{fq_name}` LIMIT {max_example_rows}").result().to_dataframe()
+            if not df.empty:
+                ddl_statement += f"-- Example rows for materialized view `{fq_name}`:\n"
+                for _, row in df.iterrows():
+                    parts = []
+                    for val in row.values:
+                        if pd.isna(val):
+                            parts.append("NULL")
+                        elif isinstance(val, str):
+                            parts.append(f"'{val.replace('\'','\'\'')}'")
+                        elif isinstance(val, (datetime.date, datetime.datetime)):
+                            parts.append(f"'{val.isoformat()}'")
+                        elif isinstance(val, bool):
+                            parts.append("TRUE" if val else "FALSE")
+                        else:
+                            parts.append(str(val))
+                    ddl_statement += "SELECT " + ", ".join(parts) + ";\n"
+                ddl_statement += "\n"
+        except Exception as e:
+            ddl_statement += f"-- Unable to fetch example rows: {e}\n\n"
 
         ddl_statements += ddl_statement
+        return ddl_statements
 
-    return ddl_statements
+    # If dataset is empty
+    else:
+        return "-- No tables or materialized views found in dataset.\n"
 
 
 def initial_bq_nl2sql(
