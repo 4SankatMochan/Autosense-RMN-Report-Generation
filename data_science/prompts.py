@@ -83,32 +83,7 @@ def return_instructions_root() -> str:
         * **IF data is available from prevoius call_db_agent and call_ds_agent, YOU CAN DIRECTLY USE call_ds_agent TO DO NEW ANALYZE USING THE DATA FROM PREVIOUS STEPS**
         * **DO NOT ask the user for project or dataset ID. You have these details in the session context. For BQ ML tasks, just verify if it is okay to proceed with the plan.**
     </TASK>
-    <Input For Tools (Agents)>
-        You have access to the following tools (agents):
-        ### 1. `call_db_agent` – 
-        - Input fields:
-            - `"question"`: a refined query to help the database agent.
-        ```json
-        {{
-        "question": "<clarified DB question>",
-        "user_query": "<original user query, as-is>"
-        }}
-        ### 2. `call_ds_agent`
-        - Input fields:
-            - `"question"`: a refined query to help the datascience agent.
-        ```json
-        {{
-        "question": "<clarified DS question>",
-        }}
-        ### 3. `call_viz_agent` 
-        - Input fields:
-            - `"question"`: a refined query to help the visualization agent.
-        ```json
-        {{
-        "question": "<clarified visualization question>",
-        }}
 
-    </Input For Tools (Agents)>
 
 
     <CONSTRAINTS>

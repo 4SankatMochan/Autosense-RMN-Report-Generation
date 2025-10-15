@@ -144,6 +144,8 @@ async def call_viz_agent(
         return tool_context.state.get("db_agent_output")
 
     input_data = tool_context.state.get("query_result")
+    columns = list(input_data[0].keys())
+    tool_context.state['query_columns'] = columns
     # tool_context.state['user_query'] = question #cmntd by krishna on 26-sept
     # User query under db_agent and viz_agent are different. Mostly user quries under viz_agent is
     # similar to user input. 
