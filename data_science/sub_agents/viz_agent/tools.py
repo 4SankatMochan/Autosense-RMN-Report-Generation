@@ -15,7 +15,6 @@ from google.genai.types import Part, Blob
 from google.adk.tools import ToolContext
 
 
-
 async def chart_plotting_tool(
     chart_type: str,
     title: str,
@@ -63,7 +62,7 @@ async def chart_plotting_tool(
         f.write(f"y: {y}\n")
         f.write(f"title: {title}\n")    
         f.write(f'db Data is : {db_data} \n')
-        
+        f.write(f"db data columns:{tool_context.state.get("query_columns")} \n")
         f.write(f'categorical column : {categorical_columns} \n')
         f.write(f'continuous column : {continuous_columns} \n')
         f.write(f'series_by: {series_by} \n')

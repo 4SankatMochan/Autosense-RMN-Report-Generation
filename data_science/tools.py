@@ -141,6 +141,8 @@ async def call_viz_agent(
         return tool_context.state.get("db_agent_output")
 
     input_data = tool_context.state.get("query_result")
+    columns = list(input_data[0].keys())
+    tool_context.state['query_columns'] = columns
     # tool_context.state['user_query'] = question #cmntd by krishna on 26-sept
     # User query under db_agent and viz_agent are different. Mostly user quries under viz_agent is
     # similar to user input. 
@@ -158,9 +160,7 @@ async def call_viz_agent(
     agent_tool = AgentTool(agent=dv_agent)
     validated_input = ToolInput(request=question)
     dv_agent_output = await agent_tool.run_async(
-        args={"request": validated_input.request},
-        tool_context=tool_context,
-    )
+        args={"request": validated_input.request}, tool_context=tool_context)
     tool_context.state["dv_agent_output"] = dv_agent_output
 
     # Create plain text artifact
