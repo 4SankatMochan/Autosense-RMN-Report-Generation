@@ -78,7 +78,8 @@ def excel_to_json(df):
             "narrative_focus": [row["narrative_focus"]],
             "recommendation_framework": [{"logic": logic.strip()} for logic in str(row["recommendation_framework"]).split(";")]
         }
-    return json.dumps(grouped, indent=2)
+    #return json.dumps(grouped, indent=2)
+    return grouped
 
 def setup_before_agent_call(callback_context: CallbackContext):
     """Setup the agent."""
