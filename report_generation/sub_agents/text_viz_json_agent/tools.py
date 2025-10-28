@@ -14,8 +14,8 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None):
     # print(f"session id inside text_viz_json: {session_id}")
     bucket_name = os.getenv("BUCKET_NAME")
     # session_prefix = f'data_science/user/{session_id}/'
-    # session_prefix = f'root/user/{session_id}/'
-    session_prefix = f'default-app-name/user/{session_id}/'
+    session_prefix = f'root/user/{session_id}/'
+    # session_prefix = f'default-app-name/user/{session_id}/'
 
     # Initialize client
     client = storage.Client()

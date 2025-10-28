@@ -126,6 +126,8 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         print(f"⚠️ Failed to load report schema: {e}")
         report_schema = {}
 
+    tool_context.state['report_template'] = report_schema
+    
     campaign_report = report_schema.get("Campaign_Performance_Report", {})
     report_sections = list(campaign_report.keys()) or [
         "1.Context",
@@ -209,5 +211,35 @@ Return only a JSON array of prompt strings.
         "timestamp": datetime.now().isoformat(),
     }
 
+<<<<<<< Updated upstream
     print(f"🟢 Generated {len(prompt_list)} prompts successfully.")
     return prompt_list
+=======
+    # 🪵 Logging block
+    try:
+        log_dir = tool_context.state.get("log_dir", "logs")
+        os.makedirs(log_dir, exist_ok=True)
+        log_path = os.path.join(log_dir, f"generated_prompts_{session_id}.txt")
+
+        with open(log_path, "a", encoding="utf-8") as log_file:
+            log_file.write("\n" + "=" * 80 + "\n")
+            log_file.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            log_file.write(f"Session ID: {session_id}\n")
+            log_file.write(f"Model: {model_name}\nTemperature: {temperature}\n")
+            log_file.write(f"Persona: {persona_name}\nBrand: {brand_name}\nPlatform: {platform}\n")
+            log_file.write(f"Use Gemini: {use_gemini}\n")
+            log_file.write("\n--- Instruction Block ---\n")
+            log_file.write(instruction_md + "\n")
+            log_file.write("\n--- Generated Prompts ---\n")
+            for i, p in enumerate(prompt_list, start=1):
+                log_file.write(f"{i}. {p}\n")
+            log_file.write("=" * 80 + "\n")
+
+        print(f"🪵 Logged generated prompts to: {log_path}")
+    except Exception as log_err:
+        print(f"⚠️ Failed to log generated prompts: {log_err}")
+
+    tool_context.state["prompt_generator_out"] = prompt_list
+    print(f"🟢 Generated {len(prompt_list)} report prompts successfully.")
+    return output_payload
+>>>>>>> Stashed changes

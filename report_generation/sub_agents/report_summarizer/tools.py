@@ -1,35 +1,239 @@
-
-
 from google import genai
 from google.genai import types
 import os
 from .prompts import generate_report_prompt, format_report_prompt
 from typing import List, Optional
-import os
 from google.adk.tools import ToolContext
 from vertexai.preview.generative_models import GenerativeModel
+import json
 
+# template = """# [Report Title]
 
-template = """# [Report Title]
+# ## 1. Executive Summary
+# ## 2. Introduction
+# ### 2.1. Background
+# ### 2.2. Report Objectives
+# ## 3. Channel Performance Overview
+# ### 3.1. Distinct Channels Identified
+# ### 3.2. Total Attributed Sales by Channel
+# ## 4. Daily Performance Analysis
+# ### 4.1. Daily Attributed Sales Value
+# ## 5. Conclusion and Recommendations
+# """
+# context = """This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+# """
+# filters = """nil
+# """
+######## TESTING PURPOSES ONLY ########
+report_template = """
+{
+  "Campaign_Performance_Report": {
+    "1.Context": {
+      "Campaigns": [
+        {
+          "Campaign_ID": "",
+          "Campaign_Name": "",
+          "Brand_Name": "",
+          "Category": "",
+          "Media_Types": [],
+          "Channels": [],
+          "Objective": "",
+          "Sub_Objective": [],
+          "Campaign_Manager": "",
+          "Campaign_Duration": {
+            "Start_Date": "",
+            "End_Date": ""
+          },
+          "Planned_Budget": "",
+          "Actual_Spend": ""
+        }
+      ]
+    },
+    "2.Customization_Options": {
+      "Timeline": ["Full campaign period", "Weekly report view", "Daily report view"],
+      "By_Creative": ["App", "Channel-CTV", "Onsite", "Offsite", "Instore"]
+    },
+    "3.Executive_Summary": {
+      "Overview": "",
+      "Overall_Performance": "",
+      "Channel_Format_Performance": "",
+      "Optimization_Insight": ""
+    },
+    "4.Campaign_Overview": {
+      "Campaign_Summary_Table": [
+        {
+          "Start_Date": "",
+          "End_Date": "",
+          "Campaign_ID": "",
+          "Campaign_Budget": "",
+          "Campaign_Objective": "",
+          "Total_Ad_Spend": "",
+          "Budget_Utilization_Percentage": ""
+        }
+      ],
+      "Objective_Awareness": {
+        "Metrics_Table": [
+          {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Impressions": "",
+            "Unique_Reach": "",
+            "Frequency": "",
+            "ROAS": "",
+            "CPM": ""
+          }
+        ]
+      },
+      "Objective_Consideration": {
+        "Metrics_Table": [
+          {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Impressions": "",
+            "Unique_Reach": "",
+            "Clicks": "",
+            "CTR": "",
+            "CPC": "",
+            "CPCV": "",
+            "Viewed_Units": "",
+            "Clicked_Units": "",
+            "Add_To_Cart": ""
+          }
+        ]
+      },
+      "Objective_Conversion": {
+        "Metrics_Table": [
+          {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Impressions": "",
+            "Clicks": "",
+            "CTR": "",
+            "CVR": "",
+            "Viewed_Transactions": "",
+            "Clicked_Transactions": "",
+            "Viewed_Revenue": "",
+            "Clicked_Revenue": "",
+            "Total_Campaign_Revenue": "",
+            "ROAS": "",
+            "Incremental_Sales_Lift": "",
+            "Conversions": ""
+          }
+        ]
+      },
+      "Objective_Retention": {
+        "Metrics_Table": [
+          {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Conversions": "",
+            "CVR": "",
+            "Transactions_Repeat": "",
+            "Units_Sold": "",
+            "Total_Campaign_Revenue": "",
+            "Incremental_Sales_Lift": "",
+            "ROAS": ""
+          }
+        ]
+      }
+    },
+    "5.Campaign_Wise_Analysis": {
+      "Visual_Layers_Per_Objective": [
+        "Awareness",
+        "Consideration",
+        "Conversion",
+        "Retention"
+      ],
+      "Visualizations": {
+        "Impressions_Reach_Trend": "Line Chart",
+        "CTR_Trend": "Line Chart",
+        "Spend_vs_Revenue": "Column Chart",
+        "ROAS_Trend": "Line Chart",
+        "Frequency_Distribution": "Dual Axis Chart",
+        "Add_to_Cart_Funnel": "Funnel Chart",
+        "ROAS_by_Channel": "Bar Chart",
+        "Channel_Comparison_Retention_CVR": "Bar Chart",
+        "Viewed_vs_Clicked_Units": "Dual Axis Line",
+        "Conversion_Funnel": "Funnel Chart",
+        "Channel_wise_Reach_CPM": "Clustered Bar Chart",
+        "CPA_vs_CVR": "Scatter Plot"
+      },
+      "Campaign_Details": [
+        {
+          "Campaign_Name": "",
+          "Campaign_ID": "",
+          "Campaign_Ad_IDs": [],
+          "Campaign_Duration": "",
+          "KPIs_Analyzed": [],
+          "Campaign_Objective": "",
+          "Metrics": {
+            "Impressions": "",
+            "ROAS": "",
+            "Conversions": "",
+            "CTR": ""
+          },
+          "Campaign_Analysis_Text": "",
+          "Weekly_Performance": [
+            {
+              "Week": 1,
+              "Conversions": "",
+              "Revenue": ""
+            },
+            {
+              "Week": 2,
+              "Conversions": "",
+              "Revenue": ""
+            },
+            {
+              "Week": 3,
+              "Conversions": "",
+              "Revenue": ""
+            },
+            {
+              "Week": 4,
+              "Conversions": "",
+              "Revenue": ""
+            }
+          ],
+          "Overall_Campaign_Impact": ""
+        }
+      ],
+      "Campaign_Comparison": {
+        "Applicable_Condition": "Only if objective and SKUs are same",
+        "Comparison_Notes": ""
+      }
+    },
+    "6.Recommendations": [
+      {
+        "Title": "Granular Temporal and Contextual Analysis",
+        "Action": "",
+        "Objective": ""
+      },
+      {
+        "Title": "Dynamic Budget Allocation and Bidding Strategy Optimization",
+        "Action": "",
+        "Objective": ""
+      },
+      {
+        "Title": "Systematic A/B Testing of Creative and Landing Page Elements",
+        "Action": "",
+        "Objective": ""
+      }
+    ]
+  }
+}
 
-## 1. Executive Summary
-## 2. Introduction
-### 2.1. Background
-### 2.2. Report Objectives
-## 3. Channel Performance Overview
-### 3.1. Distinct Channels Identified
-### 3.2. Total Attributed Sales by Channel
-## 4. Daily Performance Analysis
-### 4.1. Daily Attributed Sales Value
-## 5. Conclusion and Recommendations
 """
-
-context = """This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+report_context= """This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
 """
-context="""nil
-"""
-filters = """nil
-"""
+filters = {
+    "persona": "Marketing Manager",
+    "brand": "Dove",
+    "platform": "Google Ads",
+    "duration": "Last Quarter",
+    "report_type": "Campaign Performance Report"
+}
+#######################################
 
 def llm_call(prompt):
     model = GenerativeModel(os.getenv("TEXT_VIZ_JSON_AGENT"))
@@ -38,7 +242,7 @@ def llm_call(prompt):
         generation_config={
             "temperature": 0.5,
             "top_p": 1.0,
-            "max_output_tokens": 2048
+            "max_output_tokens": 7168
         }
     )
     # print(f"llm response")
@@ -52,216 +256,112 @@ def llm_call(prompt):
         return f" Error processing summary: {e}"
 
 async def generate_report(tool_context: Optional[ToolContext] = None):
-  """ Generates report in Markdown format.
-  """
-  print("inside report summarization agent")
-  print("inside generate report tool")
-  summary = tool_context.state['text_viz_json']
-  template = tool_context.state['report_template']
-  print(f"text_viz_json output: {summary}")
-  print(f"report template passed: {template}")
-  main_prompt = generate_report_prompt()
-  custom_prompt = f"""
-**Task**
-Generate report based on the below information.
+    """ 
+    Generates report in Markdown format.
+    """
+    print("inside report summarization agent")
+    print("inside generate report tool")
 
-**Input Parameters:**
-1.  **Text and Visualization Summary:**
+    summary = tool_context.state['text_viz_json']
+    # template = report_template  
+    template = tool_context.state['report_template']
+    # context = report_context    
+    context = tool_context.state['report_context']
+    # filters = filters           
+    filter = tool_context.state["filters"]
+    filter_text = f"""**Filters:**
+        Persona: {filters.get('persona', 'N/A')}
+        Brand: {filters.get('brand', 'N/A')}
+        Platform: {filters.get('platform', 'N/A')}
+        Period: {filters.get('duration', 'N/A')}
+        Report Type: {filters.get('report_type', 'N/A')}
+        """
+    
+    # filters = tool_context.state.get['report_filters']
+    # debug prints
+    print(f"text_viz_json output: {summary}")
+    print(f"report template passed: {template}")
+    print(f"report context passed: {context}")
+    print(f"report filters passed: {filter_text}")
 
-    {summary}
+    # Generate report markdown using LLM
+    main_prompt = generate_report_prompt()
+    custom_prompt = f"""
+    **Task**
+    Generate report based on the below information.
 
-2.  **Report Template:**
+    **Input Parameters:**
+    1.  **Text and Visualization Summary:**
 
-    {template}
+        {summary}
 
-3.  **Report Context:**
+    2.  **Report Template:**
 
-    {context}
+        {template}
 
-4.  **Filters:**
+    3.  **Report Context:**
 
-    {filters}
+        {context}
 
-**Output:**
-  """
-  prompt = main_prompt + custom_prompt
-  res = llm_call(prompt)
-  tool_context.state['report_markdown'] = res
-  print("report markdown generated:")
-  print(res)
-  return "report markdown generated"
+    4.  **Filters:**
+
+        {filter_text}
+
+    **Output:**
+    """
+    prompt = main_prompt + custom_prompt
+    res = llm_call(prompt)
+    tool_context.state['report_markdown'] = res
+    print("report markdown generated:")
+    print(res)
+    return "report markdown generated"
   
 
 async def format_report(tool_context: Optional[ToolContext] = None):
-  """Convert Report from markdown format to JSON format
-  """
-  print("inside format report tool")
-  report = tool_context.state['report_markdown']
-  main_prompt = format_report_prompt()
-  custom_prompt = f"""
-**Task**
-Generate JSON from the Report given below. Do not violate safety filters while generating output. Remove just the things that violate safety rules and kept  of all the information in the Report.
+    """
+    Convert Report from markdown format to JSON format
+    """
+    print("inside format report tool")
+    report = tool_context.state['report_markdown']
+    main_prompt = format_report_prompt()
+    custom_prompt = f"""
+    **Task**
+    Generate JSON from the Report given below. Do not violate safety filters while generating output. Remove just the things that violate safety rules and kept  of all the information in the Report.
 
-**Report:**
+    **Report:**
 
-{report}
+    {report}
 
-**Output:**
-  """
-  prompt = main_prompt + custom_prompt
-  res = llm_call(prompt)
-  tool_context.state['report_json'] = res
-  print("report json generated: ")
-  print(res)
-  return "report formatted to json"
+    **Output:**
+    """
+    prompt = main_prompt + custom_prompt
+    res = llm_call(prompt)
+    tool_context.state['report_json'] = res
+    print("report json generated: ")
+    print(res)
+    filename = "report_json.json"
+        # Save to file in repo root (current working directory)
+    root = os.getcwd()
+    path = os.path.join(root, filename)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-from google.cloud import storage
-import base64
-import json
-import re
-from collections import defaultdict
-from typing import List, Optional
-import os
-from google.adk.tools import ToolContext
-
-async def text_viz_json(tool_context: Optional[ToolContext] = None):
-    session_id = tool_context.state.get("session_id")
-    bucket_name = os.getenv("BUCKET_NAME")
-    session_prefix = f'data_science/user/{session_id}/'
-
-    # Initialize client
-    client = storage.Client()
-    bucket = client.bucket(bucket_name)
-
-    # Step 1: List and sort all blobs
-    blobs = list(bucket.list_blobs(prefix=session_prefix))
-    # Filter out unwanted blobs before sorting
-    filtered_blobs = [blob for blob in blobs if 'code_execution_image_' not in blob.name]
-    sorted_blobs = sorted(filtered_blobs, key=lambda b: b.updated)
-
-    # Step 2: Group blobs by base path (without /N), keep highest version
-    blob_versions = defaultdict(list)
-    versioned_blob_pattern = re.compile(r'(.+?)(?:/(\d+))$')  # Extract base path and version number
-
-    for blob in sorted_blobs:
-        match = versioned_blob_pattern.match(blob.name)
-        if match:
-            base_path = match.group(1)
-            version = int(match.group(2))
-            blob_versions[base_path].append((version, blob))
-
-    # Step 3: Select highest version for each base path
-    latest_blobs = {}
-    for base_path, versions in blob_versions.items():
-        # Pick the blob with max version number
-        latest_blob = max(versions, key=lambda x: x[0])[1]
-        latest_blobs[base_path] = latest_blob
-
-    # Step 4: Identify prompts from .json and .png files
-    prompt_map = defaultdict(dict)
-    for base_path, blob in latest_blobs.items():
-        filename = base_path.split('/')[-1]
-        if filename.endswith('_data.json'):
-            prompt = filename.replace('_data.json', '')
-            prompt_map[prompt]['json_blob'] = blob
-        elif filename.endswith('_VizChart.png'):
-            prompt = filename.replace('_VizChart.png', '')
-            prompt_map[prompt]['chart_blob'] = blob
-        elif filename.endswith('_viz_ds_agent.txt'):
-            prompt = filename.replace('_viz_ds_agent.txt', '')
-            prompt_map[prompt]['viz_ds_text'] = blob
-        elif filename.endswith('_viz_agent.txt'):
-            prompt = filename.replace('_viz_agent.txt', '')
-            prompt_map[prompt]['viz_text'] = blob
-        elif filename.endswith('_db_agent.txt'):
-            prompt = filename.replace('_db_agent.txt', '')
-            prompt_map[prompt]['db_text'] = blob
-        elif filename.endswith('_ds_agent.txt'):
-            prompt = filename.replace('_ds_agent.txt', '')
-            prompt_map[prompt]['ds_text'] = blob
-
-    # Step 5: Build result_data
-    result_data = {}
-    for idx, (prompt, blobs_dict) in enumerate(prompt_map.items(), start=1):
-        json_blob = blobs_dict.get('json_blob')
-        chart_blob = blobs_dict.get('chart_blob')
-        # viz_ds_blob = blobs_dict.get('viz_ds_text')
-        viz_blob = blobs_dict.get('viz_text')
-        db_blob =  blobs_dict.get('db_text')
-        ds_blob =  blobs_dict.get('ds_text')
-
-        result_data[f'prompt{idx}'] = {
-            'prompt': prompt.replace("_"," "),
-            'chart_url': None,
-            'json_data': None,
-            'viz_text': None,
-            # 'viz_ds_text': None,
-            'db_text': None,
-            'ds_text': None
-        }
-
-        # Download chart if present
-        if chart_blob:              # If chart is availabe
-            result_data[f'prompt{idx}']['chart_url'] = f'gs://{bucket_name}/{chart_blob.name}'
-            # Download JSON if present
-            if json_blob:
-                result_data[f'prompt{idx}']['json_data'] = f'gs://{bucket_name}/{json_blob.name}'
-                # Download viz agent text if present
-            if viz_blob:
-                viz_string = viz_blob.download_as_text()
-                result_data[f'prompt{idx}']['viz_text'] = viz_string
-            ## Need Alignment: Do we need to add db_text and ds_text as well in chart
-        elif ds_blob:
-            ds_string = ds_blob.download_as_text()
-            result_data[f'prompt{idx}']['ds_text'] = ds_string
-
-
-        elif db_blob:
-            db_string = db_blob.download_as_text()
+    # If `res` is not a JSON string, try to convert/pretty-print
+    report_text = res
+    try:
+        if isinstance(res, (dict, list)):
+            report_text = json.dumps(res, ensure_ascii=False, indent=2)
+        else:
+            # try to load and pretty print if it's a JSON string
             try:
-              # Remove markdown formatting lines if present
-              if db_string.startswith("```json"):
-                  db_string = db_string.split("\n", 1)[1]  # Remove first line
-              if db_string.endswith("```"):
-                  db_string = db_string.rsplit("\n", 1)[0]  # Remove last line
+                parsed = json.loads(res)
+                report_text = json.dumps(parsed, ensure_ascii=False, indent=2)
+            except Exception:
+                # leave as-is (string)
+                report_text = str(res)
+    except Exception:
+        report_text = str(res)
 
-              # Now parse the cleaned JSON string
-              data = json.loads(db_string)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(report_text)
 
-              # Extract channel names from `nl_results`
-              nl_text = data["nl_results"]
-              result_data[f'prompt{idx}']['db_text'] = nl_text
-            except:
-              result_data[f'prompt{idx}']['db_text'] = db_string
-    tool_context.state['text_viz_json'] = result_data
-    # save json in local as well 
-    json_output = json.dumps(result_data, indent =4)
-    with open("text_viz_json.json", "w") as f:
-        json.dump(json_output, f, indent=2)
-    return result_data
+    print(f"Report JSON saved to: {path}")
+    return "report formatted to json"

@@ -54,9 +54,6 @@ def setup_before_agent_call(callback_context: CallbackContext):
     callback_context.state["persona_context"] = """
 """
     
-
-
-
 root_agent = LlmAgent(
     name="Coordinator",
     model=os.getenv("ROOT_AGENT_MODEL"),
@@ -68,5 +65,5 @@ root_agent = LlmAgent(
         report_generator
     ],
     before_agent_callback=setup_before_agent_call,
-    disallow_transfer_to_parent= True
+    disallow_transfer_to_parent = True
 )

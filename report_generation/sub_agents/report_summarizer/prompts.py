@@ -12,7 +12,7 @@ def generate_report_prompt():
     *   **Text only:** Identified by `ds_text` or `db_text` fields containing the textual answer to a prompt.
     *   **Image:** Identified by `chart_base64_string` (containing the image URL), `json_data` (containing the data used to plot the image), and `viz_text` (a short description of the image).
 
-2.  **Report Template (String):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
+2.  **Report Template (JSON):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
 
 3.  **Report Context (String):** This provides additional background information or specific instructions relevant to the report's purpose, audience, or key focus areas.
 
@@ -27,7 +27,12 @@ def generate_report_prompt():
 4.  **Narrative Flow and Deduplication:** Ensure a logical and coherent narrative flow throughout the report. Actively identify and deduplicate any overlapping insights or information to present a concise and impactful report.
 5.  **Use Image URL in the place of Images.
 6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.
-7.  **Consider 'Report Context' and 'Filters'**: Use the 'Report Context' to understand the overarching goal and audience of the report, and apply the 'Filters' to narrow down and focus the data presented in the report.
+7.  **Consider 'Report Context' and 'Filters'**: Use the 'Report Context' to understand the overarching goal and audience of the report and the 'Filters' used to narrow down and focus the data presented in the report.
+
+**CONSTRAINTS**
+
+1. Only use the information provided in the 'Text and Visualization Summary' to generate the report. Do not introduce any external data or assumptions.
+2. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', clearly indicate this in the report with a note such as "Data not available for this section."
 
 **Few Shot Example:**
 
@@ -112,23 +117,62 @@ You are an expert report writer with a keen eye for detail and the ability to sy
 2.  **Report Template:**
 
     ```
-    # Website Performance Report: [Reporting Period]
-
-    ## 1. Executive Summary
-
-    ## 2. Introduction
-    ### 2.1. Report Purpose
-    ### 2.2. Scope and Methodology
-
-    ## 3. Key Website Metrics
-    ### 3.1. Top Performed Pages
-    ### 3.2. Hourly Bounce Rate Trends
-
-    ## 4. User Behavior Analysis
-    ### 4.1. Session Duration by User Type
-    ### 4.2. User Operating Systems
-
-    ## 5. Conclusion and Recommendations
+{
+    "document_title": "Website Performance Report",
+    "reporting_period": "[Reporting Period]",
+    "sections": [
+        {
+            "id": "1",
+            "title": "Executive Summary"
+        },
+        {
+            "id": "2",
+            "title": "Introduction",
+            "subsections": [
+                {
+                    "id": "2.1",
+                    "title": "Report Purpose"
+                },
+                {
+                    "id": "2.2",
+                    "title": "Scope and Methodology"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Key Website Metrics",
+            "subsections": [
+                {
+                    "id": "3.1",
+                    "title": "Top Performed Pages"
+                },
+                {
+                    "id": "3.2",
+                    "title": "Hourly Bounce Rate Trends"
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "title": "User Behavior Analysis",
+            "subsections": [
+                {
+                    "id": "4.1",
+                    "title": "Session Duration by User Type"
+                },
+                {
+                    "id": "4.2",
+                    "title": "User Operating Systems"
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "title": "Conclusion and Recommendations"
+        }
+    ]
+}
     ```
 
 3.  **Report Context:**
@@ -312,7 +356,7 @@ You are an expert data parser and markdown-to-JSON converter. Your task is to tr
   return prompt
 
 def return_instructions_json():
-  prompt = """You are an intelligent Report Integration Agent responsible for transforming raw findings into a structured, machine-readable JSON report. You 
+  prompt = """You are an intelligent Report Integration Agent responsible for transforming raw findings into a structured, machine-readable JSON report.
 
 Tool Usage Requirements:
 generate_report: generates markdown report. Accepts only tool context.
