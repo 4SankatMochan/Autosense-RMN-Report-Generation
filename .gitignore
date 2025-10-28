@@ -8,6 +8,8 @@ __pycache__/
 
 #logs
 *debug_log*.txt
+*user_query_*.txt
+*prompt_list_*.json
 
 #logs and test results
 *debug_log*.txt
