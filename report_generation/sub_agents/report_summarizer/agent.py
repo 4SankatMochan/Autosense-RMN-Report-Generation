@@ -11,7 +11,7 @@ root_agent = Agent(
     model=os.getenv("TEXT_VIZ_JSON_AGENT"),
     description= return_instructions_json(),
     instruction= return_instructions_json(),
-    name="text_viz_report_summarizer_agent",
+    name="report_summarizer_agent",
     tools=[generate_report,
         format_report,
         load_artifacts],

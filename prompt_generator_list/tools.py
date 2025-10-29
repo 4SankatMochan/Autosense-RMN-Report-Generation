@@ -6,6 +6,33 @@ from google.adk.tools import ToolContext
 from vertexai.preview.generative_models import GenerativeModel
 
 
+# ✅ Helper to safely parse bools
+def _parse_bool(v, default=True):
+    if isinstance(v, bool):
+        return v
+    if isinstance(v, (int, float)):
+        return bool(v)
+    if isinstance(v, str):
+        s = v.strip().lower()
+        if s in {"true", "1", "yes", "y"}:
+            return True
+        if s in {"false", "0", "no", "n"}:
+            return False
+    return default
+
+
+# ✅ Helper to safely extract text from Gemini response
+def safe_extract_text(response):
+    try:
+        if hasattr(response, "text"):
+            return response.text.strip()
+        if hasattr(response, "candidates") and response.candidates:
+            return response.candidates[0].content.parts[0].text.strip()
+        return str(response).strip()
+    except Exception:
+        return ""
+
+
 async def generate_prompt(tool_context: ToolContext, **kwargs):
     """Generate structured Instruction + List of Prompts safely for Campaign Performance Report."""
 
@@ -14,19 +41,6 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     print(f"Session ID: {session_id}")
 
     # --- CONFIG ---
-    def _parse_bool(v, default=True):
-        if isinstance(v, bool):
-            return v
-        if isinstance(v, (int, float)):
-            return bool(v)
-        if isinstance(v, str):
-            s = v.strip().lower()
-            if s in {"true", "1", "yes", "y"}:
-                return True
-            if s in {"false", "0", "no", "n"}:
-                return False
-        return default
-
     use_gemini = _parse_bool(tool_context.state.get("use_gemini", True))
     temperature = float(tool_context.state.get("temperature", 0.2))
     model_name = (
@@ -34,7 +48,8 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         or os.getenv("SEQUENTIAL_AGENT")
         or "gemini-1.5-pro"
     )
-    tool_context.state["modelused"]=model_name
+    tool_context.state["modelused"] = model_name
+
     # 1️⃣ Extract user query
     user_query = str(tool_context.state.get("user_query", "")).strip()
     print(f"🧠 User Query: {user_query}")
@@ -125,9 +140,7 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     except Exception as e:
         print(f"⚠️ Failed to load report schema: {e}")
         report_schema = {}
-
     tool_context.state['report_template'] = report_schema
-    
     campaign_report = report_schema.get("Campaign_Performance_Report", {})
     report_sections = list(campaign_report.keys()) or [
         "1.Context",
@@ -138,7 +151,7 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         "6.Recommendations",
     ]
 
-    # 9️⃣ Generate prompts
+    # 8️⃣ Generate prompts safely with Gemini
     prompt_list = []
     if use_gemini:
         fusion_prompt = f"""
@@ -154,12 +167,21 @@ Return only a JSON array of prompt strings.
         try:
             model = GenerativeModel(model_name)
             response = model.generate_content(fusion_prompt, generation_config={"temperature": temperature})
-            tool_context.state["model_response"]=response
-            prompt_list = json.loads(response.candidates[0].content.parts[0].text.strip())
+
+            response_text = safe_extract_text(response)
+            tool_context.state["model_response"] = response_text
+
+            try:
+                prompt_list = json.loads(response_text.strip())
+            except json.JSONDecodeError:
+                print("⚠️ Gemini returned non-JSON. Falling back.")
+                prompt_list = []
+
         except Exception as e:
             print(f"⚠️ Gemini failed: {e}. Using fallback.")
             use_gemini = False
 
+    # 9️⃣ Fallback prompt generator
     if not use_gemini or not prompt_list:
         for section_name in report_sections:
             if "Executive" in section_name:
@@ -175,18 +197,16 @@ Return only a JSON array of prompt strings.
             else:
                 prompt_list.append(f"Summarize key insights for {section_name} of {brand_name}'s {time_period} performance report.")
 
-    # ✅ Save prompt list & user query separately with timestamp
+    # 🔟 Save prompt list & user query with timestamp
     try:
         log_dir = tool_context.state.get("log_dir", "logs")
         os.makedirs(log_dir, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        # Save prompt list
         prompt_json_path = os.path.join(log_dir, f"prompt_list_{timestamp}.json")
         with open(prompt_json_path, "w", encoding="utf-8") as f:
             json.dump({"timestamp": timestamp, "session_id": session_id, "prompt_list": prompt_list}, f, indent=2)
 
-        # Save user query separately
         user_query_log = os.path.join(log_dir, f"user_query_{timestamp}.txt")
         with open(user_query_log, "w", encoding="utf-8") as f:
             f.write(f"Timestamp: {timestamp}\nSession ID: {session_id}\nUser Query: {user_query}\n")
@@ -198,7 +218,7 @@ Return only a JSON array of prompt strings.
         print(f"⚠️ Failed to save logs: {e}")
 
     # ✅ Return compact payload
-    tool_context.state["prompt_generator_out"] = {
+    tool_context.state["prompt_generated"] = {
         "status": "success",
         "persona": persona_name,
         "prompt_list": prompt_list,
@@ -210,36 +230,7 @@ Return only a JSON array of prompt strings.
         },
         "timestamp": datetime.now().isoformat(),
     }
+    tool_context.state["prompt_generator_out"] = prompt_list
 
-<<<<<<< Updated upstream
     print(f"🟢 Generated {len(prompt_list)} prompts successfully.")
     return prompt_list
-=======
-    # 🪵 Logging block
-    try:
-        log_dir = tool_context.state.get("log_dir", "logs")
-        os.makedirs(log_dir, exist_ok=True)
-        log_path = os.path.join(log_dir, f"generated_prompts_{session_id}.txt")
-
-        with open(log_path, "a", encoding="utf-8") as log_file:
-            log_file.write("\n" + "=" * 80 + "\n")
-            log_file.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            log_file.write(f"Session ID: {session_id}\n")
-            log_file.write(f"Model: {model_name}\nTemperature: {temperature}\n")
-            log_file.write(f"Persona: {persona_name}\nBrand: {brand_name}\nPlatform: {platform}\n")
-            log_file.write(f"Use Gemini: {use_gemini}\n")
-            log_file.write("\n--- Instruction Block ---\n")
-            log_file.write(instruction_md + "\n")
-            log_file.write("\n--- Generated Prompts ---\n")
-            for i, p in enumerate(prompt_list, start=1):
-                log_file.write(f"{i}. {p}\n")
-            log_file.write("=" * 80 + "\n")
-
-        print(f"🪵 Logged generated prompts to: {log_path}")
-    except Exception as log_err:
-        print(f"⚠️ Failed to log generated prompts: {log_err}")
-
-    tool_context.state["prompt_generator_out"] = prompt_list
-    print(f"🟢 Generated {len(prompt_list)} report prompts successfully.")
-    return output_payload
->>>>>>> Stashed changes
