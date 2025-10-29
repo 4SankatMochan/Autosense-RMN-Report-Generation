@@ -97,13 +97,6 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         user_query,
     )
 
-    # 🆕 Detect campaign ID if present (CMP_XXXX style)
-    #campaign_id_match = re.search(r"(?i)\b(CMP[_\-]?\d{4,})\b", user_query)
-    #campaign_id_match = re.search(r"(?i)(CMP[_\-]?\d{4,})", user_query)
-    campaign_id_match = re.search(r"(?i)(CMP[_\-0-9]+)", user_query)
-
-    campaign_id = campaign_id_match.group(1).strip() if campaign_id_match else ""
-
     # 4️⃣ Fallback defaults
     persona_name = persona_match.group(1).strip() if persona_match else tool_context.state.get(
         "default_persona", "Client Solution Manager"
@@ -128,12 +121,8 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         "platform": platform,
         "time_period": time_period,
         "report_type": report_type,
-        "campaign_id": campaign_id,
     })
-
     print(f"🧾 Filters: Persona={persona_name}, Brand={brand_name}, Platform={platform}, Period={time_period}")
-    if campaign_id:
-        print(f"🎯 Campaign ID detected: {campaign_id}")
 
     # 5️⃣ Persona context
     persona_data = persona_json.get(persona_name, {})
@@ -177,10 +166,8 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     # 8️⃣ Generate prompts safely with Gemini (final version with logging)
     prompt_list = []
     if use_gemini:
-        # 🧩 Include campaign ID in prompt only if available
-        campaign_phrase = f" (Campaign ID: {campaign_id})" if campaign_id else ""
         fusion_prompt = f"""
-You are acting as a {persona_name} preparing a {report_type} for {brand_name}{campaign_phrase} on {platform}, covering {time_period}.
+You are acting as a {persona_name} preparing a {report_type} for {brand_name} on {platform}, covering {time_period}.
 Generate a natural list of user prompts (not SQL) to help fill each section of the report:
 {', '.join(report_sections)}.
 
@@ -207,7 +194,13 @@ Return only a JSON array of prompt strings.
 
             tool_context.state["model_response"] = response_text
 
-            # ✅ Try JSON parse (auto-remove Markdown wrappers)
+            # ✅ Try JSON parse
+            # try:
+            #     prompt_list = json.loads(response_text.strip())
+            # except json.JSONDecodeError:
+            #     print("⚠️ Gemini returned non-JSON format. Using fallback prompt generation.")
+            #     prompt_list = []
+            # # ✅ Try JSON parse (auto-remove Markdown wrappers)
             try:
                 cleaned_text = response_text.strip()
                 if cleaned_text.startswith("```"):
@@ -219,6 +212,7 @@ Return only a JSON array of prompt strings.
             except json.JSONDecodeError as e:
                 print(f"⚠️ Gemini returned non-JSON format ({e}). Using fallback prompt generation.")
                 prompt_list = []
+    
 
             # 🪵 Log full raw response for future debugging
             try:
@@ -312,7 +306,6 @@ Return only a JSON array of prompt strings.
             "platform": platform,
             "duration": time_period,
             "report_type": report_type,
-            "campaign_id": campaign_id,
         },
         "timestamp": datetime.now().isoformat(),
     }

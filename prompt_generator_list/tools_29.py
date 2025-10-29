@@ -97,29 +97,12 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         user_query,
     )
 
-    # 🆕 Detect campaign ID if present (CMP_XXXX style)
-    #campaign_id_match = re.search(r"(?i)\b(CMP[_\-]?\d{4,})\b", user_query)
-    #campaign_id_match = re.search(r"(?i)(CMP[_\-]?\d{4,})", user_query)
-    campaign_id_match = re.search(r"(?i)(CMP[_\-0-9]+)", user_query)
-
-    campaign_id = campaign_id_match.group(1).strip() if campaign_id_match else ""
-
     # 4️⃣ Fallback defaults
-    persona_name = persona_match.group(1).strip() if persona_match else tool_context.state.get(
-        "default_persona", "Client Solution Manager"
-    )
-    brand_name = brand_match.group(1).strip() if brand_match else tool_context.state.get(
-        "default_brand", "Unknown Brand"
-    )
-    platform = platform_match.group(1).strip() if platform_match else tool_context.state.get(
-        "default_platform", "Manager"
-    )
-    time_period = time_match.group(0).strip() if time_match else tool_context.state.get(
-        "default_time_period", "Current Period"
-    )
-    report_type = report_type_match.group(1).strip().title() if report_type_match else tool_context.state.get(
-        "default_report_type", "Campaign Performance Report"
-    )
+    persona_name = persona_match.group(1).strip() if persona_match else tool_context.state.get("default_persona", "Client Solution Manager")
+    brand_name = brand_match.group(1).strip() if brand_match else tool_context.state.get("default_brand", "Unknown Brand")
+    platform = platform_match.group(1).strip() if platform_match else tool_context.state.get("default_platform", "Manager")
+    time_period = time_match.group(0).strip() if time_match else tool_context.state.get("default_time_period", "Current Period")
+    report_type = report_type_match.group(1).strip().title() if report_type_match else tool_context.state.get("default_report_type", "Campaign Performance Report")
 
     # 🪄 Store extracted filters
     tool_context.state.update({
@@ -128,18 +111,12 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         "platform": platform,
         "time_period": time_period,
         "report_type": report_type,
-        "campaign_id": campaign_id,
     })
-
     print(f"🧾 Filters: Persona={persona_name}, Brand={brand_name}, Platform={platform}, Period={time_period}")
-    if campaign_id:
-        print(f"🎯 Campaign ID detected: {campaign_id}")
 
     # 5️⃣ Persona context
     persona_data = persona_json.get(persona_name, {})
-    persona_tone = ", ".join(persona_data.get("tone", ["Professional", "concise"])) if isinstance(
-        persona_data.get("tone"), list
-    ) else persona_data.get("tone", "Professional, concise")
+    persona_tone = ", ".join(persona_data.get("tone", ["Professional", "concise"])) if isinstance(persona_data.get("tone"), list) else persona_data.get("tone", "Professional, concise")
     persona_focus_kpis = persona_data.get("focus_kpis", ["ROAS", "CTR", "Conversions"])
 
     # 6️⃣ Persona report matrix
@@ -163,7 +140,7 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     except Exception as e:
         print(f"⚠️ Failed to load report schema: {e}")
         report_schema = {}
-    tool_context.state["report_template"] = report_schema
+    tool_context.state['report_template'] = report_schema
     campaign_report = report_schema.get("Campaign_Performance_Report", {})
     report_sections = list(campaign_report.keys()) or [
         "1.Context",
@@ -174,13 +151,46 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         "6.Recommendations",
     ]
 
+#     # 8️⃣ Generate prompts safely with Gemini
+#     prompt_list = []
+#     if use_gemini:
+#         fusion_prompt = f"""
+# You are acting as a {persona_name} preparing a {report_type} for {brand_name} on {platform}, covering {time_period}.
+# Generate a natural list of user prompts (not SQL) to help fill each section of the report:
+# {', '.join(report_sections)}.
+
+# Tone: {persona_tone}.
+# Focus KPIs: {', '.join(persona_focus_kpis)}.
+# Data granularity: {data_granularity}.
+# Return only a JSON array of prompt strings.
+# """
+#         try:
+#             model = GenerativeModel(model_name)
+#             #response = model.generate_content(fusion_prompt, generation_config={"temperature": temperature})
+#             response = model.generate_content([fusion_prompt], generation_config={"temperature": temperature})
+#             print("🔍 Full Gemini response:", response)
+#             print("🔍 Extracted text:", safe_extract_text(response))
+
+
+#             response_text = safe_extract_text(response)
+#             tool_context.state["model_response"] = response_text
+
+#             try:
+#                 prompt_list = json.loads(response_text.strip())
+#             except json.JSONDecodeError:
+#                 print("⚠️ Gemini returned non-JSON. Falling back.")
+#                 prompt_list = []
+
+#         except Exception as e:
+#             print(f"⚠️ Gemini failed: {e}. Using fallback.")
+#             use_gemini = False
+
     # 8️⃣ Generate prompts safely with Gemini (final version with logging)
-    prompt_list = []
-    if use_gemini:
-        # 🧩 Include campaign ID in prompt only if available
-        campaign_phrase = f" (Campaign ID: {campaign_id})" if campaign_id else ""
-        fusion_prompt = f"""
-You are acting as a {persona_name} preparing a {report_type} for {brand_name}{campaign_phrase} on {platform}, covering {time_period}.
+prompt_list = []
+if use_gemini:
+
+    fusion_prompt = f"""
+You are acting as a {persona_name} preparing a {report_type} for {brand_name} on {platform}, covering {time_period}.
 Generate a natural list of user prompts (not SQL) to help fill each section of the report:
 {', '.join(report_sections)}.
 
@@ -189,92 +199,73 @@ Focus KPIs: {', '.join(persona_focus_kpis)}.
 Data granularity: {data_granularity}.
 Return only a JSON array of prompt strings.
 """
+    try:
+        # ✅ Always pass as list for Vertex AI
+        model = GenerativeModel(model_name)
+        response = model.generate_content(
+            [fusion_prompt],
+            generation_config={"temperature": temperature}
+        )
+
+        # 🔍 Debug prints
+        print("🔍 Raw Gemini response object:", response)
+        print("🔍 Response.text:", getattr(response, "text", None))
+
+        # ✅ Extract text safely
+        response_text = safe_extract_text(response)
+        print("🧾 Extracted Text (first 300 chars):", response_text[:300], "...")
+
+        tool_context.state["model_response"] = response_text
+
+        # ✅ Try JSON parse
         try:
-            # ✅ Always pass as list for Vertex AI
-            model = GenerativeModel(model_name)
-            response = model.generate_content(
-                [fusion_prompt],
-                generation_config={"temperature": temperature}
-            )
+            prompt_list = json.loads(response_text.strip())
+        except json.JSONDecodeError:
+            print("⚠️ Gemini returned non-JSON format. Using fallback prompt generation.")
+            prompt_list = []
 
-            # 🔍 Debug prints
-            print("🔍 Raw Gemini response object:", response)
-            print("🔍 Response.text:", getattr(response, "text", None))
+        # 🪵 Log full raw response for future debugging
+        try:
+            log_dir = tool_context.state.get("log_dir", "logs")
+            os.makedirs(log_dir, exist_ok=True)
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-            # ✅ Extract text safely
-            response_text = safe_extract_text(response)
-            print("🧾 Extracted Text (first 300 chars):", response_text[:300], "...")
+            raw_log_path = os.path.join(log_dir, f"gemini_raw_response_{ts}.json")
 
-            tool_context.state["model_response"] = response_text
+            # Convert response to serializable form
+            raw_data = {
+                "timestamp": ts,
+                "prompt_used": fusion_prompt.strip(),
+                "raw_response": getattr(response, "text", None) or str(response),
+            }
 
-            # ✅ Try JSON parse (auto-remove Markdown wrappers)
-            try:
-                cleaned_text = response_text.strip()
-                if cleaned_text.startswith("```"):
-                    cleaned_text = re.sub(r"^```(?:json)?", "", cleaned_text)
-                    cleaned_text = re.sub(r"```$", "", cleaned_text)
-                cleaned_text = cleaned_text.strip()
+            with open(raw_log_path, "w", encoding="utf-8") as f:
+                json.dump(raw_data, f, indent=2)
 
-                prompt_list = json.loads(cleaned_text)
-            except json.JSONDecodeError as e:
-                print(f"⚠️ Gemini returned non-JSON format ({e}). Using fallback prompt generation.")
-                prompt_list = []
+            print(f"🪵 Saved Gemini raw response log: {raw_log_path}")
+        except Exception as log_err:
+            print(f"⚠️ Failed to log raw Gemini response: {log_err}")
 
-            # 🪵 Log full raw response for future debugging
-            try:
-                log_dir = tool_context.state.get("log_dir", "logs")
-                os.makedirs(log_dir, exist_ok=True)
-                ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-                raw_log_path = os.path.join(log_dir, f"gemini_raw_response_{ts}.json")
-
-                raw_data = {
-                    "timestamp": ts,
-                    "prompt_used": fusion_prompt.strip(),
-                    "raw_response": getattr(response, "text", None) or str(response),
-                }
-
-                with open(raw_log_path, "w", encoding="utf-8") as f:
-                    json.dump(raw_data, f, indent=2)
-
-                print(f"🪵 Saved Gemini raw response log: {raw_log_path}")
-            except Exception as log_err:
-                print(f"⚠️ Failed to log raw Gemini response: {log_err}")
-
-        except Exception as e:
-            print(f"⚠️ Gemini call failed: {e}")
-            use_gemini = False
+    except Exception as e:
+        print(f"⚠️ Gemini call failed: {e}")
+        use_gemini = False
+        
 
     # 9️⃣ Fallback prompt generator
     if not use_gemini or not prompt_list:
         for section_name in report_sections:
             if "Executive" in section_name:
-                prompt_list.append(
-                    f"State key campaign objectives for {brand_name} in {time_period}. "
-                    f"Summarize {data_granularity.lower()} ROAS, CTR, and Conversions."
-                )
+                prompt_list.append(f"State key campaign objectives for {brand_name} in {time_period}. Summarize {data_granularity.lower()} ROAS, CTR, and Conversions.")
             elif "Overview" in section_name:
-                prompt_list.append(
-                    f"Provide performance overview across channels for {brand_name} in {time_period}. "
-                    f"Include spend, ROAS, and CTR."
-                )
+                prompt_list.append(f"Provide performance overview across channels for {brand_name} in {time_period}. Include spend, ROAS, and CTR.")
             elif "Analysis" in section_name:
-                prompt_list.append(
-                    f"Analyze {data_granularity.lower()} trends for {brand_name} in {time_period}, "
-                    f"focusing on ROAS, CTR, and Conversions."
-                )
+                prompt_list.append(f"Analyze {data_granularity.lower()} trends for {brand_name} in {time_period}, focusing on ROAS, CTR, and Conversions.")
             elif "Recommendations" in section_name:
-                prompt_list.append(
-                    f"Suggest actionable optimizations for future campaigns of {brand_name} based on {time_period} insights."
-                )
+                prompt_list.append(f"Suggest actionable optimizations for future campaigns of {brand_name} based on {time_period} insights.")
             elif "Context" in section_name:
-                prompt_list.append(
-                    f"List campaign IDs, objectives, duration, and spend details for {brand_name}'s {time_period} campaign."
-                )
+                prompt_list.append(f"List campaign IDs, objectives, duration, and spend details for {brand_name}'s {time_period} campaign.")
             else:
-                prompt_list.append(
-                    f"Summarize key insights for {section_name} of {brand_name}'s {time_period} performance report."
-                )
+                prompt_list.append(f"Summarize key insights for {section_name} of {brand_name}'s {time_period} performance report.")
 
     # 🔟 Save prompt list & user query with timestamp
     try:
@@ -284,17 +275,11 @@ Return only a JSON array of prompt strings.
 
         prompt_json_path = os.path.join(log_dir, f"prompt_list_{timestamp}.json")
         with open(prompt_json_path, "w", encoding="utf-8") as f:
-            json.dump(
-                {"timestamp": timestamp, "session_id": session_id, "prompt_list": prompt_list},
-                f,
-                indent=2,
-            )
+            json.dump({"timestamp": timestamp, "session_id": session_id, "prompt_list": prompt_list}, f, indent=2)
 
         user_query_log = os.path.join(log_dir, f"user_query_{timestamp}.txt")
         with open(user_query_log, "w", encoding="utf-8") as f:
-            f.write(
-                f"Timestamp: {timestamp}\nSession ID: {session_id}\nUser Query: {user_query}\n"
-            )
+            f.write(f"Timestamp: {timestamp}\nSession ID: {session_id}\nUser Query: {user_query}\n")
 
         print(f"🪵 Saved prompt list: {prompt_json_path}")
         print(f"🪵 Saved user query: {user_query_log}")
@@ -312,7 +297,6 @@ Return only a JSON array of prompt strings.
             "platform": platform,
             "duration": time_period,
             "report_type": report_type,
-            "campaign_id": campaign_id,
         },
         "timestamp": datetime.now().isoformat(),
     }

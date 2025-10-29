@@ -11,6 +11,13 @@ __pycache__/
 *user_query_*.txt
 *prompt_list_*.json
 
+
+# Ignore logs and temp files
+logs/
+*.json
+test_ssl.py
+
+
 #logs and test results
 *debug_log*.txt
 *evaluation_results*.xlsx
