@@ -22,6 +22,8 @@ test_ssl.py
 *debug_log*.txt
 *evaluation_results*.xlsx
 generated_prompts_*.txt
+report_json*.json
+report_markdown*.md
 
 
 # Jupyter

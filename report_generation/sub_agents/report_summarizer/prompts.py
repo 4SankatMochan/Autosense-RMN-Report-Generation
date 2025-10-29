@@ -12,7 +12,7 @@ def generate_report_prompt():
     *   **Text only:** Identified by `ds_text` or `db_text` fields containing the textual answer to a prompt.
     *   **Image:** Identified by `chart_base64_string` (containing the image URL), `json_data` (containing the data used to plot the image), and `viz_text` (a short description of the image).
 
-2.  **Report Template (JSON):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
+2.  **Report Template (String):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
 
 3.  **Report Context (String):** This provides additional background information or specific instructions relevant to the report's purpose, audience, or key focus areas.
 
@@ -117,62 +117,17 @@ You are an expert report writer with a keen eye for detail and the ability to sy
 2.  **Report Template:**
 
     ```
-{
-    "document_title": "Website Performance Report",
-    "reporting_period": "[Reporting Period]",
-    "sections": [
-        {
-            "id": "1",
-            "title": "Executive Summary"
-        },
-        {
-            "id": "2",
-            "title": "Introduction",
-            "subsections": [
-                {
-                    "id": "2.1",
-                    "title": "Report Purpose"
-                },
-                {
-                    "id": "2.2",
-                    "title": "Scope and Methodology"
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "title": "Key Website Metrics",
-            "subsections": [
-                {
-                    "id": "3.1",
-                    "title": "Top Performed Pages"
-                },
-                {
-                    "id": "3.2",
-                    "title": "Hourly Bounce Rate Trends"
-                }
-            ]
-        },
-        {
-            "id": "4",
-            "title": "User Behavior Analysis",
-            "subsections": [
-                {
-                    "id": "4.1",
-                    "title": "Session Duration by User Type"
-                },
-                {
-                    "id": "4.2",
-                    "title": "User Operating Systems"
-                }
-            ]
-        },
-        {
-            "id": "5",
-            "title": "Conclusion and Recommendations"
-        }
-    ]
-}
+    # [Report Title]
+    ## 1. Executive Summary
+    ## 2. Introduction
+    ### 2.1. Background
+    ### 2.2. Report Objectives
+    ## 3. Channel Performance Overview
+    ### 3.1. Distinct Channels Identified
+    ### 3.2. Total Attributed Sales by Channel
+    ## 4. Daily Performance Analysis
+    ### 4.1. Daily Attributed Sales Value
+    ## 5. Conclusion and Recommendations
     ```
 
 3.  **Report Context:**

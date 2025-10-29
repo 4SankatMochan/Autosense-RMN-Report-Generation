@@ -1,239 +1,105 @@
 from google import genai
 from google.genai import types
-import os
 from .prompts import generate_report_prompt, format_report_prompt
 from typing import List, Optional
 from google.adk.tools import ToolContext
 from vertexai.preview.generative_models import GenerativeModel
+from pathlib import Path
 import json
+import os
+from datetime import datetime
 
-# template = """# [Report Title]
+def timestamped_filename(base_name: str, ext: str) -> str:
+    """
+    Generates a timestamped filename.
+    Example: timestamped_filename('report_markdown', 'md')
+    -> 'report_markdown_20251029_144530.md'
+    """
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return f"{base_name}_{ts}.{ext}"
 
-# ## 1. Executive Summary
-# ## 2. Introduction
-# ### 2.1. Background
-# ### 2.2. Report Objectives
-# ## 3. Channel Performance Overview
-# ### 3.1. Distinct Channels Identified
-# ### 3.2. Total Attributed Sales by Channel
-# ## 4. Daily Performance Analysis
-# ### 4.1. Daily Attributed Sales Value
-# ## 5. Conclusion and Recommendations
-# """
-# context = """This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
-# """
-# filters = """nil
-# """
-######## TESTING PURPOSES ONLY ########
-report_template = """
-{
-  "Campaign_Performance_Report": {
-    "1.Context": {
-      "Campaigns": [
-        {
-          "Campaign_ID": "",
-          "Campaign_Name": "",
-          "Brand_Name": "",
-          "Category": "",
-          "Media_Types": [],
-          "Channels": [],
-          "Objective": "",
-          "Sub_Objective": [],
-          "Campaign_Manager": "",
-          "Campaign_Duration": {
-            "Start_Date": "",
-            "End_Date": ""
-          },
-          "Planned_Budget": "",
-          "Actual_Spend": ""
-        }
-      ]
-    },
-    "2.Customization_Options": {
-      "Timeline": ["Full campaign period", "Weekly report view", "Daily report view"],
-      "By_Creative": ["App", "Channel-CTV", "Onsite", "Offsite", "Instore"]
-    },
-    "3.Executive_Summary": {
-      "Overview": "",
-      "Overall_Performance": "",
-      "Channel_Format_Performance": "",
-      "Optimization_Insight": ""
-    },
-    "4.Campaign_Overview": {
-      "Campaign_Summary_Table": [
-        {
-          "Start_Date": "",
-          "End_Date": "",
-          "Campaign_ID": "",
-          "Campaign_Budget": "",
-          "Campaign_Objective": "",
-          "Total_Ad_Spend": "",
-          "Budget_Utilization_Percentage": ""
-        }
-      ],
-      "Objective_Awareness": {
-        "Metrics_Table": [
-          {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Unique_Reach": "",
-            "Frequency": "",
-            "ROAS": "",
-            "CPM": ""
-          }
-        ]
-      },
-      "Objective_Consideration": {
-        "Metrics_Table": [
-          {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Unique_Reach": "",
-            "Clicks": "",
-            "CTR": "",
-            "CPC": "",
-            "CPCV": "",
-            "Viewed_Units": "",
-            "Clicked_Units": "",
-            "Add_To_Cart": ""
-          }
-        ]
-      },
-      "Objective_Conversion": {
-        "Metrics_Table": [
-          {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Clicks": "",
-            "CTR": "",
-            "CVR": "",
-            "Viewed_Transactions": "",
-            "Clicked_Transactions": "",
-            "Viewed_Revenue": "",
-            "Clicked_Revenue": "",
-            "Total_Campaign_Revenue": "",
-            "ROAS": "",
-            "Incremental_Sales_Lift": "",
-            "Conversions": ""
-          }
-        ]
-      },
-      "Objective_Retention": {
-        "Metrics_Table": [
-          {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Conversions": "",
-            "CVR": "",
-            "Transactions_Repeat": "",
-            "Units_Sold": "",
-            "Total_Campaign_Revenue": "",
-            "Incremental_Sales_Lift": "",
-            "ROAS": ""
-          }
-        ]
-      }
-    },
-    "5.Campaign_Wise_Analysis": {
-      "Visual_Layers_Per_Objective": [
-        "Awareness",
-        "Consideration",
-        "Conversion",
-        "Retention"
-      ],
-      "Visualizations": {
-        "Impressions_Reach_Trend": "Line Chart",
-        "CTR_Trend": "Line Chart",
-        "Spend_vs_Revenue": "Column Chart",
-        "ROAS_Trend": "Line Chart",
-        "Frequency_Distribution": "Dual Axis Chart",
-        "Add_to_Cart_Funnel": "Funnel Chart",
-        "ROAS_by_Channel": "Bar Chart",
-        "Channel_Comparison_Retention_CVR": "Bar Chart",
-        "Viewed_vs_Clicked_Units": "Dual Axis Line",
-        "Conversion_Funnel": "Funnel Chart",
-        "Channel_wise_Reach_CPM": "Clustered Bar Chart",
-        "CPA_vs_CVR": "Scatter Plot"
-      },
-      "Campaign_Details": [
-        {
-          "Campaign_Name": "",
-          "Campaign_ID": "",
-          "Campaign_Ad_IDs": [],
-          "Campaign_Duration": "",
-          "KPIs_Analyzed": [],
-          "Campaign_Objective": "",
-          "Metrics": {
-            "Impressions": "",
-            "ROAS": "",
-            "Conversions": "",
-            "CTR": ""
-          },
-          "Campaign_Analysis_Text": "",
-          "Weekly_Performance": [
-            {
-              "Week": 1,
-              "Conversions": "",
-              "Revenue": ""
-            },
-            {
-              "Week": 2,
-              "Conversions": "",
-              "Revenue": ""
-            },
-            {
-              "Week": 3,
-              "Conversions": "",
-              "Revenue": ""
-            },
-            {
-              "Week": 4,
-              "Conversions": "",
-              "Revenue": ""
-            }
-          ],
-          "Overall_Campaign_Impact": ""
-        }
-      ],
-      "Campaign_Comparison": {
-        "Applicable_Condition": "Only if objective and SKUs are same",
-        "Comparison_Notes": ""
-      }
-    },
-    "6.Recommendations": [
-      {
-        "Title": "Granular Temporal and Contextual Analysis",
-        "Action": "",
-        "Objective": ""
-      },
-      {
-        "Title": "Dynamic Budget Allocation and Bidding Strategy Optimization",
-        "Action": "",
-        "Objective": ""
-      },
-      {
-        "Title": "Systematic A/B Testing of Creative and Landing Page Elements",
-        "Action": "",
-        "Objective": ""
-      }
-    ]
-  }
-}
 
+def load_report_inputs(tool_context=None, auto_handle=True):
+    """
+    Load the report template, summary, context, and filters.
+    - If auto_handle=True:
+        1. Checks tool_context.state for available values.
+        2. Falls back to reading files and local defaults.
+    - If auto_handle=False:
+        Uses only local static file references and strings defined below.
+
+    Returns:
+        (template_text, summary_text, context_text, filters_value)
+    """
+
+    print(f"\n[load_report_inputs] Auto-handle mode: {auto_handle}")
+    state = getattr(tool_context, "state", {}) if tool_context else {}
+
+    base_dir = Path(__file__).parent
+    template_path = base_dir / "Campaign_Performance_Report_Template.md"
+    summary_path = base_dir / "Campaign_Performance_Summary_Text_Viz.json"
+
+    # Default local context text
+    local_context = """This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
 """
-report_context= """This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
-"""
-filters = {
-    "persona": "Marketing Manager",
-    "brand": "Dove",
-    "platform": "Google Ads",
-    "duration": "Last Quarter",
-    "report_type": "Campaign Performance Report"
-}
-#######################################
+    local_filters = "nil"
+
+    # Default template and summary if manual flag (auto_handle=False)
+    if not auto_handle:
+        print("[load_report_inputs] Using manual (local) references only.")
+        if not template_path.exists():
+            raise FileNotFoundError(f"Template file not found: {template_path.resolve()}")
+        if not summary_path.exists():
+            raise FileNotFoundError(f"Summary JSON not found: {summary_path.resolve()}")
+
+        template = template_path.read_text(encoding="utf-8")
+        with open(summary_path, "r", encoding="utf-8") as f:
+            summary_json = json.load(f)
+        summary = json.dumps(summary_json, indent=4, ensure_ascii=False)
+        print(f"Template loaded ✅ length: {len(template)}")
+        print(f"Summary loaded ✅ keys: {list(summary_json.keys())}")
+        return template, summary, local_context, local_filters
+
+    # --- Auto handle mode ---
+    # Prefer values from tool_context.state when available
+    template_text = None
+    summary_text = None
+    context_text = None
+    filters_value = None
+
+    if isinstance(state, dict):
+        template_text = state.get("report_template")
+        summary_text = state.get("text_viz_json")
+        context_text = state.get("report_context")
+        filters_value = state.get("report_filters")
+
+    # Fallback to file-based loading if missing
+    if not template_text:
+        if not template_path.exists():
+            raise FileNotFoundError(f"Template file not found: {template_path.resolve()}")
+        template_text = template_path.read_text(encoding="utf-8")
+
+    if not summary_text:
+        if not summary_path.exists():
+            raise FileNotFoundError(f"Summary JSON not found: {summary_path.resolve()}")
+        with open(summary_path, "r", encoding="utf-8") as f:
+            summary_json = json.load(f)
+        summary_text = json.dumps(summary_json, indent=4, ensure_ascii=False)
+
+    if not context_text:
+        context_text = local_context
+
+    if not filters_value:
+        filters_value = local_filters
+
+    print(f"[load_report_inputs] Template length: {len(template_text)}")
+    print(f"[load_report_inputs] Summary length: {len(summary_text)}")
+    print(f"[load_report_inputs] Context length: {len(context_text)}")
+    print(f"[load_report_inputs] Filters: {filters_value}")
+
+    return template_text, summary_text, context_text, filters_value
+
+
 
 def llm_call(prompt):
     model = GenerativeModel(os.getenv("TEXT_VIZ_JSON_AGENT"))
@@ -241,8 +107,8 @@ def llm_call(prompt):
         prompt,
         generation_config={
             "temperature": 0.5,
-            "top_p": 1.0,
-            "max_output_tokens": 7168
+            # "top_p": 1.0,
+            # "max_output_tokens": 7168
         }
     )
     # print(f"llm response")
@@ -262,27 +128,32 @@ async def generate_report(tool_context: Optional[ToolContext] = None):
     print("inside report summarization agent")
     print("inside generate report tool")
 
-    summary = tool_context.state['text_viz_json']
-    # template = report_template  
-    template = tool_context.state['report_template']
-    # context = report_context    
-    context = tool_context.state['report_context']
-    # filters = filters           
-    filter = tool_context.state["filters"]
+    template, summary, context, filters = load_report_inputs(tool_context, auto_handle=True)
+
+    if isinstance(filters, dict):
+        persona = filters.get('persona', 'N/A')
+        brand = filters.get('brand', 'N/A')
+        platform = filters.get('platform', 'N/A')
+        period = filters.get('duration', 'N/A')
+        report_type = filters.get('report_type', 'N/A')
+    else:
+        # default fallback when filters is a simple string like "nil"
+        persona = brand = platform = period = report_type = 'N/A'
+
     filter_text = f"""**Filters:**
-        Persona: {filters.get('persona', 'N/A')}
-        Brand: {filters.get('brand', 'N/A')}
-        Platform: {filters.get('platform', 'N/A')}
-        Period: {filters.get('duration', 'N/A')}
-        Report Type: {filters.get('report_type', 'N/A')}
-        """
+    Persona: {persona}
+    Brand: {brand}
+    Platform: {platform}
+    Period: {period}
+    Report Type: {report_type}
+    """
     
     # filters = tool_context.state.get['report_filters']
     # debug prints
-    print(f"text_viz_json output: {summary}")
-    print(f"report template passed: {template}")
-    print(f"report context passed: {context}")
-    print(f"report filters passed: {filter_text}")
+    # print(f"text_viz_json output: {summary}")
+    # print(f"report template passed: {template}")
+    # print(f"report context passed: {context}")
+    # print(f"report filters passed: {filter_text}")
 
     # Generate report markdown using LLM
     main_prompt = generate_report_prompt()
@@ -292,20 +163,13 @@ async def generate_report(tool_context: Optional[ToolContext] = None):
 
     **Input Parameters:**
     1.  **Text and Visualization Summary:**
-
-        {summary}
-
+    {summary}
     2.  **Report Template:**
-
-        {template}
-
+    {template}
     3.  **Report Context:**
-
-        {context}
-
+    {context}
     4.  **Filters:**
-
-        {filter_text}
+    {filter_text}
 
     **Output:**
     """
@@ -314,6 +178,25 @@ async def generate_report(tool_context: Optional[ToolContext] = None):
     tool_context.state['report_markdown'] = res
     print("report markdown generated:")
     print(res)
+
+
+    # --- Save generated Markdown report to file ---
+    try:
+        # filename = "report_markdown.md"
+        filename = timestamped_filename("report_markdown", "md")
+        root = os.getcwd()
+        path = os.path.join(root, filename)
+
+        # Ensure text is serializable
+        report_text = str(res) if not isinstance(res, str) else res
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(report_text)
+
+        print(f"✅ Report Markdown saved to: {path}")
+
+    except Exception as e:
+        print(f"⚠️ Error saving Markdown file: {e}")
+
     return "report markdown generated"
   
 
@@ -339,7 +222,8 @@ async def format_report(tool_context: Optional[ToolContext] = None):
     tool_context.state['report_json'] = res
     print("report json generated: ")
     print(res)
-    filename = "report_json.json"
+    filename = timestamped_filename("report_json", "json")
+    # filename = "report_json.json"
         # Save to file in repo root (current working directory)
     root = os.getcwd()
     path = os.path.join(root, filename)
