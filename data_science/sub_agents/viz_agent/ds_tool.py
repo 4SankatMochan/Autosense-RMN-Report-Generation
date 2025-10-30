@@ -17,8 +17,8 @@ async def call_ds_agent(
     input_data = tool_context.state["query_result"]
 
     output_file = f"VizChart.png"
-    user_query = tool_context.state.get('user_query')
-    folder_name = str(user_query).replace(" ","_").lower()
+    artifact_name = tool_context.state.get('artifact_name')
+    folder_name = str(artifact_name).lower()
     image_path = f"{folder_name}_{output_file}"
     json_path = f"{folder_name}_data.json"
     question_with_data = f"""
@@ -48,8 +48,8 @@ async def call_ds_agent(
         )
     )
     # Name the artifact file
-    user_query = tool_context.state.get('user_query')
-    folder_name = str(user_query).replace(" ", "_").lower()
+    artifact_name = tool_context.state.get('artifact_name')
+    folder_name = str(artifact_name).lower()
     text_path = f"{folder_name}_viz_ds_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)

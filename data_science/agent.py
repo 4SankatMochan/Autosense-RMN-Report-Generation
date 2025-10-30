@@ -36,6 +36,7 @@ from .tools import call_db_agent, call_viz_agent, call_ds_agent
 import logging
 from google.cloud import storage
 from io import BytesIO
+import re
 
 #from .sub_agents.nl2sql.agent import nl2sql_agent
 #from .sub_agents.descriptive_analysis.agent import descriptive_analysis_agent
@@ -105,9 +106,15 @@ def setup_before_agent_call(callback_context: CallbackContext):
     df = pd.read_excel(BytesIO(excel_bytes), engine='openpyxl')
     persona_report_context = excel_to_json(df)
     callback_context.state['persona_report'] = persona_report_context
+    prmpt = callback_context.user_content.parts[0].text
+    prmpt = prmpt.replace("\n", " ")
+    prmpt = re.sub(r"\s+", "_", prmpt.strip())
+    prmpt = re.match(r'^.{0,100}', prmpt)
+    artifact_name = prmpt.group()
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         # f.write(f"CallbackContext attributes:, {dir(callback_context)}\n")
+        f.write(f"DB DS multi Agent")
         f.write(f"{callback_context.user_content}\n")
         f.write(f"{callback_context.user_content.parts[0].text}")
         # f.write(f"persona is {persona}\n")
@@ -117,6 +124,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
     if user_message.text:
         original_prompt = user_message.text
         callback_context.state['user_query'] = original_prompt
+        callback_context.state['artifact_name'] = artifact_name
 
            
     # setting up database settings in session.state

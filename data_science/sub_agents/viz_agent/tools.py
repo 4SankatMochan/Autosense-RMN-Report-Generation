@@ -693,8 +693,8 @@ async def chart_plotting_tool(
             data=json_string.encode('utf-8')
         )
     )
-    user_query = tool_context.state.get('user_query')
-    folder_name = str(user_query).replace(" ","_").lower()
+    artifact_name = tool_context.state.get('artifact_name')
+    folder_name = str(artifact_name).lower()
     image_path = f"{folder_name}_{output_file}"
     json_path = f"{folder_name}_data.json"
     # # Correct async artifact registration
