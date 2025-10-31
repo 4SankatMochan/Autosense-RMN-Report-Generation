@@ -11,6 +11,23 @@ def generate_report_prompt():
 1.  **Text and Visualization Summary (JSON format):** This object contains a collection of prompts and their corresponding answers. Each answer can be one of the following:
     *   **Text only:** Identified by `ds_text` or `db_text` fields containing the textual answer to a prompt.
     *   **Image:** Identified by `chart_base64_string` (containing the image URL), `json_data` (containing the data used to plot the image), and `viz_text` (a short description of the image).
+    *   **Structure**: The JSON object is structured as follows for **Text and Visualization Summary (JSON format):**
+                        result_data[f'prompt{idx}'] = {
+                            'prompt': prompt.replace("_"," "),
+                            'chart_url': None,
+                            'json_data': None,
+                            'viz_text': None,
+                            # 'viz_ds_text': None,
+                            'db_text': None,
+                            'ds_text': None
+                        }
+    *   **Fields Definitions of Text and Visualization Summary (JSON format):**
+        **prompt**: The original text prompt (with underscores replaced by spaces) that drives the visualization or summary generation.
+        **chart_url**: A placeholder for the URL of the generated chart or visualization (currently None because no chart is linked yet).
+        **json_data**: A placeholder for structured data in JSON format that represents the processed or summarized information (currently None).
+        **viz_text**: A placeholder for descriptive text explaining the visualization (currently None as this is sample).
+        **db_text**: A placeholder for database-related summary or insights extracted from the data (currently None as this is sample).
+        **ds_text**: A placeholder for data science-related summary or interpretation (currently None as this is sample).
 
 2.  **Report Template (String):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
 
@@ -31,8 +48,11 @@ def generate_report_prompt():
 
 **CONSTRAINTS**
 
-1. Only use the information provided in the 'Text and Visualization Summary' to generate the report. Do not introduce any external data or assumptions.
-2. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', clearly indicate this in the report with a note such as "Data not available for this section."
+1. **DO NOT** introduce any external data or assumptions.
+2. **DO NOT** create any chart links or images on your own.
+3. **DO NOT** fabricate any statistics or insights that are not present in the provided 'Text and Visualization Summary'.
+4. Only use the information provided in the 'Text and Visualization Summary' to generate the report.
+5. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', clearly indicate this in the report with a note such as "Data not available for this section."
 
 **Few Shot Example:**
 
