@@ -73,8 +73,8 @@ async def call_db_agent(
         )
     )
     # tool_context.state['user_query'] = question # Using user_query to name artifacts in GCS Bucket
-    user_query = tool_context.state.get('user_query')
-    folder_name = str(user_query).replace(" ", "_").lower()
+    artifact_name = tool_context.state.get('artifact_name')
+    folder_name = str(artifact_name).lower()
     text_path = f"{folder_name}_db_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
@@ -124,8 +124,8 @@ async def call_ds_agent(
             data=str(ds_agent_output).encode("utf-8")
         )
     )
-    user_query = tool_context.state.get('user_query')
-    folder_name = str(user_query).replace(" ", "_").lower()
+    artifact_name = tool_context.state.get('artifact_name')
+    folder_name = str(artifact_name).lower()
     text_path = f"{folder_name}_ds_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
@@ -176,8 +176,8 @@ async def call_viz_agent(
         )
     )
     # Name the artifact file
-    user_query = tool_context.state.get('user_query')
-    folder_name = str(user_query).replace(" ", "_").lower()
+    artifact_name = tool_context.state.get('artifact_name')
+    folder_name = str(artifact_name).lower()
     text_path = f"{folder_name}_viz_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
