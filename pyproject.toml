@@ -31,6 +31,8 @@ pandas = "^2.3.0"
 numpy = "^2.3.1"
 matplotlib = "^3.5.0"
 openpyxl = "^3.1.0"
+gcsfs = "^2025.5.1"
+reportlab = "^4.4.4"
 
 
 [tool.poetry.group.dev.dependencies]

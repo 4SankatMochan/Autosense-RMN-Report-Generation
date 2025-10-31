@@ -7,7 +7,7 @@ from typing import List, Optional
 import os
 from google.adk.tools import ToolContext
 
-async def text_viz_json(tool_context: Optional[ToolContext] = None):
+async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
     print("inside text_viz_json agent")
     # print(tool_context.state)
     session_id = tool_context.state.get("session_id")
