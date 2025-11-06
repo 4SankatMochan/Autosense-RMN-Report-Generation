@@ -1,5 +1,4 @@
 # Agent Instructions
-from .assumd_KPIs import DEFAULT_KPIS
 def instructions():
 
     
@@ -108,7 +107,8 @@ Additional behavior guidelines:
     5. Output behavior:
         - After each tool call, STOP reasoning and wait for next user input.
     """
-    default_kpis_text = ", ".join(DEFAULT_KPIS)
+
+    #default_kpis_text = ", ".join(DEFAULT_KPIS)
 
 
     agent_tool_usage_guide = f"""
@@ -118,7 +118,7 @@ Additional behavior guidelines:
         • The query is vague, missing details, categories, filters, or time period.
     • OR if it is a performance-related query where KPIs are missing.
     • In such performance queries, assume the following default KPIs:
-      **{default_kpis_text}**
+      ** {{kpis}}**
     • Clearly mention these assumed KPIs to the user and ask them to confirm or modify them.
     - When asking multiple clarifications in one message:
             - Format them as **bulleted points** or use **bold keywords** for each missing detail to improve readability.
@@ -140,7 +140,7 @@ Additional behavior guidelines:
         • You have already asked clarifying questions and now understand the user’s full intent, OR
         • The query is performance-based query
           and KPIs are missing — in such cases, assume default KPIs:
-          **{default_kpis_text}**
+          ** {{kpis}}**
         • Clearly mention these assumed KPIs in your message and ask the user to confirm or modify them.
         • STOP and wait for user confirmation.
 
