@@ -21,7 +21,9 @@ import os
 from datetime import date
 
 from google.genai import types
-
+from google.genai.types import  Content, Part
+from google.adk.events import Event, EventActions
+# from google.generativeai.types import Event, Content, Part
 from google.adk.agents import Agent
 from google.adk.agents.callback_context import CallbackContext
 from google.adk.tools import load_artifacts
@@ -119,14 +121,16 @@ def setup_before_agent_call(callback_context: CallbackContext):
         f.write(f"{callback_context.user_content.parts[0].text}")
         # f.write(f"persona is {persona}\n")
         # f.write(f'persona_report {pd.read_excel(BytesIO(persona_report))}\n')
+        # f.write(f"persona is {persona}\n")
+        # f.write(f'persona_report {pd.read_excel(BytesIO(persona_report))}\n')
 
     user_message = callback_context.user_content.parts[0]
     if user_message.text:
         original_prompt = user_message.text
         callback_context.state['user_query'] = original_prompt
         callback_context.state['artifact_name'] = artifact_name
+    
 
-           
     # setting up database settings in session.state
     if "database_settings" not in callback_context.state:
         db_settings = dict()

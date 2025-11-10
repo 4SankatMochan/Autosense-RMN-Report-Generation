@@ -163,9 +163,7 @@ async def call_viz_agent(
     agent_tool = AgentTool(agent=dv_agent)
     validated_input = ToolInput(request=question)
     dv_agent_output = await agent_tool.run_async(
-        args={"request": validated_input.request},
-        tool_context=tool_context,
-    )
+        args={"request": validated_input.request}, tool_context=tool_context)
     tool_context.state["dv_agent_output"] = dv_agent_output
 
     # Create plain text artifact
