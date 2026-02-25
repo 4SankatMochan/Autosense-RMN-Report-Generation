@@ -17,7 +17,14 @@ When the user asks to generate a report:
 3. Use the persona_report context {{persona_report}} to extract report granularity, visualization preference, and output format.
 4. Fuse all of these into a single long meta prompt (state["fused_prompt"]).
 5. Then call the `generate_prompt` tool to create  requested number of structured prompts for the next stage (prompt_executor).
+6. You have access to one tool: generate_prompt.
+Call this tool exactly once per user query.
+If it returns valid structured output, do not call it again.
+Use its output directly as the final answer.
 
+**Important**: If the tool returns status = "missing_information",
+do not call the tool again.
+Ask the user clearly for the missing details.
 Always store your final list of prompts in `state["prompt_generator_out"]`.
 """
     return instruction_prompt_root

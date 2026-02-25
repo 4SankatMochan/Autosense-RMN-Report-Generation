@@ -17,7 +17,10 @@ async def call_db_ds_agent(
     print("inside prompt executor agent")
     print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
     
-    question_list = tool_context.state.get("prompt_generator_out")
+    # question_list = tool_context.state.get("prompt_generator_out")
+    question_list = [
+    "What is the reporting period for this campaign performance analysis?",
+    "Confirm the brand and manager for whom this report is being prepared."]
     print(f"prompt generator output: {str(question_list)}")
     tasks = [agent_call(question, tool_context) for question in question_list]
     results = await asyncio.gather(*tasks)

@@ -97,8 +97,8 @@ root_agent = LlmAgent(
     sub_agents=[ 
         db_ds_multiagent,
         prompt_executor,
-        prompt_generator, 
-        report_generator
+        prompt_generator
+        # report_generator
     ],
     before_agent_callback=setup_before_agent_call,
     disallow_transfer_to_parent = True
