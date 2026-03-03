@@ -29,7 +29,7 @@ from google.adk.agents.callback_context import CallbackContext
 from google.adk.tools import load_artifacts
 
 from .sub_agents import bqml_agent
-from .sub_agents import report_generation_agent
+# from .sub_agents import report_generation_agent
 from .sub_agents.bigquery.tools import (
     get_database_settings as get_bq_database_settings,
 )

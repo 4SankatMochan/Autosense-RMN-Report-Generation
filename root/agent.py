@@ -1,11 +1,11 @@
 import os
 from google.genai import types
-from google.adk.agents import Agent, LlmAgent
+from google.adk.agents import Agent, LlmAgent, SequentialAgent
 from google.adk.agents.callback_context import CallbackContext
-from prompt_executor.agent import root_agent as prompt_executor
+from .subagents.prompt_generator_list.agent import root_agent as prompt_generator
+from .subagents.prompt_executor.agent import root_agent as prompt_executor
 from data_science.agent import root_agent as db_ds_multiagent
-from prompt_generator_list.agent import root_agent as prompt_generator
-from report_generation.agent import root_agent as report_generator
+from .subagents.report_generation.agent import root_agent as report_generator
 from .prompts import return_instructions_root
 from io import BytesIO
 from google.cloud import storage
@@ -90,16 +90,16 @@ def setup_before_agent_call(callback_context: CallbackContext):
         original_prompt = user_message.text
         callback_context.state['user_query'] = original_prompt
     
-root_agent = LlmAgent(
+root_agent = SequentialAgent(
     name="Coordinator",
-    model=os.getenv("ROOT_AGENT_MODEL"),
-    description=return_instructions_root(),
+    # model=os.getenv("ROOT_AGENT_MODEL"),
+    # description=return_instructions_root(),
     sub_agents=[ 
-        db_ds_multiagent,
+        # db_ds_multiagent,
+        prompt_generator,
         prompt_executor,
-        prompt_generator
-        # report_generator
+        report_generator
     ],
     before_agent_callback=setup_before_agent_call,
-    disallow_transfer_to_parent = True
+    # disallow_transfer_to_parent = True
 )
