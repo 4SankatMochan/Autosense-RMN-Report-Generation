@@ -6,10 +6,7 @@ from vertexai.preview.generative_models import GenerativeModel
 async def recommendation_agent(tool_context: Optional[ToolContext] = None, **kwargs):
     
     # result = tool_context.state["executive_summary_output"]
-    result = {
-    "db_ds_agent_output": tool_context.state.get("db_ds_agent_output"),
-    "campaign_analysis_output": tool_context.state.get("executive_summary_output")
-}
+    result =  tool_context.state.get("executive_summary_output")
     # campaign comparison agent
     recommendation_output = await run_recommendation(
         result,
@@ -29,7 +26,7 @@ async def run_recommendation(
     tool_context: ToolContext
 ):
    
-    model = GenerativeModel(os.getenv("GEMINI_MODEL"))
+    model = GenerativeModel(os.getenv("ROOT_AGENT_MODEL"))
     response = model.generate_content(
         aggregated_results,
         generation_config={

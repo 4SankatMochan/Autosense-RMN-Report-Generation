@@ -1,0 +1,154 @@
+# Campaign Performance Report: Kissan - CMP_2025_0005
+
+## 1. Context
+
+### 1.1. Campaign Details
+
+This report focuses on Campaign ID `CMP_2025_0005` for the brand `Kissan`.
+
+*   **Campaign ID:** CMP_2025_0005
+*   **Brand Name:** Kissan
+*   **Campaign Name:** Data not available
+*   **Category:** Data not available
+*   **Media Type:** Sponsored Product
+*   **Channels:** Onsite
+*   **Primary Objective:** Consideration
+*   **Sub-Objective:** App Installs
+*   **Campaign Duration:** From 2025-07-29 to 2025-09-24
+*   **Planned Budget:** 10025.72
+*   **Actual Spend to Date:** 2760.83
+*   **Campaign Manager:** Data not available
+
+### 1.2. Customization Options for Performance Analysis
+
+For Campaign ID `CMP_2025_0005` and brand `Kissan`, performance analysis can be customized and filtered using the following options:
+
+*   **Timeline Views:**
+    *   **Date Range:** Performance data can be filtered by specific `start_date` and `end_date` or by the `date` column for daily granularity.
+    *   **Aggregations:** Metrics can be aggregated by day, week, or month.
+*   **Segmentation by Creative:**
+    *   **Creative ID:** Performance can be segmented by `creative_id` to assess individual creative asset effectiveness.
+*   **Other Segmentation Options:**
+    *   **Media Type:** Segment by `media_type`.
+    *   **Channels:** Segment by `channels`.
+    *   **Objective:** Segment by `objective`.
+    *   **Sub-Objective:** Segment by `sub_objective`.
+    *   **Strategy Description/Category:** Segment by `strategy_description` or `strategy_category`.
+    *   **Audience Segment:** Segment by `audience_segment` (linked via `audience_id`).
+
+## 2. Executive Summary
+
+This report provides a comprehensive overview of the performance of Campaign ID `CMP_2025_0005` for the brand `Kissan`, which primarily aims for `Consideration` with a sub-objective of `App Installs`. The campaign, utilizing 'Sponsored Product' media type on 'Onsite' channels, ran from 2025-07-29 to 2025-09-24 with a planned budget of 10025.72 and an actual spend of 2760.83 to date.
+
+Key performance indicators such as Click-Through Rate (CTR), Return on Ad Spend (ROAS), and Conversions have been analyzed. Monthly ROAS has shown a stable performance around 3.0, with a positive trend towards 3.16 in May. The 'Display' channel and the 'Parents' audience segment emerged as the most effective, both yielding an ROAS of 3.27. Monthly CTR trends across different channels show fluctuations, indicating varying engagement levels. Similarly, monthly conversion trends, encompassing total conversions and average conversion rates, provide insights into the campaign's effectiveness in driving desired actions over time. These findings highlight opportunities for optimizing future marketing spend by focusing on high-performing channels and audience segments.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+This table provides a high-level overview of Campaign ID `CMP_2025_0005`.
+
+| Start Date   | End Date   | Campaign ID  | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :----------- | :--------- | :----------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-07-29   | 2025-09-24 | CMP_2025_0005 | 10025.72        | Consideration      | 2760.83        | 27.54%                        |
+
+### 3.2. Objective: Consideration Metrics
+
+Given the primary objective of 'Consideration' for Campaign `CMP_2025_0005`, the following metrics are crucial for evaluating its performance.
+
+#### 3.2.1. Monthly Click-Through Rate (CTR) Trends
+
+The monthly Click-Through Rate (CTR) for Campaign ID `CMP_2025_0005` for the brand `Kissan` shows varying trends across different channels.
+
+Image 1: Monthly Click-Through Rate (CTR) Trends by Channel
+gs://acn-cda-adk-staging/root/user/0293d0fd-0c01-491a-9f7f-240538798207/examine_the_monthly_ctr_(click-through_rate)_for_campaign_id_cmp_2025_0005_for_the_brand_kissan._det_VizChart.png/0
+
+Image 1 illustrates the monthly CTR trends for Campaign ID 'CMP_2025_0005', broken down by different channels. Each line represents a distinct channel, allowing for a clear comparison of how CTR performance varies across channels over time. Observing these fluctuations and overall trends in CTR for each channel on a monthly basis is essential for understanding user engagement.
+
+#### 3.2.2. Monthly Return on Ad Spend (ROAS) Analysis
+
+The monthly ROAS for Campaign ID `CMP_2025_0005` for the brand `Kissan` provides insights into the campaign's profitability.
+
+*   **Performance Trends Over Time (Monthly ROAS):**
+    The monthly ROAS for the campaign showed some fluctuation but generally maintained a level around 3.0. It started at 3.03 in January, slightly decreased to 2.98 in February, recovered to 3.03 in March, dipped to 3.00 in April, and finally reached its highest point of 3.16 in May. This indicates a relatively stable performance with a positive trend towards the end of the observed period.
+
+*   **Performance Across Different Channels:**
+    When comparing ROAS across various channels, the 'Display' channel demonstrated the strongest performance with an ROAS of 3.27. The 'Search' channel followed with an ROAS of 3.03, while 'Social Media' had the lowest ROAS at 2.99. This suggests that the 'Display' channel is currently the most efficient in terms of return on ad spend for this campaign.
+
+*   **Performance Across Audience Segments:**
+    Regarding audience segments, the 'Parents' segment yielded the highest ROAS at 3.27. The 'Adults' segment performed with an ROAS of 3.03, and the 'Youth' segment had the lowest ROAS at 2.99. These results indicate that targeting the 'Parents' audience segment is currently providing the best return for the advertising investment.
+
+#### 3.2.3. Monthly Conversions
+
+Understanding monthly conversions is vital for assessing the campaign's success in driving desired actions.
+
+Image 2: Monthly Trends for Total Conversions and Average Conversion Rate Percentage
+gs://acn-cda-adk-staging/root/user/0293d0fd-0c01-491a-9f7f-240538798207/investigate_the_monthly_conversions_for_campaign_id_cmp_2025_0005_for_the_brand_kissan._provide_insi_VizChart.png/0
+
+Image 2 illustrates the monthly trends for total conversions and average conversion rate percentage for Campaign ID CMP_2025_0005 (Kissan). The chart allows observation of the progression of both total conversions and average conversion rates over the months, providing a clear picture of the campaign's effectiveness in driving conversions.
+
+## 4. Campaign-Wise Analysis
+
+### 4.1. Visualizations
+
+#### 4.1.1. CTR Trend
+
+Image 1: Monthly Click-Through Rate (CTR) Trends by Channel
+gs://acn-cda-adk-staging/root/user/0293d0fd-0c01-491a-9f7f-240538798207/examine_the_monthly_ctr_(click-through_rate)_for_campaign_id_cmp_2025_0005_for_the_brand_kissan._det_VizChart.png/0
+
+This chart illustrates the monthly Click-Through Rate (CTR) trends for Campaign ID 'CMP_2025_0005', broken down by different channels. Each line represents a distinct channel, allowing for a clear comparison of how CTR performance varies across channels over time. You can observe the fluctuations and overall trends in CTR for each channel on a monthly basis.
+
+#### 4.1.2. Conversion Trend
+
+Image 2: Monthly Trends for Total Conversions and Average Conversion Rate Percentage
+gs://acn-cda-adk-staging/root/user/0293d0fd-0c01-491a-9f7f-240538798207/investigate_the_monthly_conversions_for_campaign_id_cmp_2025_0005_for_the_brand_kissan._provide_insi_VizChart.png/0
+
+This line chart illustrates the monthly trends for total conversions and average conversion rate percentage for Campaign ID CMP_2025_0005 (Kissan). The x-axis displays the 'Month Start Date', while the y-axis represents the 'Value' for both metrics. We can observe the progression of both total conversions and average conversion rates over the months.
+
+### 4.2. Campaign Details and Analysis
+
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Name:** Data not available
+*   **Campaign Ad IDs:** Data not available
+*   **Campaign Duration:** 2025-07-29 to 2025-09-24
+*   **Campaign Objective:** Consideration
+*   **KPIs Analyzed:** ROAS, CTR, Conversions
+
+#### 4.2.1. Metrics Overview
+
+*   **ROAS:** The campaign's ROAS has been relatively stable around 3.0, showing a positive upward trend towards 3.16 by May. The 'Display' channel and 'Parents' audience segment are the top performers, both achieving an ROAS of 3.27.
+*   **CTR:** Monthly CTR trends vary by channel, indicating different levels of engagement. The provided visualization (Image 1) allows for a detailed comparison of these trends over time.
+*   **Conversions:** The monthly trends for total conversions and average conversion rates (Image 2) provide a visual representation of the campaign's effectiveness in driving desired user actions over the observed period.
+
+#### 4.2.2. Campaign Analysis Text
+
+The campaign for Kissan (CMP_2025_0005) is primarily focused on driving 'Consideration' and 'App Installs'. The analysis of monthly ROAS indicates a healthy and improving return on investment, particularly highlighting the efficiency of the 'Display' channel and the effectiveness of targeting the 'Parents' audience segment. These segments consistently deliver higher ROAS compared to 'Search' and 'Social Media' channels, and 'Adults' and 'Youth' audience segments, respectively. While specific numerical CTR and conversion rates per channel or segment are not detailed in text, the provided charts (Image 1 and Image 2) visually track their monthly progression and channel-wise variations. The overall performance suggests that the campaign is effectively generating consideration and conversions, with clear areas for strategic focus based on ROAS performance.
+
+#### 4.2.3. Weekly Performance
+
+Data not available for this section.
+
+#### 4.2.4. Overall Campaign Impact
+
+The campaign demonstrates a consistent and improving ROAS, indicating a positive return on investment. The strong performance of the 'Display' channel and the 'Parents' audience segment suggests that these areas are highly effective for this campaign's objective. Monitoring the monthly CTR and conversion trends provides ongoing insights into user engagement and action, crucial for continuous optimization.
+
+### 4.3. Campaign Comparison
+
+Data not available for this section.
+
+## 5. Recommendations
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+*   **Action:** Leverage the available filtering and customization options (date range, daily/weekly/monthly aggregations, creative ID, media type, channels, objective, sub-objective, strategy, and audience segment) to conduct more granular analyses. This will help pinpoint specific periods or creative assets that contribute most to performance fluctuations.
+*   **Objective:** To gain deeper insights into performance drivers and identify precise optimization opportunities.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action:** Based on the superior ROAS observed in the 'Display' channel and the 'Parents' audience segment, consider reallocating a greater proportion of the budget towards these high-performing areas. Review and optimize bidding strategies specifically for these segments to maximize ROI.
+*   **Objective:** To enhance overall campaign efficiency and maximize Return on Ad Spend by investing more in proven successful channels and audience groups.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action:** Given the campaign's 'Consideration' objective and 'App Installs' sub-objective, conduct A/B tests on creative variations within the 'Display' channel and on landing page elements targeted at the 'Parents' audience. Focus on elements that influence CTR and conversion rates to further improve engagement and app install rates.
+*   **Objective:** To continuously improve creative effectiveness and user experience, leading to higher CTRs and conversion rates for app installs.

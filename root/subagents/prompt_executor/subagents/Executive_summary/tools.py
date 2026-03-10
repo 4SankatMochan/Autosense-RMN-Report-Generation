@@ -6,10 +6,7 @@ from vertexai.preview.generative_models import GenerativeModel
 async def executive_summary_agent(tool_context: Optional[ToolContext] = None, **kwargs):
     
     # result = tool_context.state["campaign_comparison_output"]
-    result = {
-    "db_ds_agent_output": tool_context.state.get("db_ds_agent_output"),
-    "campaign_analysis_output": tool_context.state.get("campaign_comparison_output")
-}
+    result = tool_context.state.get("campaign_comparison_output")
     # Execute analysis agent
     executive_summary_output = await run_executive_summary(
         result,
@@ -29,7 +26,7 @@ async def run_executive_summary(
     tool_context: ToolContext
 ):
    
-    model = GenerativeModel(os.getenv("GEMINI_MODEL"))
+    model = GenerativeModel(os.getenv("ROOT_AGENT_MODEL"))
     response = model.generate_content(
         aggregated_results,
         generation_config={

@@ -149,6 +149,16 @@ def single_call_guard(tool_fn):
 
     return wrapper
 
+from pydantic import BaseModel
+from typing import List
+
+class Section(BaseModel):
+    section_name: str
+    prompts: List[str]
+
+class PromptListOutput(BaseModel):
+    prompt_list: List[Section]
+
 guarded_generate_prompt = single_call_guard(generate_prompt)
 
 # ✅ Root Agent for Prompt Generator

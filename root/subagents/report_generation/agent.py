@@ -9,8 +9,6 @@ from google.adk.tools import ToolContext
 from google.genai import types
 from vertexai.preview.generative_models import GenerativeModel
 
-
-
 def setup_before_agent_call(callback_context: CallbackContext):
     callback_context.state["persona_context"] = """
 """
@@ -80,3 +78,5 @@ root_agent = SequentialAgent(
     sub_agents = [text_viz_json_agent,text_viz_report_summarizer_agent,pdf_generator_agent],
     before_agent_callback=setup_before_agent_call,
 )
+
+    # before_agent_callback=setup_before_agent_call,

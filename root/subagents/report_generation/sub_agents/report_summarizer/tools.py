@@ -1,5 +1,6 @@
 from google import genai
 from google.genai import types
+from root.subagents.prompt_executor.subagents.Executive_summary import prompt
 from .prompts import generate_report_prompt, format_report_prompt
 from typing import List, Optional
 from google.adk.tools import ToolContext
@@ -67,11 +68,16 @@ def load_report_inputs(tool_context=None, auto_handle=True):
     context_text = None
     filters_value = None
 
-    if isinstance(state, dict):
-        template_text = state.get("report_template")
-        summary_text = state.get("text_viz_json")
-        context_text = state.get("report_context")
-        filters_value = state.get("report_filters")
+    print(f"Load report filters from state: {state.get('report_filters')}")
+    # print(f"State keys: {list(state.keys())}")
+
+    # if isinstance(state, dict):
+    #     print("In report summarizer, state keys are:dict_keys:")
+
+    template_text = state.get("report_template")
+    summary_text = state.get("text_viz_json")
+    context_text = state.get("report_context")
+    filters_value = state.get("report_filters")
 
     # Fallback to file-based loading if missing
     if not template_text:
@@ -89,8 +95,8 @@ def load_report_inputs(tool_context=None, auto_handle=True):
     if not context_text:
         context_text = local_context
 
-    if not filters_value:
-        filters_value = local_filters
+    # if not filters_value:
+    #     filters_value = local_filters
 
     print(f"[load_report_inputs] Template length: {len(template_text)}")
     print(f"[load_report_inputs] Summary length: {len(summary_text)}")
@@ -99,9 +105,7 @@ def load_report_inputs(tool_context=None, auto_handle=True):
 
     return template_text, summary_text, context_text, filters_value
 
-
-
-def llm_call(prompt):
+def llm_call(prompt: str, tool_context=None) -> str:
     model = GenerativeModel(os.getenv("TEXT_VIZ_JSON_AGENT"))
     response = model.generate_content(
         prompt,
@@ -145,48 +149,61 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
     if isinstance(filters, dict):
         persona = filters.get('persona', 'N/A')
         brand = filters.get('brand', 'N/A')
-        platform = filters.get('platform', 'N/A')
+        campaign_id = filters.get('campaign_id', 'N/A')
         period = filters.get('duration', 'N/A')
         report_type = filters.get('report_type', 'N/A')
     else:
         # default fallback when filters is a simple string like "nil"
-        persona = brand = platform = period = report_type = 'N/A'
+        persona = brand = campaign_id = period = report_type = 'N/A'
 
     filter_text = f"""**Filters:**
     Persona: {persona}
     Brand: {brand}
-    Platform: {platform}
+    Campaign ID: {campaign_id}
     Period: {period}
     Report Type: {report_type}
     """
     
     # filters = tool_context.state.get['report_filters']
-    # debug prints
-    # print(f"text_viz_json output: {summary}")
-    # print(f"report template passed: {template}")
-    # print(f"report context passed: {context}")
-    # print(f"report filters passed: {filter_text}")
+    # debug prints to verify the inputs being passed to the LLM
+    print(f"text_viz_json output: {summary}")
+    print(f"report template passed: {template}")
+    print(f"report context passed: {context}")
+    print(f"report filters passed: {filter_text}")
 
     # Generate report markdown using LLM
     main_prompt = generate_report_prompt()
+
+    # get viz json from tool state
+    text_viz_json = tool_context.state.get("text_viz_json", "")
+
     custom_prompt = f"""
     **Task**
     Generate report based on the below information.
 
     **Input Parameters:**
-    1.  **Text and Visualization Summary:**
+
+    1. **Text and Visualization Summary:**
     {summary}
-    2.  **Report Template:**
+
+    2. **Report Template:**
     {template}
-    3.  **Report Context:**
+
+    3. **Report Context:**
     {context}
-    4.  **Filters:**
+
+    4. **Filters:**
     {filter_text}
+
+    5. **Text and Visualization Summary (JSON format)**
+    {text_viz_json}
 
     **Output:**
     """
+
     prompt = main_prompt + custom_prompt
-    res = llm_call(prompt)
+
+    res = llm_call(prompt, tool_context=tool_context)
 
     # Save the llm result in a file for debugging and traceability
     filename = timestamped_filename("report_markdown_debug", "txt")
@@ -238,10 +255,11 @@ async def format_report(tool_context: Optional[ToolContext] = None):
     **Output:**
     """
     prompt = main_prompt + custom_prompt
-    res = llm_call(prompt)
+    res = llm_call(prompt, tool_context=tool_context)
+    # res = ReportSchema.model_validate(res)
     tool_context.state['report_json'] = res
     print("report json generated: ")
-    print(res)
+
     filename = timestamped_filename("report_json", "json")
     # filename = "report_json.json"
         # Save to file in repo root (current working directory)

@@ -1,9 +1,9 @@
+import os
+
 from google.adk.agents.llm_agent import LlmAgent
 from .prompt import instruction_executive_summary
 from .tools import executive_summary_agent
 from google.adk.agents.callback_context import CallbackContext
-
-GEMINI_MODEL = "gemini-2.5-flash"
 
 def setup_before_agent_call(callback_context: CallbackContext):
     """Setup the agent."""
@@ -11,7 +11,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
 
 executive_summary_root_agent = LlmAgent(
     name="ExecutiveSummaryAgent",
-    model=GEMINI_MODEL,
+    model=os.getenv("ROOT_AGENT_MODEL"),
     instruction=instruction_executive_summary(),
     description="Generate summary of the analyzed campaign data.",
     output_key="executive_summary_output",

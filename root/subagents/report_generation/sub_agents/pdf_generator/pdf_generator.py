@@ -105,12 +105,14 @@ class GCSJSONToPDF:
         print(f"Processing text block:{text}, with type: {type(text)}")
         for para in text.split('\n'):
             para = para.strip()
+            print(f"Processing paragraph inside process text: {para}")
             if not para:
                 continue
                 
             # Convert markdown bullets (* or - followed by space) to proper bullets
             if re.match(r'^(\*|-)\s+', para):
                 para = re.sub(r'^(\*|-)\s+', '• ', para)
+                print(f"Converted markdown bullet to: {para}")
                 current_style = self.styles.get('bullet_style', self.styles['body_style'])
             else:
                 current_style = self.styles[style_name]
@@ -120,68 +122,212 @@ class GCSJSONToPDF:
             
             story.append(Paragraph(para, current_style))
 
+    # def _process_table(self, story, table_obj):
+    #     """Process table with Accenture brand styling."""
+    #     print(f"Processing table object: {table_obj}")
+    #     if 'title' in table_obj:
+    #         story.append(Paragraph(table_obj['title'], self.styles['subsection_header_style']))
+    #         story.append(Spacer(1, 8))
+
+    #     content = table_obj.get("table_content", {})
+
+    #     # Convert LLM table format
+    #     if isinstance(content, list) and content:
+
+    #         headers = list(content[0].keys())
+
+    #         rows = [
+    #             [row.get(header, "") for header in headers]
+    #             for row in content
+    #         ]
+
+    #         content = {
+    #             "headers": headers,
+    #             "rows": rows
+    #         }
+
+    #     elif isinstance(content, dict):
+
+    #         headers = content.get("headers", [])
+    #         rows = content.get("rows", [])
+
+    #     else:
+
+    #         headers = []
+    #         rows = []
+        
+    #     if not headers:
+    #         print("⚠️ Table has no headers, skipping.")
+    #         return
+        
+    #     # Build table data
+    #     # Split into two halves if columns > 12
+    #     if len(headers) > 12:
+    #         mid = len(headers) // 2 + len(headers) % 2  # Divide columns in half (round up)
+
+    #         header_splits = [headers[:mid], headers[mid:]]
+    #         row_splits = [
+    #             [row[:mid] for row in rows],
+    #             [row[mid:] for row in rows]
+    #         ]
+    #     else:
+    #         header_splits = [headers]
+    #         row_splits = [rows]
+
+    #     # Build and append tables
+    #     for split_headers, split_rows in zip(header_splits, row_splits):
+    #         wrapped_headers = [Paragraph(str(h), self.styles['table_header_style']) for h in split_headers]
+    #         wrapped_data = [
+    #             [Paragraph(str(cell), self.styles['table_cell_style']) for cell in row]
+    #             for row in split_rows
+    #         ]
+
+    #         data = [wrapped_headers] + wrapped_data
+    #         col_width = self.available_width / len(split_headers)
+
+    #         table = Table(data, colWidths=[col_width]*len(split_headers), repeatRows=1)
+    #         table.setStyle(self.table_styles['default_table_style'])
+
+    #         story.append(Spacer(1, 12))
+    #         story.append(table)
+    #         story.append(Spacer(1, 8))
+     
+    #     # Add caption if present (centered below table)
+    #     if table_obj.get('caption'):
+    #         caption_text = f"Table: {table_obj['caption']}"
+    #         story.append(Paragraph(caption_text, self.styles['caption_style']))
+    #         story.append(Spacer(1, 12))
+        
+    #     # Add source attribution if present
+    #     if table_obj.get('source'):
+    #         source_text = f"Source: {table_obj['source']}"
+    #         story.append(Paragraph(source_text, self.styles['source_style']))
+    #         story.append(Spacer(1, 8))
+
     def _process_table(self, story, table_obj):
         """Process table with Accenture brand styling."""
-        if 'title' in table_obj:
-            story.append(Paragraph(table_obj['title'], self.styles['subsection_header_style']))
-            story.append(Spacer(1, 8))
-        content = table_obj.get('table_content', {})
-        headers = content.get('headers', [])
-        rows = content.get('rows', [])
-        
+
+        print(f"Processing table object: {table_obj}")
+
+        # -------------------------------------------------
+        # 1️⃣ Handle title (string OR {"text": "..."} OR missing)
+        # -------------------------------------------------
+        if table_obj.get("title"):
+            title = table_obj.get("title")
+            if isinstance(title, dict):
+                title = title.get("text")
+
+            if isinstance(title, str) and title.strip():
+                story.append(Paragraph(title, self.styles['subsection_header_style']))
+                story.append(Spacer(1, 8))
+
+        # -------------------------------------------------
+        # 2️⃣ Unwrap table if nested
+        # -------------------------------------------------
+        if "table" in table_obj:
+            table_obj = table_obj["table"]
+
+        content = table_obj.get("table_content", [])
+
+        # -------------------------------------------------
+        # 3️⃣ Convert list-of-dicts → headers + rows
+        # -------------------------------------------------
+        headers = []
+        rows = []
+
+        if isinstance(content, list) and content:
+
+            headers = list(content[0].keys())
+
+            rows = [
+                [row.get(header, "") for header in headers]
+                for row in content
+            ]
+
+        elif isinstance(content, dict):
+
+            headers = content.get("headers", [])
+            rows = content.get("rows", [])
+
         if not headers:
             print("⚠️ Table has no headers, skipping.")
             return
-        
-        # Build table data
-        # Split into two halves if columns > 12
+
+        # -------------------------------------------------
+        # 4️⃣ Split wide tables (>12 columns)
+        # -------------------------------------------------
         if len(headers) > 12:
-            mid = len(headers) // 2 + len(headers) % 2  # Divide columns in half (round up)
+
+            mid = len(headers) // 2 + len(headers) % 2
 
             header_splits = [headers[:mid], headers[mid:]]
+
             row_splits = [
                 [row[:mid] for row in rows],
                 [row[mid:] for row in rows]
             ]
+
         else:
+
             header_splits = [headers]
             row_splits = [rows]
 
-        # Build and append tables
+        # -------------------------------------------------
+        # 5️⃣ Build ReportLab tables
+        # -------------------------------------------------
         for split_headers, split_rows in zip(header_splits, row_splits):
-            wrapped_headers = [Paragraph(str(h), self.styles['table_header_style']) for h in split_headers]
+
+            wrapped_headers = [
+                Paragraph(str(h), self.styles['table_header_style'])
+                for h in split_headers
+            ]
+
             wrapped_data = [
                 [Paragraph(str(cell), self.styles['table_cell_style']) for cell in row]
                 for row in split_rows
             ]
 
             data = [wrapped_headers] + wrapped_data
+
             col_width = self.available_width / len(split_headers)
 
-            table = Table(data, colWidths=[col_width]*len(split_headers), repeatRows=1)
+            table = Table(
+                data,
+                colWidths=[col_width] * len(split_headers),
+                repeatRows=1
+            )
+
             table.setStyle(self.table_styles['default_table_style'])
 
             story.append(Spacer(1, 12))
             story.append(table)
             story.append(Spacer(1, 8))
 
-      
-      
+        # -------------------------------------------------
+        # 6️⃣ Caption
+        # -------------------------------------------------
+
         # Add caption if present (centered below table)
         if table_obj.get('caption'):
             caption_text = f"Table: {table_obj['caption']}"
             story.append(Paragraph(caption_text, self.styles['caption_style']))
             story.append(Spacer(1, 12))
-        
+
+        # -------------------------------------------------
+        # 7️⃣ Source
+        # -------------------------------------------------
+
         # Add source attribution if present
-        if table_obj.get('source'):
-            source_text = f"Source: {table_obj['source']}"
+        if table_obj.get('text'):
+            source_text = f"Source: {table_obj['text']}"
             story.append(Paragraph(source_text, self.styles['source_style']))
             story.append(Spacer(1, 8))
+
 
     def _process_visuals(self, story, visuals):
         """Process visual elements (charts/images) with captions and source attribution."""
         # Handle dict or list inputs for visuals
+        print(f"Processing visuals: {visuals} with type: {type(visuals)}")
         if isinstance(visuals, dict):
             visuals = [visuals]  # wrap single dict into list for uniform processing
         
@@ -251,6 +397,7 @@ class GCSJSONToPDF:
 
     def _process_callout(self, story, callout_text):
         """Process callout/highlight boxes for executive summaries or key metrics."""
+        print(f"Processing callout: {callout_text}")
         if not callout_text:
             return
         story.append(Spacer(1, 12))
@@ -259,6 +406,7 @@ class GCSJSONToPDF:
 
     def _process_executive_summary(self, story, summary_text):
         """Process executive summary with centered, emphasized styling."""
+        print(f"Processing executive summary: {summary_text}")
         if not summary_text:
             return
         story.append(Spacer(1, 16))
@@ -268,6 +416,7 @@ class GCSJSONToPDF:
     def _process_section(self, story, key, value, level=0):
         """Recursively process JSON sections into PDF elements."""
         # Determine appropriate header style based on nesting level
+        print(f"Processing section: {key} at level {level} with type {type(value)}")
         if level == 0:
             style = 'title_style'
         elif level == 1:
@@ -293,6 +442,7 @@ class GCSJSONToPDF:
             
             # Process all dict items
             for subkey, subval in value.items():
+                print(f"Processing subsection key: {subkey} at level {level} with type {type(subval)}")
                 if subkey == 'executive_summary' or subkey == 'callout':
                     continue  # Already processed above
                 elif subkey.startswith("text") and isinstance(subval, str):
@@ -328,6 +478,7 @@ class GCSJSONToPDF:
         import json
 
         output_path = os.path.join(self.output_dir, output_filename)
+        print(f"type of json_input at start of generate_pdf: {type(json_input)} with keys: {json_input.keys() if isinstance(json_input, dict) else 'N/A'}")
 
         # === Step 1: Ensure json_input is a dictionary ===
         if isinstance(json_input, str):
@@ -363,6 +514,7 @@ class GCSJSONToPDF:
             report_context = context_value
             print(f"Context value is a string: {report_context}")
             short_title = self.generate_acronym(context_value)
+            print(f"Generated short title: {short_title} from context value")
             date_range = ''
         else:
             report_context = 'Report'
@@ -401,6 +553,7 @@ class GCSJSONToPDF:
         # === Step 5: Build PDF story content ===
         story = []
         for key, value in json_input.items():
+            print("Processing top-level key in JSON input in generate_pdf:", key)
             if key != 'context':
                 self._process_section(story, key, value, level=1)
 

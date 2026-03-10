@@ -6,10 +6,7 @@ from vertexai.preview.generative_models import GenerativeModel
 async def campaign_comparison_agent(tool_context: Optional[ToolContext] = None, **kwargs):
     
     # result = tool_context.state["campaign_analysis_output"]
-    result = {
-    "db_ds_agent_output": tool_context.state.get("db_ds_agent_output"),
-    "campaign_analysis_output": tool_context.state.get("campaign_analysis_output")
-}
+    result = tool_context.state.get("campaign_analysis_output")
     # campaign comparison agent
     campaign_comparison_output = await run_campaign_comparison(
         result,
@@ -29,7 +26,7 @@ async def run_campaign_comparison(
     tool_context: ToolContext
 ):
    
-    model = GenerativeModel(os.getenv("GEMINI_MODEL"))
+    model = GenerativeModel(os.getenv("ROOT_AGENT_MODEL"))
     response = model.generate_content(
         aggregated_results,
         generation_config={

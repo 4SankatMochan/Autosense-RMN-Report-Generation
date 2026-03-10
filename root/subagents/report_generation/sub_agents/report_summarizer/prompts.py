@@ -8,7 +8,7 @@ def generate_report_prompt():
 
 **Input Parameters:**
 
-1.  **Text and Visualization Summary (JSON format):** This object contains a collection of prompts and their corresponding answers. Each answer can be one of the following:
+1.  **Text and Visualization Summary (JSON format) from tool_context (text_viz_json:dict):** This object contains a collection of prompts and their corresponding answers. Each answer can be one of the following:
     *   **Text only:** Identified by `ds_text` or `db_text` fields containing the textual answer to a prompt.
     *   **Image:** Identified by `chart_base64_string` (containing the image URL), `json_data` (containing the data used to plot the image), and `viz_text` (a short description of the image).
     *   **Structure**: The JSON object is structured as follows for **Text and Visualization Summary (JSON format):**
@@ -35,7 +35,6 @@ def generate_report_prompt():
 
 4.  **Filters:** This contains specific criteria or conditions that should be applied when synthesizing information from the 'Text and Visualization Summary'.
 
-
 **Report Generation Instructions:**
 
 1.  **Structure and Numbering:** Number all sections and subsections within the report using a clear hierarchical structure (e.g., 1. Introduction, 1.1. Background).
@@ -45,6 +44,7 @@ def generate_report_prompt():
 5.  **Use Image URL in the place of Images.
 6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.
 7.  **Consider 'Report Context' and 'Filters'**: Use the 'Report Context' to understand the overarching goal and audience of the report and the 'Filters' used to narrow down and focus the data presented in the report.
+8. **Data Filling**: Only use the responses provided in the 'Text and Visualization Summary' corresponding to each prompt to fill in the sections of the report as per the 'Report Template'. Do not introduce any external data or assumptions. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', clearly indicate this in the report with a note such as "Data not available for this section."
 
 **CONSTRAINTS**
 
@@ -294,7 +294,6 @@ You are an expert data parser and markdown-to-JSON converter. Your task is to tr
 
 **Output JSON Structure Example:**
 
-```json
 {
     "context": "Report Heading",
     "1. Section Name": {
@@ -309,16 +308,24 @@ You are an expert data parser and markdown-to-JSON converter. Your task is to tr
         },
 
 {
-  "1.2. Another Subsection": {
+"1.2. Another Subsection": {
     "text": "Text for 1.2.",
-    "table": {
-      "table_content": {
-        "headers": ["Header1", "Header2"],
-        "rows": [
-          ["Value1", "Value2"],
-          ["Value3", "Value4"]
-        ]
-      },
+    "table_name": {
+        "title": "Table Title",
+        "text": "Text describing the table.",
+        "table": {
+            "table_content": {
+                "headers": ["Header1", "Header2"],
+                "rows": [
+                ["Value1", "Value2"],
+                ["Value3", "Value4"]
+                ]
+            },
+            "caption": "Table 1: A description."
+        }
+    }
+},
+
 
     "2. Another Top Section": {
         "text": "Text for section 2.",
@@ -329,6 +336,9 @@ You are an expert data parser and markdown-to-JSON converter. Your task is to tr
         }
     }
 }
+
+**Important (Adherence to Output schema format ):Strictly adhere to the above output json structure example for arranging text, tables and images in each subsections.
+                                                 If any information like title or text is missing for a section, use empty string for that field. If there is no image or table in a section, do not include the image or table key in the output json for that section. The only keys that should be present in the output json are context, text, image, table and the section/subsection headings as per the markdown.**
   """
   return prompt
 

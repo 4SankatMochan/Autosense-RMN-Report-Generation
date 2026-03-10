@@ -1,0 +1,148 @@
+# Campaign Performance Report: Dove - CMP_2025_0001
+
+## 1. Context
+
+This report provides a detailed analysis of Dove's campaign, `CMP_2025_0001`, focusing on its performance, financial efficiency, and key engagement metrics. This analysis is crucial for the Marketing and Sales leadership team to inform strategic decisions regarding future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaign Details
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: Dove Summer Glow
+    *   *Detailed Name*: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Brand Name**: Dove
+*   **Strategy Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Primary Objective**: Consideration
+*   **Sub-Objective**: App Installs
+*   **Campaign Manager**: ADV_2025_B
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-08-02
+    *   **End Date**: 2025-09-06
+*   **Planned Budget (Allocated)**: 13,184.67
+*   **Actual Spend to Date**: 4,697.66
+
+## 2. Customization Options
+
+Data not available for this section. This section typically outlines available reporting views (e.g., timeline, creative breakdowns) for further granular analysis.
+
+## 3. Executive Summary
+
+This report provides a comprehensive overview of Dove's `CMP_2025_0001` campaign, "Dove Summer Glow," which is primarily focused on the "Consideration" objective with a sub-objective of "App Installs." The campaign, managed by ADV_2025_B, ran from August 2, 2025, to September 6, 2025, with an allocated budget of 13,184.67 and an actual spend to date of 4,697.66.
+
+Monthly ROAS and CTR performance for the campaign are visualized, showing trends in financial efficiency and user engagement. For the "Consideration" objective, the "Onsite" channel demonstrated a ROAS of 8.76 and a CTR of 1.07% with 546 clicks, indicating effective engagement within this channel. While the campaign's primary objective is Consideration, conversion data for this specific campaign ID was found for January 2025 (15,000 conversions) and August 2025 (56 conversions), which partially falls within the campaign's active period. It is important to note the discrepancy in magnitude and timing of conversion data points.
+
+Overall, the campaign shows initial signs of driving consideration, particularly through its Onsite channel. Further analysis is required to reconcile conversion data and understand the full impact across the campaign duration.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+The following high-level summary table provides an overview of the "Dove Summer Glow" campaign (`CMP_2025_0001`), detailing its planned budget, actual spending, and budget utilization.
+
+| Campaign ID | Campaign Name | Budget (Planned Spend) | Campaign Objective | Total Ad Spend | Budget Utilization |
+|:------------|:--------------|-----------------------:|:-------------------|---------------:|-------------------:|
+| CMP_2025_0001 | Dove Summer Glow | 500000 | Brand Awareness | 390000 | 78 |
+
+*Note: There is a discrepancy between the 'Planned Budget (Allocated)' of 13,184.67 and 'Actual Spend to Date' of 4,697.66 provided in Section 1.1 and the 'Budget (Planned Spend)' of 500,000 and 'Total Ad Spend' of 390,000 in this summary table. The summary table likely represents a broader high-level plan or different reporting period.*
+
+### 4.2. Objective-Specific Performance
+
+#### 4.2.1. Objective: Awareness
+
+No data was found for Campaign ID `CMP_2025_0001` with the objective 'Awareness'.
+
+#### 4.2.2. Objective: Consideration
+
+The 'Consideration Campaign Performance' table provides insights into the campaign's effectiveness in driving user interest and engagement, specifically for the "Onsite" channel.
+
+| Channel | Total Ad Spend | Clicks | CTR | CPC | ROAS |
+|:--------|---------------:|-------:|----:|----:|-----:|
+| Onsite  |         494.49 |    546 | 1.07| 0.97|  8.76|
+
+The Onsite channel has generated 546 clicks with a Click-Through Rate (CTR) of 1.07% at a Cost Per Click (CPC) of 0.97. The Return on Advertising Spend (ROAS) for this channel is 8.76, indicating a positive return on investment for consideration-focused activities.
+
+#### 4.2.3. Objective: Conversion
+
+No data found for the specified campaign ID and objective directly in the `db_text` for prompt 3. However, additional conversion data was identified:
+
+*   The monthly conversions for Campaign ID `CMP_2025_0001` are **15,000 for January 2025**. (Prompt 13)
+*   For August 2025, for Dove (Consideration), the conversions were **56**. (Prompt 8)
+
+*Note: The campaign's planned duration is from 2025-08-02 to 2025-09-06. The conversion data for January 2025 falls outside this period, and the August 2025 data (56 conversions) is significantly different from the January 2025 figure (15,000 conversions). This suggests potential data aggregation issues or reporting for different campaign iterations/objectives under the same ID.*
+
+#### 4.2.4. Objective: Retention
+
+No campaign performance data was found for Campaign ID `CMP_2025_0001` with an objective of 'Retention'.
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+*   Consideration
+
+### 5.2. Visualizations
+
+#### 5.2.1. Monthly ROAS Performance
+
+Image 1: Monthly ROAS Performance for Dove's Campaign ID CMP_2025_0001
+gs://acn-cda-adk-staging/root/user/713fdf96-489a-46bd-b74b-49a08bc5c70b/analyze_the_monthly_roas_performance_for_dove's_campaign_id_cmp_2025_0001._provide_insights_into_tre_VizChart.png/0
+
+The line chart illustrates the monthly Return on Advertising Spend (ROAS) performance for Dove's Campaign ID `CMP_2025_0001`. It shows how the average monthly ROAS has trended over time, providing insights into the campaign's financial efficiency on a month-to-month basis.
+
+#### 5.2.2. Monthly CTR Performance
+
+Image 2: Monthly CTR Performance for Dove's Campaign ID CMP_2025_0001
+gs://acn-cda-adk-staging/root/user/713fdf96-489a-46bd-b74b-49a08bc5c70b/examine_the_monthly_ctr_performance_for_dove's_campaign_id_cmp_2025_0001._highlight_key_trends_and_v_VizChart.png/0
+
+The line chart illustrates the monthly Click-Through Rate (CTR) performance for Dove's Campaign ID `CMP_2025_0001`. The x-axis represents the Campaign Month and the y-axis shows the Average CTR (%). The chart shows how the average CTR has changed over time for this campaign, indicating trends in user engagement with the ad creatives.
+
+#### 5.2.3. Other Visualizations
+
+Data not available for this section.
+
+### 5.3. Campaign Details and Analysis
+
+#### 5.3.1. Campaign: Dove Summer Glow (CMP_2025_0001)
+
+*   **Campaign Name**: Dove Summer Glow
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Ad IDs**: Data not available for this section.
+*   **Campaign Duration**: 2025-08-02 to 2025-09-06
+*   **KPIs Analyzed**: ROAS, CTR, Conversions
+*   **Campaign Objective**: Consideration
+*   **Metrics**:
+    *   **ROAS**: Monthly data is available, as shown in Image 1. For August 2025, Dove (Consideration) had a ROAS of 157.71.
+    *   **Conversions**: 15,000 for January 2025 and 56 for August 2025.
+    *   **CTR**: Monthly data is available, as shown in Image 2. For August 2025, Dove (Consideration) had a CTR of 19.19%.
+    *   **Impressions**: Data not available.
+
+*   **Campaign Analysis Text**:
+    The "Dove Summer Glow" campaign, `CMP_2025_0001`, primarily targeting "Consideration" with "App Installs" as a sub-objective, shows varying performance across key metrics. The monthly ROAS and CTR trends (Image 1 and Image 2) provide a visual representation of the campaign's efficiency and engagement over time. Specifically, for August 2025, which falls within the campaign's active period, the campaign achieved a ROAS of 157.71 and a CTR of 19.19% for Dove under the Consideration objective. The "Onsite" channel, a key component, contributed significantly with a ROAS of 8.76 and a CTR of 1.07%.
+
+    Conversion data presents a mixed picture. While a substantial 15,000 conversions were recorded for January 2025 under this campaign ID, this falls outside the stated campaign duration. For August 2025, within the campaign's active phase, 56 conversions were attributed to Dove (Consideration). The significant difference between these two conversion figures and the temporal discrepancy requires further investigation to accurately assess the campaign's conversion performance. With only limited monthly data points for ROAS, CTR, and conversions specific to the campaign's active period, identifying clear patterns or comprehensive trends is challenging.
+
+*   **Weekly Performance**: Data not available for this section.
+*   **Overall Campaign Impact**:
+    The campaign has demonstrated a strong ROAS and CTR in August 2025, indicating effective ad spend and user engagement during its active phase. The specific performance of the "Onsite" channel for consideration metrics is also positive. However, the inconsistencies and limited data for conversions, especially concerning the campaign's official duration, make it difficult to provide a definitive overall impact assessment without further data reconciliation.
+
+### 5.4. Campaign Comparison
+
+Data not available for this section. This section would typically compare `CMP_2025_0001` with other campaigns having similar objectives and SKUs.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Investigate the discrepancies in conversion data, particularly the 15,000 conversions reported for January 2025 versus the 56 conversions for August 2025, and reconcile them with the campaign's official start and end dates (2025-08-02 to 2025-09-06). Obtain more granular, month-by-month or weekly performance data for ROAS, CTR, and conversions specifically for `CMP_2025_0001` within its active period.
+*   **Objective**: To gain a clear and accurate understanding of the campaign's true performance, identify actual trends, and make data-driven decisions for future campaigns.
+
+### 6.2. Optimize Consideration Channel Performance
+
+*   **Action**: Analyze the specific creatives, targeting, and placements within the "Onsite" channel that contributed to the positive ROAS (8.76) and CTR (1.07%). Replicate successful strategies and explore opportunities to enhance these elements further.
+*   **Objective**: Maximize the efficiency and effectiveness of the "Onsite" channel to drive higher consideration, given its demonstrated success.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Implement A/B testing for ad creatives, ad copy, and landing page experiences for the "Consideration" objective. Focus on elements that can further improve CTR and ultimately drive more app installs, given "App Installs" is a sub-objective.
+*   **Objective**: Continuously improve user engagement and conversion rates by identifying the most effective creative and landing page strategies.

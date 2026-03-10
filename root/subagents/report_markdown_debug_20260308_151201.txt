@@ -1,0 +1,140 @@
+# Campaign Performance Report: July 2025
+
+## 1. Context
+
+The provided data focuses on aggregated campaign performance metrics for Dove campaigns during July 2025, rather than individual campaign details as structured in this template. Therefore, detailed information for `campaign_1` and `campaign_2` as distinct entities is not available in the input.
+
+### campaign_1
+**Campaign ID**: Data not available for this specific section.
+**Campaign Name**: Data not available for this specific section.
+**Brand Name**: Dove (Inferred from prompt context)
+**Category**: Data not available for this specific section.
+**Media Type(s)**: Data not available for this specific section.
+**Channel(s)**: Onsite, Offsite, CTV (Inferred from prompt3)
+**Objective**: Data not available for this specific section.
+**Sub-Objective**: Data not available for this specific section.
+**Campaign Manager**: Data not available for this specific section.
+**Campaign Duration**: July 2025 (Inferred from prompt context)
+**Planned Budget**: Data not available for this specific section.
+**Actual Spend**: Data not available for this specific section.
+
+### campaign_2
+**Campaign ID**: Data not available for this specific section.
+**Campaign Name**: Data not available for this specific section.
+**Brand Name**: Dove (Inferred from prompt context)
+**Category**: Data not available for this specific section.
+**Media Type(s)**: Data not available for this specific section.
+**Channel(s)**: Onsite, Offsite, CTV (Inferred from prompt3)
+**Objective**: Data not available for this specific section.
+**Sub-Objective**: Data not available for this specific section.
+**Campaign Manager**: Data not available for this specific section.
+**Campaign Duration**: July 2025 (Inferred from prompt context)
+**Planned Budget**: Data not available for this specific section.
+**Actual Spend**: Data not available for this specific section.
+
+## 2. Customization Options
+This report can be filtered and customized along the following dimensions:
+*   Timeline: Daily, Weekly
+*   By Creative: Channel, Platform, Format
+
+## 3. Executive Summary
+**Overview**: This report provides a comprehensive overview of Dove's campaign performance during July 2025, focusing on Return on Ad Spend (ROAS), channel effectiveness, budget utilization, and weekly revenue and conversion trends. The analysis aims to inform strategic decisions for optimizing future marketing spend and campaign targeting to maximize ROI.
+*   **Overall Performance**: The top 5 campaigns contributed significantly to overall attributed sales, with "Dove Nourishing Body Wash Launch" achieving the highest ROAS of 6.6. The daily ROAS for Dove campaigns remained consistently strong throughout July, peaking at 7.0 around mid-month. Weekly conversions and revenue showed a positive trend, with Week 4 achieving the highest revenue at $17.6K.
+*   **Channel/Format Performance**: Onsite channels demonstrated superior engagement and conversion efficiency (CTR 3.0%, CVR 2.8%), indicating their direct impact on sales. While CTV showed minimal direct conversion, its contribution to awareness is implied. Offsite channels provided moderate performance.
+*   **Optimization Insight**: Budget utilization was efficient across campaign objectives, with Conversion campaigns utilizing 90% of their planned budget, Awareness campaigns 93%, and Consideration campaigns 88%. This suggests effective pacing and management of ad spend relative to objectives.
+*   **Mid-Funnel Engagement**: Onsite channels exhibited strong mid-funnel engagement with high CTR and CVR, indicating that users interacting with onsite ads are highly engaged and conversion-ready. Offsite channels also contributed to engagement, albeit at a lower rate.
+
+## 4. Campaign Overview
+Period: July 2025
+
+## table_campaign_overview
+This table is adapted to show budget utilization by Campaign Objective, as individual campaign budgets are not provided.
+| Campaign Objective | Planned Budget (USD) | Total Ad Spend (USD) | Budget Utilization % |
+|--------------------|----------------------|----------------------|----------------------|
+| Awareness          | 30000                | 28000                | 93%                  |
+| Conversion         | 50000                | 45000                | 90%                  |
+| Consideration      | 20000                | 18000                | 88%                  |
+
+## table_channel_performance
+Data not available to fully populate this table as impressions, unique reach, frequency, ROAS by channel, and CPM are not provided in the 'Text and Visualization Summary'.
+### title
+Campaign Objective: Data not available for this specific section.
+| Channel | Total Ad Spend | Impressions | Unique Reach | Frequency | ROAS | CPM |
+|----------|----------------|-------------|---------------|------------|------|------|
+| [Channel Name] | Data not available | Data not available | Data not available | Data not available | Data not available | Data not available |
+
+## 5. Campaign Wise Analysis
+The provided data offers an aggregate view of Dove campaigns rather than detailed breakdowns for individual campaigns. Therefore, this section will summarize overall campaign performance based on the available insights.
+
+### Overall Campaign Performance
+Campaign ID: Aggregated for Dove campaigns
+Campaign Ad IDs: Data not available
+Campaign Duration: July 2025
+KPIs analyzed: ROAS, CTR, CVR, Conversions, Revenue, Budget Utilization
+Campaign Objective: Awareness, Conversion, Consideration
+
+#### Metric 1: Top 5 Campaigns by ROAS
+
+The top 5 campaigns by Return on Ad Spend (ROAS) for July 2025 were:
+*   **CMP_2025_0001 (Dove Nourishing Body Wash Launch)**: ROAS 6.6
+*   **CMP_2025_0002 (Dove Deodorant Awareness)**: ROAS 1.2
+*   **CMP_2025_0003 (Dove Hair Therapy)**: ROAS 4.8
+*   **CMP_2025_0004 (Dove Men+Care Range)**: ROAS 3.9
+*   **CMP_2025_0005 (Dove Intense Repair Shampoo)**: ROAS 3.6
+
+These campaigns collectively contributed approximately 80% of the total attributed sales for the Dove brand. The "Dove Nourishing Body Wash Launch" campaign significantly outperformed others in terms of ROAS.
+
+#### Metric 2: Daily ROAS Trend
+
+![Chart](gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_daily_roas_dove_july2025.png/0)
+*Caption:* Image 1: Daily ROAS Trend – Dove Campaigns (July 2025)
+
+As illustrated in Image 1, the daily ROAS trend for Dove campaigns in July 2025 shows consistent performance, remaining above 5.5 throughout the month. A notable peak of 7.0 was observed around July 15, indicating strong mid-month conversion efficiency, likely influenced by retargeting efforts and promotional offers.
+
+#### Metric 3: CTR and CVR by Channel
+
+![Chart](gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_ctr_cvr_by_channel_july2025.png/0)
+*Caption:* Image 2: CTR and CVR by Channel – July 2025
+
+Image 2 compares the Click-Through Rate (CTR) and Conversion Rate (CVR) across key media channels. Onsite ads achieved the highest engagement and conversion efficiency with a CTR of 3.0% and CVR of 2.8%. Offsite channels showed a CTR of 1.8% and CVR of 1.2%. Connected TV (CTV) had the lowest direct engagement with a CTR of 0.7% and CVR of 0.2%, suggesting its primary role might be in awareness rather than direct conversion.
+
+#### Metric 4: Spend vs. Budget by Objective
+
+![Chart](gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_spend_vs_budget_by_objective_july2025.png/0)
+*Caption:* Image 3: Planned vs. Actual Spend by Objective – July 2025
+
+Image 3 illustrates the planned versus actual spend across different campaign objectives. Conversion campaigns utilized 90% of their budget ($45,000 actual spend vs. $50,000 planned), indicating efficient pacing. Awareness campaigns slightly underspent at 93% utilization ($28,000 actual spend vs. $30,000 planned), while Consideration campaigns were more conservative at 88% utilization ($18,000 actual spend vs. $20,000 planned).
+
+#### Metric 5: Weekly Conversions and Revenue
+
+![Chart](gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_weekly_conversions_revenue_july2025.png/0)
+*Caption:* Image 4: Weekly Conversions and Revenue – Dove Campaigns (July 2025)
+
+Image 4 displays the weekly conversions and attributed revenue for Dove campaigns in July 2025. Conversions peaked in Week 4 with 149 conversions, corresponding to the highest revenue of $17,600. The consistent week-over-week growth in both conversions and revenue indicates improving campaign efficiency and stronger shopper intent over time, especially towards the end of the month.
+
+### Campaign Analysis
+The overall performance of Dove campaigns in July 2025 was strong, characterized by high ROAS, efficient budget utilization, and positive weekly revenue and conversion trends. The "Dove Nourishing Body Wash Launch" campaign was a standout performer in terms of ROAS. Onsite channels proved to be highly effective for direct engagement and conversions, while CTV likely played a role in brand awareness. The consistent daily ROAS and increasing weekly conversions and revenue suggest that the campaign strategies were well-executed and resonated with the target audience. Budget allocation was managed effectively across objectives, ensuring resources were channeled towards achieving specific goals.
+
+---
+
+## Campaigns Comparison
+**Cross-Campaign Insights**
+*   **Objective Alignment**: The budget utilization by objective (Awareness, Conversion, Consideration) indicates a strategic alignment of spend with campaign goals. Conversion campaigns, which are typically high-ROI, saw substantial budget allocation and efficient utilization.
+*   **Budget Efficiency**: All campaign objectives demonstrated good budget efficiency, with utilization rates between 88% and 93%. This suggests effective financial planning and execution, avoiding significant over or underspending.
+*   **Channel Strategy**: Onsite channels are highly effective for driving direct conversions, while Offsite provides a broader reach with moderate engagement. CTV's lower direct conversion rates suggest its primary value lies in upper-funnel awareness and brand building rather than immediate sales.
+*   **Performance Trade-offs**: There is a clear trade-off between reach-focused channels (like CTV) and conversion-focused channels (like Onsite). While CTV contributes to awareness, Onsite ads are crucial for converting engaged users. The high ROAS of specific product launch campaigns highlights the importance of targeted product-centric marketing.
+*   **Recommendation**: Continue to leverage Onsite channels for high-intent users and direct conversions, while strategically using Offsite and CTV for broader reach and brand awareness. Optimize budget allocation to capitalize on high-performing campaigns and objectives.
+
+## 6. Recommendations
+
+## 1. Conduct Granular Temporal and Contextual Analysis
+**Action**: Analyze the specific factors contributing to the ROAS peak around July 15 and the strong performance in Week 4. This includes reviewing ad creatives, promotional offers, media placements, and audience segments active during these periods.
+**Objective**: To identify actionable insights and replicable strategies that can be applied to future campaigns to consistently achieve higher ROAS and conversion rates.
+
+## 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Action**: Implement a more dynamic budget allocation model that can shift resources towards high-performing campaigns and channels in real-time, based on ROAS and conversion efficiency. Review and optimize bidding strategies for Onsite and Offsite channels to maximize ROI.
+**Objective**: To enhance overall campaign efficiency, maximize Return on Ad Spend, and ensure that marketing investments are continuously optimized for the best possible outcomes.
+
+## 3. Systematic A/B Testing of Creative and Landing Page Elements
+**Action**: Conduct systematic A/B testing for ad creatives (especially for Onsite and Offsite campaigns) and landing page experiences. Focus on elements like headlines, calls-to-action, imagery, and offer presentation.
+**Objective**: To continuously improve Click-Through Rates (CTR) and Conversion Rates (CVR) by identifying the most effective creative and user experience elements, thereby driving greater engagement and sales.

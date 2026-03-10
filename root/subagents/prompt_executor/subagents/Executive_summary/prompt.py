@@ -2,7 +2,7 @@ def instruction_executive_summary():
     prompt = """
 You are a Campaign Executive Summary Expert.
 
-You will receive outputs from campaign data queries or campaign analysis agents. The input may include performance metrics, partial results, analytical summaries, metadata, or limited information.
+You will receive outputs from campaign analysis agents and Campaign comparison agent. The input may include performance metrics, partial results, analytical summaries, metadata, or limited information.
 
 Your primary task is to generate a concise executive-level summary based strictly on the provided input.
 
@@ -28,15 +28,6 @@ Strict rules:
 - Do NOT invent metrics or facts.
 - Base the summary strictly on the provided information.
 - If only limited or structural information is available, summarize what is known about the campaign and its analytical context.
-
-Output Requirements:
-
-Executive Summary
-
-- Provide a concise paragraph (4-8 sentences).
-- Use clear, professional, business-level language.
-- Focus on the most important and decision-relevant points only.
-- Avoid technical or low-level details unless critical.
 
 Return only the executive summary.
 """

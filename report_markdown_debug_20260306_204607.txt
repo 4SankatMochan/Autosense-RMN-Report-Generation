@@ -1,0 +1,105 @@
+# Campaign Performance Report
+
+## 1. Context
+
+### campaign_1
+**Campaign ID**: CMP_2025_0003  
+**Campaign Name**: CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911  
+**Brand Name**: Lux  
+**Category**: Contextual / Placement-Based  
+**Media Type(s)**: Sponsored Product  
+**Channel(s)**: Onsite  
+**Objective**: Consideration  
+**Sub-Objective**: App Installs  
+**Campaign Manager**: ADV_2025_B  
+**Campaign Duration**: 2025-08-01 – 2025-09-11  
+**Planned Budget**: 586.15  
+**Actual Spend**: 462.75  
+
+### campaign_2
+Data not available for this section.
+
+## 2. Customization Options
+This report can be filtered and customized along the following dimensions:
+* Timeline: [Specify timeline e.g., Daily, Weekly]  
+* By Creative: [Specify segmentation logic e.g., Channel, Platform, Format]  
+
+## 3. Executive Summary
+**Overview**: This report focuses on Campaign ID CMP_2025_0003 for the brand Lux, an Onsite, Consideration-focused campaign active from August 1 to September 11, 2025. The campaign demonstrated strong performance in August 2025, achieving an impressive Return on Ad Spend (ROAS) of 8.65 and generating 65 conversions. The average Click-Through Rate (CTR) for August was approximately 1.07%. While the campaign utilized 78.94% of its planned budget to date, the daily conversion trend for August showed fluctuations, with a peak around August 9th. The high ROAS indicates efficient ad spend, but further analysis into daily performance variations and budget utilization could uncover opportunities for optimization.  
+* Overall Performance: Campaign CMP_2025_0003 achieved an average ROAS of 8.65 and 65 total conversions in August 2025, with an average CTR of 1.07%.  
+* Channel/Format Performance: The campaign, focused on the Onsite channel with Sponsored Product media type, showed effective engagement and conversion.  
+* Optimization Insight: Daily conversion data suggests variability, peaking around August 9th, indicating potential for optimizing timing or contextual factors.  
+* Mid-Funnel Engagement: With a primary objective of Consideration and sub-objective of App Installs, the campaign successfully drove 65 conversions, suggesting effective mid-funnel engagement.  
+
+## 4. Campaign Overview
+Period: August 1, 2025 – September 11, 2025
+
+### table_campaign_overview
+| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Budget Utilization % |
+|-------------|---------------------------------|--------------------|----------------|----------------------|
+| CMP_2025_0003 | 586.15 | Consideration | 462.75 | 78.94% |
+
+### table_channel_performance
+### title
+Campaign Objective: Consideration
+| Channel | Total Ad Spend | Impressions | Unique Reach | Frequency | ROAS | CPM |
+|---------|----------------|-------------|--------------|-----------|------|-----|
+| Onsite | 586.15 | Data not available | Data not available | Data not available | 8.65 | Data not available |
+
+## 5. Campaign Wise Analysis
+
+### Campaign 1
+### text
+Campaign ID: CMP_2025_0003  
+Campaign Ad IDs: Data not available  
+Campaign Duration: 2025-08-01 – 2025-09-11  
+KPIs analyzed: ROAS, Conversions, CTR  
+Campaign Objective: Consideration  
+
+#### Metric 1: Impressions
+Data not available for this section.
+
+#### Metric 2: ROAS
+Data not available for this section.  
+*Caption:* ROAS for the Onsite channel for Campaign ID CMP_2025_0003 was 8.65.
+
+#### Metric 3: Conversions
+![Chart](gs://acn-cda-adk-staging/root/user/592e12bf-d35c-40ef-8412-93e0a68a5b0d/analyze_the_total_conversions_for_campaign_id_cmp_2025_0003_for_the_brand_lux._include_monthly_trend_VizChart.png/0)  
+*Caption:* The chart illustrates the monthly conversions trend for Campaign ID CMP_2025_0003, branded as Lux. The X-axis represents the dates in August 2025, and the Y-axis shows the number of conversions. The line in the chart displays the daily fluctuations in conversions, highlighting periods of higher or lower performance within the month. For instance, conversions peaked around August 9th with 6 conversions, and were generally lower at the beginning and middle of the month, with a slight increase towards the end.
+
+#### Metric 4: CTR (Click-through-rate)
+Data not available for this section.  
+*Caption:* The average CTR for Campaign ID CMP_2025_0003 in August 2025 was approximately 1.07%.
+
+### Campaign Analysis
+Campaign ID CMP_2025_0003, targeting Consideration with a sub-objective of App Installs, ran from August 1 to September 11, 2025. For the month of August 2025, the campaign achieved a robust average ROAS of 8.65. It generated a total of 65 conversions, with daily conversion trends showing variability, peaking around August 9th with 6 conversions. The average CTR for August 2025 was approximately 1.07%. The campaign's performance on the Onsite channel, with a total ad spend of 586.15, indicates strong engagement and conversion efficiency relative to the spend. The budget utilization stands at 78.94% of the planned budget of 586.15, suggesting there might be room to reallocate or optimize remaining spend.
+
+---
+
+### Campaign 2
+Data not available for this section.
+
+---
+
+### Campaigns Comparison
+**Cross-Campaign Insights**  
+Data not available for this section as only one campaign's detailed data was provided.  
+* **Objective Alignment**: Data not available  
+* **Budget Efficiency**: Data not available  
+* **Channel Strategy**: Data not available  
+* **Performance Trade-offs**: Data not available  
+* **Recommendation**: Data not available  
+
+## 6. Recommendations
+
+### 1. Conduct Granular Temporal and Contextual Analysis
+**Action**: Further analyze daily conversion trends and CTR fluctuations for Campaign ID CMP_2025_0003 to identify specific days or contexts that drive peak performance, especially around the observed peak on August 9th.  
+**Objective**: To optimize campaign scheduling and content delivery for maximum impact and efficiency by aligning with periods of highest user receptiveness.  
+
+### 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Action**: Review the current budget utilization (78.94%) for Campaign ID CMP_2025_0003. Consider reallocating any underspent budget to high-performing periods or channels, or adjust bidding strategies to ensure full utilization and maximize ROAS for the remaining campaign duration.  
+**Objective**: To ensure optimal resource allocation and maximize Return on Ad Spend (ROAS) throughout the campaign, preventing budget wastage and capitalizing on effective periods.  
+
+### 3. Systematic A/B Testing of Creative and Landing Page Elements
+**Action**: Implement A/B testing for various creative elements and landing page designs within the 'Onsite' channel for Campaign ID CMP_2025_0003. Focus on elements that could further improve CTR and conversion rates, especially given the campaign's Consideration objective.  
+**Objective**: To continuously refine campaign assets and user journeys to enhance engagement and conversion efficiency, thereby driving more app installs.

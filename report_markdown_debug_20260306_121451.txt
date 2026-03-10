@@ -1,0 +1,110 @@
+# Campaign Performance Report
+
+## 1. Context
+
+### 1.1. Campaign 1: Lux - CMP_2025_0003
+This section provides detailed context for Campaign ID CMP_2025_0003 for the brand Lux.
+
+**Campaign ID**: CMP_2025_0003
+**Campaign Name**: CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911
+**Brand Name**: Lux
+**Category**: Contextual / Placement-Based
+**Media Type(s)**: Sponsored Product
+**Channel(s)**: Onsite
+**Objective**: Consideration
+**Sub-Objective**: App Installs
+**Campaign Manager**: Data not available for this section.
+**Campaign Duration**: From 2025-08-01 to 2025-09-11
+**Planned Budget**: 9088.36
+**Actual Spend**: 5861.5
+
+### 1.2. Campaign 2
+Data not available for Campaign 2.
+
+## 2. Customization Options
+This report can be filtered and customized along the following dimensions:
+*   **Timeline**: Monthly
+*   **By Creative**: Audience Segment, Channel
+
+## 3. Executive Summary
+
+**Overview**: This report provides an analysis of the Lux brand's campaign, CMP_2025_0003, which ran from August 1 to September 11, 2025. The campaign's primary objective was Consideration, specifically targeting App Installs through the Onsite channel using Sponsored Product media. The campaign demonstrated a strong average Return on Ad Spend (ROAS) and achieved a 64.49% budget utilization.
+
+*   **Overall Performance**: Campaign CMP_2025_0003 achieved an impressive average ROAS of approximately 8.05, with an average Click-Through Rate (CTR) of about 1.07% and an average of 3.26 conversions. The campaign utilized 64.49% of its planned budget, indicating a conservative spend against the planned allocation.
+*   **Channel/Format Performance**: Operating exclusively on the Onsite channel as a Sponsored Product, the campaign's ROAS varied significantly across different audience segments. Loyalty Program Members showed an exceptionally high ROAS of 54.10, followed by App Engaged Shoppers at 42.94, highlighting the effectiveness of targeting engaged customer groups.
+*   **Optimization Insight**: The substantial difference in ROAS across audience segments suggests a significant opportunity for optimizing future budget allocation and targeting strategies. Focusing on high-performing segments can further enhance campaign efficiency and ROI.
+*   **Mid-Funnel Engagement**: With a primary objective of Consideration (App Installs), the campaign successfully engaged users in the mid-funnel. The monthly conversion trends, while fluctuating, indicate consistent activity towards this objective.
+
+## 4. Campaign Overview
+
+**Period**: August 1, 2025 – September 11, 2025
+
+### 4.1. Campaign Budget and Spend Summary
+
+Table 1: Campaign Overview for CMP_2025_0003
+| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Budget Utilization % |
+|-------------|---------------------------------|--------------------|----------------|----------------------|
+| CMP_2025_0003 | 9088.36 | Consideration | 5861.5 | 64.49% |
+
+### 4.2. Channel Performance
+Data not available for this section.
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Campaign 1: CMP_2025_0003
+
+**Campaign ID**: CMP_2025_0003
+**Campaign Ad IDs**: Data not available for this section.
+**Campaign Duration**: 2025-08-01 – 2025-09-11
+**KPIs analyzed**: ROAS, CTR, Conversions
+**Campaign Objective**: Consideration (App Installs)
+
+#### 5.1.1. Metric 1: Impressions
+Data not available for this section.
+
+#### 5.1.2. Metric 2: ROAS
+
+For Campaign ID 'CMP_2025_0003' and Brand 'Lux' in August 2025, the Return on Ad Spend (ROAS) for the 'Onsite' channel varied significantly across different audience segments:
+*   **Loyalty Program Members**: 54.10
+*   **App Engaged Shoppers**: 42.94
+*   **Brand Interactors**: 31.23
+*   **Category Enthusiasts**: 25.68
+*   **Frequent Browsers**: 10.48
+
+The average ROAS for the campaign was approximately 8.05. These figures highlight the strong efficiency of targeting highly engaged and loyal customer segments.
+
+#### 5.1.3. Metric 3: Conversions
+
+![Chart](gs://acn-cda-adk-staging/root/user/3b1a7429-7488-4dfe-83b9-325c036e1145/investigate_the_conversion_performance_for_campaign_id:_cmp_2025_0003_(brand:_lux)._describe_monthly_VizChart.png/0)
+Image 1: Monthly Conversion Trends for Campaign ID: CMP_2025_0003 (Brand: Lux)
+This line chart illustrates the monthly conversion trends for Campaign ID: CMP_2025_0003 (Brand: Lux). It displays the fluctuations in conversions over time, allowing for an easy identification of peaks, troughs, and overall patterns in performance throughout the months. The average number of conversions for the campaign was approximately 3.26.
+
+#### 5.1.4. Metric 4: CTR (Click-through-rate)
+
+For Campaign ID 'CMP_2025_0003' and Brand 'Lux', the average Click-Through Rate (CTR) is about 1.07%. This indicates the effectiveness of the ad creatives and targeting in prompting user clicks within the Onsite channel.
+
+### 5.2. Campaign Analysis
+
+Campaign CMP_2025_0003 for Lux, with its primary objective of Consideration (App Installs), demonstrated robust performance, particularly in terms of ROAS. The campaign's average ROAS of 8.05 is indicative of efficient ad spend, especially when considering the exceptionally high returns from specific audience segments such as Loyalty Program Members (54.10) and App Engaged Shoppers (42.94). This suggests that the 'Onsite' channel, combined with precise audience targeting, is highly effective for this brand and objective.
+
+The average CTR of 1.07% indicates that the Sponsored Product creatives were reasonably compelling, driving user engagement. While the monthly conversion trends show fluctuations, the overall average of 3.26 conversions demonstrates progress towards the App Install objective. The budget utilization of 64.49% suggests there might be room for increased investment or a more aggressive bidding strategy in high-performing areas to further capitalize on the campaign's success.
+
+### 5.3. Campaign 2
+Data not available for Campaign 2.
+
+### 5.4. Campaigns Comparison
+Data not available for Campaigns Comparison as only one campaign's detailed data was provided.
+
+## 6. Recommendations
+
+### 6.1. 1. Conduct Granular Temporal and Contextual Analysis
+**Action**: Further analyze the performance of different audience segments within the 'Onsite' channel, especially those with exceptionally high ROAS (Loyalty Program Members, App Engaged Shoppers), to understand the specific creative or targeting elements driving their engagement and conversion. Investigate the monthly conversion trends (as shown in Image 1) to identify any cyclical patterns or external factors contributing to peaks and troughs, and align future campaign efforts accordingly.
+**Objective**: Optimize targeting and messaging for high-value segments and adapt campaign timing based on historical performance patterns to maximize efficiency and drive App Installs.
+
+### 6.2. 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Action**: Review the 64.49% budget utilization for the Consideration campaign. Reallocate budget from segments with lower ROAS (e.g., Frequent Browsers at 10.48) to those showing significantly higher returns (e.g., Loyalty Program Members at 54.10). Adjust bidding strategies to capitalize on peak conversion periods or high-value audience segments identified through granular analysis, ensuring budget is fully utilized where it yields the best results.
+**Objective**: Improve overall campaign ROI by ensuring budget is spent on the most effective audience segments and optimizing for the App Install objective.
+
+### 6.3. 3. Systematic A/B Testing of Creative and Landing Page Elements
+**Action**: Implement systematic A/B testing for different ad creatives and landing page experiences specifically for the 'Onsite' channel. Focus testing on elements that resonate most with high-ROAS audience segments, including variations in calls-to-action, imagery, and messaging tailored to encourage App Installs.
+**Objective**: Enhance user engagement (improve the average CTR of 1.07%) and conversion efficiency (increase the average number of conversions from 3.26), ultimately driving higher performance for the Consideration objective (App Installs).

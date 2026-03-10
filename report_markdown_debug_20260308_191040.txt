@@ -1,0 +1,106 @@
+# Campaign Performance Report
+
+## 1. Context
+
+### 1.1. Campaign 1: Lifebuoy Retention Campaign
+
+**Campaign ID**: CMP_2025_2158  
+**Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720  
+**Brand Name**: Lifebuoy  
+**Category**: Optimization-Based  
+**Media Type(s)**: In-App Ads  
+**Channel(s)**: App  
+**Objective**: Retention  
+**Sub-Objective**: Subscription or Refill  
+**Campaign Manager**: Data not available for this section.  
+**Campaign Duration**: 2025-06-13 – 2025-07-20  
+**Planned Budget**: 271.02  
+**Actual Spend**: 271.02  
+
+### 1.2. Campaign 2
+
+Data not available for this section.
+
+## 2. Customization Options
+This report can be filtered and customized along the following dimensions:
+* Timeline: Monthly  
+* By Creative: Channel  
+
+## 3. Executive Summary
+**Overview**: This report provides a detailed analysis of Campaign ID CMP_2025_2158 for the Lifebuoy brand, primarily focused on a Retention objective through In-App Ads on the App channel. The campaign ran from June 13, 2025, to July 20, 2025, with a planned and actual spend of $271.02.  
+* Overall Performance: The campaign demonstrated strong performance with a high ROAS of 7.36 and significant impressions (634,614) and unique reach (134,820). Monthly trends for ROAS, Conversions, and CTR show fluctuations, with ROAS notably increasing in August.  
+* Channel/Format Performance: The App channel, utilizing In-App Ads, proved effective for achieving retention goals, evidenced by the high ROAS and conversion metrics.  
+* Optimization Insight: The notable increase in ROAS observed in August suggests that ongoing optimization efforts or accumulated campaign effects are yielding positive results, indicating potential for further scaling or sustained performance.  
+* Mid-Funnel Engagement: Monthly CTR analysis provides insights into engagement trends, which can be further correlated with conversion patterns to understand mid-funnel effectiveness.  
+
+## 4. Campaign Overview
+Period: June 13, 2025 – August 2025
+
+### 4.1. Campaign Budget and Spend Overview
+
+Table 1: Campaign Budget and Spend Overview
+| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Budget Utilization % |
+|-------------|---------------------------------|--------------------|----------------|----------------------|
+| CMP_2025_2158 | 271.02 | Retention | 271.02 | 2.54% |
+
+### 4.2. Channel Performance Summary
+
+Table 2: Channel Performance for Retention Objective
+| Channel | Total Ad Spend | Impressions | Unique Reach | Frequency | ROAS | CPM |
+|---------|----------------|-------------|--------------|-----------|------|-----|
+| App | 271.02 | 634,614 | 134,820 | 4.71 | 7.36 | 0.43 |
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Campaign 1: CMP_2025_2158 (Lifebuoy)
+Campaign ID: CMP_2025_2158  
+Campaign Ad IDs: Data not available for this section.  
+Campaign Duration: 2025-06-13 – 2025-07-20  
+KPIs analyzed: Conversions, Click-Through Rate (CTR), Return on Ad Spend (ROAS), Impressions, Unique Reach, Frequency, CPM  
+Campaign Objective: Retention  
+
+#### 5.1.1. Monthly Conversions
+
+![Chart](gs://acn-cda-adk-staging/root/user/99cc0cec-03b3-47ff-af41-6bb7310a3faa/provide_a_monthly_analysis_of_conversions_for_campaign_id_cmp_2025_2158_(lifebuoy)._illustrate_the_c_VizChart.png/0)  
+*Image 1: Monthly Conversion Trends for Campaign ID CMP_2025_2158 (Lifebuoy)*  
+The chart illustrates the monthly conversion trends for Campaign ID CMP_2025_2158 (Lifebuoy). It displays the total number of conversions achieved each month throughout the campaign's duration, allowing for an easy visual assessment of conversion performance over time.
+
+#### 5.1.2. Monthly ROAS
+
+![Chart](gs://acn-cda-adk-staging/root/user/99cc0cec-03b3-47ff-af41-6bb7310a3faa/provide_a_monthly_analysis_of_return_on_ad_spend_(roas)_for_campaign_id_cmp_2025_2158_(lifebuoy)._il_VizChart.png/0)  
+*Image 2: Monthly Return on Ad Spend (ROAS) Trends for Campaign ID CMP_2025_2158 (Lifebuoy)*  
+The line chart illustrates the monthly Return on Ad Spend (ROAS) trends for Campaign ID CMP_2025_2158 (Lifebuoy). The X-axis represents the months from April to August 2025, and the Y-axis shows the Monthly ROAS in dollars. The chart reveals fluctuations in ROAS over these months, with a notable increase in August.
+
+#### 5.1.3. Monthly CTR (Click-Through Rate)
+
+![Chart](gs://acn-cda-adk-staging/root/user/99cc0cec-03b3-47ff-af41-6bb7310a3faa/provide_a_monthly_analysis_of_click-through_rate_(ctr)_for_campaign_id_cmp_2025_2158_(lifebuoy)._ill_VizChart.png/0)  
+*Image 3: Monthly Click-Through Rate (CTR) Trend for Campaign ID CMP_2025_2158 (Lifebuoy)*  
+The line chart illustrates the monthly Click-Through Rate (CTR) trend for Campaign ID 'CMP_2025_2158' associated with the 'Lifebuoy' brand. The x-axis represents the months, and the y-axis shows the monthly CTR in percentage. This visualization helps in understanding how the campaign's CTR has performed over time, allowing for the identification of any significant upward or downward trends or seasonal patterns.
+
+#### 5.1.4. Impressions, Reach, and Frequency
+
+The campaign achieved 634,614 Impressions and a Unique Reach of 134,820, resulting in an average Frequency of approximately 4.71. The Cost Per Mille (CPM) was $0.43.
+
+### 5.1.5. Campaign Analysis
+Campaign ID CMP_2025_2158 for Lifebuoy, with a primary objective of Retention, demonstrated strong performance on the App channel using In-App Ads. The campaign effectively utilized its budget of $271.02 to generate a high ROAS of 7.36. With over 634,000 impressions and reaching nearly 135,000 unique users, the campaign successfully engaged its target audience. Monthly analyses of conversions, CTR, and ROAS reveal dynamic performance throughout its duration (April to August 2025). Notably, the ROAS experienced a significant increase in August, suggesting growing efficiency or impact over time. These trends indicate that the campaign is effectively driving retention, with opportunities to further optimize based on the observed monthly patterns.
+
+### 5.2. Campaign 2
+
+Data not available for this section.
+
+### 5.3. Campaigns Comparison
+Data not available for this section.
+
+## 6. Recommendations
+
+### 6.1. Conduct Granular Temporal and Contextual Analysis
+**Action**: Analyze the monthly trends for conversions, CTR, and ROAS in detail to identify specific periods of peak and low performance. Investigate correlating factors such as in-app promotions, seasonal user behavior, or concurrent marketing activities that might influence these trends.  
+**Objective**: Optimize campaign timing and messaging to align with periods of high user receptivity and engagement, thereby maximizing overall campaign effectiveness and efficiency.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Action**: Given the high ROAS (7.36) and the observed increase in August, explore opportunities for dynamic budget allocation. This could involve reallocating budget towards periods or segments demonstrating higher ROAS. Additionally, evaluate and optimize bidding strategies within the App channel to capitalize on these high-performing trends.  
+**Objective**: Maximize ROI by strategically investing in proven effective periods and optimizing ad spend to capture the highest value retention opportunities.
+
+### 6.3. Systematic A/B Testing of Creative and In-App User Journey Elements
+**Action**: Implement systematic A/B testing for various in-app ad creatives, messaging, and calls-to-action. Furthermore, test different user journey flows within the app that are triggered by the retention campaign to identify friction points and areas for improvement.  
+**Objective**: Continuously improve user engagement and conversion rates for retention by refining the creative elements and optimizing the in-app experience, ensuring that users are guided efficiently towards subscription or refill actions.

@@ -87,7 +87,7 @@ Campaign Objective: [Objective]
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
-### Campaign Analysis
+### Campaign Insight
 [Add paragraph detailing campaign results, CTR, CVR, ROAS, and performance summary.]
 
 ---

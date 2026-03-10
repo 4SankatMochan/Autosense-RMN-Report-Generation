@@ -100,6 +100,6 @@ root_agent = SequentialAgent(
         prompt_executor,
         report_generator
     ],
-    before_agent_callback=setup_before_agent_call,
+    # before_agent_callback=setup_before_agent_call,
     # disallow_transfer_to_parent = True
 )

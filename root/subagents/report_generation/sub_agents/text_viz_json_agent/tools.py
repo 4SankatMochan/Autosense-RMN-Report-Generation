@@ -23,6 +23,9 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
 
     # Step 1: List and sort all blobs
     blobs = list(bucket.list_blobs(prefix=session_prefix))
+
+    print(f"All blobs in session prefix {session_prefix}: {[blob.name for blob in blobs]}")
+
     # Filter out unwanted blobs before sorting
     filtered_blobs = [blob for blob in blobs if 'code_execution_image_' not in blob.name]
     sorted_blobs = sorted(filtered_blobs, key=lambda b: b.updated)
