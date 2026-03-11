@@ -9,6 +9,12 @@ from pathlib import Path
 import json
 import os
 from datetime import datetime
+import markdown_to_json
+from io import StringIO
+import ast,re
+import pandas as pd
+
+
 
 def timestamped_filename(base_name: str, ext: str) -> str:
     """
@@ -236,37 +242,25 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
 
     return "report markdown generated"
   
-
 async def format_report(tool_context: Optional[ToolContext] = None):
-    """
-    Convert Report from markdown format to JSON format
-    """
     print("inside format report tool")
     report = tool_context.state['report_markdown']
-    main_prompt = format_report_prompt()
-    custom_prompt = f"""
-    **Task**
-    Generate JSON from the Report given below. Do not violate safety filters while generating output. Remove just the things that violate safety rules and kept  of all the information in the Report.
-
-    **Report:**
-
-    {report}
-
-    **Output:**
-    """
-    prompt = main_prompt + custom_prompt
-    res = llm_call(prompt, tool_context=tool_context)
-    # res = ReportSchema.model_validate(res)
+    dct = json.loads(markdown_to_json.jsonify(report))
+    res={}
+    context=list(dct.keys())[0]
+    res['context']=context
+    for i,j in dct[context].items():
+        res[i]=process_value(j)
+    
     tool_context.state['report_json'] = res
     print("report json generated: ")
-
     filename = timestamped_filename("report_json", "json")
     # filename = "report_json.json"
         # Save to file in repo root (current working directory)
     root = os.getcwd()
     path = os.path.join(root, filename)
 
-    # If `res` is not a JSON string, try to convert/pretty-print
+        # If `res` is not a JSON string, try to convert/pretty-print
     report_text = res
     try:
         if isinstance(res, (dict, list)):
@@ -286,4 +280,107 @@ async def format_report(tool_context: Optional[ToolContext] = None):
         f.write(report_text)
 
     print(f"Report JSON saved to: {path}")
+
+    generate_pdf_report(tool_context)
+
     return "report formatted to json"
+
+
+
+
+# async def format_report(tool_context: Optional[ToolContext] = None):
+#     """
+#     Convert Report from markdown format to JSON format
+#     """
+#     print("inside format report tool")
+#     report = tool_context.state['report_markdown']
+#     main_prompt = format_report_prompt()
+#     custom_prompt = f"""
+#     **Task**
+#     Generate JSON from the Report given below. Do not violate safety filters while generating output. Remove just the things that violate safety rules and kept  of all the information in the Report.
+
+#     **Report:**
+
+#     {report}
+
+#     **Output:**
+#     """
+#     prompt = main_prompt + custom_prompt
+#     res = llm_call(prompt, tool_context=tool_context)
+#     # res = ReportSchema.model_validate(res)
+#     tool_context.state['report_json'] = res
+#     print("report json generated: ")
+
+#     filename = timestamped_filename("report_json", "json")
+#     # filename = "report_json.json"
+#         # Save to file in repo root (current working directory)
+#     root = os.getcwd()
+#     path = os.path.join(root, filename)
+
+#     # If `res` is not a JSON string, try to convert/pretty-print
+#     report_text = res
+#     try:
+#         if isinstance(res, (dict, list)):
+#             report_text = json.dumps(res, ensure_ascii=False, indent=2)
+#         else:
+#             # try to load and pretty print if it's a JSON string
+#             try:
+#                 parsed = json.loads(res)
+#                 report_text = json.dumps(parsed, ensure_ascii=False, indent=2)
+#             except Exception:
+#                 # leave as-is (string)
+#                 report_text = str(res)
+#     except Exception:
+#         report_text = str(res)
+
+#     with open(path, "w", encoding="utf-8") as f:
+#         f.write(report_text)
+
+#     print(f"Report JSON saved to: {path}")
+#     return "report formatted to json"
+
+def process_str(st):
+    lines = st.split('\n\n')
+    txt_counter=1
+    obj={}
+    for line in lines:
+        #Check for images and image captions
+        urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)', line)
+        caption = re.findall(r'(?:\*\*)?Image \d: .*', line)
+        
+        #Check for tables and table captions
+        table=re.findall(r'(\|.+\|)', line,flags=re.DOTALL)
+        table_caption=re.findall(r'\*\*Table \d: .+', line)
+        
+        if urls and caption:
+            obj['image']={}
+            obj['image']['chart_link']=urls[0]
+            obj['image']['caption']=caption[0]
+        
+
+        elif table and table_caption:
+            obj['table']={'table_content':{}}
+            buf=StringIO(table[0])
+            df = pd.read_table(buf,sep='|')
+            df=df.dropna(how='all',axis=1)
+            df=df.drop(index=0,axis=0)
+            df =df.map(lambda x : x.strip())
+            obj['table']['table_content']['headers'] = list(df.columns)
+            obj['table']['table_content']['rows'] = df.values.tolist()
+            
+        else:
+            if re.match(r'^\[.+\]$',line):
+                try:
+                    line = '\n'.join(ast.literal_eval(line))
+                except:
+                    print(line)
+            obj[f'text_{txt_counter}'] = line
+            txt_counter+=1
+
+    return obj
+
+def process_value(obj):
+    if isinstance(obj, str):
+        return process_str(obj)
+    if isinstance(obj, dict):
+        return {i:process_value(j) for i,j in obj.items()}

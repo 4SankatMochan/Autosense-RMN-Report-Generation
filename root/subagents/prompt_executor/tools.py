@@ -7,9 +7,12 @@ from .subagents.Campaign_comparison.agent import campaign_comparison_root_agent
 from .subagents.Executive_summary.agent import executive_summary_root_agent
 from .subagents.Recommendation.agent import recommendation_root_agent
 from google.adk.agents.sequential_agent import SequentialAgent
+import concurrent.futures
+from uuid import uuid4
 
 async def agent_call(question, tool_context):
     agent_tool = AgentTool(agent=root_agent)
+    print(str(uuid4()))
     db_ds_agent_output = await agent_tool.run_async(
             args={"request": question}, tool_context=tool_context
         )
@@ -40,6 +43,31 @@ async def call_db_ds_agent(
     for prompt in section.get("prompts", [])
     ]
  
+    final_results = []
+    failed_prompts = []
+    # with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+    # # Submit tasks and store future objects
+    #     futures = [executor.submit(agent_call,prompt, tool_context) for prompt in flat_prompts]
+
+    # # Process results as they become available
+    #     done, not_done = concurrent.futures.wait(
+    #     futures, 
+    #     timeout=None, 
+    #     return_when=concurrent.futures.ALL_COMPLETED
+    #     )
+
+    #     for prompt,future in zip(flat_prompts,done):
+    #         try:
+    #             final_results.append({
+    #             "prompt": prompt,
+    #             "response": future.result()
+    #         })
+    #         except Exception as e:
+    #              failed_prompts.append({
+    #             "prompt": prompt,
+    #             "error": str(e)
+    #         })
+        
     # question_list= [
     #                 "What customization and filtering options are available for analyzing the performance of Campaign ID: CMP_2025_0007 for Continental? Specifically, list available timelines (e.g., daily, weekly, monthly) and segmentation options (e.g., by creative, channel, audience)."]
     # print(f"prompt generator output: {str(question_list)}")
