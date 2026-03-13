@@ -13,7 +13,7 @@ import markdown_to_json
 from io import StringIO
 import ast,re
 import pandas as pd
-
+from ..pdf_generator.tools import generate_pdf_report
 
 
 def timestamped_filename(base_name: str, ext: str) -> str:

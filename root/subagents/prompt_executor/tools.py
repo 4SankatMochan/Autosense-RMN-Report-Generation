@@ -9,13 +9,15 @@ from .subagents.Recommendation.agent import recommendation_root_agent
 from google.adk.agents.sequential_agent import SequentialAgent
 import concurrent.futures
 from uuid import uuid4
+import time
 
 async def agent_call(question, tool_context):
     agent_tool = AgentTool(agent=root_agent)
-    print(str(uuid4()))
+    
     db_ds_agent_output = await agent_tool.run_async(
             args={"request": question}, tool_context=tool_context
         )
+    
     return db_ds_agent_output
 
 async def call_db_ds_agent(
@@ -73,9 +75,9 @@ async def call_db_ds_agent(
     # print(f"prompt generator output: {str(question_list)}")
     
     tasks = [agent_call(prompt, tool_context) for prompt in flat_prompts]
-
+    print('Parallel call start',time.localtime())
     results = await asyncio.gather(*tasks, return_exceptions=True)
-
+    print('Parallel call end',time.localtime())
     final_results = []
     failed_prompts = []
 

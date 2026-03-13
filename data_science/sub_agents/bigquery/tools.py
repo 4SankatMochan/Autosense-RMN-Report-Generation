@@ -52,18 +52,19 @@ def get_bq_client():
     return bq_client
 
 
-def get_database_settings():
+async def get_database_settings():
     """Get database settings."""
     global database_settings
     if database_settings is None:
-        database_settings = update_database_settings()
+        database_settings = await update_database_settings()
+    print('dbs:',database_settings)
     return database_settings
 
 
-def update_database_settings():
+async def update_database_settings():
     """Update database settings."""
     global database_settings
-    ddl_schema = get_bigquery_schema(
+    ddl_schema = await get_bigquery_schema(
         get_env_var("BQ_DATASET_ID"),
         client=get_bq_client(),
         project_id=get_env_var("BQ_PROJECT_ID"),
@@ -75,6 +76,7 @@ def update_database_settings():
         # Include ChaseSQL-specific constants.
         **chase_constants.chase_sql_constants_dict,
     }
+    print('dbs',database_settings)
     return database_settings
 
 

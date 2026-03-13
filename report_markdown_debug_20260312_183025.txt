@@ -1,0 +1,146 @@
+# Campaign Performance Report: Lifebuoy - CMP_2025_2158
+
+## 1. Context
+
+This report provides a detailed analysis of the performance of Campaign ID `CMP_2025_2158` for the brand `Lifebuoy`. The campaign's primary objective is 'Retention', targeting existing users through 'In-App Ads' on the 'App' channel. This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels, understand channel contributions to attributed sales, and identify overall daily sales patterns. The insights derived will inform strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaign Details
+
+*   **Campaign ID:** CMP_2025_2158
+*   **Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name:** Lifebuoy
+*   **Category:** Optimization-Based
+*   **Media Type:** In-App Ads
+*   **Channel:** App
+*   **Objective:** Retention
+*   **Sub-Objective:** Subscription or Refill
+*   **Campaign Duration:** From 2025-06-13 to 2025-07-20
+*   **Planned Budget:** 271.02
+*   **Actual Spend:** 271.02
+
+## 2. Customization Options
+
+Data not available for this section.
+
+## 3. Executive Summary
+
+This report analyzes the performance of Lifebuoy's 'Retention' campaign (CMP_2025_2158) from June 13 to July 20, 2025, focusing on its effectiveness in driving engagement and conversions.
+
+The campaign demonstrated significant growth in core metrics from June to July 2025, including impressions, clicks, conversions, and attributed sales value. The Return on Ad Spend (ROAS) also improved, and Cost Per Click (CPC) and Cost Per Acquisition (CPA) remained stable, indicating positive efficiency gains. However, a critical issue identified is the substantial and increasing overspend compared to the planned budget, which needs immediate strategic review.
+
+While total clicks increased, the Click-Through Rate (CTR) showed a decrease, suggesting potential ad fatigue or targeting issues. Similarly, the Conversion Rate (CVR) experienced a slight dip. Monthly conversion trends by channel indicate varying performance, with the 'App' channel being the primary focus for this campaign. CTR analysis across various channels (Search, Social Media, Display) for the broader brand context shows Search consistently outperforming others, highlighting its effectiveness in driving clicks.
+
+Overall, the campaign is effective in driving retention metrics but requires careful management of budget adherence and continuous optimization of creative and targeting strategies to maintain engagement efficiency.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Campaign ID    | Campaign Name                                                    | Start Date   | End Date   | Campaign Objective | Planned Budget | Total Ad Spend | Budget Utilization |
+| :------------- | :--------------------------------------------------------------- | :----------- | :--------- | :----------------- | :------------- | :------------- | :----------------- |
+| CMP_2025_2158 | CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720 | 2025-06-13 | 2025-07-20 | Retention          | 271.02         | 271.02         | 1.0                |
+
+*Note: The 'Actual Spend' and 'Budget Utilization' here reflect the high-level summary from prompt5, which matches the planned budget. However, a more detailed analysis in section 5.1 indicates significant overspend in June and July 2025.*
+
+### 4.2. Objective: Retention - Key Metrics
+
+The campaign's objective is 'Retention'. The following table summarizes key performance metrics for the 'App' channel for June and July 2025, based on the detailed performance analysis.
+
+| Metric                        | June 2025 (App Channel) | July 2025 (App Channel) | Change (June to July) |
+| :---------------------------- | :---------------------- | :---------------------- | :-------------------- |
+| **Actual Spend**              | $385.13                 | $427.93                 | +$42.80               |
+| **Impressions**               | 273,438                 | 361,176                 | +87,738               |
+| **Clicks**                    | 432                     | 483                     | +51                   |
+| **Conversions**               | 54                      | 60                      | +6                    |
+| **Attributed Sales Value**     | $2,790.93               | $3,189.93               | +$399.00              |
+| **ROAS**                      | 7.25                    | 7.45                    | +0.20                 |
+| **CPC**                       | $0.89                   | $0.89                   | Stable                |
+| **CPA**                       | $7.13                   | $7.13                   | Stable                |
+| **CTR**                       | 0.16%                   | 0.13%                   | -0.03%                |
+| **Conversion Rate (CVR)**     | 12.50%                  | 12.42%                  | -0.08%                |
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Detailed Campaign Performance Analysis
+
+**Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+**Campaign ID:** CMP_2025_2158
+**Campaign Duration:** 2025-06-13 to 2025-07-20
+**Campaign Objective:** Retention
+**KPIs Analyzed:** Impressions, Clicks, Conversions, Attributed Sales Value, ROAS, CPC, CPA, CTR, CVR.
+
+Here's an analysis of the campaign performance for 'CMP_2025_2158' (Brand: 'Lifebuoy', Objective: 'Retention') for June and July 2025:
+
+The campaign showed growth in several key metrics from June to July, but also significant deviations in spend and some efficiency concerns.
+
+**1. Significant Deviations from Planned Outcomes:**
+
+*   **Actual Spend vs. Planned Spend:** This is the most prominent deviation. The campaign significantly overspent its planned budget in both months:
+    *   **June:** Actual Spend ($385.13) was 42.10% over the Planned Spend ($271.02).
+    *   **July:** Actual Spend ($427.93) was 57.90% over the Planned Spend ($271.02).
+    *   The overspend increased from June to July, indicating a consistent trend of exceeding the allocated budget. This needs immediate attention to understand if the increased spend was intentional (e.g., to scale performance) or an uncontrolled budgetary issue.
+
+**2. Key Successes:**
+
+*   **Growth in Core Metrics:** Despite the budget overruns, the campaign delivered positive absolute growth across primary performance indicators:
+    *   **Impressions:** Increased by 87,738 (from 273,438 to 361,176), indicating wider reach.
+    *   **Clicks:** Increased by 51 (from 432 to 483), showing more engagement.
+    *   **Conversions:** Increased by 6 (from 54 to 60), leading to more successful outcomes.
+    *   **Attributed Sales Value:** Increased by $399.00 (from $2,790.93 to $3,189.93), signifying higher revenue generation.
+*   **Improved ROAS:** The Return on Ad Spend (ROAS) improved from 7.25 in June to 7.45 in July. This indicates that despite the increased actual spend, the campaign became slightly more efficient at generating sales value for each dollar spent.
+*   **Stable CPC and CPA:** The Cost Per Click (CPC) remained stable at $0.89, and the Cost Per Acquisition (CPA) remained stable at $7.13. This is a positive outcome, suggesting that the cost of acquiring a click or a conversion did not escalate with the increased spend and activity.
+
+**3. Areas for Improvement:**
+
+*   **Decreased Click-Through Rate (CTR):** The CTR decreased from 0.16% in June to 0.13% in July, a drop of 0.03%. While total clicks increased, the rate at which impressions converted into clicks declined. This could suggest:
+    *   **Ad Fatigue:** The same ads might be shown to a similar audience, leading to decreased engagement.
+    *   **Ad Placement/Targeting:** The increased impressions might be reaching less relevant audiences.
+    *   **Ad Creative Effectiveness:** The ad copies or visuals might need optimization to maintain or improve engagement with a larger audience pool.
+*   **Slightly Decreased Conversion Rate:** The conversion rate saw a minor decrease from 12.50% in June to 12.42% in July (a difference of 0.08%). While total conversions increased, this slight dip suggests that the quality of clicks or the landing page experience might need a review to ensure a higher percentage of visitors complete the desired action.
+
+### 5.2. Monthly Conversions by Channel
+
+Image 1: Monthly Conversions by Channel for Campaign ID CMP_2025_2158 (Brand: Lifebuoy)
+gs://acn-cda-adk-staging/root/user/d298f4ba-6b8c-4131-98ca-a04a455e1ae9/for_campaign_id_cmp_2025_2158_(brand:_lifebuoy),_analyze_the_conversions_on_a_monthly_basis._provide_VizChart.png/0
+
+The line chart displays the "Monthly Conversions by Channel for Campaign ID CMP_2025_2158 (Brand: Lifebuoy)". The x-axis represents the month and year, while the y-axis shows the total monthly conversions. Each line on the chart corresponds to a different channel, illustrating how conversions have trended over time for each channel within the specified campaign.
+
+### 5.3. Monthly Click-Through Rate (CTR) Performance
+
+The line chart illustrates the monthly Click-Through Rate (CTR) performance across Search, Social Media, and Display channels for Campaign ID 'CMP_2025_2158' and Brand 'Lifebuoy' throughout 2024.
+
+**Key Observations:**
+
+*   **Channel Performance Hierarchy:** The Search channel consistently maintains the highest CTR, followed by Social Media, and then Display, which shows the lowest CTR across all months. This indicates that Search is the most effective channel for driving clicks for this campaign.
+*   **Upward Trend:** All three channels exhibit a general upward trend in CTR from January to November 2024, with a slight dip in December for all channels. This suggests a positive evolution in campaign effectiveness or audience engagement over the year.
+*   **Fluctuations:** While the overall trend is upward, there are minor monthly fluctuations. For instance, the CTR for Search dipped slightly in April and August, and similar minor dips are visible in Social Media and Display channels. However, these fluctuations do not represent significant anomalies but rather typical variations in campaign performance.
+
+In summary, the campaign shows improving CTR performance across all channels over 2024, with Search being the strongest performer. The consistent ranking of channels by CTR suggests inherent differences in audience behavior or targeting effectiveness specific to each platform for this campaign.
+
+### 5.4. Monthly Return on Ad Spend (ROAS) Analysis
+
+The current data, as displayed in the DataFrame, consists of only two entries for the 'App' channel. This limited dataset is insufficient to perform a comprehensive analysis of monthly Return on Ad Spend (ROAS) trends over time or across different channels.
+
+To identify performance trends and create meaningful visualizations such as line plots for time series analysis or bar charts for channel comparison, more data points would be required. Specifically, we would need:
+*   ROAS values for additional months for the 'App' channel.
+*   ROAS values for other channels (e.g., 'Web', 'Social', 'Email') for the specified campaign and brand.
+
+With the current data, we can only observe the two provided ROAS values for the 'App' channel in June (7.25) and July (7.45) 2025, showing a slight improvement.
+
+## 6. Conclusion and Recommendations
+
+The 'Lifebuoy' Retention Campaign (CMP_2025_2158) has shown positive growth in key performance indicators such as impressions, clicks, conversions, and attributed sales value from June to July 2025, coupled with an improved ROAS and stable CPC/CPA. This indicates an effective campaign in terms of driving retention. However, the most critical issue is the significant and increasing deviation from the planned budget. Additionally, the decline in CTR and a slight dip in CVR warrant further investigation.
+
+### Recommendations:
+
+1.  **Dynamic Budget Allocation and Bidding Strategy Optimization:**
+    *   **Action:** Investigate the reasons for the significant budget overruns in June and July. Determine if the increased spend was a strategic decision to scale performance or an uncontrolled budgetary issue. Implement a robust budget tracking and alert system. Consider dynamic budget allocation strategies that allow for scaling spend in high-performing periods while ensuring adherence to overall budget constraints.
+    *   **Objective:** To ensure financial discipline and optimize resource allocation, preventing uncontrolled overspend while capitalizing on performance gains.
+
+2.  **Systematic A/B Testing of Creative and Landing Page Elements:**
+    *   **Action:** Conduct A/B tests on ad creatives, messaging, and audience targeting to address the decreasing CTR. Explore new creative variations to combat ad fatigue. Review the in-app ad placement and targeting parameters to ensure impressions reach the most relevant audience. Simultaneously, analyze the landing page experience and in-app conversion funnels to identify and rectify any friction points contributing to the slight decrease in CVR.
+    *   **Objective:** To improve engagement efficiency (CTR) and conversion effectiveness (CVR) by continuously optimizing the user journey from impression to conversion.
+
+3.  **Granular Temporal and Contextual Analysis for ROAS:**
+    *   **Action:** Collect more granular data on ROAS across different channels and over a longer time horizon. This will enable a more comprehensive analysis of ROAS trends and allow for channel-specific optimization strategies.
+    *   **Objective:** To gain deeper insights into the profitability of different channels and time periods, allowing for more informed investment decisions to maximize overall campaign ROI.

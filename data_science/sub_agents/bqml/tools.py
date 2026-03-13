@@ -16,7 +16,7 @@ import time
 import os
 from google.cloud import bigquery
 from vertexai import rag
-
+import asyncio
 
 def check_bq_models(dataset_id: str) -> str:
     """Lists models in a BigQuery dataset and returns them as a string.
@@ -94,7 +94,7 @@ def execute_bqml_code(bqml_code: str, project_id: str, dataset_id: str) -> str:
         return f"An error occurred: {str(e)}"
 
 
-def rag_response(query: str) -> str:
+async def rag_response(query: str) -> str:
     """Retrieves contextually relevant information from a RAG corpus.
 
     Args:
@@ -110,7 +110,7 @@ def rag_response(query: str) -> str:
         top_k=3,  # Optional
         filter=rag.Filter(vector_distance_threshold=0.5),  # Optional
     )
-    response = rag.retrieval_query(
+    response = await asyncio.to_thread(rag.retrieval_query(
         rag_resources=[
             rag.RagResource(
                 rag_corpus=corpus_name,
@@ -118,5 +118,5 @@ def rag_response(query: str) -> str:
         ],
         text=query,
         rag_retrieval_config=rag_retrieval_config,
-    )
+    ))
     return str(response)

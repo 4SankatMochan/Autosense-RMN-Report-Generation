@@ -11,12 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import asyncio
 """
 Tool for summarizing multiple descriptive insights into a single cohesive narrative.
 """
 
-def summarize_insights(insights: list, llm, template: str) -> str:
+async def summarize_insights(insights: list, llm, template: str) -> str:
     """
     Aggregates multiple descriptive insights into a cohesive narrative.
 
@@ -30,5 +30,5 @@ def summarize_insights(insights: list, llm, template: str) -> str:
     """
     combined_text = "\n".join(insights)
     filled_prompt = template.format(insights=combined_text)
-    result = llm.generate_content(filled_prompt)
+    result = await asyncio.to_thread(llm.generate_content(filled_prompt))
     return result.text

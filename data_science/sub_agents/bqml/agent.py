@@ -34,7 +34,7 @@ from data_science.sub_agents.bigquery.tools import (
 )
 
 
-def setup_before_agent_call(callback_context: CallbackContext):
+async def setup_before_agent_call(callback_context: CallbackContext):
     """Setup the agent."""
 
     # setting up database settings in session.state
@@ -42,10 +42,12 @@ def setup_before_agent_call(callback_context: CallbackContext):
         db_settings = dict()
         db_settings["use_database"] = "BigQuery"
         callback_context.state["all_db_settings"] = db_settings
+    
+    print(callback_context.state.to_dict())
 
     # setting up schema in instruction
     if callback_context.state["all_db_settings"]["use_database"] == "BigQuery":
-        callback_context.state["database_settings"] = get_bq_database_settings()
+        callback_context.state["database_settings"] = await get_bq_database_settings()
         schema = callback_context.state["database_settings"]["bq_ddl_schema"]
 
         callback_context._invocation_context.agent.instruction = (
