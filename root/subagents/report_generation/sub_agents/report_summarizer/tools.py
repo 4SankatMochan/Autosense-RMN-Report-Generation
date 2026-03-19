@@ -281,7 +281,10 @@ async def format_report(tool_context: Optional[ToolContext] = None):
 
     print(f"Report JSON saved to: {path}")
 
-    generate_pdf_report(tool_context)
+    # try:
+    #     await generate_pdf_report(tool_context)
+    # except Exception as e:
+    #     print(str(e))
 
     return "report formatted to json"
 
@@ -343,14 +346,17 @@ def process_str(st):
     lines = st.split('\n\n')
     txt_counter=1
     obj={}
+    tcaption=''
     for line in lines:
         #Check for images and image captions
         urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)', line)
-        caption = re.findall(r'(?:\*\*)?Image \d: .*', line)
+        caption = re.findall(r'(?:\*?\*?)?Image \d: .*', line)
         
         #Check for tables and table captions
         table=re.findall(r'(\|.+\|)', line,flags=re.DOTALL)
-        table_caption=re.findall(r'\*\*Table \d: .+', line)
+        table_caption=re.findall(r'\*?\*?Table \d: .+', line)
+        if table_caption:
+            tcaption=table_caption[0]
         
         if urls and caption:
             obj['image']={}
@@ -358,7 +364,7 @@ def process_str(st):
             obj['image']['caption']=caption[0]
         
 
-        elif table and table_caption:
+        elif table and tcaption:
             obj['table']={'table_content':{}}
             buf=StringIO(table[0])
             df = pd.read_table(buf,sep='|')
@@ -367,20 +373,31 @@ def process_str(st):
             df =df.map(lambda x : x.strip())
             obj['table']['table_content']['headers'] = list(df.columns)
             obj['table']['table_content']['rows'] = df.values.tolist()
+            obj['table']['caption']=tcaption
+            tcaption=''
             
         else:
             if re.match(r'^\[.+\]$',line):
                 try:
-                    line = '\n'.join(ast.literal_eval(line))
-                except:
-                    print(line)
+                    line = '\n'.join([str(i) for i in ast.literal_eval(line)])
+                except Exception as e:
+                    line=e
             obj[f'text_{txt_counter}'] = line
             txt_counter+=1
 
     return obj
 
+def process_list(lst):
+    if isinstance(lst,str):
+        return lst
+    if isinstance(lst,list):
+        return '\n'.join([process_list(i) for i in lst])
+
+
 def process_value(obj):
     if isinstance(obj, str):
         return process_str(obj)
+    if isinstance(obj,list):
+        return process_list(obj)
     if isinstance(obj, dict):
         return {i:process_value(j) for i,j in obj.items()}

@@ -75,7 +75,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
 root_agent = SequentialAgent(
     description= "Sequential Report Generation Agent",
     name="report_generation_agent",
-    sub_agents = [text_viz_json_agent,text_viz_report_summarizer_agent],
+    sub_agents = [text_viz_json_agent,text_viz_report_summarizer_agent,pdf_generator_agent],
     before_agent_callback=setup_before_agent_call,
 )
 
