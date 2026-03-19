@@ -1,0 +1,164 @@
+# Campaign Performance Report for CMP_2025_0005 (Brand: Kissan)
+
+## 1. Context
+
+This report provides a comprehensive overview of the performance for Campaign ID `CMP_2025_0005` for the brand `Kissan`. It is intended for the Marketing and Sales leadership team to understand campaign effectiveness, channel contributions to attributed sales, and overall performance patterns, guiding future marketing spend and resource allocation.
+
+### 1.1. Campaign Details
+
+The `CMP_2025_0005` campaign for Brand `Kissan` is characterized by the following details:
+
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Name:** CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924
+*   **Brand Name:** Kissan
+*   **Category:** Optimization-Based
+*   **Media Type:** Sponsored Product
+*   **Channel:** Onsite
+*   **Objective:** Consideration
+*   **Sub-Objective:** App Installs
+*   **Campaign Manager:** ADV_2025_A
+*   **Campaign Duration:** 2025-07-29 00:00:00 to 2025-09-24 00:00:00
+*   **Planned Budget:** $2,760.83
+*   **Actual Spend:** $1,631.40
+
+## 2. Customization Options
+
+Data not available for this section.
+
+## 3. Executive Summary
+
+The `CMP_2025_0005` campaign for Brand `Kissan`, focused on the `Consideration` objective via `Onsite` `Sponsored Product` placements, demonstrated strong performance and significant growth during its active period.
+
+### 3.1. Overview
+
+The campaign, running from July 29, 2025, to September 24, 2025, aimed at driving consideration, specifically app installs. It was managed by `ADV_2025_A` and categorized as Optimization-Based.
+
+### 3.2. Overall Performance
+
+A key highlight is the substantial increase in monthly conversions, soaring from 64 in July 2025 to 544 in August 2025. This growth was accompanied by robust Return on Ad Spend (ROAS) values of 10.31 in July and 9.50 in August, indicating a healthy return on investment. The Click-Through Rate (CTR) remained consistent and strong, at 2.19% in July and 2.25% in August. The campaign's total ad spend was reported at $63,499.09 against a planned budget of $10,025.72, resulting in a budget utilization of 633.36%, suggesting significant scaling beyond initial planning or a revised budget not fully captured.
+
+### 3.3. Channel/Format Performance
+
+The `Onsite` channel, utilizing `Sponsored Product` media, proved effective in driving `Consideration`. Key performance metrics for this objective include a total ad spend of $22,965.10, generating 90,862 impressions, 1,743 clicks, and 5,630 add-to-cart events, with a CTR of 1.83% and a Cost Per Click (CPC) of $1.11.
+
+### 3.4. Optimization Insight
+
+The significant month-over-month increase in conversions and consistently high ROAS underscore the campaign's success in driving user consideration and ultimately, desired actions. The high budget utilization, while indicating substantial investment, was justified by strong performance metrics. Further optimization could focus on understanding the specific drivers behind the August surge in conversions and ensuring budget allocations align with performance potential.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-07-29 | 2025-09-24 | CMP_2025_0005 | $10,025.72 | Consideration | $63,499.09 | 633.36% |
+
+### 4.2. Objective: Awareness
+
+Data not available for this section.
+
+### 4.3. Objective: Consideration
+
+The following table summarizes the aggregated performance metrics for the `Consideration` objective for Campaign ID `CMP_2025_0005` on the `Onsite` channel:
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | Add To Cart Events |
+| :------ | :------------- | :---------- | :----------- | :----- | :-- | :-- | :----------------- |
+| Onsite | $22,965.10 | 90,862 | 34,533 | 1,743 | 1.83% | $1.11 | 5,630 |
+
+### 4.4. Objective: Conversion
+
+Data not available for this section.
+
+### 4.5. Objective: Retention
+
+Data not available for this section.
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+The primary objective for which visual data is available is `Consideration`.
+
+### 5.2. Visualizations
+
+#### 5.2.1. Monthly Conversions Trend
+
+Image 1: Monthly Conversions for Campaign ID CMP_2025_0005 (Brand: Kissan)
+gs://acn-cda-adk-staging/root/user/87fbaced-3e1f-4b00-8026-66981b61a589/analyze_the_monthly_conversions_for_campaign_id_cmp_2025_0005_(brand:_kissan)._provide_insights_into_VizChart.png/0
+
+The line chart above illustrates a substantial increase in conversions for Campaign ID `CMP_2025_0005` (Brand: Kissan), rising from 64 in July 2025 to 544 in August 2025. This indicates a significant positive trend in campaign effectiveness over this period.
+
+#### 5.2.2. Monthly Return on Ad Spend (ROAS) Trend
+
+Image 2: Monthly Return on Ad Spend (ROAS) for Campaign ID CMP_2025_0005 (Brand: Kissan)
+gs://acn-cda-adk-staging/root/user/87fbaced-3e1f-4b00-8026-66981b61a589/analyze_the_monthly_return_on_ad_spend_(roas)_for_campaign_id_cmp_2025_0005_(brand:_kissan)._provide_VizChart.png/0
+
+This line chart effectively visualizes the fluctuations in ROAS over time for Campaign ID `CMP_2025_0005`. It allows for the identification of trends and specific periods of high or low performance, demonstrating a consistently strong return on advertising investment.
+
+#### 5.2.3. Monthly Click-Through Rate (CTR) Trend
+
+Image 3: Monthly Click-Through Rate (CTR) for Campaign ID CMP_2025_0005 (Brand: Kissan)
+gs://acn-cda-adk-staging/root/user/87fbaced-3e1f-4b00-8026-66981b61a589/analyze_the_monthly_click-through_rate_(ctr)_for_campaign_id_cmp_2025_0005_(brand:_kissan)._provide__VizChart.png/0
+
+The line chart displays the monthly Click-Through Rate (CTR) for Campaign ID `CMP_2025_0005`. This visualization highlights the trend of CTR over different months, indicating consistent user engagement with the campaign's ads.
+
+### 5.3. Campaign Details
+
+*   **Campaign Name:** CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Ad IDs:** Data not available for this section.
+*   **Campaign Duration:** 2025-07-29 00:00:00 to 2025-09-24 00:00:00
+*   **KPIs Analyzed:** Impressions, Clicks, Conversions, Attributed Sales Value, Spend, ROAS, CTR.
+*   **Campaign Objective:** Consideration
+
+#### 5.3.1. Key Performance Metrics (Aggregated)
+
+| Metric | Value |
+| :-------------------------- | :------- |
+| Total Impressions | 286,942 |
+| Total Clicks | 6,436 |
+| Total Conversions | 608 |
+| Total Attributed Sales Value | $53,048.10 |
+| Total Spend | $5,521.66 |
+| Overall ROAS | 9.61 |
+| Overall CTR | 2.24% |
+
+#### 5.3.2. Campaign Analysis
+
+The campaign demonstrated strong performance, particularly in its second full month (August 2025).
+
+*   **Monthly Conversions:** Conversions saw a significant jump from 64 in July 2025 to 544 in August 2025, an increase of over 750%. This indicates a highly effective period of the campaign in driving desired actions.
+*   **Monthly Return on Ad Spend (ROAS):** The ROAS remained robust, with a value of 10.31 in July 2025 and 9.50 in August 2025. This consistently strong ROAS signifies that the campaign generated substantial revenue relative to its cost.
+*   **Monthly Click-Through Rate (CTR):** The CTR was stable and healthy, at 2.19% in July 2025 and slightly improving to 2.25% in August 2025, reflecting good ad relevance and audience engagement.
+*   **Monthly Performance Overview:**
+    *   **July 2025:** The campaign started with 49,464 Impressions, 1,084 Clicks, and 64 Conversions, generating $7,762.94 in Attributed Sales Value with a spend of $752.95, resulting in a strong ROAS of 10.31.
+    *   **August 2025:** The campaign scaled significantly, achieving 237,478 Impressions, 5,352 Clicks, and 544 Conversions. Attributed Sales Value reached $45,285.16 with a spend of $4,768.71, maintaining a high ROAS of 9.50.
+
+#### 5.3.3. Weekly Performance
+
+Data not available for this section.
+
+#### 5.3.4. Overall Campaign Impact
+
+The `CMP_2025_0005` campaign had a highly positive impact, characterized by substantial growth in conversions and attributed sales value from July to August. The consistent and strong ROAS, coupled with a healthy CTR, demonstrates effective campaign execution in achieving its `Consideration` objective. The significant scaling in August indicates successful optimization and increased reach, leading to a strong overall return on investment.
+
+### 5.4. Campaign Comparison
+
+Data not available for this section.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+**Action:** Conduct a deeper dive into the factors contributing to the dramatic increase in conversions and overall performance from July to August 2025. This should include an analysis of any creative changes, targeting adjustments, budget increases, or external market factors that may have influenced this growth.
+**Objective:** To identify and replicate successful strategies, ensuring sustained high performance in future campaigns.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+**Action:** Investigate the discrepancy between the planned budget ($2,760.83 from campaign details and $10,025.72 from summary table) and the total actual spend ($1,631.40 from campaign details and $63,499.09 from summary table). Given the strong ROAS (9.61 overall), consider optimizing future budget allocations to capitalize on periods of high performance and to align planned budgets more closely with actual spend and performance potential.
+**Objective:** To maximize ROI by ensuring optimal resource allocation and preventing potential under-budgeting that could limit campaign reach or impact.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+**Action:** Implement a structured A/B testing framework for different ad creatives, particularly for the `Sponsored Product` media type, and landing page experiences. Focus on elements that could further enhance Click-Through Rate (CTR) and conversion rates.
+**Objective:** To continuously improve campaign efficiency and effectiveness by identifying the most engaging and converting creative and landing page combinations.

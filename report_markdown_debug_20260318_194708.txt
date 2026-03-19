@@ -1,0 +1,155 @@
+# Campaign Performance Report for Lux - CMP_2025_0003
+
+## 1. Context
+
+### Campaigns
+
+This report focuses on a specific campaign with the following details:
+
+*   **Campaign ID**: CMP_2025_0003
+*   **Brand Name**: Lux
+*   **Category**: Sponsored Product
+*   **Media Types**: Data not available for this section.
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub Objective**: App Installs
+*   **Campaign Manager**: Data not available for this section.
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-08-01
+    *   **End Date**: 2025-09-11
+*   **Planned Budget**: 586.15
+*   **Actual Spend**: 586.15
+
+## 2. Customization Options
+
+*   **Timeline**: Full campaign period, Weekly report view, Daily report view
+*   **By Creative**: App, Channel-CTV, Onsite, Offsite, Instore
+
+## 3. Executive Summary
+
+### Overview
+
+This report provides a comprehensive overview of the 'CMP_2025_0003' campaign for the 'Lux' brand, which focused on a 'Consideration' objective with 'App Installs' as a sub-objective. The campaign ran from August 1, 2025, to September 11, 2025, with a planned and actual spend of 586.15, indicating 100% budget utilization.
+
+### Overall Performance
+
+For August 2025, the campaign achieved an average Click-Through Rate (CTR) of approximately 1.07%. The Return on Ad Spend (ROAS) for August 2025 was approximately 0.87, suggesting that for every dollar spent, 0.87 dollars were returned. The campaign recorded 65 total conversions in August 2025. It is important to note that ROAS and conversion analyses are based on single data points for August 2025, limiting trend identification.
+
+### Channel/Format Performance
+
+Under the 'Consideration' objective, the 'Onsite' channel demonstrated significant activity, with a Total Ad Spend of 5861.5 (for this specific channel and objective), generating 113,438 Impressions and reaching 37,086 Unique Users. It resulted in 632 Clicks, a CTR of 1.066%, and a Cost Per Click (CPC) of 0.989. Notably, this channel also drove 6,901 'Add To Cart' events, indicating strong engagement towards the consideration phase.
+
+### Optimization Insight
+
+The campaign achieved its planned budget utilization. While the CTR is around 1%, the ROAS of 0.87 suggests that the campaign is not yet profitable based on the August 2025 data. The high number of 'Add To Cart' events (6,901) for the 'Onsite' channel under the 'Consideration' objective indicates strong user interest, but this needs to be translated into higher conversions and ultimately, a better ROAS. Further analysis with more historical data for ROAS and conversions is crucial to identify trends and optimize performance.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+Table 1: High-Level Campaign Summary
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-08-01 | 2025-09-11 | CMP_2025_0003 | 586.15 | Consideration | 586.15 | 100% |
+
+### 4.2. Objective: Awareness
+
+Data not available for this section.
+
+### 4.3. Objective: Consideration
+
+For Campaign ID 'CMP_2025_0003' and Brand 'Lux' with a 'Consideration' objective, the 'Onsite' channel performed as follows:
+
+Table 2: Consideration Objective Metrics for Onsite Channel
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | Viewed Units | Clicked Units | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :------ | :---- | :----------- | :------------ | :---------- |
+| Onsite | 5861.5 | 113,438 | 37,086 | 632 | 1.066% | 0.989 | 0 | 632 | 6,901 |
+
+*Note: The 'Total Ad Spend' for the 'Onsite' channel (5861.5) under the 'Consideration' objective is distinct from the overall campaign's 'Total Ad Spend' (586.15) as provided in the campaign summary.*
+
+### 4.4. Objective: Conversion
+
+Data not available for this section.
+
+### 4.5. Objective: Retention
+
+Data not available for this section.
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+*   Awareness
+*   Consideration
+*   Conversion
+*   Retention
+
+### 5.2. Visualizations
+
+*   Impressions_Reach_Trend: Line Chart
+*   CTR_Trend: Line Chart
+*   Spend_vs_Revenue: Column Chart
+*   ROAS_Trend: Line Chart
+*   Frequency_Distribution: Dual Axis Chart
+*   Add_to_Cart_Funnel: Funnel Chart
+*   ROAS_by_Channel: Bar Chart
+*   Channel_Comparison_Retention_CVR: Bar Chart
+*   Viewed_vs_Clicked_Units: Dual Axis Line
+*   Conversion_Funnel: Funnel Chart
+*   Channel_wise_Reach_CPM: Clustered Bar Chart
+*   CPA_vs_CVR: Scatter Plot
+
+### 5.3. Campaign Details
+
+*   **Campaign Name**: Lux Sponsored Product Campaign (CMP_2025_0003)
+*   **Campaign ID**: CMP_2025_0003
+*   **Campaign Ad IDs**: Data not available for this section.
+*   **Campaign Duration**: 2025-08-01 to 2025-09-11
+*   **KPIs Analyzed**: CTR, ROAS, Conversions
+*   **Campaign Objective**: Consideration
+*   **Metrics**:
+    *   **Impressions**: 113,438 (for Onsite channel under Consideration objective)
+    *   **ROAS**: 0.87 (for August 2025)
+    *   **Conversions**: 65 (for August 2025)
+    *   **CTR**: 1.07% (average for August 2025)
+
+### 5.3.1. Campaign Analysis Text
+
+The 'CMP_2025_0003' campaign for the 'Lux' brand, with a 'Consideration' objective, ran from August 1st to September 11th, 2025. The campaign achieved an average Click-Through Rate (CTR) of approximately 1.07% in August 2025. This indicates a moderate level of user engagement with the ad creatives.
+
+The Return on Ad Spend (ROAS) for August 2025 was approximately 0.87. This figure suggests that the campaign was not directly profitable in August, as the revenue generated was less than the ad spend. However, it's crucial to note that this is based on a single monthly data point, which limits the ability to analyze trends, seasonality, or the long-term impact of the campaign. A comprehensive ROAS analysis would require more historical data points to identify performance trends, seasonality, and the impact of any campaign adjustments.
+
+Similarly, the campaign recorded 65 total conversions in August 2025. As with ROAS, this is a single data point, making it challenging to assess monthly conversion performance trends or variations over time. Additional historical monthly data would be necessary for a meaningful analysis and visualization of conversion performance.
+
+For the 'Consideration' objective, the 'Onsite' channel was particularly active, incurring a Total Ad Spend of 5861.5. It successfully delivered 113,438 Impressions and reached 37,086 Unique Users. The channel generated 632 Clicks, resulting in a CTR of 1.066% and a Cost Per Click (CPC) of 0.989. A significant outcome for this objective was the generation of 6,901 'Add To Cart' events, which is a strong indicator of user interest and progression towards conversion.
+
+### 5.3.2. Weekly Performance
+
+Data not available for this section.
+
+### 5.3.3. Overall Campaign Impact
+
+The campaign successfully utilized its entire planned budget and achieved a decent CTR. While the ROAS and conversion figures for August 2025 indicate room for improvement in profitability, the high number of 'Add To Cart' events suggests that the campaign effectively moved users into the consideration phase. The primary limitation in assessing the full impact and identifying optimization opportunities is the lack of historical data points for key metrics like ROAS and conversions.
+
+### 5.4. Campaign Comparison
+
+Data not available for this section.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Collect and analyze more historical monthly data for ROAS and conversions for Campaign ID 'CMP_2025_0003' and Brand 'Lux'. This will enable trend analysis, seasonality detection, and performance benchmarking.
+*   **Objective**: To gain a deeper understanding of campaign performance over time, identify patterns, and make data-driven decisions for future campaigns.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Investigate the discrepancy between the overall campaign spend (586.15) and the 'Onsite' channel spend (5861.5) under the 'Consideration' objective. Based on the clarification, optimize bidding strategies for the 'Onsite' channel to improve ROAS, especially given the high 'Add To Cart' volume.
+*   **Objective**: To maximize the return on ad spend by reallocating budget to channels and strategies that demonstrate higher profitability or stronger conversion potential.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Given the 1.07% CTR and the 6,901 'Add To Cart' events, conduct A/B tests on ad creatives and landing page elements specifically for the 'Onsite' channel. Focus on optimizing the conversion funnel from 'Add To Cart' to final purchase.
+*   **Objective**: To enhance user engagement, improve conversion rates, and ultimately drive a higher ROAS by refining the user journey and ad effectiveness.

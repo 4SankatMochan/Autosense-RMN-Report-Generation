@@ -1,0 +1,150 @@
+# Campaign Performance Report for CMP_2025_0003 - Lux
+
+## 1. Context
+
+This report provides a comprehensive overview of the performance for Campaign ID CMP_2025_0003, focusing on the Brand 'Lux'.
+
+### 1.1. Campaign Details
+
+*   **Campaign ID:** CMP_2025_0003
+*   **Campaign Name:** CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911
+*   **Brand Name:** Lux
+*   **Category:** Contextual / Placement-Based
+*   **Media Types:** Sponsored Product
+*   **Channel:** Onsite
+*   **Objective:** Consideration
+*   **Sub-Objective:** App Installs
+*   **Campaign Manager:** ADV_2025_B
+*   **Campaign Duration:** 2025-08-01 to 2025-09-11
+*   **Planned Budget:** 586.15
+*   **Actual Spend:** 586.15
+
+## 2. Executive Summary
+
+This report analyzes the performance of Campaign ID CMP_2025_0003 for the brand Lux, which ran from August 1, 2025, to September 11, 2025, with a primary objective of 'Consideration'. The campaign, executed through the 'Onsite' channel as a 'Sponsored Product', achieved its planned budget utilization.
+
+### 2.1. Overview
+
+The campaign aimed to drive user consideration, focusing on App Installs. Key metrics like monthly ROAS, conversions, and CTR were analyzed to assess effectiveness across various audience segments and platforms.
+
+### 2.2. Overall Performance
+
+The campaign successfully utilized its entire planned budget of 586.15. For the 'Consideration' objective, the 'Onsite' channel generated 113,438 Impressions, reached 37,086 Unique Users, and resulted in 632 Clicks, with a Click-Through Rate (CTR) of 1.07%. Notably, it also drove 6,901 Add To Cart events. However, the Monthly Return on Ad Spend (ROAS) for the 'Onsite' channel in August 2025 was 0.865, indicating that the ad spend did not fully return its investment in sales for that specific month. Detailed analysis reveals varied performance across audience segments, with 'Brand Interactors' and 'Loyalty Program Members' showing strong engagement and conversions, while 'Frequent Browsers' demonstrated high ROAS (10.48) and low Cost Per Click (CPC) (0.69).
+
+### 2.3. Channel and Format Performance
+
+The 'Onsite' channel, utilizing 'Sponsored Product' media type, was the sole channel for this campaign. While it generated significant impressions and clicks, the ROAS of 0.865 suggests room for improvement in sales attribution relative to spend. Conversion and CTR trends are available for monthly analysis, but specific channel comparisons are limited to the 'Onsite' channel due to the campaign's structure.
+
+### 2.4. Optimization Insight
+
+Optimizations should focus on leveraging high-performing audience segments such as 'Frequent Browsers' for their efficient ad spend (high ROAS, low CPC). Continued efforts to drive volume and sales from 'Brand Interactors' and 'Loyalty Program Members' are also crucial, given their strong performance in clicks, conversions, and attributed sales value.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+Table 1: High-Level Campaign Summary for CMP_2025_0003 - Lux
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-08-01 | 2025-09-11 | CMP_2025_0003 | 586.15 | Consideration | 586.15 | 100% |
+
+### 3.2. Objective: Awareness
+
+Data not available for this section. No data was found for Campaign ID 'CMP_2025_0003', Brand 'Lux', and campaign objective 'Awareness'.
+
+### 3.3. Objective: Consideration
+
+Table 2: Consideration Objective Metrics for CMP_2025_0003 - Lux (Onsite Channel)
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Viewed Units | Clicked Units | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :-- | :-- | :--- | :----------- | :------------ | :---------- |
+| Onsite | 5861.5 | 113,438 | 37,086 | 632 | 1.07% | 0.99 | 0 | 0 | 632 | 6,901 |
+
+### 3.4. Objective: Conversion
+
+Data not available for this section. The query returned no data for the specified campaign, brand, and 'Conversion' objective. Metrics such as Total Campaign Revenue, Viewed Transactions, Clicked Transactions, Viewed Revenue, Clicked Revenue, and Incremental Sales Lift cannot be directly calculated with the current tools and schema.
+
+### 3.5. Objective: Retention
+
+Data not available for this section. No data was found for Campaign ID 'CMP_2025_0003' and Brand 'Lux' with a 'Retention' objective.
+
+## 4. Campaign-Wise Analysis
+
+### 4.1. Visualizations
+
+#### 4.1.1. Monthly Return on Ad Spend (ROAS)
+
+Image 1: Monthly Return on Ad Spend (ROAS) for Campaign ID CMP_2025_0003 and Brand Lux in August 2025.
+gs://acn-cda-adk-staging/root/user/dd6f41d9-c801-43da-a83b-cc9e506a4b9d/for_campaign_id_cmp_2025_0003_and_brand_lux,_analyze_the_monthly_return_on_ad_spend_(roas)._provide__VizChart.png/1
+
+The bar chart displays the Monthly Return on Ad Spend (ROAS) for Campaign ID CMP_2025_0003 and Brand Lux in August 2025. The ROAS for the 'Onsite' channel in this month was 0.865. As only a single data point is available, it is not possible to identify trends over time or compare performance across multiple channels.
+
+#### 4.1.2. Monthly Conversions
+
+Image 2: Monthly Conversion Trends for Campaign ID 'CMP_2025_0003' and Brand 'Lux'.
+gs://acn-cda-adk-staging/root/user/dd6f41d9-c801-43da-a83b-cc9e506a4b9d/for_campaign_id_cmp_2025_0003_and_brand_lux,_analyze_the_monthly_conversions._provide_insights_into__VizChart.png/0
+
+The line chart illustrates the monthly conversion trends for Campaign ID 'CMP_2025_0003' and Brand 'Lux', broken down by different marketing channels. This visualization allows for an easy comparison of conversion performance across channels over time, highlighting which channels are driving more conversions and identifying any shifts or patterns in their performance.
+
+#### 4.1.3. Monthly Click-Through Rate (CTR)
+
+Image 3: Monthly Click-Through Rate (CTR) Trends for Campaign ID CMP_2025_0003 and Brand Lux.
+gs://acn-cda-adk-staging/root/user/dd6f41d9-c801-43da-a83b-cc9e506a4b9d/for_campaign_id_cmp_2025_0003_and_brand_lux,_analyze_the_monthly_click-through_rate_(ctr)._provide_i_VizChart.png/0
+
+The line chart illustrates the monthly Click-Through Rate (CTR) trends, segmented by different channels for Campaign ID CMP_2025_0003 and Brand Lux. Each line represents a distinct channel, showing how CTR has evolved over time for that specific channel. This visualization helps in identifying which channels are performing well in terms of CTR, detecting any seasonal patterns, and observing the impact of marketing efforts on different channels over the months.
+
+### 4.2. Campaign Details
+
+*   **Campaign Name:** CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911
+*   **Campaign ID:** CMP_2025_0003
+*   **Campaign Duration:** 2025-08-01 to 2025-09-11
+*   **KPIs Analyzed:** Impressions, Clicks, Conversions, Attributed Sales Value, ROAS, Conversion Rate, CPC, CPA.
+*   **Campaign Objective:** Consideration
+*   **Metrics:**
+    *   **Impressions:** 113,438
+    *   **ROAS:** 0.865 (for Onsite channel in August 2025)
+    *   **Conversions:** 'Brand Interactors' on 'Oracle Data Cloud' (14), 'Loyalty Program Members' on 'Meta' (11).
+    *   **CTR:** 1.07%
+
+#### 4.2.1. Campaign Analysis
+
+The campaign performance for 'CMP_2025_0003' for the brand 'Lux' in August 2025 shows varied results across different audience segments and platforms, all under the 'Onsite' channel, 'Sponsored Product' media type, 'Consideration' objective, 'App Installs' sub-objective, and 'Store-Level Targeting' strategy.
+
+**Key Observations for August 2025:**
+
+*   **Impressions:** 'Brand Interactors' on 'Oracle Data Cloud' (22,248) and 'Loyalty Program Members' on 'Meta' (16,720) received the highest impressions.
+*   **Clicks:** 'Brand Interactors' on 'Oracle Data Cloud' also generated the most clicks (100), followed by 'Loyalty Program Members' on 'Meta' (85).
+*   **Conversions:** 'Brand Interactors' on 'Oracle Data Cloud' led in conversions (14), with 'Loyalty Program Members' on 'Meta' close behind (11).
+*   **Attributed Sales Value:** 'Loyalty Program Members' on 'Meta' generated the highest attributed sales value (858.87), followed by 'Brand Interactors' on 'Oracle Data Cloud' (730.22).
+*   **ROAS (Return on Ad Spend):** 'Frequent Browsers' on 'Oracle Data Cloud' showed the highest average ROAS (10.48), indicating efficient spending for this segment. 'Category Enthusiasts' and 'App Engaged Shoppers' on 'Nielsen Marketing Cloud' also performed well with ROAS around 9.4.
+*   **Conversion Rate:** 'Loyalty Program Members' on 'Meta' and 'Brand Interactors' on 'Oracle Data Cloud' had the highest average conversion rates (around 12.6%).
+*   **CPC (Cost Per Click):** 'Frequent Browsers' on 'Oracle Data Cloud' had the lowest average CPC (0.69), suggesting cost-effective clicks.
+*   **CPA (Cost Per Acquisition):** 'Brand Interactors' on 'Nielsen Marketing Cloud' had the lowest average CPA (6.17), indicating efficient conversion costs for this segment.
+
+**Contributing Factors Analysis:**
+
+*   **Audience Segment:** 'Brand Interactors' and 'Loyalty Program Members' generally show strong performance in terms of clicks, conversions, and attributed sales. 'Frequent Browsers' demonstrate high ROAS and low CPC, suggesting they are a valuable segment for efficient ad spend.
+*   **Audience Platform:** Performance varies across 'Meta', 'Oracle Data Cloud', and 'Nielsen Marketing Cloud'. For instance, 'Brand Interactors' on 'Oracle Data Cloud' drive high volume, while 'Loyalty Program Members' on 'Meta' yield high attributed sales.
+*   **Audience Source:** Both '2P' (first-party) and '3P' (third-party) data sources are utilized, with varying effectiveness depending on the audience segment and platform.
+
+#### 4.2.2. Overall Campaign Impact
+
+Overall, the campaign in August 2025 for 'Lux' (CMP_2025_0003) is performing well, particularly with 'Brand Interactors' and 'Loyalty Program Members' segments. The campaign successfully drove a significant number of 'Add To Cart' events (6,901) for the 'Consideration' objective.
+
+## 5. Recommendations
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+*   **Action:** Conduct a deeper dive into the daily and weekly performance trends for ROAS, CTR, and conversions, especially for segments showing high efficiency like 'Frequent Browsers'. Analyze the context of ad placements for 'Sponsored Product' to identify optimal timings and environments.
+*   **Objective:** To uncover micro-trends and contextual factors that influence campaign effectiveness, allowing for more precise targeting and scheduling.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action:** Reallocate budget towards audience segments and platforms demonstrating higher ROAS and lower CPC/CPA, such as 'Frequent Browsers' on 'Oracle Data Cloud' and 'Brand Interactors' on 'Nielsen Marketing Cloud'. Implement dynamic bidding strategies that prioritize these high-performing segments.
+*   **Objective:** To maximize Return on Ad Spend (ROAS) and optimize Cost Per Acquisition (CPA) by focusing resources on the most efficient audience segments.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action:** Develop and test variations of ad creatives and landing page content specifically tailored for 'Brand Interactors' and 'Loyalty Program Members' to further enhance their engagement and conversion rates.
+*   **Objective:** To improve the effectiveness of the 'Consideration' objective by refining the user experience and messaging for key audience segments, potentially converting more 'Add To Cart' events into full conversions.
