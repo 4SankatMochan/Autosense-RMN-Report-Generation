@@ -630,7 +630,7 @@ Below are the examples for some sections that you can use as a reference to gene
     Total Ad Spend
     Budget Utilization
 
-    After creating the summary table, generate a tables for the specified objective {objective}. Ask in a single question and mention these details in the prompt:
+    After creating the summary table, generate a tables for {focus_kpis} the specified objective {objective}. Ask in a single question and mention these details in the prompt:
     Ask for fetching KPIs based on its objective from relevant KPIs, also, since I have many data points based on date , write clear steps for getting a single relevant value for each KPI.
     The dataset contains multiple records across different dates and channels.
     Your goal is to compute a single consolidated KPI value per Channel for the campaign and brand.
