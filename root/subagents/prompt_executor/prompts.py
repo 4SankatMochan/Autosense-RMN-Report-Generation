@@ -1,9 +1,11 @@
 def return_instructions_root() -> str:
 
-    instruction_prompt_root= """You need to call the tool `call_db_ds_agent`
-      to execute prompts .
+    instruction_prompt_root_v1= """You need to call the tool `call_db_ds_agent` first to execute prompts 
+    and after the completition of this call `Sequential_Agent`. Always execute both the tool."""
 
-"""
+    instruction_prompt_root_v2 = """You need to call the tool `call_db_ds_agent` first to execute prompts"""
+
+    return instruction_prompt_root_v1
 
     # instruction_prompt_root = """
     #     You are a prompt execution orchestrator.

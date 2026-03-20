@@ -36,6 +36,7 @@ from .tools import generate_prompt
 from io import BytesIO
 from google.cloud import storage
 import pandas as pd
+import json
 
 date_today = date.today()
 
@@ -87,6 +88,8 @@ def setup_before_agent_call(callback_context: CallbackContext):
     ########## Reading persona.json
     blob = bucket.blob(persona)
     persona = blob.download_as_text()
+    persona = json.loads(persona)
+    print(f"Persona loaded into context: {type(persona)}")  # Print the first 100 characters to verify
     callback_context.state['persona'] = persona
 
     # print(f"Persona loaded into context: {persona[:100]}...")  # Print the first 100 characters to verify

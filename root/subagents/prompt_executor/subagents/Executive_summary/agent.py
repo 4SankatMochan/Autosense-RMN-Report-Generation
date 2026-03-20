@@ -11,7 +11,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
 
 executive_summary_root_agent = LlmAgent(
     name="ExecutiveSummaryAgent",
-    model=os.getenv("ROOT_AGENT_MODEL"),
+    model=os.getenv("PROMPT_EXECUTOR_AGENT_MODEL"),
     instruction=instruction_executive_summary(),
     description="Generate summary of the analyzed campaign data.",
     output_key="executive_summary_output",

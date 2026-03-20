@@ -84,8 +84,9 @@ def excel_to_json(df):
     #return json.dumps(grouped, indent=2)
     return grouped
 
-def setup_before_agent_call(callback_context: CallbackContext):
-    """Setup the agent."""
+
+async def setup_before_agent_call(callback_context: CallbackContext):
+    """Setup the agent."""    
     ## File Reading
     bucket_name = os.getenv("BUCKET_NAME")
     persona = os.getenv('persona_file_path')
@@ -139,7 +140,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
 
     # setting up schema in instruction
     if callback_context.state["all_db_settings"]["use_database"] == "BigQuery":
-        callback_context.state["database_settings"] = get_bq_database_settings()
+        callback_context.state["database_settings"] = await get_bq_database_settings()
         schema = callback_context.state["database_settings"]["bq_ddl_schema"]
 
         callback_context._invocation_context.agent.instruction = (

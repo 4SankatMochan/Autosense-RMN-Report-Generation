@@ -177,6 +177,10 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
     # get viz json from tool state
     text_viz_json = tool_context.state.get("text_viz_json", "")
 
+    campaign_insights = tool_context.state.get("campaign_analysis_output", "")
+    campaign_comparison = tool_context.state.get("campaign_comparison_output", "")
+    executive_summary = tool_context.state.get("executive_summary_output", "")
+    recommendations = tool_context.state.get("recommendation_output", "")
     custom_prompt = f"""
     **Task**
     Generate report based on the below information.
@@ -198,8 +202,14 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
     5. **Text and Visualization Summary (JSON format)**
     {text_viz_json}
 
-    **Output:**
-    """
+    # **Output:**
+    # 
+    6. **Additional Context for Campaign Analysis and Recommendations:**
+    - Campaign Insights: {campaign_insights}
+    - Campaign Comparison: {campaign_comparison}
+    - Executive Summary: {executive_summary}
+    - Recommendations: {recommendations}
+"""
 
     prompt = main_prompt + custom_prompt
 

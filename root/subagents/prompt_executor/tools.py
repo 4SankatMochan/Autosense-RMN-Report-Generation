@@ -7,6 +7,8 @@ from .subagents.Campaign_comparison.agent import campaign_comparison_root_agent
 from .subagents.Executive_summary.agent import executive_summary_root_agent
 from .subagents.Recommendation.agent import recommendation_root_agent
 from google.adk.agents.sequential_agent import SequentialAgent
+import contextvars  # Add this for context propagation
+import time
 
 async def agent_call(question, tool_context):
     agent_tool = AgentTool(agent=root_agent)
@@ -18,70 +20,85 @@ async def agent_call(question, tool_context):
 async def call_db_ds_agent(
     tool_context: ToolContext,):
     """Tool to execute prompts"""
-    print("inside prompt executor agent")
-    print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
+    # print("inside prompt executor agent")
+    # print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
     question_list = tool_context.state.get("prompt_generator_out")
-#     question_list= [
-#         # "Provide the complete contextual details for Campaign ID CMP_2025_2158 for brand Lifebuoy, including its name, category, media types, channels, primary and sub-objectives, campaign manager, duration, planned budget, and actual spend to date.",
-#         # "What are the available filtering and customization options for analyzing the performance of Campaign ID CMP_2025_2158 (Lifebuoy), specifically regarding timeline granularity and creative segmentation by channel?",
-#         # "Generate a high-level summary table for Campaign ID CMP_2025_2158 (Lifebuoy). Include Campaign ID, Campaign Name, Planned Budget, Campaign Objective, Total Ad Spend, and Budget Utilization.",
-#         # "Based on the objective of Campaign ID CMP_2025_2158 (Lifebuoy), provide a detailed performance table. For an 'Awareness' objective, include Channel, Total Ad Spend, Impressions, Unique Reach, Frequency, ROAS, and CPM. For a 'Conversion' objective, include Channel, Total Ad Spend, Conversions, Conversion Rate, ROAS, and CPA.",
-#         #  "Generate a high-level ROAS plot of Campaign ID CMP_2025_2158 for brand Lifebuoy for jan 2025.", # provde the month range 
-#         #  "Provide a trend analysis for CTR for Campaign ID CMP_2025_2158 (Lifebuoy), including a visualization to highlight performance trends for jan 2025.", # mention period range 
-#         #  "Illustrate the conversion performance for Campaign ID CMP_2025_2158 (Lifebuoy) with a chart. for jan 2025.",
-#         #  "Identify the best KPIs for evaluating the performance of Campaign ID CMP_2025_2158 (Lifebuoy) for jan 2025.",
-#          "What are the core details for Campaign ID CMP_2025_0005 for the brand Kissan, including its name, category, and primary objective?",
-#          "Who is the campaign manager and what are the specific sub-objectives for Campaign ID CMP_2025_0005 (Kissan)?"
-#    ]
+
+    # question_list = [
+    #     {
+    #     "section_name": "Context",
+    #     "prompts": [
+    #         # "Can you provide the following details for Campaign ID: CMP_2025_0001 and Brand Name: Dove: Campaign Name, Category, Media Types, Channel, Objective, Sub-Objective, Campaign Duration, Planned Budget, and Actual Spend (for the latest date)?"
+    #     ]
+    #     },
+    #     {
+    #     "section_name": "Campaign Overview",
+    #     "prompts": [
+    #         # "For Campaign ID: CMP_2025_0001 and Brand Name: Dove, please provide a high-level campaign summary table including Campaign ID, Campaign Name, Budget (Planned Spend), Campaign Objective, Total Ad Spend, and Budget Utilization.",
+    #         # "For Campaign ID: CMP_2025_0001 and Brand Name: Dove, focusing on the 'Consideration' objective, please generate a table summarizing performance by 'Channel'. The table should include 'Total_Ad_Spend', 'Impressions', 'Unique_Reach', and 'Clicks'. When consolidating data for each channel across different dates, sum 'Total_Ad_Spend', 'Impressions', and 'Clicks'. For 'Unique_Reach', use the maximum or distinct value for that channel."
+    #     ]
+    #     },
+    #     {
+    #     "section_name": "Campaign-wise Analysis",
+    #     "prompts": [
+    #         "Show the weekly trend of 'Total_Ad_Spend' by 'Channel' for Campaign ID: CMP_2025_0001 and Brand Name: Dove, specifically for the 'Consideration' objective. Please include a visualization to illustrate these trends.",
+    #         "Provide the weekly trend of 'Impressions' by 'Channel' for Campaign ID: CMP_2025_0001 and Brand Name: Dove, for the 'Consideration' objective. A visualization of these trends would be helpful.",
+    #         "Illustrate the weekly trend of 'Clicks' by 'Channel' for Campaign ID: CMP_2025_0001 and Brand Name: Dove, targeting the 'Consideration' objective. Please include a visual representation.",
+    #         "Generate a concise performance summary for Campaign ID: CMP_2025_0001 and Brand Name: Dove, focusing on the 'Consideration' objective. Highlight key KPI performances, identify any anomalies, and summarize overall and weekly performance trends."
+    #     ]
+    #     }
+    # ]
 
     flat_prompts = [
     prompt
     for section in question_list
     for prompt in section.get("prompts", [])
     ]
- 
-    # question_list= [
-    #                 "What customization and filtering options are available for analyzing the performance of Campaign ID: CMP_2025_0007 for Continental? Specifically, list available timelines (e.g., daily, weekly, monthly) and segmentation options (e.g., by creative, channel, audience)."]
-    # print(f"prompt generator output: {str(question_list)}")
-    
-    tasks = [agent_call(prompt, tool_context) for prompt in flat_prompts]
+    print(f"prompt generator output: {str(flat_prompts)}")
+    # Create tasks with context copied to avoid contextvars errors
+    tasks = [asyncio.create_task(agent_call(question, tool_context)) for question in flat_prompts]
+    # results = await asyncio.gather(*tasks)
+    print('Parallel call start',time.localtime())
+    results = await asyncio.gather(*tasks)
+    print('Parallel call end',time.localtime())
+  
+    print(results)
+    tool_context.state["db_ds_agent_output"] = results  
+    return "Executed Sucessfully"
 
-    results = await asyncio.gather(*tasks, return_exceptions=True)
+# async def Sequential_Agent(question, tool_context: ToolContext):
+#     SequentialAgent(
+#         name="Sequential_Agent",
+#         sub_agents=[campaign_analysis_root_agent,campaign_comparison_root_agent, executive_summary_root_agent, recommendation_root_agent],
+#         description="Executes a sequence of code writing, reviewing, and refactoring.", # add this as a wrapper in agent file 
+#         )# add agent as a tool in agent.py
+#     Sequential_agent_output = await SequentialAgent.run_async(
+#          args= {'request':"\n".join(tool_context.state["db_ds_agent_output"])}, tool_context=tool_context
+#     )
+#     tool_context.state[" Sequential_agent_output"] =  Sequential_agent_output
+#     return "Executed Sucessfully"
+async def Sequential_Agent(tool_context: ToolContext):
 
-    final_results = []
-    failed_prompts = []
-
-    for prompt, result in zip(flat_prompts, results):
-        if isinstance(result, Exception):
-            failed_prompts.append({
-                "prompt": prompt,
-                "error": str(result)
-            })
-        else:
-            final_results.append({
-                "prompt": prompt,
-                "response": result
-            })
-
-    print("SUCCESS:", final_results)
-    print("FAILED:", failed_prompts)
-
-    tool_context.state["db_ds_agent_output"] = {
-        "success": final_results,
-        "failed": failed_prompts
-    } 
-
-    # Sequential flow 
-    Sequential_Agent = SequentialAgent(
+    sequential_agent = SequentialAgent(
         name="Sequential_Agent",
-        sub_agents=[campaign_analysis_root_agent,campaign_comparison_root_agent, executive_summary_root_agent, recommendation_root_agent],
-        description="Executes a sequence of code writing, reviewing, and refactoring.", # add this as a wrapper in agent file 
+        sub_agents=[
+            campaign_analysis_root_agent,
+            campaign_comparison_root_agent,
+            executive_summary_root_agent,
+            recommendation_root_agent
+        ],
+        description="Executes campaign analysis pipeline sequentially."
     )
-    
-    agent_tool = AgentTool(agent=Sequential_Agent)
+
+    agent_tool = AgentTool(agent=sequential_agent)
+
+    input_text = "\n".join(map(str, tool_context.state["db_ds_agent_output"]))
 
     Sequential_agent_output = await agent_tool.run_async(
-         args= {'request':"\n".join(tool_context.state["db_ds_agent_output"])}, tool_context=tool_context
+        args={"request": input_text},
+        tool_context=tool_context
     )
-    tool_context.state[" Sequential_agent_output"] =  Sequential_agent_output
-    return "Executed Sucessfully"
+
+    tool_context.state["Sequential_agent_output"] = Sequential_agent_output
+
+    return "Executed Successfully"

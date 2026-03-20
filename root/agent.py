@@ -13,6 +13,15 @@ from google.cloud import storage
 import pandas as pd
 import json
 import sys
+
+import os
+import certifi
+
+import contextvars  # Add this for debugging
+
+os.environ["SSL_CERT_FILE"] = certifi.where()
+os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
+
 def excel_to_json(df):
     # df = pd.read_excel(excel_path)
     grouped = {}
@@ -51,6 +60,18 @@ def excel_to_json(df):
 
 def setup_before_agent_call(callback_context: CallbackContext):
     """Setup the agent."""
+    # Debug: Inspect current context
+    ctx = contextvars.copy_context()
+    var_names = [var.name for var in ctx]
+    print(f"[DEBUG] Context var names: {var_names}")
+    if 'current_context' in var_names:
+        for var in ctx:
+            if var.name == 'current_context':
+                print(f"[DEBUG] 'current_context' value: {ctx[var]}")
+                break
+    else:
+        print("[DEBUG] 'current_context' not in current context")
+
     ## File Reading
     bucket_name = os.getenv("BUCKET_NAME")
     persona = os.getenv('persona_file_path')

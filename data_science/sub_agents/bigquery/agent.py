@@ -27,12 +27,12 @@ from .prompts import return_instructions_bigquery
 NL2SQL_METHOD = os.getenv("NL2SQL_METHOD", "BASELINE")
 
 
-def setup_before_agent_call(callback_context: CallbackContext) -> None:
+async def setup_before_agent_call(callback_context: CallbackContext) -> None:
     """Setup the agent."""
 
     if "database_settings" not in callback_context.state:
         callback_context.state["database_settings"] = \
-            tools.get_database_settings()
+            await tools.get_database_settings()
 
 
 database_agent = Agent(

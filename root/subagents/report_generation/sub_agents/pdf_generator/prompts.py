@@ -21,7 +21,8 @@ mixed content JSON data (text, charts, tables) into PDF reports.
 
 
 def return_instructions_report_generator() -> str:
-    instruction_prompt_report_gen = """You need to call `generate_report` tool to convert JSON to PDF. The tool accepts only tool context.
+    instruction_prompt_report_gen_1 = """You need to call `generate_report` tool to convert JSON to PDF. The tool accepts only tool context.
 """
-
-    return instruction_prompt_report_gen
+    instruction_prompt_report_gen_2 = """to generate a PDF, you MUST call the tool generate_pdf_report using a structured function call. Do NOT write Python code. Do NOT wrap it in print statements.
+"""
+    return instruction_prompt_report_gen_2

@@ -52,15 +52,15 @@ def get_bq_client():
     return bq_client
 
 
-def get_database_settings():
+async def get_database_settings():
     """Get database settings."""
     global database_settings
     if database_settings is None:
-        database_settings = update_database_settings()
+        database_settings = await update_database_settings()
     return database_settings
 
 
-def update_database_settings():
+async def update_database_settings():
     """Update database settings."""
     global database_settings
     ddl_schema = get_bigquery_schema(
