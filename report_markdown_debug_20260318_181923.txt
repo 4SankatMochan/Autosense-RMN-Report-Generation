@@ -1,0 +1,152 @@
+# Campaign Performance Report: CMP_2025_0003 (Brand: Lux)
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaigns
+
+*   **Campaign ID**: CMP_2025_0003
+*   **Brand Name**: Lux
+*   **Media Type**: Sponsored Product
+*   **Channel**: Onsite
+*   **Objective**: Consideration
+*   **Sub-Objective**: App Installs
+*   **Category**: Contextual / Placement-Based
+*   **Campaign Duration**: From 2025-08-01 to 2025-09-11
+*   **Planned Budget**: 586.15
+*   **Actual Spend**: 5861.5
+*   **Campaign Name**: Data not available for this section.
+*   **Campaign Manager**: Data not available for this section.
+
+### 1.2. Customization Options
+
+*   **Timeline**: Full campaign period, Weekly report view, Daily report view
+*   **By Creative**: App, Channel-CTV, Onsite, Offsite, Instore
+
+## 2. Executive Summary
+
+This report details the performance of Campaign ID 'CMP_2025_0003' for the brand 'Lux', primarily focused on a 'Consideration' objective with a sub-objective of 'App Installs'. The campaign, utilizing 'Sponsored Product' media on an 'Onsite' channel, ran from August 1, 2025, to September 11, 2025.
+
+The campaign significantly overspent its planned budget of 586.15, with an actual spend of 5861.5, indicating a budget utilization of 1000%. For its 'Consideration' objective, the campaign generated 113,438 Impressions, reached 37,086 Unique Users, and achieved 632 Clicks, resulting in a Click-Through Rate (CTR) of 0.557% and a Cost Per Click (CPC) of 0.927. Notably, there were 6,901 Add To Cart events.
+
+Monthly performance analysis reveals 63 conversions in August 2025. Return on Ad Spend (ROAS) in August 2025 varied across audience segments, with 'Frequent Browsers' showing the highest average ROAS at $10.48, followed by 'Loyalty Program Members' at $9.02. 'Brand Interactors' exhibited the lowest average ROAS at $7.81. Data for 'Awareness', 'Conversion', and 'Retention' objectives were not available, limiting a holistic view of the campaign's impact across the full marketing funnel.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-08-01 | 2025-09-11 | CMP_2025_0003 | 586.15 | Consideration | 5861.5 | 1000% |
+
+*Note: Campaign Name and Campaign Manager information are not available in the current dataset.*
+
+### 3.2. Objective Awareness
+
+Data not available for this section. No results were returned for the specified campaign criteria for the 'Awareness' objective.
+
+### 3.3. Objective Consideration
+
+For Campaign ID 'CMP_2025_0003' with Brand 'Lux' and Objective 'Consideration', the 'Onsite' channel demonstrated the following performance:
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Viewed Units | Clicked Units | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :---- | :---- | :--- | :----------- | :------------ | :---------- |
+| Onsite | 586.15 | 113,438 | 37,086 | 632 | 0.557% | 0.927 | 0 | 0 | Data not available | 6,901 |
+
+*Note: There were no video completions (CPCV and Viewed Units were 0).*
+
+### 3.4. Objective Conversion
+
+Data not available for this section. No data was found for Campaign ID 'CMP_2025_0003' with Brand 'Lux' and Objective 'Conversion'.
+
+### 3.5. Objective Retention
+
+Data not available for this section. No results were returned for the specified campaign ID 'CMP_2025_0003', Brand 'Lux', and Objective 'Retention'. Incremental Sales Lift cannot be calculated with the available data.
+
+## 4. Campaign Wise Analysis
+
+### 4.1. Visual Layers Per Objective
+
+*   Consideration
+
+### 4.2. Visualizations
+
+#### 4.2.1. Monthly Conversions Performance
+
+Image 1: Monthly Conversions Performance for Campaign ID 'CMP_2025_0003' (Brand: Lux)
+gs://acn-cda-adk-staging/root/user/dea6b71f-9c62-43af-bf40-259885a4293a/analyze_the_monthly_conversions_performance_for_campaign_id_cmp_2025_0003_(brand:_lux)._provide_insi_VizChart.png/0
+
+The chart displays the total conversions for each month. In August 2025, the total conversions reached 63.0. This bar chart provides a clear view of monthly conversion performance.
+
+#### 4.2.2. Monthly CTR Performance
+
+Image 2: Monthly Click-Through Rate (CTR) Performance for Campaign ID 'CMP_2025_0003' (Brand: Lux)
+gs://acn-cda-adk-staging/root/user/dea6b71f-9c62-43af-bf40-259885a4293a/analyze_the_monthly_ctr_performance_for_campaign_id_cmp_2025_0003_(brand:_lux)._provide_insights_int_VizChart.png/0
+
+The line graph illustrates the monthly Click-Through Rate (CTR) performance for Campaign ID 'CMP_2025_0003' and Brand 'Lux'. It shows the trend of CTR percentage over time, providing insights into how the campaign's clickability has evolved on a monthly basis.
+
+#### 4.2.3. Monthly ROAS Performance
+
+Image 3: Average Return on Ad Spend (ROAS) by Audience Segment for Campaign ID 'CMP_2025_0003' (Brand: Lux) in August 2025
+gs://acn-cda-adk-staging/root/user/dea6b71f-9c62-43af-bf40-259885a4293a/analyze_the_monthly_roas_performance_for_campaign_id_cmp_2025_0003_(brand:_lux)._provide_insights_in_VizChart.png/0
+
+The bar chart displays the Average Return on Ad Spend (ROAS) across various audience segments for August 2025.
+*   **Frequent Browsers** show the highest average ROAS at $10.48, indicating strong performance from this segment.
+*   **Loyalty Program Members** also perform well, with an average ROAS of $9.02.
+*   **App Engaged Shoppers** and **Category Enthusiasts** have similar average ROAS values, at $8.59 and $8.56 respectively.
+*   **Brand Interactors** exhibit the lowest average ROAS among the segments at $7.81.
+
+This visualization helps in identifying which audience segments are most effectively contributing to ROAS and can guide future campaign targeting strategies.
+
+#### 4.2.4. Other Visualizations
+
+*   **Impressions Reach Trend**: Data not available for this visualization.
+*   **Spend vs Revenue**: Data not available for this visualization.
+*   **Frequency Distribution**: Data not available for this visualization.
+*   **Add to Cart Funnel**: Data not available for this visualization.
+*   **ROAS by Channel**: Data not available for this visualization.
+*   **Channel Comparison Retention CVR**: Data not available for this visualization.
+*   **Viewed vs Clicked Units**: Data not available for this visualization.
+*   **Conversion Funnel**: Data not available for this visualization.
+*   **Channel-wise Reach CPM**: Data not available for this visualization.
+*   **CPA vs CVR**: Data not available for this visualization.
+
+### 4.3. Campaign Details
+
+*   **Campaign Name**: Data not available for this section.
+*   **Campaign ID**: CMP_2025_0003
+*   **Campaign Ad IDs**: Data not available for this section.
+*   **Campaign Duration**: 2025-08-01 to 2025-09-11
+*   **KPIs Analyzed**: Impressions, Unique Reach, Clicks, CTR, CPC, Add To Cart, Conversions, ROAS.
+*   **Campaign Objective**: Consideration (Sub-Objective: App Installs)
+*   **Metrics**:
+    *   **Impressions**: 113,438
+    *   **ROAS**: Varied by segment (e.g., Frequent Browsers: $10.48, Brand Interactors: $7.81 in August 2025).
+    *   **Conversions**: 63 (in August 2025)
+    *   **CTR**: 0.557%
+*   **Campaign Analysis Text**:
+    The 'Lux' campaign (CMP_2025_0003) primarily focused on 'Consideration' via 'Sponsored Product' ads on an 'Onsite' channel. Despite a significant overspend (1000% budget utilization), the campaign achieved substantial impressions (113,438) and unique reach (37,086). The Click-Through Rate (CTR) of 0.557% led to 632 clicks and a notable 6,901 Add To Cart events, indicating strong interest in the advertised products. Monthly conversion data shows 63 conversions in August 2025. ROAS performance highlights that 'Frequent Browsers' and 'Loyalty Program Members' are highly valuable segments, delivering the highest returns. The lack of data for 'Awareness', 'Conversion', and 'Retention' objectives prevents a full-funnel performance evaluation.
+*   **Weekly Performance**: Data not available for this section.
+*   **Overall Campaign Impact**: The campaign successfully drove engagement and consideration, as evidenced by clicks and add-to-cart events. The high ROAS from specific audience segments suggests effective targeting within the consideration phase. However, the substantial budget overspend and missing data for other key objectives (Awareness, Conversion, Retention) limit a complete understanding of its overall impact and efficiency.
+
+### 4.4. Campaign Comparison
+
+Not applicable. Only one campaign (CMP_2025_0003) was analyzed in this report.
+
+## 5. Recommendations
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Investigate the reasons behind the significant budget overspend (1000% utilization) for Campaign ID 'CMP_2025_0003'. Conduct a detailed post-mortem on budget allocation and actual spend to identify discrepancies and prevent future occurrences.
+*   **Objective**: Improve financial planning and ensure campaigns operate within allocated budgets, maximizing efficiency and ROI.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Leverage the ROAS performance by audience segment (e.g., 'Frequent Browsers' and 'Loyalty Program Members' showing higher ROAS) to refine bidding strategies and reallocate budget towards more profitable segments within future 'Consideration' campaigns.
+*   **Objective**: Optimize ad spend for higher returns and improve overall campaign profitability by focusing resources on high-value audiences.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: For future campaigns, implement A/B testing for ad creatives and landing pages to further optimize CTR and Add To Cart rates, building on the current campaign's performance. Focus on elements that can enhance the 'Consideration' phase, such as product descriptions, imagery, and calls-to-action.
+*   **Objective**: Continuously improve campaign effectiveness by identifying and implementing the most impactful creative and landing page elements, driving higher engagement and progression through the consideration funnel.

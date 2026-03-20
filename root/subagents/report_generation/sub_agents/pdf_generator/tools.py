@@ -67,7 +67,7 @@ async def generate_pdf_report(tool_context: Optional[ToolContext] = None):
         json_input = tool_context.state.get("report_json")
 
         import json
-        json_input = json.loads(json_input.strip("```json"))
+        #json_input = json.loads(json_input.strip("```json"))
         print("report json in pdf generator")
         print(json_input)
         

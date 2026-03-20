@@ -19,7 +19,7 @@ import logging
 import os
 import re
 import pandas as pd
-
+import asyncio
 from data_science.utils.utils import get_env_var
 from google.adk.tools import ToolContext
 from google.cloud import bigquery
@@ -57,13 +57,14 @@ async def get_database_settings():
     global database_settings
     if database_settings is None:
         database_settings = await update_database_settings()
+    print('dbs:',database_settings)
     return database_settings
 
 
 async def update_database_settings():
     """Update database settings."""
     global database_settings
-    ddl_schema = get_bigquery_schema(
+    ddl_schema = await get_bigquery_schema(
         get_env_var("BQ_DATASET_ID"),
         client=get_bq_client(),
         project_id=get_env_var("BQ_PROJECT_ID"),
@@ -75,6 +76,7 @@ async def update_database_settings():
         # Include ChaseSQL-specific constants.
         **chase_constants.chase_sql_constants_dict,
     }
+    print('dbs',database_settings)
     return database_settings
 
 
@@ -86,7 +88,7 @@ from google.cloud import bigquery
 import pandas as pd
 import datetime
 
-def get_bigquery_schema(dataset_id, client=None, project_id=None, max_example_rows=5):
+async def get_bigquery_schema(dataset_id, client=None, project_id=None, max_example_rows=5):
     """
     Returns schema + DDL + example rows for:
       - All tables if dataset contains tables
@@ -166,7 +168,9 @@ def get_bigquery_schema(dataset_id, client=None, project_id=None, max_example_ro
 
         # 3) Example rows
         try:
-            df = client.query(f"SELECT * FROM `{fq_name}` LIMIT {max_example_rows}").result().to_dataframe()
+            job = client.query(f"SELECT * FROM `{fq_name}` LIMIT {max_example_rows}")
+            df = await asyncio.to_thread(job.result)
+            df=df.to_dataframe()
             if not df.empty:
                 ddl_statement += f"-- Example rows for materialized view `{fq_name}`:\n"
                 for _, row in df.iterrows():

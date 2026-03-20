@@ -27,6 +27,7 @@ import os
 import json
 from .logging.db_agent_call_logger import log_db_agent
 import datetime
+import asyncio
 
 from pydantic import BaseModel 
 class ToolInput(BaseModel):
@@ -101,7 +102,7 @@ async def call_ds_agent(
     question_with_data = f"""
   Question to answer: {question}
 
-  Actual data to analyze prevoius quesiton is already in the following:
+  Actual data to analyze previous question is already in the following:
   {input_data}
 
   """

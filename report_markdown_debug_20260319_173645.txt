@@ -1,0 +1,172 @@
+# Campaign Performance Report: Lifebuoy - CMP_2025_2158
+
+## 1. Context
+
+This report provides a comprehensive overview of the performance for Campaign ID CMP_2025_2158, branded as Lifebuoy. It is prepared for the Marketing and Sales leadership team to understand campaign effectiveness, optimize future marketing spend, and refine targeting strategies.
+
+### 1.1. Campaign Details
+
+The following are the detailed specifications for the analyzed campaign:
+
+*   **Campaign ID**: CMP_2025_2158
+*   **Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name**: Lifebuoy
+*   **Category**: Not available
+*   **Media Type**: In-App Ads
+*   **Channel**: App
+*   **Objective**: Retention
+*   **Sub-Objective**: Subscription or Refill
+*   **Campaign Manager**: ADV_2025_D
+*   **Campaign Duration**: From 2025-06-13 to 2025-07-20
+*   **Planned Budget**: 271.02
+*   **Actual Spend**: 206.83
+
+## 2. Customization Options
+
+Data not available for this section.
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+This report details the performance of Lifebuoy's Retention campaign (CMP_2025_2158), which ran from June 13 to July 20, 2025, utilizing In-App Ads on the App channel. The campaign aimed to drive subscription or refill among existing users.
+
+### 3.2. Overall Performance
+
+The campaign demonstrated strong retention metrics, achieving an overall Return on Ad Spend (ROAS) of 7.36 and a Conversion Rate (CVR) of 10.88% for the App channel, resulting in 114 conversions and 81 repeat transactions. The high budget utilization percentage indicates a significant investment relative to the planned budget.
+
+### 3.3. Channel and Format Performance
+
+The 'App' channel, leveraging 'In-App Ads', was the primary focus for this retention campaign. The performance metrics indicate that this channel is effective in driving conversions and repeat transactions for the specified objective.
+
+### 3.4. Optimization Insight
+
+Analysis of monthly trends reveals mixed performance across different audience segments. While "Auto-Replenish Candidates" showed a decline in ROAS, "Brand Loyalists," "Churn Risk," and "Repeat Buyers" demonstrated improved ROAS, suggesting opportunities for segment-specific optimization. Click-Through Rate (CTR) generally remained stable around 0.5%, with "Repeat Buyers" and "Brand Loyalists" exhibiting slightly higher engagement. Tailoring strategies to these segment-specific insights can further enhance campaign efficiency and ROI.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+Table 1: High-Level Campaign Summary for CMP_2025_2158
+
+| Campaign ID | Campaign Name | Budget (Planned Spend) | Campaign Objective | Total Ad Spend | Budget Utilization (%) |
+|:--------------|:---------------------------------------------------------------------------|:-----------------------|:-------------------|:---------------|:-----------------------|
+| CMP_2025_2158 | CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720 | 271.02 | Retention | 15854.67 | 5850.0 |
+
+### 4.2. Objective Awareness
+
+Data not available for this section.
+
+### 4.3. Objective Consideration
+
+Data not available for this section.
+
+### 4.4. Objective Conversion
+
+Data not available for this section.
+
+### 4.5. Objective Retention
+
+Table 2: Retention Metrics for Campaign ID CMP_2025_2158 (App Channel)
+
+| Channel | Total Ad Spend | Conversions | CVR | Transactions Repeat | Units Sold | Total Campaign Revenue | Incremental Sales Lift | ROAS |
+|:--------|:---------------|:------------|:----|:--------------------|:-----------|:-----------------------|:-----------------------|:-----|
+| App | 813.06 | 114 | 10.88% | 81 | Not available for this campaign in the current data. | Not available for this campaign in the current data. | Could not be included as it was not found in the available schema. | 7.36 |
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+The primary objective analyzed for Campaign ID CMP_2025_2158 is Retention.
+
+### 5.2. Visualizations
+
+#### 5.2.1. Monthly Conversions
+
+Image 1: Monthly Conversions for Campaign ID CMP_2025_2158 (Brand: Lifebuoy)
+
+`gs://acn-cda-adk-staging/root/user/0497604e-aebb-41e3-b584-6445e1dc6d80/analyze_the_monthly_conversions_for_campaign_id_cmp_2025_2158_(brand:_lifebuoy)._provide_insights_in_VizChart.png/0`
+
+The line chart displays the monthly conversion trends for Campaign ID CMP_2025_2158, segmented by different audience groups. This allows for a clear understanding of how each audience segment's conversions have changed over time, highlighting any growth, decline, or stability. For example, one can observe if "Brand Loyalists" consistently convert more than "Churn Risk" and how these conversions fluctuate from month to month.
+
+#### 5.2.2. Monthly Return on Ad Spend (ROAS)
+
+Image 2: Monthly Return on Ad Spend (ROAS) for Campaign ID CMP_2025_2158 (Brand: Lifebuoy)
+
+`gs://acn-cda-adk-staging/root/user/0497604e-aebb-41e3-b584-6445e1dc6d80/analyze_the_monthly_return_on_ad_spend_(roas)_for_campaign_id_cmp_2025_2158_(brand:_lifebuoy)._provi_VizChart.png/0`
+
+This line chart illustrates the monthly Return on Ad Spend (ROAS) for Campaign ID CMP_2025_2158 (Brand: Lifebuoy), broken down by different audience segments.
+
+**Key Insights:**
+
+*   **Mixed Trends Across Segments:** There isn't a uniform trend in ROAS across all audience segments from June to July 2025.
+*   **"Auto-Replenish Candidates" Decline:** The "Auto-Replenish Candidates" segment shows a noticeable decrease in ROAS, dropping from $8.42 in June to $5.94 in July. This segment experienced the most significant decline.
+*   **"Brand Loyalists," "Churn Risk," and "Repeat Buyers" Improvement:** In contrast, "Brand Loyalists," "Churn Risk," and "Repeat Buyers" segments all demonstrated an improvement in ROAS from June to July. "Churn Risk" saw a substantial increase from $6.48 to $7.96.
+*   **"Value Shoppers" Stability:** The "Value Shoppers" segment maintained a relatively stable ROAS around $7.42 over the two months.
+
+This visualization helps in quickly identifying which audience segments are performing well, which need attention, and how their performance is changing over time for the specified campaign.
+
+#### 5.2.3. Monthly Click-Through Rate (CTR)
+
+Image 3: Monthly Click-Through Rate (CTR) for Campaign ID CMP_2025_2158 (Brand: Lifebuoy)
+
+`gs://acn-cda-adk-staging/root/user/0497604e-aebb-41e3-b584-6445e1dc6d80/analyze_the_monthly_click-through_rate_(ctr)_for_campaign_id_cmp_2025_2158_(brand:_lifebuoy)._provid_VizChart.png/0`
+
+The line chart illustrates the monthly Click-Through Rate (CTR) for Campaign ID CMP_2025_2158, branded as Lifebuoy, broken down by various audience segments. This visualization allows us to observe how different audience groups respond to the campaign over time.
+
+**Key insights from the chart include:**
+
+*   **Overall Trend:** The CTR for Campaign CMP_2025_2158 (Lifebuoy) generally hovers around 0.5% with some minor fluctuations across all audience segments.
+*   **Segment Performance:**
+    *   The "Repeat Buyers" and "Brand Loyalists" segments appear to consistently show the highest CTR, often slightly above the overall average, indicating strong engagement from these groups.
+    *   "Value Shoppers" maintain a stable CTR close to the campaign average.
+    *   "Churn Risk" and "Auto-Replenish Candidates" exhibit similar CTRs to the "Value Shoppers" segment, also around the campaign average.
+*   **Temporal Fluctuations:** There are minor month-to-month variations in CTR across all segments. For instance, some segments show slight increases in early July before returning to baseline levels.
+
+This chart provides valuable information for understanding which audience segments are most receptive to the campaign and how their engagement evolves over time.
+
+### 5.3. Campaign Details
+
+*   **Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Campaign ID**: CMP_2025_2158
+*   **Campaign Ad IDs**: Data not available for this section.
+*   **Campaign Duration**: From 2025-06-13 to 2025-07-20
+*   **KPIs Analyzed**: Conversions, Return on Ad Spend (ROAS), Click-Through Rate (CTR)
+*   **Metrics**:
+    *   **Impressions**: Data not available for this section.
+    *   **ROAS**: 7.36 (overall for the App channel and Retention objective)
+    *   **Conversions**: 114 (overall for the App channel and Retention objective)
+    *   **CTR**: Generally around 0.5% (monthly average across segments)
+
+#### 5.3.1. Campaign Analysis Text
+
+The campaign successfully drove 114 conversions and 81 repeat transactions, with an overall ROAS of 7.36 and CVR of 10.88% for the App channel. Monthly analysis of ROAS indicated varied performance, with "Auto-Replenish Candidates" showing a decline while other key segments like "Brand Loyalists" and "Repeat Buyers" improved. CTR remained relatively stable around 0.5%, with the most engaged segments being "Repeat Buyers" and "Brand Loyalists." This suggests that while the campaign is effective in driving retention, there are opportunities to optimize performance for specific audience segments.
+
+#### 5.3.2. Weekly Performance
+
+Data not available for this section.
+
+#### 5.3.3. Overall Campaign Impact
+
+The campaign had a positive impact on customer retention, as evidenced by the significant number of conversions and repeat transactions, and a healthy ROAS. The detailed audience segment analysis provides critical insights into which groups are most responsive and which require further attention, enabling more targeted and efficient future campaign strategies.
+
+### 5.4. Campaign Comparison
+
+Data not available for this section.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Investigate the specific factors contributing to the decline in ROAS for the "Auto-Replenish Candidates" segment between June and July 2025. This should include an in-depth review of creative variations, ad placements, and timing specific to this segment during the period of decline.
+*   **Objective**: To identify root causes for underperformance in critical audience segments and inform targeted adjustments to boost ROAS.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Reallocate a portion of the campaign budget towards segments demonstrating improving or consistently high ROAS, such as "Brand Loyalists," "Churn Risk," and "Repeat Buyers." Implement A/B testing for different bidding strategies tailored to these high-performing segments to maximize their potential.
+*   **Objective**: To optimize overall campaign ROI by strategically shifting resources to capitalize on the most profitable audience segments.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Develop and execute A/B tests for various ad creatives and landing page experiences, specifically focusing on "Repeat Buyers" and "Brand Loyalists" given their higher CTR. Explore messaging, visual elements, and call-to-actions that resonate most with these highly engaged groups.
+*   **Objective**: To further enhance engagement and conversion efficiency by refining campaign assets based on the preferences and behaviors of the most receptive audience segments.

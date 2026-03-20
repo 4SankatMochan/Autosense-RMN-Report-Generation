@@ -84,9 +84,8 @@ def excel_to_json(df):
     #return json.dumps(grouped, indent=2)
     return grouped
 
-
 async def setup_before_agent_call(callback_context: CallbackContext):
-    """Setup the agent."""    
+    """Setup the agent."""
     ## File Reading
     bucket_name = os.getenv("BUCKET_NAME")
     persona = os.getenv('persona_file_path')
