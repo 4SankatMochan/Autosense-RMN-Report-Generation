@@ -2,8 +2,8 @@
 Campaign Performance Report
 
 # 1. Context
-
-## campaign_1
+This block should be repeated for each campaign or rendered as a list/table when multiple campaigns exist.
+## campaign_metadata(repeatable)
 ### text
 **Campaign ID**: [Enter Campaign ID]  
 **Campaign Name**: [Enter Campaign Name]  
@@ -13,25 +13,9 @@ Campaign Performance Report
 **Channel(s)**: [Enter Channels]  
 **Objective**: [Enter Objective]  
 **Sub-Objective**: [Enter Sub-Objectives]  
-**Campaign Manager**: [Enter Manager Name]  
 **Campaign Duration**: [Start Date – End Date]  
 **Planned Budget**: [Enter Planned Budget]  
-**Actual Spend**: [Enter Actual Spend]  
-
-## campaign_2
-### text
-**Campaign ID**: [Enter Campaign ID]  
-**Campaign Name**: [Enter Campaign Name]  
-**Brand Name**: [Enter Brand Name]  
-**Category**: [Enter Category]  
-**Media Type(s)**: [Enter Media Types]  
-**Channel(s)**: [Enter Channels]  
-**Objective**: [Enter Objective]  
-**Sub-Objective**: [Enter Sub-Objectives]  
-**Campaign Manager**: [Enter Manager Name]  
-**Campaign Duration**: [Start Date – End Date]  
-**Planned Budget**: [Enter Planned Budget]  
-**Actual Spend**: [Enter Actual Spend]  
+**Actual Spend**: [Enter Actual Spend]   
 
 # 2. Customization Options
 This report can be filtered and customized along the following dimensions:
@@ -44,6 +28,8 @@ This report can be filtered and customized along the following dimensions:
 * Channel/Format Performance: [Enter observations]  
 * Optimization Insight: [Enter insights]  
 * Mid-Funnel Engagement: [Enter engagement results]  
+* Top Performing Segments: [Channels / Campaigns / Formats]
+* Underperforming Areas: [Key gaps or risks]
 
 # 4. Campaign Overview
 Period: [Enter reporting period]
@@ -56,34 +42,30 @@ Period: [Enter reporting period]
 
 ## table_channel_performance
 ### title
-Campaign Objective: [Awareness / Conversion / Retention]
-| Channel | Total Ad Spend | Impressions | Unique Reach | Frequency | ROAS | CPM |
+Campaign Objective: [Awareness / Conversion / Retention / Consideration]
+Dimension Type: [Channel / Media / Format / Audience]
+| Dimension Type | Metric_1 | Metric_2 | Metric_3 | Metric_4 | Metric_5 | Metric_6 |
 |----------|----------------|-------------|---------------|------------|------|------|
-| [Channel Name] | [Spend] | [Impressions] | [Reach] | [Freq] | [ROAS] | [CPM] |
+| [Dimension Name] | [Value] | [Value] | [Value]  | [Value]  | [Value]  | [Value]  |
 
 # 5. Campaign Wise Analysis
 
 ## Campaign 1
-### text
-Campaign ID: [CMP_ID]  
-Campaign Ad IDs: [AD_IDs]  
-Campaign Duration: [Start–End]  
-KPIs analyzed: [Metrics List]  
-Campaign Objective: [Objective]  
+### text 
 
-#### Metric 1: Impressions
+#### Visualization for Metric 1: Metric Name
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
-#### Metric 2: ROAS
+#### Visualization for Metric 2: Metric Nameame
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
-#### Metric 3: Conversions
+#### Visualization for Metric 3: Metric Name
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
-#### Metric 4: CTR (Click-through-rate)
+#### Visualization for Metric 4: Metric Name
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
@@ -91,30 +73,7 @@ Campaign Objective: [Objective]
 [Add paragraph detailing campaign results, CTR, CVR, ROAS, and performance summary.]
 
 ---
-
-## Campaign 2
-### text
-Campaign ID: [CMP_ID]  
-Campaign Ad IDs: [AD_IDs]  
-Campaign Duration: [Start–End]  
-KPIs analyzed: [Metrics List]  
-Campaign Objective: [Objective]  
-
-#### Metric 1: Impressions
-![Chart](path/to/chart.png)  
-*Caption:* [Add caption text]
-
-#### Metric 2: ROAS
-![Chart](path/to/chart.png)  
-*Caption:* [Add caption text]
-
-#### Metric 3: Conversions
-![Chart](path/to/chart.png)  
-*Caption:* [Add caption text]
-
-#### Metric 4: CTR (Click-through-rate)
-![Chart](path/to/chart.png)  
-*Caption:* [Add caption text]
+(Repeatable - Repeat for number of campaigns)
 
 ### Campaign Analysis
 [Add performance summary similar to Campaign 1 section]

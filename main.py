@@ -3,7 +3,9 @@ import uvicorn
 from fastapi import FastAPI
 from google.adk.cli.fast_api import get_fast_api_app
 
-
+# # Disable OpenTelemetry tracing to avoid contextvars errors
+# import opentelemetry.trace
+# opentelemetry.trace.set_tracer_provider(opentelemetry.trace.NoOpTracerProvider())
 
 # Get the directory where main.py is located
 AGENT_DIR = os.path.dirname(os.path.abspath(__file__))

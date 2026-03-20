@@ -1,11 +1,9 @@
 def return_instructions_root() -> str:
 
-    instruction_prompt_root= """You need to call the tool `call_db_ds_agent` without any arguments
+    instruction_prompt_root= """You need to call the tool `call_db_ds_agent`
       to execute prompts .
 
-    instruction_prompt_root_v2 = """You need to call the tool `call_db_ds_agent` first to execute prompts"""
-
-    return instruction_prompt_root_v1
+"""
 
     # instruction_prompt_root = """
     #     You are a prompt execution orchestrator.
@@ -34,7 +32,7 @@ def return_instructions_root() -> str:
     #     - Independent prompts are executed in parallel where possible.
     #     - Dependent prompts are executed only after their prerequisites are satisfied.
 
-    #     6. Always call the tool `call_db_ds_agent` without any arguments.
+    #     6. Always call the tool `call_db_ds_agent` and pass only the tool context to execute prompts.
 
     #     Do not generate answers yourself. Only orchestrate execution using the tool.
 

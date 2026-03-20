@@ -1,0 +1,172 @@
+# Campaign Performance Report for CMP_2025_0001 (Dove)
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaigns
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: Summer Refresh
+*   **Brand Name**: Dove
+*   **Category**: Data not available for this section.
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub-Objective**: App Installs
+*   **Campaign Manager**: Data not available for this section.
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Planned Budget**: 13184.67
+*   **Actual Spend (latest date)**: 494.49
+
+## 2. Customization Options
+
+The report can be customized based on the following options:
+
+*   **Timeline**: Full campaign period, Weekly report view, Daily report view
+*   **By Creative**: App, Channel-CTV, Onsite, Offsite, Instore
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+This report provides a detailed analysis of the campaign 'CMP_2025_0001' for the brand 'Dove', focusing on its performance within the 'Consideration' objective. The analysis covers key performance indicators (KPIs) across various channels, weekly trends in ad spend, and overall performance metrics, including anomaly detection. The insights aim to guide future marketing strategies and budget allocation for the Marketing and Sales leadership team.
+
+### 3.2. Overall Performance
+
+The campaign demonstrated stable and consistent performance across the two weeks analyzed (Week 1 and Week 2 of 2023). No significant anomalies were detected in daily metrics such as impressions, unique reach, clicks, CTR, CPC, or CPCV, indicating that performance generally stayed within expected ranges. The total ad spend across all campaigns and days was $1745.0. On average, campaigns generated approximately 11,482 impressions and reached about 9,171 unique users daily, with an average daily click count of 232 and a Click-Through Rate (CTR) of approximately 2.34%. The average Cost Per Click (CPC) was about $0.39, and the average Cost Per Completed View (CPCV) was around $0.40, though the median CPCV was significantly lower ($0.06), suggesting potential skewness.
+
+### 3.3. Channel Performance
+
+Analysis of the 'Consideration' objective by channel reveals varied performance. Social media channels garnered the highest total ad spend and impressions, leading to the highest number of clicks and a strong CTR of 1.5%. Display advertising also contributed significantly to ad spend and impressions, with a CTR of 1.0%. Video advertising, while having a lower CTR (0.5%), incurred a substantially higher CPCV ($2500.00) compared to Display ($175.00) and Social ($83.33), indicating a potential area for optimization in video ad efficiency.
+
+### 3.4. Optimization Insight
+
+The consistent weekly performance, without significant anomalies, suggests a stable campaign. However, the varying performance across channels, particularly the high CPCV for video, indicates opportunities for optimization. Reallocating budget from less efficient channels or refining targeting and creative for video ads could enhance overall campaign effectiveness. Additionally, the stability in weekly metrics suggests that while performance is consistent, further testing and adjustments might be needed to drive significant improvements.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+Table 1: High-Level Campaign Summary
+
+| Campaign ID   | Campaign Name  | Planned Budget | Campaign Objective       | Total Ad Spend | Budget Utilization (%) | Start Date   | End Date   |
+|:--------------|:---------------|:---------------|:-------------------------|:---------------|:-----------------------|:-------------|:-----------|
+| CMP_2025_0001 | Summer Refresh | 500000         | Increase Brand Awareness | 325000         | 65                     | 2025-08-02   | 2025-09-06 |
+
+*Note: The Campaign Objective listed in this table is 'Increase Brand Awareness' as per the source data for this specific table. However, the detailed analysis throughout the report focuses on the 'Consideration' objective as specified in other prompts.*
+
+### 4.2. Objective: Consideration
+
+Table 2: Aggregated KPIs for Campaign ID 'CMP_2025_0001' and Brand 'Dove' (Objective: Consideration)
+
+| Channel | Total_Ad_Spend | Impressions | Unique_Reach | Clicks | CTR      | CPC      | CPCV        |
+|:--------|:---------------|:------------|:-------------|:-------|:---------|:---------|:------------|
+| Display | 350000.0       | 20000000.0  | 500000.0     | 200000.0 | 0.010000 | 1.750000 | 175.000000  |
+| Social  | 500000.0       | 25000000.0  | 1000000.0    | 375000.0 | 0.015000 | 1.333333 | 83.333333   |
+| Video   | 250000.0       | 10000000.0  | 250000.0     | 50000.0  | 0.005000 | 5.000000 | 2500.000000 |
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+*   Awareness
+*   Consideration
+*   Conversion
+*   Retention
+
+### 5.2. Visualizations
+
+Image 1: Weekly Trend of Total Ad Spend Across Different Channels
+gs://acn-cda-adk-staging/root/user/9d46cb37-254b-4f58-a859-2a10fc2b9a0a/for_campaign_id_cmp_2025_0001_and_brand_dove,_with_a_'consideration'_objective,_generate_a_weekly_tr_VizChart.png/1
+
+Image 1 illustrates the weekly trend of Total Ad Spend across different channels for Campaign ID 'CMP_2025_0001' and Brand 'Dove' with a 'Consideration' objective. The x-axis represents the date, and the y-axis shows the Total Ad Spend in dollars. Each line on the chart corresponds to a different channel, allowing for a clear visualization of how ad spending varies by channel over time.
+
+### 5.3. Campaign Details
+
+**Campaign Name**: Summer Refresh
+**Campaign ID**: CMP_2025_0001
+**Campaign Ad IDs**: Data not available for this section.
+**Campaign Duration**: From 2025-08-02 to 2025-09-06
+**Campaign Objective**: Consideration
+
+**KPIs Analyzed**:
+*   impressions
+*   unique_reach
+*   clicks
+*   CTR
+*   CPC
+*   CPCV
+*   cp_daily_spend
+
+**Metrics**:
+*   **Impressions**: 321500.0 (Total Sum)
+*   **ROAS**: Data not available for this section.
+*   **Conversions**: Data not available for this section.
+*   **CTR**: 2.34% (Average)
+
+**Campaign Analysis Text**:
+
+The analysis of Campaign ID 'CMP_2025_0001' for Brand 'Dove' with an objective of 'Consideration' reveals several key insights:
+
+**Overall Performance Summary:**
+
+| Metric             | Sum         | Mean        | Median      | Std         | Min        | Max         |
+| :----------------- | :---------- | :---------- | :---------- | :---------- | :--------- | :---------- |
+| **impressions**    | 321500.0    | 11482.14    | 11250.0     | 2855.97     | 5000.0     | 14000.0     |
+| **unique_reach**   | 256800.0    | 9171.43     | 8900.0      | 2322.95     | 4500.0     | 11000.0     |
+| **clicks**         | 6500.0      | 232.14      | 215.0       | 49.33       | 150.0      | 280.0       |
+| **CTR**            | 65.57       | 2.34        | 2.08        | 0.58        | 2.0        | 3.0         |
+| **CPC**            | 10.97       | 0.39        | 0.28        | 0.14        | 0.22       | 0.5         |
+| **CPCV**           | 11.23       | 0.40        | 0.06        | 0.31        | 0.06       | 0.75        |
+| **cp_daily_spend** | 1745.0      | 62.32       | 57.5        | 16.27       | 50.0       | 92.0        |
+
+*   **Total Ad Spend**: The total ad expenditure across all campaigns and days for this analysis period is **$1745.0**.
+*   **Impressions and Reach**: On average, campaigns generated approximately 11,482 impressions and reached about 9,171 unique users daily.
+*   **Clicks and CTR**: The average daily clicks were 232, with an average Click-Through Rate (CTR) of approximately 2.34%.
+*   **Cost Metrics**:
+    *   The average Cost Per Click (CPC) was about $0.39.
+    *   The average Cost Per Completed View (CPCV) was around $0.40. It is noteworthy that the median CPCV is significantly lower ($0.06), which may indicate a skewed distribution, potentially influenced by campaigns with very low video completions or high daily spend.
+
+**Anomaly Detection:**
+Using a 3-standard-deviation rule, no significant anomalies were detected in any of the key metrics (`impressions`, `unique_reach`, `clicks`, `CTR`, `CPC`, `CPCV`, `cp_daily_spend`). This suggests that the daily performance metrics generally remained within expected ranges during the observed period.
+
+**Weekly Performance Trends:**
+
+The data covers two weeks (Week 1 of 2023 and Week 2 of 2023).
+
+Table 3: Weekly Performance Trends
+
+| Year | Week | impressions | unique_reach | clicks | CTR      | CPC      | CPCV     | cp_daily_spend |
+| :--- | :--- | :---------- | :----------- | :----- | :------- | :------- | :------- | :------------- |
+| 2023 | 1    | 161000      | 128600       | 3250   | 2.347959 | 0.391307 | 0.399580 | 870.0          |
+| 2023 | 2    | 160500      | 128200       | 3250   | 2.347959 | 0.391307 | 0.399580 | 875.0          |
+
+*   **Consistency Across Weeks**: The weekly performance metrics for impressions, unique reach, and clicks show remarkable consistency between Week 1 and Week 2.
+*   **CTR, CPC, CPCV Stability**: The average weekly CTR, CPC, and CPCV remained almost identical across the two weeks, suggesting stable campaign performance over this period.
+*   **Ad Spend**: The `cp_daily_spend` sum for Week 2 ($875.0) was slightly higher than Week 1 ($870.0), indicating a minor increase in overall expenditure.
+
+**Overall Campaign Impact**:
+In conclusion, the campaign performance remained relatively stable and consistent across the two weeks analyzed, with no significant anomalies observed in the daily metrics. This indicates a predictable and steady campaign execution within the 'Consideration' objective.
+
+### 5.4. Campaign Comparison
+
+**Applicable Condition**: Only if objective and SKUs are same
+**Comparison Notes**: Data not available for this section (only one campaign provided for analysis).
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Leverage the observed weekly trend data and the consistency in daily performance metrics to identify optimal periods for ad spend adjustments and campaign scheduling. Further investigate the slight increase in `cp_daily_spend` in Week 2 to understand its impact on overall performance.
+*   **Objective**: Improve campaign efficiency and responsiveness to market dynamics by aligning ad delivery with peak engagement times and cost-effectiveness.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Based on the channel-specific KPIs, re-evaluate budget allocation. Specifically, investigate the high CPCV for Video campaigns and consider reallocating budget to channels like Social, which demonstrate a higher CTR and lower CPC. Optimize bidding strategies to improve cost-efficiency for clicks and completed views across all channels.
+*   **Objective**: Maximize ROI and enhance the effectiveness of the 'Consideration' objective by optimizing spend across channels based on performance metrics.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Given the observed stability in weekly performance and the absence of anomalies, consider implementing systematic A/B testing for ad creatives, ad copy, and landing page elements. This could involve testing different calls-to-action, visual assets, or messaging to identify elements that resonate more effectively with the target audience.
+*   **Objective**: Drive incremental improvements in key metrics such as CTR, unique reach, and CPCV by identifying and scaling high-performing creative and landing page variations, thereby enhancing overall campaign effectiveness for the 'Consideration' objective.
