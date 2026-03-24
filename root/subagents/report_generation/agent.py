@@ -8,12 +8,13 @@ from google.adk.agents.callback_context import CallbackContext
 from google.adk.tools import ToolContext
 from google.genai import types
 from vertexai.preview.generative_models import GenerativeModel
-
+import time
 def setup_before_agent_call(callback_context: CallbackContext):
     callback_context.state["persona_context"] = """
 """
     # callback_context.state["session_id"] = callback_context._invocation_context.session.id
     print(f"inside report gen seq agent: session id from invocation context {callback_context._invocation_context.session.id}")
+    print("report starttime",time.strftime('%H:%M:%S'))
     callback_context.state["session_id"] = callback_context._invocation_context.session.id
     callback_context.state["user_id"] = callback_context._invocation_context.user_id
     print(f"inside report gen seq agent: session id from state {callback_context.state["session_id"]}")

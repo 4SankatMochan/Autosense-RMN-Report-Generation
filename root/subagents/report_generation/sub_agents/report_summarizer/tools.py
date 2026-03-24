@@ -169,7 +169,10 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
     Period: {period}
     Report Type: {report_type}
     """
-    
+    campaign_insights = tool_context.state.get("campaign_analysis_output", "")
+    campaign_comparison = tool_context.state.get("campaign_comparison_output", "")
+    executive_summary = tool_context.state.get("executive_summary_output", "")
+    recommendations = tool_context.state.get("recommendation_output", "")
     # filters = tool_context.state.get['report_filters']
     # debug prints to verify the inputs being passed to the LLM
     print(f"text_viz_json output: {summary}")
@@ -186,25 +189,31 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
     custom_prompt = f"""
     **Task**
     Generate report based on the below information.
-
+ 
     **Input Parameters:**
-
+ 
     1. **Text and Visualization Summary:**
     {summary}
-
+ 
     2. **Report Template:**
     {template}
-
+ 
     3. **Report Context:**
     {context}
-
+ 
     4. **Filters:**
     {filter_text}
-
+ 
     5. **Text and Visualization Summary (JSON format)**
     {text_viz_json}
-
-    **Output:**
+ 
+    # **Output:**
+    #
+    6. **Additional Context for Campaign Analysis and Recommendations:**
+    - Campaign Insights: {campaign_insights}
+    - Campaign Comparison: {campaign_comparison}
+    - Executive Summary: {executive_summary}
+    - Recommendations: {recommendations}
     """
 
     prompt = main_prompt + custom_prompt
@@ -251,6 +260,8 @@ async def format_report(tool_context: Optional[ToolContext] = None):
     res['context']=context
     for i,j in dct[context].items():
         res[i]=process_value(j)
+
+    
     
     tool_context.state['report_json'] = res
     print("report json generated: ")
@@ -347,9 +358,10 @@ def process_str(st):
     txt_counter=1
     obj={}
     tcaption=''
+    
     for line in lines:
         #Check for images and image captions
-        urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)', line)
+        urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)/\d', line)
         caption = re.findall(r'(?:\*?\*?)?Image \d: .*', line)
         
         #Check for tables and table captions
@@ -364,7 +376,7 @@ def process_str(st):
             obj['image']['caption']=caption[0]
         
 
-        elif table and tcaption:
+        elif table:
             obj['table']={'table_content':{}}
             buf=StringIO(table[0])
             df = pd.read_table(buf,sep='|')
@@ -373,15 +385,23 @@ def process_str(st):
             df =df.map(lambda x : x.strip())
             obj['table']['table_content']['headers'] = list(df.columns)
             obj['table']['table_content']['rows'] = df.values.tolist()
-            obj['table']['caption']=tcaption
-            tcaption=''
+            if tcaption:
+                obj['table']['caption']=tcaption
+                tcaption=''
+            else:
+                if txt_counter>1:
+                    txt_counter-=1
+                    
+                    obj['table']['caption']=f'Table : {obj[f'text_{txt_counter}']}'
+                    del obj[f'text_{txt_counter}']
+                
             
         else:
             if re.match(r'^\[.+\]$',line):
                 try:
                     line = '\n'.join([str(i) for i in ast.literal_eval(line)])
-                except Exception as e:
-                    line=e
+                except:
+                    print(line)
             obj[f'text_{txt_counter}'] = line
             txt_counter+=1
 

@@ -7,7 +7,7 @@ from vertexai.preview.generative_models import GenerativeModel
 from pydantic import BaseModel,Field,TypeAdapter
 from typing import Literal,List
 from vertexai.generative_models import GenerationConfig
-
+import time
 class PromptList(BaseModel):
     section_name: Literal["Context", "Customization Options","Campaign Overview","Campaign-wise Analysis"] = Field(...,description='Report section name')
     prompts: List[str] = Field(...,description='List of prompts')
@@ -412,7 +412,7 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         .get("objectives", {})
         .get(report_type, {})
     )
-    data_granularity = report_obj.get("data_granularity", "Monthly")
+    data_granularity = report_obj.get("data_granularity", "Weekly")
     visualization_pref = report_obj.get("visualization_pref", ["Charts", "KPIs"])
     output_pref = report_obj.get("output_pref", ["Slide Deck + Report"])
 
@@ -717,7 +717,7 @@ Return only a JSON array of prompt strings.
     }
     tool_context.state["prompt_generator_out"] = prompt_list
 
-    print(f"🟢 Generated {len(prompt_list)} prompts successfully.")
+    print(f"🟢 Generated {len(prompt_list)} prompts successfully at {time.strftime('%H:%M:%S')}.")
     return prompt_list
 
 # Follow the structure mentioned in below example -Prompt for generating content for each section should be in below format and should be in list format as shown below:

@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import List, Optional
 from google.genai.types import Part, Blob
 from google.adk.tools import ToolContext
-
+from uuid import uuid4
 
 async def chart_plotting_tool(
     chart_type: str,
