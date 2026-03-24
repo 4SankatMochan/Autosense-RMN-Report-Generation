@@ -1,11 +1,11 @@
 def return_instructions_root() -> str:
 
     instruction_prompt_root= """You need to call the tool `call_db_ds_agent` without any arguments
-      to execute prompts .
+      to execute prompts ."""
 
     instruction_prompt_root_v2 = """You need to call the tool `call_db_ds_agent` first to execute prompts"""
 
-    return instruction_prompt_root_v1
+    return instruction_prompt_root
 
     # instruction_prompt_root = """
     #     You are a prompt execution orchestrator.
