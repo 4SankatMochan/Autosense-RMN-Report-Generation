@@ -9,7 +9,7 @@ from typing import Literal,List
 from vertexai.generative_models import GenerationConfig
 import time
 class PromptList(BaseModel):
-    section_name: Literal["Context", "Customization Options","Campaign Overview","Campaign-wise Analysis"] = Field(...,description='Report section name')
+    section_name: Literal["Context","Campaign Overview","Campaign-wise Analysis"] = Field(...,description='Report section name')
     prompts: List[str] = Field(...,description='List of prompts')
 
 output_schema=TypeAdapter(List[PromptList]).json_schema()
@@ -240,6 +240,99 @@ def extract_explicit_time_period(user_query: str):
 
     return result
 
+# Campaign objective–specific KPI templates (used for prompt generation)
+campaign_object_specific_Kpi = {
+    "Awareness": {
+        "Metrics_Table": {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Impressions": "",
+            "Unique_Reach": "",
+            "Frequency": "",
+            "ROAS": "",
+            "CPM": ""
+        }
+    },
+    "Consideration": {
+        "Metrics_Table": {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Impressions": "",
+            "Unique_Reach": "",
+            "Clicks": "",
+            "CTR": "",
+            "CPC": "",
+            "CPCV": "",
+            "Viewed_Units": "",
+            "Clicked_Units": "",
+            "Add_To_Cart": ""
+        }
+    },
+    "Conversion": {
+        "Metrics_Table": {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Impressions": "",
+            "Clicks": "",
+            "CTR": "",
+            "CPC": "",
+            "Viewed_Transactions": "",
+            "Clicked_Transactions": "",
+            "Viewed_Revenue": "",
+            "Clicked_Revenue": "",
+            "Total_Campaign_Revenue": "",
+            "ROAS": "",
+            "Incremental_Sales_Lift": "",
+            "Conversions": ""
+        }
+    },
+    "Retention": {
+        "Metrics_Table": {
+            "Channel": "",
+            "Total_Ad_Spend": "",
+            "Conversions": "",
+            "CVA": "",
+            "Transactions_Repeat": "",
+            "Units_Sold": "",
+            "Total_Campaign_Revenue": "",
+            "Incremental_Sales_Lift": "",
+            "ROAS": ""
+        }
+    },
+}
+
+# Objective-specific KPIs (list of KPI names)
+OBJECTIVE_KPIS = {
+    "Awareness": ["Channel", "Total_Ad_Spend", "Impressions", "Unique_Reach", "Frequency", "ROAS", "CPM"],
+    "Consideration": ["Channel", "Total_Ad_Spend", "Impressions", "Unique_Reach", "Clicks", "CTR", "CPC", "CPCV", "Viewed_Units", "Clicked_Units", "Add_To_Cart"],
+    "Conversion": ["Channel", "Total_Ad_Spend", "Impressions", "Clicks", "CTR", "CPC", "Viewed_Transactions", "Clicked_Transactions", "Viewed_Revenue", "Clicked_Revenue", "Total_Campaign_Revenue", "ROAS", "Incremental_Sales_Lift", "Conversions"],
+    "Retention": ["Channel", "Total_Ad_Spend", "Conversions", "CVA", "Transactions_Repeat", "Units_Sold", "Total_Campaign_Revenue", "Incremental_Sales_Lift", "ROAS"]
+}
+
+def get_tone_and_kpis(personas, role, objective=None):
+    # Find the persona
+    persona_data = None
+    for persona in personas:
+        if persona.get("role") == role:
+            persona_data = persona
+            break
+    
+    if not persona_data:
+        return None
+    
+    tone = persona_data.get("tone")
+    
+    # Determine relevant_kpis
+    if objective and objective in OBJECTIVE_KPIS:
+        relevant_kpis = OBJECTIVE_KPIS[objective][:8]  # limit to top 8 KPIs
+    else:
+        relevant_kpis = persona_data.get("relevant_kpis", [])[:8]  # limit to top 8 KPIs
+    
+    return {
+        "tone": tone,
+        "relevant_kpis": relevant_kpis
+    }
+
 async def generate_prompt(tool_context: ToolContext, **kwargs):
     """Generate structured Instruction + List of Prompts safely for Campaign Performance Report."""
 
@@ -347,6 +440,34 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
 
     campaign_id = campaign_id_match.group(1).strip() if campaign_id_match else "None"
 
+    # === Objective extraction ===
+    OBJECTIVE_CHOICES = ["Conversion", "Consideration", "Awareness", "Retention"]
+    OBJECTIVE_ALIASES = {"awareless": "Awareness", "retension": "Retention"}
+
+    def _extract_objective(uq: str):
+        uq_norm = _normalize_text(uq)
+        # Direct match any choice
+        for o in OBJECTIVE_CHOICES:
+            if re.search(rf"\b{re.escape(_normalize_text(o))}\b", uq_norm):
+                return o
+        # aliases
+        for alias, canonical in OBJECTIVE_ALIASES.items():
+            if re.search(rf"\b{re.escape(alias)}\b", uq_norm):
+                return canonical
+        # fuzzy match best effort
+        best = None
+        best_score = 0.0
+        for o in OBJECTIVE_CHOICES:
+            score = _ratio(_normalize_text(o), uq_norm)
+            if score > best_score:
+                best_score = score
+                best = o
+        return best if best_score >= 0.7 else None
+
+    objective = _extract_objective(user_query)
+    if objective:
+        print(f"🎯 Extracted objective: {objective}")
+
     time_struct = extract_explicit_time_period(user_query)
     print(f"⏱️ Extracted time struct: {time_struct}")
 
@@ -373,6 +494,12 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
             "message": "Please provide a valid campaign ID or campaign name."
         }
 
+    if not objective:
+        return {
+            "status": "missing_information",
+            "message": "Please specify the campaign objective (one of: Conversion, Consideration, Awareness, Retention)."
+        }
+
     # # 🪄 Store extracted filters
     # tool_context.state.update({
     #     "persona_name": persona_name,
@@ -385,33 +512,45 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     filters = {
     "persona": persona_name,
     "brand": brand_name,
+    "objective": objective,
     "duration": time_period,
     "report_type": report_type,
     "campaign_id": campaign_id
     }
 
     tool_context.state.update({
-        "report_filters": filters
+        "report_filters": filters,
+        "objective": objective,
     })
 
-    print(f"🧾 Filters: Persona={persona_name}, Brand={brand_name}, Period={time_period}")
+    print(f"🧾 Filters: Persona={persona_name}, Brand={brand_name}, Objective={objective}, Period={time_period}")
     if campaign_id:
         print(f"🎯 Campaign ID detected: {campaign_id}")
 
     # 5️⃣ Persona context
-    persona_data = persona_json.get(persona_name, {})
-    persona_tone = ", ".join(persona_data.get("tone", ["Professional", "concise"])) if isinstance(
-        persona_data.get("tone"), list
-    ) else persona_data.get("tone", "Professional, concise")
-    persona_focus_kpis = persona_data.get("focus_kpis", ["ROAS", "CTR", "Conversions"])
+    result = get_tone_and_kpis(
+        persona_raw,
+        role=persona_name,
+        objective=objective
+    )
 
-    print(f"🧑 Persona: {persona_name}, Tone: {persona_tone}, Focus KPIs: {persona_focus_kpis}")
+    persona_tone = result.get("tone", "Professional, concise") if result else "Professional, concise"
+    focus_kpis = result.get("relevant_kpis", ["ROAS", "CTR", "Conversions"]) if result else ["ROAS", "CTR", "Conversions"]
+
+    # persona_data = persona_json.get(persona_name, {})
+    # persona_tone = ", ".join(persona_data.get("tone", ["Professional", "concise"])) if isinstance(
+    #     persona_data.get("tone"), list
+    # ) else persona_data.get("tone", "Professional, concise")
+    # persona_focus_kpis = persona_data.get("focus_kpis", ["ROAS", "CTR", "Conversions"])
+
+    print(f"🧑 Persona: {persona_name}, Tone: {persona_tone}, Focus KPIs: {focus_kpis}")
     # 6️⃣ Persona report matrix
     report_obj = (
         persona_report_json.get(persona_name, {})
         .get("objectives", {})
         .get(report_type, {})
     )
+    data_granularity = report_obj.get("data_granularity", "Weekly")
     data_granularity = report_obj.get("data_granularity", "Weekly")
     visualization_pref = report_obj.get("visualization_pref", ["Charts", "KPIs"])
     output_pref = report_obj.get("output_pref", ["Slide Deck + Report"])
@@ -460,10 +599,9 @@ Below are the examples for some sections that you can use as a reference to gene
     Objective: Conversion
     Sub-Objective: Drive Sales / Purchases, Add to Cart, Basket Building, Retarget PDP Viewers, Buy
     Box Wins
-    Campaign Manager: Jane Smith
     Campaign Duration: 2025-05-01 – 2025-06-30
     Planned Budget: $50,000
-    Actual Spend: $45,000 (till date)
+    Actual Spend: $45,000 (latest date)
     Campaign 2
     Campaign ID: CMP_2025_0002
     Campaign Name: Dove Deodorant Awareness
@@ -474,12 +612,11 @@ Below are the examples for some sections that you can use as a reference to gene
     Objective: Awareness
     Sub-Objective: Brand Awareness, Brand Recall, Video Views, Product Launch, Reach New
     Households, Category Awareness
-    Campaign Manager: John Doe
     Campaign Duration: 2025-05-01 – 2025-06-30
     Planned Budget: $30,000
-    Actual Spend: $28,000 (till date)
+    Actual Spend: $28,000 (latest date)
 
-    ** “In this section, ensure that a single prompt is generated for each campaign_id, and that the prompt explicitly asks for all of the following details: Campaign ID, Campaign Name, Brand Name, Category, Media Types, Channel, Objective, Sub‑Objective, Campaign Manager, Campaign Duration, Planned Budget, and Actual Spend.”
+    ** “In this section, ensure that a single prompt is generated for each campaign_id, and that the prompt explicitly asks for all of the following details: Campaign ID, Campaign Name, Brand Name, Category, Media Types, Channel, Objective, Sub‑Objective, Campaign Duration, Planned Budget, and Actual Spend(for latest date).”
 
 4. Campaign Overview:
     The prompt created for this section should be some thing similar to this-
@@ -494,75 +631,102 @@ Below are the examples for some sections that you can use as a reference to gene
     Total Ad Spend
     Budget Utilization
 
-    After creating the summary table, generate *objective-specific tables,Like include this in prompt specifying cases(Since you do not know Objective now).
-   "Objective_Awareness": 
-        "Metrics_Table": [
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Unique_Reach": "",
-            "Frequency": "",
-            "ROAS": "",
-            "CPM": ""
-        ]
-      ,
-      "Objective_Consideration": 
-        "Metrics_Table": [
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Unique_Reach": "",
-            "Clicks": "",
-            "CTR": "",
-            "CPC": "",
-            "CPCV": "",
-            "Viewed_Units": "",
-            "Clicked_Units": "",
-            "Add_To_Cart": ""
-        ],
-      "Objective_Conversion": 
-        "Metrics_Table": [
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Clicks": "",
-            "CTR": "",
-            "CVR": "",
-            "Viewed_Transactions": "",
-            "Clicked_Transactions": "",
-            "Viewed_Revenue": "",
-            "Clicked_Revenue": "",
-            "Total_Campaign_Revenue": "",
-            "ROAS": "",
-            "Incremental_Sales_Lift": "",
-            "Conversions": ""
-        ],
-      "Objective_Retention": 
-        "Metrics_Table": [
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Conversions": "",
-            "CVR": "",
-            "Transactions_Repeat": "",
-            "Units_Sold": "",
-            "Total_Campaign_Revenue": "",
-            "Incremental_Sales_Lift": "",
-            "ROAS": ""
-        ]
-      
+    After creating the summary table, generate a tables for {focus_kpis} the specified objective {objective}. Ask in a single question and mention these details in the prompt:
+    Ask for fetching KPIs based on its objective from relevant KPIs, also, since I have many data points based on date , write clear steps for getting a single relevant value for each KPI.
+    The dataset contains multiple records across different dates and channels.
+    Your goal is to compute a single consolidated KPI value per Channel for the campaign and brand.
+
+    Follow these steps carefully.
+
+    STEP 1 — Filter Data
+    Filter the dataset using:
+
+    Campaign ID
+
+    Brand
+
+    STEP 2 — Handle Multiple Dates
+    Since multiple records exist across different dates, aggregate all rows belonging to the same Channel to produce a single value per KPI.
+
+    Aggregation rules:
+
+    Additive Metrics → SUM across all dates
+
+    Ad_Spend
+
+    Impressions
+
+    Clicks
+
+    Viewed_Units
+
+    Clicked_Units
+
+    Add_To_Cart
+
+    Viewed_Transactions
+
+    Clicked_Transactions
+
+    Conversions
+
+    Units_Sold
+
+    Viewed_Revenue
+
+    Clicked_Revenue
+
+    Total_Campaign_Revenue
+
+    Incremental_Sales_Lift
+
+    Transactions_Repeat
+
+    Reach Metrics
+
+    Unique_Reach → take MAX or DISTINCT value for that channel.
+
+    Derived Metrics (compute after aggregation; never average):
+
+    CTR = Total_Clicks / Total_Impressions
+
+    CPC = Total_Ad_Spend / Total_Clicks
+
+    CPM = (Total_Ad_Spend / Total_Impressions) * 1000
+
+    Frequency = Total_Impressions / Unique_Reach
+
+    ROAS = Total_Campaign_Revenue / Total_Ad_Spend
+
+    CPCV = Total_Ad_Spend / Completed_Views
+
+    CVA = Conversions / Clicks
+
+    Important rules:
+
+    Never average CTR, CPC, ROAS, CPM, Frequency, or CVA.
+
+    Always compute these metrics AFTER aggregation.
+
+    STEP 3 — Create Campaign Summary Table
+    Group the dataset by Channel and compute the aggregated KPI values using the rules above.
+
+    STEP 4 — Generate Objective-Specific KPI Table
 
     Ensure the tables are clean, easy to understand, and formatted to provide a clear performance overview. Use consistent column naming conventions, align numeric values properly, and structure the tables to enable quick comparisons across campaigns and channels."
 
     ** Important **
     1. Split the prompts for this section so that different tables or sets of questions are generated through different prompts, for step by step functioning of LLM model and not complex fetching task at same time.
     2. Ensure that the prompts for this section are independent of each other, so that all dimensions of campaign overview are covered by different prompts and the LLM can focus on one aspect at a time while generating the report.
+    3. For this section , donot forcefully ask all columns of tables mentioned above rather ask for the parameters if could be fetched from dataset available to create table from available columns only.
 
 5. Campaign-wise Analysis:
     This section provides a detailed analysis of campaign performance.
     This section requires some basic details of the campaign such as campaign name or campaign ad id or campaign duration etc mentioned in the user query or already fetched in previous cycle , so that the insights generated are specific to that campaign.
-    The analysis should be for the specific Campaign {campaign_id} and Brand {brand_name}, focused on analysis using {persona_focus_kpis} , {data_granularity} and Campaign Objective . Generate separate prompt for fetching proper insight through plots and graphs for each {persona_focus_kpis}. 
+    The analysis should be for the specific Campaign {campaign_id} and Brand {brand_name}, focused on analysis using {focus_kpis[:3]} , {data_granularity} and Campaign Objective {objective} . Generate separate prompt for fetching proper insight through plots and graphs for each KPIs {focus_kpis[:3]}. 
     For example, if the focus KPIs are ROAS, CTR, and Conversions, the prompt for ROAS, CTR and Conversion sections should be separate and should also support creating visualizations like charts or graphs to illustrate performance trends over time, across channels, or by audience segments. 
     The analysis should also consider the data granularity (e.g., daily, weekly, monthly) to provide insights at the appropriate level of detail.
+    Also, make a prompt to Generate a concise campaign performance summary for campaign objective as {objective} and funnel stage, highlighting key KPIs performances , anomaly (based on its objective), and summarizing overall and weekly performance trends using only the provided dataset.
     Points to be taken care while creating prompts for this section-
     ** Important ** 
     1. Make more than one prompts to support this section.
@@ -572,7 +736,7 @@ Below are the examples for some sections that you can use as a reference to gene
 Keep the prompts created for one section as sublist under the section name, so that it is clear that these prompts are for generating content for this section.
 
 Tone: {persona_tone}.
-Focus KPIs: {', '.join(persona_focus_kpis)}.
+Focus KPIs: {', '.join(focus_kpis)}.
 Data granularity: {data_granularity}.
 Return only a JSON array of prompt strings.
 

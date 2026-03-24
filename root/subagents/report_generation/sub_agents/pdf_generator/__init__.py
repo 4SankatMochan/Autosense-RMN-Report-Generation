@@ -16,6 +16,6 @@
 # ReportLab: https://www.reportlab.com/
 # ReportLab License: https://www.reportlab.com/software/opensource/
 # Specifically uses: ReportLab PDF Toolkit (Open Source) and potentially json2pdf scaffolding.
-from .pdf_generator import GCSJSONToPDF as JSONToPDF
+from .pdf_generator_func import GCSJSONToPDF as JSONToPDF
 
 __all__ = ["JSONToPDF"]

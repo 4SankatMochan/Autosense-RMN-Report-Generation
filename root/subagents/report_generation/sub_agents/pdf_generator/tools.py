@@ -13,7 +13,7 @@ import json
 import re
 
 from google.adk.tools import ToolContext
-from .pdf_generator import GCSJSONToPDF as JSONToPDF
+from .pdf_generator_func import GCSJSONToPDF as JSONToPDF
 from google.cloud import storage
 from collections import defaultdict
 from typing import List, Optional

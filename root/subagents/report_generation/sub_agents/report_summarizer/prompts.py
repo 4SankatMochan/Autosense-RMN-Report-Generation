@@ -29,6 +29,8 @@ def generate_report_prompt():
         **db_text**: A placeholder for database-related summary or insights extracted from the data (currently None as this is sample).
         **ds_text**: A placeholder for data science-related summary or interpretation (currently None as this is sample).
 
+3.  Sequential_agent_out(From tool_context): This contains some details about the campaigns to be used for summarization , Campaign analysis and recommendation part in the report.
+
 2.  **Report Template (String):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
 
 3.  **Report Context (String):** This provides additional background information or specific instructions relevant to the report's purpose, audience, or key focus areas.
