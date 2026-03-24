@@ -17,7 +17,7 @@ from .pdf_generator_func import GCSJSONToPDF as JSONToPDF
 from google.cloud import storage
 from collections import defaultdict
 from typing import List, Optional
-
+import time
 
 def sanitize_filename(name: str) -> str:
     """Sanitize string to be safe as a filename."""
@@ -93,6 +93,7 @@ async def generate_pdf_report(tool_context: Optional[ToolContext] = None):
         print(f"user_id : {user_id}")
         output_filename = f"gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf"
         output_path = pdf_generator.generate_pdf(json_input, gcs_pdf_path = output_filename)
+        print('PDF end time',time.strftime('%H:%M:%S'))
         return output_path
     except Exception as e:
         return f"An error occurred while generating the PDF: {str(e)}"
