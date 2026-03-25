@@ -37,7 +37,7 @@ def generate_report_prompt():
 
 **Report Generation Instructions:**
 
-1.  **Structure and Numbering:** Number all sections and subsections within the report using a clear hierarchical structure (e.g., 1. Introduction, 1.1. Background).
+1.  **Structure and Numbering:** Number all sections and subsections within the report using a clear sequential hierarchical structure (e.g., 1. Introduction, 1.1. Background). Ensure the main headers are numbered in sequence.
 2.  **Markdown Formatting:** Use Markdown formatting to emphasize key points, headings, and lists. You can use sub sections within sub sections.
 3.  **Captions for Visualizations:** Provide clear and concise captions for all images and tables. Follow the format: "Image X: [Description]" for images and "Table X: [Description]" for tables, just before the corresponding image or table
 4.  **Narrative Flow and Deduplication:** Ensure a logical and coherent narrative flow throughout the report. Actively identify and deduplicate any overlapping insights or information to present a concise and impactful report.
@@ -52,7 +52,7 @@ def generate_report_prompt():
 2. **DO NOT** create any chart links or images on your own.
 3. **DO NOT** fabricate any statistics or insights that are not present in the provided 'Text and Visualization Summary'.
 4. Only use the information provided in the 'Text and Visualization Summary' to generate the report.
-5. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', clearly indicate this in the report with a note such as "Data not available for this section."
+5. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report."
 
 **Few Shot Example:**
     These should be taken as examples to understand how to use the Text and Visualization Summary to fill in the report template, and not as actual content to be included in the report.Do not use data from the few shot example in the generated report unless it is present in the Text and Visualization Summary.

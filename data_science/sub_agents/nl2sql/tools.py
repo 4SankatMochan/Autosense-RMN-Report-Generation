@@ -18,7 +18,7 @@ NL2SQL tools for generating SQL, running queries, and preprocessing data.
 
 import time
 from google.cloud import bigquery
-
+import asyncio
 
 def generate_sql(nl_prompt: str) -> str:
     """
@@ -29,14 +29,14 @@ def generate_sql(nl_prompt: str) -> str:
     return sql_query
 
 
-def run_query(sql_query: str, project_id: str = None) -> dict:
+async def run_query(sql_query: str, project_id: str = None) -> dict:
     """
     Execute a SQL query on BigQuery and return the results.
     """
     client = bigquery.Client(project=project_id)
     try:
         query_job = client.query(sql_query)
-        results = query_job.result()
+        results = await asyncio.to_thread(query_job.result())
 
         rows = [dict(row.items()) for row in results]
 

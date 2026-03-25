@@ -19,8 +19,8 @@ This block should be repeated for each campaign or rendered as a list/table when
 
 # 2. Customization Options
 This report can be filtered and customized along the following dimensions:
-* Timeline: [Specify timeline e.g., Daily, Weekly]  
-* By Creative: [Specify segmentation logic e.g., Channel, Platform, Format]  
+* Timeline: <Specify timeline e.g., Daily, Weekly as per period in report filters>
+* By Creative: <Specify segmentation logic e.g., Channel, Platform, Format as per report context>  
 
 # 3. Executive Summary
 **Overview**: [Describe overall campaign objectives and analysis summary]  
@@ -34,17 +34,14 @@ This report can be filtered and customized along the following dimensions:
 # 4. Campaign Overview
 Period: [Enter reporting period]
 
-## table_campaign_overview
+Table 1: Campaign overview
 | Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Budget Utilization % |
 |--------------|--------------------------------|--------------------|----------------|----------------------|
 | [CMP_ID] | [Budget] | [Objective] | [Spend] | [Utilization %] |
 | [CMP_ID] | [Budget] | [Objective] | [Spend] | [Utilization %] |
 
-## table_channel_performance
-### title
-Campaign Objective: [Awareness / Conversion / Retention / Consideration]
-Dimension Type: [Channel / Media / Format / Audience]
-| Dimension Type | Metric_1 | Metric_2 | Metric_3 | Metric_4 | Metric_5 | Metric_6 |
+Table 2: Campaign channel performance
+| Channel | Total Ad Spend | Impressions | Unique Reach | Frequency | ROAS | CPM |
 |----------|----------------|-------------|---------------|------------|------|------|
 | [Dimension Name] | [Value] | [Value] | [Value]  | [Value]  | [Value]  | [Value]  |
 

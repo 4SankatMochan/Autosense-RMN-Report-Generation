@@ -36,6 +36,7 @@ from .tools import generate_prompt
 from io import BytesIO
 from google.cloud import storage
 import pandas as pd
+import time
 import json
 
 date_today = date.today()
@@ -98,6 +99,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
     # client = storage.Client()
     # bucket = client.bucket(bucket_name)
     # Get the blob (file object)
+    print('Prompt generation start',time.strftime('%H:%M:%S'))
     blob = bucket.blob(persona_report)
     # Download the file content as bytes
     excel_bytes = blob.download_as_bytes()

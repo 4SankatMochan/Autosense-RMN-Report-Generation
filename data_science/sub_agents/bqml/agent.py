@@ -42,6 +42,8 @@ async def setup_before_agent_call(callback_context: CallbackContext):
         db_settings = dict()
         db_settings["use_database"] = "BigQuery"
         callback_context.state["all_db_settings"] = db_settings
+    
+    print(callback_context.state.to_dict())
 
     # setting up schema in instruction
     if callback_context.state["all_db_settings"]["use_database"] == "BigQuery":

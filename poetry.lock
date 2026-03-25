@@ -3177,6 +3177,18 @@ rtd = ["jupyter_sphinx", "mdit-py-plugins", "myst-parser", "pyyaml", "sphinx", "
 testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
 
 [[package]]
+name = "markdown-to-json"
+version = "2.1.2"
+description = "Markdown to dict and json deserializer"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "markdown_to_json-2.1.2-py3-none-any.whl", hash = "sha256:bda2c90082d93a6da051dbeda2ab46d79da5ed0590f5a5abba6c58dbc751be1b"},
+    {file = "markdown_to_json-2.1.2.tar.gz", hash = "sha256:8fa5b4191c74a20297fe2622ee6dd202f82448d025af9c837732d45a64551d01"},
+]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.2"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -6721,4 +6733,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "9e893ce40c7c830f49d698f93db394913adde3875431b1ee6ecb843c6c0bcbbc"
+content-hash = "769f27a13c7182d4001c8a5e99dc262b4fd6a2bfa2834db3bbcf13fcfc67b64e"

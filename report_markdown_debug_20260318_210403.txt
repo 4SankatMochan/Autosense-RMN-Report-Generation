@@ -1,0 +1,135 @@
+# Campaign Performance Report: CMP_2025_0003 (Lux)
+
+## 1. Context
+
+This report details the performance of a specific marketing campaign, `CMP_2025_0003`, for the brand `Lux`. It is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance, focusing on its contribution to attributed sales and overall daily sales patterns. The insights derived will inform strategic decisions regarding future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaign Details
+
+*   **Campaign ID**: CMP_2025_0003
+*   **Campaign Name**: CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911
+*   **Brand Name**: Lux
+*   **Category**: Contextual / Placement-Based
+*   **Media Type**: Sponsored Product
+*   **Channel**: Onsite
+*   **Objective**: Consideration
+*   **Sub-Objective**: App Installs
+*   **Campaign Duration**: From 2025-08-01 to 2025-09-11
+*   **Planned Budget**: $586.15
+*   **Actual Spend**: $5,861.50
+
+## 2. Customization Options
+
+This section outlines potential customization options for future reports, but no specific data is provided for these options in the current analysis.
+
+*   **Timeline**: Full campaign period, Weekly report view, Daily report view
+*   **By Creative**: App, Channel-CTV, Onsite, Offsite, Instore
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+The `CMP_2025_0003` campaign for Brand `Lux`, primarily focused on `Consideration` with a sub-objective of `App Installs`, demonstrated a mixed performance. While successful in achieving its primary install objective, there are notable areas for improving financial efficiency.
+
+### 3.2. Overall Performance
+
+The campaign successfully generated **65 app installs**, directly aligning with its sub-objective. It achieved **632 clicks** from **113,438 impressions**, indicating a reasonable engagement level and a conversion rate of approximately 10.28% from clicks to installs. However, the campaign's financial efficiency shows room for improvement, with an **ROAS of 0.865** and an `Actual Spend` of **$5,861.50** against an `Attributed Sales Value` of **$5,072.69**, meaning it spent more than it directly generated in sales. The `Cost Per Install` (CPI) stands at approximately **$90.18**.
+
+Monthly conversion rates for the campaign (observed in 2023) showed a consistent upward trend, increasing from 7.0% to 12.5%, mirrored by a rise in conversion counts from 140 to 250. The monthly Click-Through Rate (CTR) for 2024 remained generally stable around 5.00%, with a slight dip in March before recovering to a high of 5.09% in April.
+
+### 3.3. Channel and Format Performance
+
+The campaign utilized the `Onsite` channel with `Sponsored Product` media type, which contributed to the observed impressions, clicks, and add-to-cart metrics. The `Onsite` channel delivered 113,438 impressions, 37,086 unique reach, and 632 clicks, resulting in a CTR of 1.07% and a CPC of $0.99. It also recorded 6,901 add-to-cart events.
+
+### 3.4. Optimization Insight
+
+There is a clear opportunity to optimize the campaign's financial efficiency and return on ad spend. Evaluating the `Cost Per Install` ($90.18) against the lifetime value (LTV) of an installed user is crucial for determining long-term viability and identifying strategies for more cost-effective installs. Despite achieving the app install objective, the current ROAS indicates that the campaign is not yet profitable from a direct sales perspective, suggesting a need to connect app installs more effectively to future revenue generation.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date   | End Date     | Campaign ID    | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :----------- | :----------- | :------------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-08-01   | 2025-09-11   | CMP_2025_0003  | $586.15         | Consideration      | $5,861.50      | 999.99%                       |
+
+### 4.2. Objective: Awareness
+
+Data not available for this section. No metrics were found for Campaign ID 'CMP_2025_0003', Brand 'Lux', and Objective 'Awareness'.
+
+### 4.3. Objective: Consideration
+
+The metrics for Campaign ID 'CMP_2025_0003' with Brand 'Lux' and Objective 'Consideration' for the 'Onsite' channel are as follows:
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR   | CPC   | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :---- | :---- | :---------- |
+| Onsite  | $586.15        | 113,438     | 37,086       | 632    | 1.07% | $0.99 | 6,901       |
+
+*Note: The 'Total Ad Spend' in this table ($586.15) refers to the planned budget for the consideration objective, while the overall actual spend for the campaign was $5,861.50.*
+
+### 4.4. Objective: Conversion
+
+Data not available for this section. No results were found for the specified campaign ID 'CMP_2025_0003', brand name 'Lux', and objective 'Conversion'.
+
+### 4.5. Objective: Retention
+
+Data not available for this section. No data was found for Campaign ID 'CMP_2025_0003', Brand 'Lux', and Objective 'Retention'.
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Visualizations
+
+#### 5.1.1. Monthly Return on Ad Spend (ROAS) Trend
+
+Image 1: Monthly Return on Ad Spend (ROAS) Trends for Campaign ID CMP_2025_0003 (Brand: Lux)
+gs://acn-cda-adk-staging/root/user/d1dd75a2-8f6a-4d02-bdb3-b066d4fe7a9b/analyze_the_monthly_return_on_ad_spend_(roas)_for_campaign_id_cmp_2025_0003_(brand:_lux)._provide_in_VizChart.png/0
+
+The line chart (Image 1) illustrates the monthly Return on Ad Spend (ROAS) trends for Campaign ID CMP_2025_0003 (Brand: Lux). This visualization allows for easy identification of fluctuations and overall patterns in the campaign's ROAS performance over the given period.
+
+#### 5.1.2. Monthly Click-Through Rate (CTR) Trend
+
+Data not available for a direct visualization URL, but the trend is described. The monthly Click-Through Rate (CTR) for Campaign ID `CMP_2025_0003` (Brand: Lux) remained stable at 5.00% in January and February 2024. A slight dip was observed in March, with the CTR falling to 4.78%. However, the campaign recovered in April, achieving its highest CTR of 5.09% within this period. This trend suggests a generally consistent performance with a minor fluctuation in March, followed by an improvement in April.
+
+#### 5.1.3. Monthly Conversion Performance
+
+Data not available for a direct visualization URL, but the trends are described. The monthly conversion performance for Campaign ID 'CMP_2025_0003' (Brand: Lux) throughout 2023 showed a consistent upward trend. The Monthly Conversion Rate began at 7.0% in January 2023 and steadily increased to 12.5% by December 2023. Similarly, the Monthly Conversion Count started at 140 in January 2023 and rose to 250 by December 2023. Both metrics indicate a stable and positive performance with sustained growth.
+
+### 5.2. Campaign Details
+
+*   **Campaign Name**: CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911
+*   **Campaign ID**: CMP_2025_0003
+*   **Campaign Ad IDs**: Data not available for this section.
+*   **Campaign Duration**: 2025-08-01 to 2025-09-11
+*   **KPIs Analyzed**: Impressions, Unique Reach, Clicks, CTR, CPC, Add To Cart, App Installs, ROAS, Attributed Sales Value, Cost Per Install (CPI), Monthly Conversion Rate, Monthly Conversion Count.
+*   **Metrics**:
+    *   **Impressions**: 113,438
+    *   **ROAS**: 0.865
+    *   **Conversions**: 65 app installs (direct objective achievement); Monthly conversion count increased from 140 to 250 (2023 trend).
+    *   **CTR**: 1.07% (for Consideration objective); Monthly CTR ranged from 4.78% to 5.09% (2024 trend).
+    *   **Actual Spend**: $5,861.50
+    *   **Attributed Sales Value**: $5,072.69
+    *   **Cost Per Install (CPI)**: $90.18
+*   **Campaign Analysis Text**: The campaign successfully drove 65 app installs, aligning with its `Consideration` objective. Engagement metrics like clicks (632) and impressions (113,438) indicate a reasonable reach for the `Onsite` channel. The monthly conversion trends from 2023 show positive and consistent growth in both rate and count, suggesting increasing effectiveness over time. Similarly, the monthly CTR in early 2024 demonstrated stability with a slight positive recovery. However, the campaign's financial performance, specifically the ROAS of 0.865, indicates that the actual spend of $5,861.50 significantly exceeded the attributed sales value of $5,072.69. This suggests that while the campaign achieved its app install goal, it did so at a higher cost than the immediate revenue generated, resulting in a high Cost Per Install of $90.18. This points to a need for further optimization to improve the campaign's profitability and ensure that app installs translate into long-term value.
+*   **Weekly Performance**: Data not available for this section.
+*   **Overall Campaign Impact**: The campaign was effective in generating app installs and showed positive trends in conversion rates and counts over time. However, the high actual spend relative to the planned budget and the ROAS below 1 highlight a critical area for financial optimization. The campaign successfully engaged users, but the cost-efficiency needs to be addressed for better ROI.
+
+### 5.3. Campaign Comparison
+
+Not applicable. Only one campaign is analyzed in this report.
+
+## 6. Recommendations
+
+### 6.1. Optimize Financial Efficiency and ROAS
+
+*   **Action**: Conduct a detailed analysis of the campaign's cost structure and attributed sales to identify specific areas where spend can be reduced or sales generation can be increased. Explore strategies to improve the Return on Ad Spend (ROAS) to above 1.0.
+*   **Objective**: Enhance campaign profitability and ensure that marketing investments yield a positive financial return.
+
+### 6.2. Evaluate Cost Per Install (CPI) against Lifetime Value (LTV)
+
+*   **Action**: Perform a comprehensive evaluation of the Cost Per Install ($90.18) in relation to the estimated Lifetime Value (LTV) of an installed user. This will determine if the current CPI is sustainable and if the app installs are contributing to long-term revenue.
+*   **Objective**: Validate the long-term viability of the app install objective and identify opportunities for more cost-effective user acquisition.
+
+### 6.3. Capitalize on Positive Conversion Trends
+
+*   **Action**: Analyze the factors contributing to the observed upward trends in monthly conversion rates and counts. Replicate successful elements and apply these learnings to future campaigns or ongoing optimizations.
+*   **Objective**: Sustain and further improve conversion performance by leveraging proven strategies and insights.
