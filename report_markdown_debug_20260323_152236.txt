@@ -1,0 +1,103 @@
+# Campaign Performance Report: CMP_2025_0005 (Brand: Kissan)
+
+This report provides a comprehensive overview of the campaign performance for CMP_2025_0005, focusing on Brand Kissan, as requested by the Marketing and Sales leadership team.
+
+## 1. Context
+
+### 1.1. Campaign Details
+
+This section outlines the foundational details for the campaign under review.
+
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Name:** CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924
+*   **Brand Name:** Kissan
+*   **Category:** Not available
+*   **Media Type:** Sponsored Product
+*   **Channels:** Onsite
+*   **Objective:** Consideration
+*   **Sub Objective:** App Installs
+*   **Campaign Duration:**
+    *   **Start Date:** 2025-07-29
+    *   **End Date:** 2025-09-24
+*   **Planned Budget:** 2760.83
+*   **Actual Spend:** 2760.83
+
+## 2. Executive Summary
+
+Campaign CMP_2025_0005 for the Kissan brand, a "Sponsored Product" campaign executed on "Onsite" channels with a "Consideration" objective (specifically "App Installs"), successfully utilized its entire planned budget of 2760.83. The campaign ran from July 29, 2025, to September 24, 2025.
+
+However, a critical issue has been identified: there is a complete absence of performance data, particularly for conversion metrics, making it impossible to assess the campaign's effectiveness or return on investment. No impressions, clicks, or conversion-related data, including app installs, were found. This data gap prevents any meaningful analysis of overall performance, channel effectiveness, or specific optimization insights.
+
+Immediate actions are required to investigate and rectify this data gap. This includes verifying the tracking setup for 'App Installs' as a conversion event, conducting a comprehensive audit of data integration and reporting systems, and establishing a robust pre-campaign protocol for defining and validating performance metrics to prevent recurrence in future campaigns.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+The following table provides a high-level summary of the campaign's financial and objective details.
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization (%) |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :--------------------- |
+| 2025-07-29 | 2025-09-24 | CMP_2025_0005 | 2760.83 | Consideration | 2760.83 | 100% |
+
+### 3.2. Objective: Consideration
+
+The primary objective of Campaign CMP_2025_0005 was "Consideration," with a specific sub-objective of "App Installs." While the campaign fully utilized its budget, no performance metrics such as impressions, clicks, CTR, CPC, or specific app install counts were available for analysis. Queries for performance data related to a "Conversion" objective for this campaign consistently returned no results, indicating a potential mismatch in how the campaign's actual objective (App Installs) is tracked versus how "Conversion" data is typically queried.
+
+### 3.3. Objective: Conversion
+
+Data not available for this section. All attempts to retrieve performance data for Campaign ID 'CMP_2025_0005' with a 'Conversion' objective, including impressions, total ad spend, and channel performance, yielded no results. This suggests that either no conversion events were recorded or, more likely, the campaign's specific sub-objective of 'App Installs' is not being captured or reported under a general 'Conversion' metric in the current data structure.
+
+## 4. Campaign-Wise Analysis
+
+### 4.1. Campaign Details
+
+*   **Campaign Name:** CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Ad IDs:** Not available
+*   **Campaign Duration:** 2025-07-29 to 2025-09-24
+*   **KPIs Analyzed:** Not available due to missing performance data.
+*   **Campaign Objective:** Consideration (Sub-Objective: App Installs)
+*   **Metrics:**
+    *   **Impressions:** No data available.
+    *   **ROAS:** No data available.
+    *   **Conversions:** No data available.
+    *   **CTR:** No data available.
+
+### 4.2. Campaign Analysis Text
+
+The campaign 'CMP_2025_0005' for the brand 'Kissan' successfully expended its entire planned budget of 2760.83, indicating that the campaign ran its course as per the financial plan. The campaign's stated objective is 'Consideration' with a sub-objective of 'App Installs', utilizing 'Sponsored Product' media type on 'Onsite' channels.
+
+A critical observation is the consistent absence of performance metrics, particularly for any data categorized under a 'Conversion' objective. This includes impressions, total ad spend analysis, and channel-specific performance data for conversions. This lack of data makes it impossible to assess the effectiveness of the budget utilization, the campaign's reach, or its success in achieving its 'Consideration' and 'App Installs' objectives.
+
+The discrepancy likely arises because the campaign's specific sub-objective is 'App Installs', and the queries were explicitly looking for a generic 'Conversion' objective. If 'App Installs' are not explicitly mapped or reported as 'Conversion' events in the tracking system, or if the data retrieval mechanism is too narrowly focused on a general 'Conversion' metric, then no data will be returned. Without performance metrics such as impressions, clicks, app installs, or any other engagement data, it is not possible to quantify the campaign's impact or determine its return on investment.
+
+### 4.3. Overall Campaign Impact
+
+The overall impact of Campaign CMP_2025_0005 cannot be determined from the available data. While the campaign fully utilized its allocated budget, the absence of all key performance indicators (KPIs) related to its 'Consideration' objective and 'App Installs' sub-objective, as well as any 'Conversion' metrics, means that its effectiveness, reach, and return on investment remain unquantified.
+
+## 5. Recommendations
+
+The campaign 'CMP_2025_0005' for Brand 'Kissan' fully utilized its budget but lacks any performance data, particularly for conversion metrics related to its 'App Installs' sub-objective. This critical data gap prevents any assessment of the campaign's effectiveness.
+
+Here are the specific recommendations:
+
+### 5.1. Verify Tracking and Mapping for 'App Installs' as Conversion Event
+
+*   **Action:** Immediately investigate the tracking setup for Campaign ID 'CMP_2025_0005' to confirm that 'App Installs' are correctly defined and tracked as a conversion event. Ensure this event is properly mapped and accessible in the reporting system.
+*   **Objective:** To ensure accurate capture and reporting of the campaign's primary success metric.
+
+### 5.2. Conduct a Data Integration and Reporting Audit
+
+*   **Action:** Perform a comprehensive audit of the data collection, processing, and reporting systems specifically for 'Consideration' objective campaigns with 'App Installs' sub-objectives. This will identify any discrepancies or failures in data flow that led to the absence of performance metrics.
+*   **Objective:** To identify and rectify systemic issues preventing performance data visibility.
+
+### 5.3. Implement Pre-Campaign Performance Metric Definition and Validation Protocol
+
+*   **Action:** Before launching any future campaign, establish a strict protocol to clearly define all primary and secondary performance metrics (e.g., impressions, clicks, App Installs, cost per install). Crucially, validate that all necessary tracking mechanisms are correctly implemented and functioning, and that data is flowing into the reporting system as expected.
+*   **Objective:** To prevent recurrence of data gaps in future campaigns and ensure data readiness for analysis.
+
+### 5.4. Align Reporting System with Specific Campaign Sub-Objectives
+
+*   **Action:** Ensure that the reporting infrastructure is capable of querying and displaying specific sub-objective metrics (like 'App Installs') directly, rather than relying solely on a generic 'Conversion' metric, especially if these are treated as distinct entities in the tracking configuration.
+*   **Objective:** To provide granular and accurate reporting that aligns with specific campaign goals.

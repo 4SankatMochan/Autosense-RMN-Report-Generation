@@ -1,0 +1,146 @@
+# Campaign Performance Report: Lifebuoy - CMP_2025_2158
+
+## 1. Executive Summary
+
+Campaign CMP_2025_2158 for the Lifebuoy brand ran from June 13, 2025, to July 20, 2025, with an objective of Retention (Subscription or Refill) primarily through In-App Ads on the App channel. The planned budget for the campaign was $10,656.78.
+
+A significant discrepancy was observed between the planned budget and the actual spend, with only $271.02 recorded as actual spend. Weekly actual spend for the 'App' channel, however, showed a progressive increase from $21.40 in early June to a peak of $1,697.44 in the week of July 13, 2025, before decreasing to $271.02 by the campaign's end. This suggests either partial reporting of actual spend or substantial budget underutilization.
+
+The campaign successfully generated impressions across multiple channels. Above-the-Line (ATL) consistently drove the highest impressions, peaking at over 2.0 million around Week 10. Digital and Out-of-Home (OOH) channels also showed increasing trends, reaching approximately 0.5 million impressions each around Week 10. All channels demonstrated a general upward trend in impressions, peaking mid-campaign (around Week 10), indicating effective reach during that period.
+
+The campaign effectively built impression momentum, particularly through ATL. However, the lack of comprehensive KPI data for objectives like 'Consideration', combined with the significant budget underutilization, indicates a need for immediate action. Recommendations include: investigating budget discrepancy, enhancing data collection and KPI tracking, optimizing spend and channel strategy, and ensuring budget allocation aligns with conversion efficiency for retention objectives.
+
+## 2. Introduction
+
+### 2.1. Background
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 2.2. Report Objectives
+
+The main objectives of this report are to:
+*   Provide a detailed overview of Campaign ID 'CMP_2025_2158' for the brand 'Lifebuoy'.
+*   Analyze the weekly impressions performance across channels.
+*   Examine the weekly total ad spend performance across channels.
+*   Summarize key campaign details and performance insights.
+*   Offer actionable recommendations for optimizing future campaign strategies.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Details
+
+For Campaign ID 'CMP_2025_2158' and Brand 'Lifebuoy', the campaign details are as follows:
+*   **Campaign ID:** CMP_2025_2158
+*   **Brand Name:** Lifebuoy
+*   **Media Type:** In-App Ads
+*   **Channel:** App
+*   **Objective:** Retention
+*   **Sub-Objective:** Subscription or Refill
+*   **Campaign Start Date:** 2025-06-13
+*   **Campaign End Date:** 2025-07-20
+*   **Planned Budget:** 10656.78
+*   **Actual Spend:** 271.02
+
+### 3.2. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 10656.78        | Retention          | 271.02         | 2.54%                         |
+
+*Note: The actual spend to date for this campaign varies across different records, ranging from approximately 7.13 to 271.02. The value used in the table represents the highest reported actual spend.*
+
+### 3.3. Objective Performance
+
+#### 3.3.1. Objective: Consideration
+
+No campaign performance data was found for Campaign ID 'CMP_2025_2158', Brand 'Lifebuoy', and Objective 'Consideration'. The query executed successfully, but no data was found for Campaign ID 'CMP_2025_2158', Brand 'Lifebuoy', and objective 'Consideration' in the `mv_flat_campaign_measurement_1` table.
+
+#### 3.3.2. Objective: Retention
+
+The campaign's objective is 'Retention' with a sub-objective of 'Subscription or Refill'. However, a detailed metrics table for this objective was not available in the provided data.
+
+## 4. Campaign Wise Analysis
+
+### 4.1. Weekly Impressions Performance
+
+The line chart effectively visualizes the weekly 'Impressions' performance across different channels for Campaign ID CMP_2025_2158 and Brand Lifebuoy. Each line represents a different channel, allowing for a clear comparison of their individual performance over time.
+
+Image 1: Weekly Impressions Performance Across Channels for Campaign ID CMP_2025_2158 and Brand Lifebuoy
+gs://acn-cda-adk-staging/root/user/0d1466e9-7894-42c4-941f-d26f5c61ab7b/for_campaign_id_cmp_2025_2158_and_brand_lifebuoy,_analyze_the_weekly_'impressions'_performance_acros_VizChart.png/0
+
+This chart helps to identify:
+*   **Trends**: Observe whether impressions for each channel are increasing, decreasing, or remaining stable over the weeks.
+*   **Peak Performance Periods**: Pinpoint specific weeks where certain channels experienced their highest impression counts.
+*   **Channel Comparison**: Easily compare the relative performance of different channels and identify which ones are driving the most impressions.
+
+### 4.2. Weekly Total Ad Spend Performance
+
+To visualize the weekly 'Total_Ad_Spend' performance across different 'Channels', a line plot was intended to be created. This would allow us to observe spending trends and patterns over time for each channel. The weeks were to be sorted for proper trend representation, with appropriate labels and a title to the plot.
+
+*Note: While the analysis for generating the visualization was prepared, the visualization itself (chart_url) was not provided in the summary.*
+
+### 4.3. Detailed Campaign Analysis
+
+This analysis provides a detailed overview of Campaign ID 'CMP_2025_2158' for the brand 'Lifebuoy', based on the available campaign details, weekly spend, and impression data.
+
+#### 4.3.1. Overall Performance Metrics (Objective: Consideration)
+
+No comprehensive campaign performance data, specifically Key Performance Indicators (KPIs) for the 'Consideration' objective, was found for Campaign ID 'CMP_2025_2158'. Therefore, a summary table for this specific objective could not be generated.
+
+#### 4.3.2. Spend Analysis
+
+The actual spend for the campaign shows a significant difference compared to the planned budget, with only $271.02 spent against a planned budget of $10,656.78.
+
+**Weekly Spend Trends (App Channel):**
+For the 'App' channel, weekly actual spend for 'Lifebuoy's 'CMP_2025_2158' campaign demonstrated a clear progression:
+*   **Initial Spend:** $21.40 in the week of June 8, 2025.
+*   **Peak Spend:** Reached $1,697.44 in the week of July 13, 2025.
+*   **Declining Spend:** Decreased to $271.02 in the week of July 20, 2025.
+
+This trend indicates a ramp-up in spending towards the mid-to-late phase of the campaign, followed by a sharp reduction towards the campaign's end.
+
+#### 4.3.3. Impressions Analysis
+
+The campaign generated impressions across various channels, with distinct performance trends observed over time.
+
+**Key Observations:**
+*   **ATL (Above-the-Line):** Consistently the highest performing channel in terms of impressions, showing a steady increase from Week 1 and peaking at over 2.0 million impressions around Week 10.
+*   **Digital:** Followed a similar upward trend to ATL but at a lower volume, reaching approximately 0.5 million impressions around Week 10.
+*   **OOH (Out-of-Home):** Generated the lowest number of impressions but also exhibited an increasing trend, peaking slightly below 0.5 million impressions around Week 10.
+
+All channels demonstrated a general upward trend in impressions, collectively achieving peak performance around Week 10 of the campaign. This suggests a coordinated effort across channels that successfully built momentum during the mid-campaign period. A slight decline in impressions was observed across all channels towards Week 12.
+
+#### 4.3.4. Root Cause and Overall Insight
+
+The analysis of available data reveals a strategic allocation of spend that appears to correlate with impression generation. The progressive increase in weekly spend for the 'App' channel aligns with the observed upward trend and peak in impressions across all channels, particularly around Week 10. The ATL channel was the primary driver of impressions, complemented by contributions from Digital and OOH.
+
+The significant discrepancy between the planned budget ($10,656.78) and the overall actual spend ($271.02) across all channels, despite the reported weekly spend figures (e.g., $1,697.44 for App channel peak), suggests that either the provided "Actual Spend" refers to a partial sum, or there was a substantial underutilization of the planned budget across the entire campaign duration and channels. This underutilization might explain why comprehensive KPI data for objectives like 'Consideration' was not generated, potentially due to insufficient activity to gather meaningful performance metrics for that specific objective. The campaign successfully generated significant impressions, especially through ATL, indicating effective reach during its peak activity period.
+
+## 5. Recommendations
+
+Here are actionable recommendations to optimize Campaign ID 'CMP_2025_2158' for Brand 'Lifebuoy', based on the provided analysis:
+
+### 5.1. Budget Utilization & Spend Management
+
+**Specific Recommendation:** Conduct a thorough investigation into the significant discrepancy between the planned budget ($10,656.78) and the actual spend ($271.02). Identify root causes for this severe underutilization, which could include issues with campaign setup, budget pacing, targeting parameters, or ad serving limitations. Develop a revised budget allocation and spending strategy to ensure future campaigns effectively utilize planned resources.
+**Timeline:** Initiate investigation immediately (within 1 week). Implement revised spending strategy for the next campaign cycle (within 1-2 months).
+
+### 5.2. Data Collection & KPI Tracking for Objectives
+
+**Specific Recommendation:** Implement robust tracking and analytics to capture comprehensive Key Performance Indicators (KPIs) for all defined campaign objectives, particularly 'Retention' and 'Subscription/Refill'. Given the lack of data for 'Consideration', review campaign setup to ensure all relevant actions (e.g., app engagement, feature usage) are measurable and linked to the 'Retention' objective. This will enable a clear understanding of campaign effectiveness beyond just impressions.
+**Timeline:** Prior to the launch of any new campaign (during the planning phase). For ongoing measurement gaps, implement tracking improvements immediately (within 2-3 weeks).
+
+### 5.3. Optimizing App Channel Spend & Duration
+
+**Specific Recommendation:** Analyze the performance data (once available) from the 'App' channel, specifically correlating the peak spend period (week of July 13, 2025, with $1,697.44 spend) with actual retention rates, subscription sign-ups, or refill actions. If this increased spend period showed positive results towards the 'Retention' and 'Subscription/Refill' objectives, consider extending the duration of higher spend in future campaigns or reallocating budget to sustain that momentum. If no significant positive correlation is found, re-evaluate the effectiveness of this spending pattern for the 'App' channel.
+**Timeline:** Within 2-3 weeks of obtaining relevant KPI data. Apply learnings to the strategy for the next campaign (within 1 month).
+
+### 5.4. Leveraging High-Performing Impression Channels (ATL)
+
+**Specific Recommendation:** Given that ATL consistently generated the highest impressions and showed strong upward trends, strategically explore opportunities to increase investment in ATL for future 'Retention' and 'Subscription/Refill' focused campaigns. Investigate the downstream impact of ATL impressions on app engagement and ultimately conversion to the specified sub-objectives. Consider A/B testing different ATL creatives or placements to further optimize reach and impact.
+**Timeline:** During the planning phase for the next campaign (within 1-2 months).
+
+### 5.5. Multi-Channel Synergy and Budget Allocation
+
+**Specific Recommendation:** Continue to foster a coordinated multi-channel strategy, building on the observed peak in impressions around Week 10 across ATL, Digital, and OOH. Analyze how these channels synergize to drive users towards the 'App' channel for retention actions. Based on the actual performance data (once available) for 'Retention' and 'Subscription/Refill', reallocate budget across channels to optimize for conversion efficiency, rather than solely impression volume. Prioritize channels that demonstrate the strongest correlation with desired user actions.
+**Timeline:** Ongoing optimization throughout the campaign lifecycle (monthly reviews). Re-evaluate channel allocation during quarterly campaign strategy sessions.
