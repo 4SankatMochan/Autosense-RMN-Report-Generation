@@ -23,7 +23,8 @@ async def call_db_ds_agent(
     # print("inside prompt executor agent")
     # print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
     question_list = tool_context.state.get("prompt_generator_out")
-
+    
+    print("Inside db_ds_agent ",question_list)
     # question_list = [
     #     {
     #     "section_name": "Context",
@@ -84,8 +85,9 @@ async def Sequential_Agent(tool_context: ToolContext):
         sub_agents=[
             campaign_analysis_root_agent,
             campaign_comparison_root_agent,
-            executive_summary_root_agent,
-            recommendation_root_agent
+            recommendation_root_agent,
+            executive_summary_root_agent
+            
         ],
         description="Executes campaign analysis pipeline sequentially."
     )

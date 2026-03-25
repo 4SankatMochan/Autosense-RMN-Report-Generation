@@ -7,7 +7,13 @@ from google.genai.types import Part, Blob
 async def executive_summary_agent(tool_context: Optional[ToolContext] = None, **kwargs):
     
     # result = tool_context.state["campaign_comparison_output"]
-    result = tool_context.state.get("campaign_comparison_output")
+    keys = [
+    "campaign_analysis_output",
+    "campaign_comparison_output",
+    "recommendation_output"
+    ]
+
+    result = {key: tool_context.state.get(key) for key in keys}
     # Execute analysis agent
     executive_summary_output = await run_executive_summary(
         result,

@@ -7,7 +7,12 @@ from google.genai.types import Part, Blob
 async def recommendation_agent(tool_context: Optional[ToolContext] = None, **kwargs):
     
     # result = tool_context.state["executive_summary_output"]
-    result =  tool_context.state.get("executive_summary_output")
+    keys = [
+    "campaign_analysis_output",
+    "campaign_comparison_output"
+    ]
+
+    result = {key: tool_context.state.get(key) for key in keys}
     # campaign comparison agent
     recommendation_output = await run_recommendation(
         result,

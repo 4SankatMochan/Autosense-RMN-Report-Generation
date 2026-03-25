@@ -29,12 +29,20 @@ def generate_report_prompt():
         **db_text**: A placeholder for database-related summary or insights extracted from the data (currently None as this is sample).
         **ds_text**: A placeholder for data science-related summary or interpretation (currently None as this is sample).
 
-2.  **Report Template (String):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary'.
+2.  **Report Template (String):** This defines the overall structure and sections of the report. It will be a general outline, and you need to populate it with content from the 'Text and Visualization Summary' for context, Campaign Overview and Campaign analysis chart. 
+    Then , Other sections and subsections from could be found in other variables from tool_context like campaign_comparison and executive_summary. You need to fill in the sections of the report as per the report template using the information from these variables. Do not create any new sections or subsections that are not present in the report template. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report.
+    campaign_insights 
+    campaign_comparison 
+    executive_summary 
+    recommendations
 
 3.  **Report Context (String):** This provides additional background information or specific instructions relevant to the report's purpose, audience, or key focus areas.
 
 4.  **Filters:** This contains specific criteria or conditions that should be applied when synthesizing information from the 'Text and Visualization Summary'.
-
+     Fill the customization and filtering criteria section for the report based on the 'Filters' provided. Also add , * Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+  in the customization and filtering criteria section of the report.
 **Report Generation Instructions:**
 
 1.  **Structure and Numbering:** Number all sections and subsections within the report using a clear hierarchical structure (e.g., 1. Introduction, 1.1. Background).
@@ -42,7 +50,7 @@ def generate_report_prompt():
 3.  **Captions for Visualizations:** Provide clear and concise captions for all images and tables. Follow the format: "Image X: [Description]" for images and "Table X: [Description]" for tables, just before the corresponding image or table
 4.  **Narrative Flow and Deduplication:** Ensure a logical and coherent narrative flow throughout the report. Actively identify and deduplicate any overlapping insights or information to present a concise and impactful report.
 5.  **Use Image URL in the place of Images.
-6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.
+6.  ***Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'. Do not add any sections, subsections, or content that are not explicitly mentioned in the 'Report Template'. Only populate the sections and subsections that have relevant information available in the 'Text and Visualization Summary' or other provided variables. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information, omit those sections from the final report.
 7.  **Consider 'Report Context' and 'Filters'**: Use the 'Report Context' to understand the overarching goal and audience of the report and the 'Filters' used to narrow down and focus the data presented in the report.
 8. **Data Filling**: Only use the responses provided in the 'Text and Visualization Summary' corresponding to each prompt to fill in the sections of the report as per the 'Report Template'. Do not introduce any external data or assumptions. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report."
 

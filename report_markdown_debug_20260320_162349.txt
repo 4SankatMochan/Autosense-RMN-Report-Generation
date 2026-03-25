@@ -1,0 +1,245 @@
+# Campaign Performance Report: CMP_2025_2158 - Lifebuoy
+
+## 1. Context
+
+### 1.1. Campaign Details
+This section provides an overview of the campaign's fundamental information.
+- **Campaign ID**: CMP_2025_2158
+- **Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+- **Brand Name**: Lifebuoy
+- **Category**: not available
+- **Media Types**: ['In-App Ads']
+- **Channels**: ['App']
+- **Objective**: 'Retention'
+- **Sub-Objective**: ['Subscription or Refill']
+- **Campaign Duration**: 2025-06-13 to 2025-07-20
+- **Planned Budget**: $271.02
+- **Actual Spend**: $271.02
+- **Budget Utilization**: 100.00%
+
+### 1.2. Report Purpose and Audience
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+## 2. Customization Options
+Data not available for this section. This section typically outlines configurable reporting options such as timeline views (Full campaign period, Weekly, Daily) or segmentation by creative assets (App, Channel-CTV, Onsite, Offsite, Instore).
+
+## 3. Executive Summary
+**Executive Summary: Lifebuoy App Retention Campaign (CMP_2025_2158)**
+
+The "CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720" campaign for Lifebuoy, targeting retention with a sub-objective of subscription or refill, operated from June 13 to July 20, 2025. The campaign fully utilized its planned budget of $271.02.
+
+Campaign spending demonstrated a consistent increase weekly, from $128.38 in Week 23 to $5242.10 in Week 28. Impressions also showed dynamic growth, peaking in Week 28 despite initial fluctuations.
+
+Analysis of weekly performance indicates an initial ramp-up, followed by a period of strong performance in the middle weeks. During this optimal phase, the campaign achieved stable clicks and conversions (150-210 clicks, 21 conversions), attributed sales values between $950-$1,200, and a peak Return on Ad Spend (ROAS) of 1.15 in the week of June 29, 2025, suggesting profitability. Cost Per Acquisition (CPA) was significantly lower and stable during these middle weeks.
+
+However, the campaign experienced a sharp decline in impressions, clicks, conversions, attributed sales value, and ROAS in the final week, coinciding with full budget utilization. This suggests potential premature cessation of activity during a profitable period.
+
+Key recommendations include optimizing future budget allocations to ensure sustained performance, thoroughly investigating the end-of-campaign decline to identify contributing factors beyond budget, leveraging the successful strategies from the high-performing middle weeks, and improving campaign metadata tracking for enhanced future analysis.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+| Metric | Value |
+| :-------------------------- | :-------------------------- |
+| Start Date | 2025-06-13 |
+| End Date | 2025-07-20 |
+| Campaign ID | CMP_2025_2158 |
+| Campaign Budget | $271.02 |
+| Campaign Objective | Retention |
+| Total Ad Spend | $271.02 |
+| Budget Utilization Percentage | 100.00% |
+
+### 4.2. Objective: Awareness
+No campaign performance data was found for Campaign ID 'CMP_2025_2158', Brand 'Lifebuoy', and the 'Awareness' objective.
+
+### 4.3. Objective: Consideration
+Data not available for this section.
+
+### 4.4. Objective: Conversion
+Data not available for this section.
+
+### 4.5. Objective: Retention
+This section details the performance metrics for the 'Retention' objective, focusing on the 'App' channel.
+
+| Metric | Value |
+| :-------------------------- | :-------------------------- |
+| Channel | App |
+| Total Ad Spend | $5691.28 |
+| Conversions | 114 |
+| CVR | 13.71% |
+| Transactions Repeat | Data not available for this section. |
+| Units Sold | Data not available for this section. |
+| Total Campaign Revenue | $5980.86 |
+| Incremental Sales Lift | Data not available for this section. |
+| ROAS | 1.08 |
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+- Awareness
+- Consideration
+- Conversion
+- Retention
+
+### 5.2. Visualizations
+- Impressions Reach Trend: Line Chart
+- CTR Trend: Line Chart
+- Spend vs Revenue: Column Chart
+- ROAS Trend: Line Chart
+- Frequency Distribution: Dual Axis Chart
+- Add to Cart Funnel: Funnel Chart
+- ROAS by Channel: Bar Chart
+- Channel Comparison Retention CVR: Bar Chart
+- Viewed vs Clicked Units: Dual Axis Line
+- Conversion Funnel: Funnel Chart
+- Channel-wise Reach CPM: Clustered Bar Chart
+- CPA vs CVR: Scatter Plot
+
+### 5.3. Campaign Details
+
+#### 5.3.1. Campaign Overview
+- **Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+- **Campaign ID**: CMP_2025_2158
+- **Campaign Ad IDs**: Data not available for this section.
+- **Campaign Duration**: 2025-06-13 to 2025-07-20
+- **KPIs Analyzed**: Impressions, Clicks, Conversions, Attributed Sales Value, Daily Spend, Weekly Spend, CTR, CVR, CPC, CPA, ROAS, Total Ad Spend
+- **Campaign Objective**: Retention
+
+#### 5.3.2. Key Metrics Summary
+- **Impressions**: 634,614
+- **ROAS**: 1.08
+- **Conversions**: 114
+- **CTR**: 0.13%
+
+#### 5.3.3. Campaign Analysis Text
+### 1. Campaign Overview
+
+The campaign, identified as 'CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720', is for the brand Lifebuoy. The media type used is 'In-App Ads' across 'App' channels. The primary objective of this campaign is 'Retention', with a sub-objective focused on 'Subscription or Refill'. The campaign commenced on '2025-06-13' and is scheduled to conclude on '2025-07-20'. The category description for this campaign is not available.
+
+### 2. Campaign Spend Analysis
+
+#### Overall Campaign Budget and Spend
+
+The planned spend for Campaign ID 'CMP_2025_2158' was 271.02. The actual spend to date matches the planned spend at 271.02, indicating a 100% budget utilization.
+
+#### Weekly Ad Spend Trend
+
+The weekly total ad spend for Campaign ID 'CMP_2025_2158' for Brand 'Lifebuoy' exhibits a clear and consistent increasing trend across the measured weeks:
+
+*   **Week 2025-23:** $128.38
+*   **Week 2025-24:** $1048.42
+*   **Week 2025-25:** $2096.84
+*   **Week 2025-26:** $3145.26
+*   **Week 2025-27:** $4193.68
+*   **Week 2025-28:** $5242.10
+
+This data signifies a continuous escalation in campaign investment over this period. A **line graph** or an **area chart** would effectively illustrate this upward spending trajectory over time. The line graph effectively visualizes the trends in weekly total ad spend over time. It allows for easy identification of periods of increasing, decreasing, or stable ad expenditure. Observing the plotted data points and the line connecting them would reveal any specific peaks or troughs in spending, indicating particular weeks where ad spend was significantly higher or lower than the average. This type of visualization is crucial for understanding spending patterns and making informed decisions about future ad campaigns.
+
+### 3. Weekly Channel Performance for App Channel
+
+The weekly channel performance data for the 'App' channel for Campaign ID 'CMP_2025_2158' reveals the following trends:
+
+*   **Impressions:** Initial impressions were 30,186, which then peaked at 130,758 around mid-July, followed by a substantial drop to 23,946 towards the end of the period.
+*   **Clicks and Conversions:** After a lower initial week, clicks and conversions stabilized at higher levels (approximately 150-210 clicks and 21 conversions) for the majority of the middle weeks. Both metrics experienced a sharp decline in the last week.
+*   **Attributed Sales Value:** Similar to clicks and conversions, the attributed sales value demonstrated strong performance from the second week, ranging from $950 to $1,200. This also saw a significant reduction in the final week.
+*   **Daily/Weekly Spend:** Daily spend was low in the first week ($42.79) and the last week ($21.40). For the weeks in between, the daily spend was consistently high at $149.77.
+*   **Click-Through Rate (CTR):** The CTR showed variability, with higher rates noted in weeks that had relatively lower impressions but maintained a decent number of clicks (e.g., weeks 2025-06-22, 2025-06-29, 2025-07-13).
+*   **Conversion Rate (CVR):** The conversion rate remained relatively stable, fluctuating between 10-15% when conversions were high, but decreased in the final week.
+*   **Cost Per Click (CPC):** The CPC varied, generally being lower during periods of higher clicks and consistent spend.
+*   **Cost Per Acquisition (CPA):** The CPA was notably high in the first week. It then significantly decreased and remained relatively stable in the middle weeks, indicating improved efficiency in acquiring conversions during this period, before increasing again in the last week.
+*   **Return on Ad Spend (ROAS):** ROAS started low, then improved considerably in the middle weeks, consistently staying above 1.0 and reaching a peak of 1.15 in the week of 2025-06-29, which indicates profitability. However, it sharply declined to below 1.0 in the last week.
+
+**Suggested Visualizations for Channel Performance:**
+
+*   **Line Graph for Core Metrics:** To visualize the absolute volume trends of key performance drivers, a line graph with 'Week of' (Date) on the X-axis and separate lines for 'impressions', 'clicks', 'conversions', and 'attributed sales value' on the Y-axis would be effective.
+*   **Line Graph for Spend and Sales:** To directly compare investment versus return, a line graph with 'Week of' (Date) on the X-axis and separate lines for 'weekly spend' and 'attributed sales value' on the Y-axis is recommended.
+*   **Line Graph for Efficiency Metrics:** To illustrate the efficiency and profitability trends, a line graph with 'Week of' (Date) on the X-axis and separate lines for 'CTR', 'CVR', 'CPC', 'CPA', and 'ROAS' on the Y-axis would highlight periods of higher or lower campaign effectiveness.
+
+### 4. Weekly Impressions Trend
+
+The line chart depicting weekly total impressions for Campaign 'CMP_2025_2158' for Brand 'Lifebuoy' illustrates a dynamic trend:
+
+Image 1: Weekly Total Impressions for Campaign 'CMP_2025_2158' for the brand 'Lifebuoy'
+gs://acn-cda-adk-staging/root/user/740dfcb2-e3d1-4622-a8d6-ae5af4cd358e/for_campaign_id_'cmp_2025_2158'_and_brand_'lifebuoy',_analyze_'impressions'_on_a_weekly_basis._provi_VizChart.png/0
+
+The chart reveals a notable increase in impressions from week 23 to week 24. Following this surge, there was a slight decrease in weeks 25 and 26, after which the impressions showed a consistent upward trend, reaching their highest point in week 28. This trend indicates a fluctuating but overall positive increase in reach and visibility over the observed period.
+
+### 5. Missing Data for Awareness Objective
+
+No campaign performance data was found for Campaign ID 'CMP_2025_2158', Brand 'Lifebuoy', and the 'Awareness' objective. Therefore, a specific campaign performance summary for this objective cannot be generated from the provided data.
+
+#### 5.3.4. Weekly Performance
+| Week | Conversions | Revenue |
+| :-------------------------- | :---------- | :---------- |
+| 2025-06-08 | 6 | $282.00 |
+| 2025-06-15 | 21 | $1102.56 |
+| 2025-06-22 | 21 | $1061.04 |
+| 2025-06-29 | 21 | $1209.51 |
+| 2025-07-06 | 21 | $1173.12 |
+| 2025-07-13 | 21 | $950.64 |
+| 2025-07-20 | 3 | $201.99 |
+
+#### 5.3.5. Overall Campaign Impact
+**Executive Summary: Lifebuoy App Retention Campaign (CMP_2025_2158)**
+
+The "CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720" campaign for Lifebuoy, targeting retention with a sub-objective of subscription or refill, operated from June 13 to July 20, 2025. The campaign fully utilized its planned budget of $271.02.
+
+Campaign spending demonstrated a consistent increase weekly, from $128.38 in Week 23 to $5242.10 in Week 28. Impressions also showed dynamic growth, peaking in Week 28 despite initial fluctuations.
+
+Analysis of weekly performance indicates an initial ramp-up, followed by a period of strong performance in the middle weeks. During this optimal phase, the campaign achieved stable clicks and conversions (150-210 clicks, 21 conversions), attributed sales values between $950-$1,200, and a peak Return on Ad Spend (ROAS) of 1.15 in the week of June 29, 2025, suggesting profitability. Cost Per Acquisition (CPA) was significantly lower and stable during these middle weeks.
+
+However, the campaign experienced a sharp decline in impressions, clicks, conversions, attributed sales value, and ROAS in the final week, coinciding with full budget utilization. This suggests potential premature cessation of activity during a profitable period.
+
+Key recommendations include optimizing future budget allocations to ensure sustained performance, thoroughly investigating the end-of-campaign decline to identify contributing factors beyond budget, leveraging the successful strategies from the high-performing middle weeks, and improving campaign metadata tracking for enhanced future analysis.
+
+### 5.4. Campaign Comparison
+Data not available for this section. Campaign comparison is applicable only if multiple campaigns with the same objective and SKUs are analyzed.
+
+## 6. Recommendations
+Here are the actionable recommendations based on the provided campaign analysis for 'CMP_2025_2158' for the brand 'Lifebuoy':
+
+**1. Optimize Campaign Budget Allocation Strategy**
+
+*   **Recommendation:** Given that the campaign reached 100% budget utilization and performance metrics (impressions, clicks, conversions, sales value, CVR, ROAS) showed a sharp decline in the final week, it's crucial to review the budget allocation. The consistent increase in weekly ad spend from Week 23 to Week 28 (from $128.38 to $5242.10) suggests a ramp-up phase. The sharp drop in performance in the last week coinciding with the budget being fully spent indicates that the campaign might have been prematurely cut short during a potentially profitable period.
+*   **Actionable Steps:**
+    *   Analyze if the planned spend was sufficient to cover the entire campaign duration effectively, especially if the campaign was showing positive ROAS (above 1.0) in the preceding weeks.
+    *   Consider adjusting the budget to allow for sustained spending during periods of high performance to avoid a sudden drop-off in the final week.
+    *   Implement a dynamic budget allocation model that shifts spend towards high-performing weeks and away from underperforming periods (like the initial Week 1's high CPA).
+*   **Timeline:** Review for future campaigns, immediate adjustment for any ongoing similar campaigns. Analysis of current campaign budget effectiveness should be completed within **1 week**.
+
+**2. Investigate End-of-Campaign Performance Decline**
+
+*   **Recommendation:** The sharp decline in impressions, clicks, conversions, attributed sales value, Conversion Rate (CVR), and Return on Ad Spend (ROAS) in the last week is a significant concern. While budget exhaustion is a factor, other contributing reasons should be investigated to prevent similar occurrences in future campaigns.
+*   **Actionable Steps:**
+    *   **Ad Fatigue Analysis:** Examine ad frequency and creative freshness during the period leading up to the decline. If users were exposed to the same ads repeatedly, fatigue could have set in.
+    *   **Targeting Review:** Assess if there were any changes or saturation within the targeted audience segments that led to diminishing returns.
+    *   **Competitive Landscape:** Research competitor activity during the final week to identify any external factors that might have impacted performance.
+    *   **Campaign Scheduling & Pacing:** Evaluate if the campaign was designed to gradually scale down or if the abrupt end was due to budget constraints.
+*   **Timeline:** Post-campaign analysis to understand the decline should be conducted within **2 weeks**.
+
+**3. Leverage Mid-Campaign Efficiency for Future Strategies**
+
+*   **Recommendation:** The middle weeks of the campaign (particularly leading up to 2025-06-29, where ROAS peaked at 1.15) demonstrated strong efficiency with lower Cost Per Acquisition (CPA) and profitable Return on Ad Spend (ROAS). This indicates an optimal operational period for the 'In-App Ads' on 'App' channels for 'Retention' with a 'Subscription or Refill' sub-objective.
+*   **Actionable Steps:**
+    *   Identify the specific creative elements, targeting parameters, and bidding strategies that were active and successful during these peak performance weeks.
+    *   Replicate these successful strategies in subsequent campaigns with similar objectives and channels.
+    *   Use the benchmark of ROAS > 1.0 and lower CPA achieved in these weeks as key performance indicators for future campaign optimization.
+*   **Timeline:** Identify and document successful campaign elements within **2 weeks**. Implement learnings in the planning phase of the next retention campaign.
+
+**4. Enhance Campaign Metadata Tracking and Reporting**
+
+*   **Recommendation:** The absence of a category description for 'CMP_2025_2158' indicates a gap in campaign metadata. Additionally, the system attempted to retrieve data for an 'Awareness' objective which was not defined for this 'Retention' campaign, suggesting a potential mismatch or lack of clarity in how objectives are tracked or requested.
+*   **Actionable Steps:**
+    *   **Standardize Category Descriptions:** Implement a mandatory field for detailed category descriptions during campaign setup to enrich analytical context.
+    *   **Verify Objective Alignment:** Ensure that data retrieval requests for campaign performance strictly align with the actual defined objectives and sub-objectives of the campaign to avoid querying for irrelevant metrics.
+    *   **Automate Metadata Capture:** Explore automating the capture of all relevant campaign metadata (like category, specific product promoted, etc.) to improve data completeness for future analysis.
+*   **Timeline:** Develop and implement updated metadata standards and training for campaign setup within **1 month**.
+
+**5. Implement Comprehensive Performance Visualization for Ongoing Monitoring**
+
+*   **Recommendation:** The suggested visualizations (Line Graphs for Core Metrics, Spend and Sales, and Efficiency Metrics) are critical for proactive monitoring and rapid identification of performance shifts. The current analysis already highlights a clear trend of fluctuations and a sharp decline.
+*   **Actionable Steps:**
+    *   **Develop Dashboards:** Create interactive dashboards incorporating the recommended line graphs to track impressions, clicks, conversions, attributed sales value, weekly spend, CTR, CVR, CPC, CPA, and ROAS on a weekly basis.
+    *   **Set Alert Thresholds:** Configure alerts for significant drops in key metrics (e.g., ROAS falling below 1.0, sharp decline in conversions) to enable quick intervention.
+    *   **Regular Reporting:** Establish a routine for reviewing these dashboards and generating summary reports to inform stakeholders and facilitate timely adjustments.
+*   **Timeline:** Develop initial dashboards and reporting framework within **3 weeks**, with ongoing refinement.

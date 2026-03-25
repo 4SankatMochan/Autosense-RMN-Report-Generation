@@ -1,0 +1,205 @@
+# Campaign Performance Report: Lifebuoy Campaign ID 'CMP_2025_2158'
+
+## 1. Context
+
+### 1.1. Campaigns
+
+*   **Campaign ID:** CMP_2025_2158
+*   **Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name:** Lifebuoy
+*   **Category:** Data not available for this section.
+*   **Media Types:** In-App Ads
+*   **Channels:** App
+*   **Objective:** Retention
+*   **Sub-Objective:** Subscription or Refill
+*   **Campaign Manager:** Data not available for this section.
+*   **Campaign Duration:**
+    *   **Start Date:** 2025-06-13
+    *   **End Date:** 2025-07-20
+*   **Planned Budget:** 271.02
+*   **Actual Spend:** 7644.02
+
+## 2. Customization Options
+
+Data not available for this section.
+
+## 3. Executive Summary
+
+This executive summary outlines the performance of the 'Lifebuoy - App - Retention - In-App Ads' campaign (ID: CMP_2025_2158), which ran from June 13, 2025, to July 20, 2025, with a primary objective of customer retention, specifically targeting subscription or refill actions.
+
+### 3.1. Overview
+
+The campaign significantly overspent its allocated budget while demonstrating a dynamic trend in impressions delivered via the App channel. Analysis for an 'Awareness' objective was not available.
+
+### 3.2. Overall Performance
+
+The campaign experienced substantial budget overutilization. With a planned budget of 271.02, the actual spend reached 7,644.02, resulting in a budget utilization of 2820.53%. This indicates that the campaign spent more than 28 times its initial planned budget.
+
+### 3.3. Channel/Format Performance
+
+Weekly impressions on the App channel showed a notable increase from 33,843 in Week 23 to 135,060 in Week 24. Following a slight decrease in Weeks 25 and 26, impressions recovered and continued to grow, peaking at 144,369 in Week 28. A visual representation of these trends has been generated.
+
+### 3.4. Optimization Insight
+
+Data not available for this section.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization (%) |
+|:-----------|:---------|:------------|:----------------|:-------------------|:---------------|:-----------------------|
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 7644.02 | 2820.53 |
+
+### 4.2. Objective: Awareness
+
+No data was found for the campaign with ID 'CMP_2025_2158', brand 'Lifebuoy', and objective 'Awareness'. This could mean there are no records matching these specific criteria in the `mv_flat_campaign_measurement` table.
+
+### 4.3. Objective: Consideration
+
+Data not available for this section.
+
+### 4.4. Objective: Conversion
+
+Data not available for this section.
+
+### 4.5. Objective: Retention
+
+While detailed KPI metrics for Retention (such as conversions, CVR, transactions repeat, units sold, total campaign revenue, incremental sales lift, or ROAS) are not explicitly provided in a table format, the campaign's performance related to this objective can be inferred from the budget and impression analysis.
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+The primary objective for this campaign is 'Retention'.
+
+### 5.2. Visualizations
+
+A line graph showing the "Weekly Total Impressions by CP Channel" was generated to visualize the trends and fluctuations in impression delivery across different channels over time. The y-axis of the chart was formatted to display impressions in human-readable units (K, M, B). (Note: The chart URL is not provided in the input.)
+
+### 5.3. Campaign Details
+
+#### 5.3.1. Campaign: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+
+*   **Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Campaign ID:** CMP_2025_2158
+*   **Campaign Ad IDs:** Data not available for this section.
+*   **Campaign Duration:** 2025-06-13 to 2025-07-20
+*   **KPIs Analyzed:** Impressions, Total Ad Spend, Budget Utilization.
+*   **Campaign Objective:** Retention
+*   **Metrics:**
+    *   **Impressions:**
+        *   Week 23, 2025: 33,843 impressions
+        *   Week 24, 2025: 135,060 impressions
+        *   Week 25, 2025: 100,071 impressions
+        *   Week 26, 2025: 97,401 impressions
+        *   Week 27, 2025: 123,870 impressions
+        *   Week 28, 2025: 144,369 impressions
+    *   **ROAS:** Data not available for this section.
+    *   **Conversions:** Data not available for this section.
+    *   **CTR:** Data not available for this section.
+
+#### 5.3.2. Campaign Analysis Text
+
+This analysis focuses on the performance of Campaign ID 'CMP_2025_2158' for the Brand 'Lifebuoy', with a primary objective of 'Retention'.
+
+##### 5.3.2.1. Campaign Overview
+
+*   **Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Media Type:** In-App Ads
+*   **Channel:** App
+*   **Objective:** Retention
+*   **Sub-Objective:** Subscription or Refill
+*   **Duration:** June 13, 2025, to July 20, 2025
+
+##### 5.3.2.2. Budget Performance
+
+The campaign's financial performance shows a significant deviation from the planned budget.
+
+*   **Planned Budget (Planned Spend):** 271.02
+*   **Actual Spend (Total Ad Spend):** 7,644.02
+*   **Budget Utilization:** 2820.53%
+
+The actual spend for this campaign substantially exceeded the planned budget, resulting in a budget utilization of 2820.53%. This indicates that the campaign spent more than 28 times its initial planned budget.
+
+##### 5.3.2.3. Impression Performance (App Channel)
+
+Weekly impression data for the 'App' channel reveals distinct trends over the campaign duration.
+
+*   **Week 23, 2025:** 33,843 impressions
+*   **Week 24, 2025:** 135,060 impressions
+*   **Week 25, 2025:** 100,071 impressions
+*   **Week 26, 2025:** 97,401 impressions
+*   **Week 27, 2025:** 123,870 impressions
+*   **Week 28, 2025:** 144,369 impressions
+
+Impressions saw a substantial increase from Week 23 to Week 24, quadrupling in volume. Following this spike, impressions slightly declined in Weeks 25 and 26. However, there was a subsequent recovery and continuous growth in Weeks 27 and 28, with Week 28 registering the highest weekly impressions at 144,369. A line graph titled "Weekly Total Impressions by CP Channel" was generated to visually represent these fluctuations and trends, allowing for a comparative view of impression volumes across different channels over time.
+
+##### 5.3.2.4. Data Availability
+
+No campaign performance data or KPI details were found for Campaign ID 'CMP_2025_2158' and Brand 'Lifebuoy' under the 'Awareness' objective. The analysis is therefore based solely on the 'Retention' objective data provided.
+
+#### 5.3.3. Weekly Performance
+
+##### 5.3.3.1. Weekly Ad Spend (App Channel)
+
+| Week Start Date | Total Ad Spend |
+|:----------------|:---------------|
+| 2025-06-08      | 21.40          |
+| 2025-06-15      | 299.55         |
+| 2025-06-22      | 649.02         |
+| 2025-06-29      | 998.49         |
+| 2025-07-06      | 1347.97        |
+| 2025-07-13      | 1697.44        |
+| 2025-07-20      | 271.02         |
+
+##### 5.3.3.2. Weekly Impressions (App Channel)
+
+*   **Week 23, 2025:** 33,843 impressions
+*   **Week 24, 2025:** 135,060 impressions
+*   **Week 25, 2025:** 100,071 impressions
+*   **Week 26, 2025:** 97,401 impressions
+*   **Week 27, 2025:** 123,870 impressions
+*   **Week 28, 2025:** 144,369 impressions
+
+*Note: Conversions and Revenue data for weekly performance are not available in the provided information. The weekly ad spend and impression data are provided at different granularities (start date vs. week number), making a direct combined table challenging without further processing.*
+
+#### 5.3.4. Overall Campaign Impact
+
+The campaign 'CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720' significantly overspent its planned budget by 2820.53%. Despite the high spend, weekly impressions in the 'App' channel showed a substantial increase and recovery, peaking in Week 28. However, without detailed retention KPIs (such as subscription conversion rates or refill rates), the true impact of this spend and impression volume on the 'Subscription or Refill' objective cannot be fully assessed.
+
+### 5.4. Campaign Comparison
+
+Data not available for this section.
+
+## 6. Recommendations
+
+### 6.1. Implement Strict Budget Controls
+
+**Action:** Given the severe budget overutilization (2820.53%), establish immediate and robust budget caps and monitoring mechanisms on the ad platform. This includes setting daily/weekly spend limits and integrating automated alerts for budget thresholds to prevent significant overspending in the future.
+**Objective:** Financial control and efficient resource allocation.
+
+### 6.2. Conduct Root Cause Analysis for Budget Discrepancy
+
+**Action:** Investigate thoroughly why the actual spend (7,644.02) far exceeded the planned budget (271.02). Determine if this was due to incorrect budget setting, an aggressive bidding strategy, platform misconfiguration, or an oversight in campaign management.
+**Objective:** Improve budget planning accuracy and accountability.
+
+### 6.3. Enhance Retention KPI Tracking and Reporting
+
+**Action:** The campaign's objective is 'Retention' with a sub-objective of 'Subscription or Refill', yet no detailed KPI data beyond impressions and spend was available. Implement comprehensive tracking to measure key retention metrics (e.g., subscription conversion rates, refill rates, cost per subscription/refill, user churn rates post-campaign interaction) to assess the actual effectiveness of the high impressions and spend.
+**Objective:** Accurate measurement of campaign effectiveness towards its primary goal.
+
+### 6.4. Correlate Impression Trends with Retention Outcomes
+
+**Action:** Analyze the relationship between the fluctuating and increasing weekly impressions (e.g., peak in Week 28) and actual retention performance. Determine if the higher impression weeks led to a proportional increase in subscriptions or refills, and if the increased spend driving these impressions delivered a positive return on investment for the retention objective.
+**Objective:** Understand the efficiency of impression delivery in driving retention.
+
+### 6.5. Review In-App Ad Strategy for Retention
+
+**Action:** Evaluate the in-app ad creatives, targeting, and placement to ensure they are highly optimized for driving the 'Subscription or Refill' sub-objective. With significant spend, it's crucial that the ad content and user journey effectively prompt the desired retention action.
+**Objective:** Optimize creative and targeting for better retention performance.
+
+### 6.6. Address Data Gaps for Holistic Campaign Insights
+
+**Action:** While the primary focus is retention, the absence of data for other objectives (e.g., 'Awareness') limits a holistic understanding of campaign impact. Ensure all relevant campaign objectives are properly tagged and data is captured across all intended facets for future campaigns.
+**Objective:** Improve data completeness for comprehensive campaign analysis.

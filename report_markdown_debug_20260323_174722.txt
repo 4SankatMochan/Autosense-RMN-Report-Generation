@@ -1,0 +1,190 @@
+# Campaign Performance Report: Kissan - CMP_2025_0005
+
+## 1. Context
+
+### 1.1. Campaigns
+
+*   **Campaign ID:** CMP_2025_0005
+*   **Brand Name:** Kissan
+*   **Media Types:** Sponsored Product
+*   **Channels:** Onsite, Facebook, Google, Instagram
+*   **Objective:** Consideration
+*   **Sub-Objective:** App Installs
+*   **Campaign Duration:** From 2025-07-29 to 2025-09-24
+*   **Planned Budget:** $10,025.72
+*   **Actual Spend (as of the latest date):** $2,760.83
+
+*(Note: 'Campaign Name' and 'Category' fields were not available in the provided data.)*
+
+## 2. Executive Summary
+
+The Kissan campaign ID `CMP_2025_0005`, focused on 'Consideration' with a sub-objective of 'App Installs' through 'Sponsored Product' media, has demonstrated strong performance and a positive return on investment. The campaign, which ran from 2025-07-29 to 2025-09-24, utilized both Onsite and various digital channels.
+
+**Key Performance Highlights:**
+The campaign achieved an impressive **Return on Ad Spend (ROAS) of 9.80**, generating $28,000.00 in attributed sales value from an actual spend of $2,760.83. It garnered 149,000 impressions, 3,400 clicks, and a healthy **Click-Through Rate (CTR) of 2.00%**. Driving consideration, the campaign resulted in 400 conversions, 8,000 add-to-cart events, and 150 new-to-brand conversions, with an average **Conversion Rate of 10.60%**. The average Cost Per Click (CPC) was $0.98, and the average Cost Per Acquisition (CPA) stood at $9.40.
+
+**Channel Performance and Trends:**
+*   **Onsite Channel:** The Onsite channel recorded 286,942 impressions, 6,436 clicks, and a CTR of 2.24%. Its CPC was notably higher at $9.87. However, there is a significant discrepancy where the Onsite channel's reported ad spend ($63,499.09) is much higher than the overall campaign's total actual spend, indicating a need for reconciliation.
+*   **Digital Channels (Google, Facebook, Instagram):** Across these channels, Google consistently led in both weekly ad spend and impressions, highlighting its strong reach and primary budget allocation. Facebook followed as the second-highest spender and impression driver. Instagram, while having lower overall impressions, showed a clear upward trend in reach, indicating growth. All channels exhibited relatively stable spending patterns, though a dip was observed in Week 5, likely due to an incomplete reporting period.
+
+**Strategic Observations and Recommendations:**
+The campaign effectively drives engagement and conversions, proving successful in achieving its 'Consideration' objective. However, critical discrepancies in financial reporting require immediate attention. It is recommended to:
+1.  **Reconcile Budget Discrepancies:** Clarify the significant difference between the planned budget of $10,025.72 and the actual spend of $2,760.83 to understand budget utilization and potential missed opportunities.
+2.  **Investigate Onsite Spend Anomaly:** Reconcile the Onsite channel's reported ad spend with the overall campaign's actual spend to ensure accurate financial oversight.
+3.  **Optimize Onsite Cost Efficiency:** Analyze the high CPC of the Onsite channel ($9.87) to identify opportunities for optimizing targeting, creative, and bidding strategies to improve cost efficiency.
+4.  **Strategic Budget Allocation:** Continue leveraging Google's dominance, cautiously increase investment in Instagram given its growth trend, and maintain Facebook's contribution, while continuously monitoring performance for optimal allocation.
+
+Overall, Campaign CMP_2025_0005 is a high-performing initiative with excellent ROI, but attention to data consistency and strategic optimization of channel-specific costs will further enhance its effectiveness.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Campaign Budget | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :-------------- | :----------------- | :------------- | :---------------------------- |
+| 2025-07-29 | 2025-09-24 | CMP_2025_0005 | $10,025.72 | Consideration | $2,760.83 | 27.54% |
+
+### 3.2. Objective: Consideration
+
+This section details the performance metrics for the 'Consideration' objective, broken down by channel where available, and overall campaign performance.
+
+#### 3.2.1. Overall Campaign Performance Metrics
+
+The campaign `CMP_2025_0005` for Kissan, with a 'Consideration' objective and 'App Installs' sub-objective, appears to be performing effectively in driving engagement and conversions.
+
+| Metric | Value |
+| :---------------------- | :-------- |
+| Total Actual Spend | $2,760.83 |
+| Total Attributed Sales Value | $28,000.00 |
+| Average Return on Ad Spend (ROAS) | 9.80 |
+| Total Impressions | 149,000 |
+| Total Clicks | 3,400 |
+| Average Click-Through Rate (CTR) | 2.00% |
+| Total Conversions | 400 |
+| Average Conversion Rate | 10.60% |
+| Total Add to Cart Events | 8,000 |
+| Total New to Brand Conversions | 150 |
+| Average Cost Per Click (CPC) | $0.98 |
+| Average Cost Per Acquisition (CPA) | $9.40 |
+
+#### 3.2.2. Channel-Specific Performance: Onsite
+
+For the 'Onsite' channel, the campaign shows substantial reach and engagement.
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :---- | :---- | :--- | :---------- |
+| Onsite | $63,499.09 | 286,942 | 4,509 | 6,436 | 2.24% | $9.87 | N/A | Data not available |
+
+*(Note: The 'Total Ad Spend' for the 'Onsite' channel is significantly higher than the overall campaign's actual spend, suggesting different reporting scopes or aggregation levels that require reconciliation.)*
+
+## 4. Campaign-Wise Analysis
+
+### 4.1. Campaign Details: CMP_2025_0005
+
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Duration:** 2025-07-29 to 2025-09-24
+*   **KPIs Analyzed:** Impressions, Clicks, CTR, CPC, ROAS, Conversions, CPA, Add to Cart, Unique Reach, Ad Spend.
+*   **Campaign Objective:** Consideration
+
+#### 4.1.1. Key Metrics
+
+| Metric | Value |
+| :-------- | :-------- |
+| Impressions | 149,000 |
+| ROAS | 9.80 |
+| Conversions | 400 |
+| CTR | 2.00% |
+
+#### 4.1.2. Campaign Analysis
+
+This analysis provides a comprehensive overview of Campaign ID `CMP_2025_0005` for the brand 'Kissan', focusing on the 'Consideration' objective with a sub-objective of 'App Installs' via 'Sponsored Product' on 'Onsite' and other channels.
+
+**Budget and Spending Analysis:**
+The campaign had a planned budget of **$10,025.72**. As of the latest date, the actual spend is **$2,760.83**. A high-level summary indicated "Budget (Planned Spend)" as $2,760.83 and "Total Ad Spend" as $2,760.83, resulting in 100% budget utilization. This contradicts the initial planned budget of $10,025.72. Based on the initial detailed information, the campaign has utilized only **27.54%** ($2,760.83 / $10,025.72) of its planned budget. This suggests the campaign is either still ongoing with significant budget remaining or it was halted prematurely without fully utilizing the allocated funds.
+
+**Weekly Performance Trends by Channel (Facebook, Google, Instagram):**
+
+*   **Weekly Ad Spend by Channel:**
+    *   Google consistently leads in ad spend across all weeks, indicating it is the primary channel for budget allocation among these three, with a Total Ad Spend of 387.9K and an Average Weekly Ad Spend of 77.58K.
+    *   Facebook is the second-highest spender, with a Total Ad Spend of 332.7K and an Average Weekly Ad Spend of 66.54K.
+    *   Instagram follows Facebook in terms of ad spend, with a Total Ad Spend of 277.6K and an Average Weekly Ad Spend of 55.52K.
+    *   All three channels exhibit relatively stable spending patterns, maintaining a consistent proportional relationship. A noticeable dip in ad spend was observed in Week 5 across all channels, likely due to it being an incomplete week in the dataset.
+
+*   **Weekly Impressions by Channel:**
+    *   Google consistently maintains the highest weekly impressions, demonstrating its strong reach capacity.
+    *   Facebook holds the second position in terms of weekly impressions, contributing significantly to the overall reach.
+    *   Instagram, while having the lowest impressions among the three, shows a clear upward trend in impressions, indicating growing reach on this platform.
+    *   All three channels exhibit a positive upward trend in impressions over the weeks, suggesting an overall increase in campaign reach or audience engagement from the beginning to the end of the observed period.
+
+#### 4.1.3. Root Cause and Overall Insights
+
+The campaign `CMP_2025_0005` for Kissan, with a 'Consideration' objective and 'App Installs' sub-objective, appears to be performing effectively in driving engagement and conversions, as evidenced by a strong ROAS of 9.80, a healthy CTR of 2.00%, and a conversion rate of 10.60%.
+
+**Strengths:**
+*   **High ROAS:** The campaign is generating nearly ten times its investment in sales value, indicating excellent profitability.
+*   **Effective Engagement:** Good CTR and conversion rates suggest that the creative and targeting are resonating with the audience, driving consideration and conversions.
+*   **Channel Diversity:** The campaign leverages multiple channels (Onsite, Facebook, Google, Instagram) with Google consistently being the dominant channel for both ad spend and impressions, highlighting its critical role in reaching the audience.
+*   **Consistent Growth in Impressions:** The upward trend in weekly impressions across Facebook, Google, and Instagram indicates expanding reach and audience awareness over time.
+
+**Areas for Further Investigation/Consideration:**
+*   **Budget Discrepancy:** The significant difference between the planned budget ($10,025.72) and the actual spend ($2,760.83) needs clarification. Understanding whether the campaign is ongoing, was paused, or if there was a revision in budget allocation is crucial. If the campaign ended with significant unspent budget, it might indicate missed opportunities for even greater impact.
+*   **Onsite Ad Spend Anomaly:** The reported 'Total Ad Spend' for the 'Onsite' channel ($63,499.09) is much higher than the overall 'Total Actual Spend' ($2,760.83). This suggests different reporting scopes or aggregation levels that require reconciliation for accurate overall cost assessment.
+*   **CPC Variation:** The CPC for the Onsite channel ($9.87) is considerably higher than the overall average CPC ($0.98). While this could be due to a more valuable audience, it warrants further investigation to understand the cost efficiency of the Onsite channel compared to others, especially in light of the objective.
+
+**Overall Insight:** The campaign is successfully driving consideration and app installs with a strong return on investment. While there are inconsistencies in budget reporting and channel-specific spend that require clarification, the performance metrics indicate a well-executed strategy leveraging multiple platforms to achieve its objectives. Further analysis into the daily performance trends and a deeper dive into the cost efficiency across all channels would provide more granular insights for future optimizations.
+
+## 5. Recommendations
+
+Here are the actionable recommendations based on the provided campaign analysis for CMP_2025_0005 (Brand: Kissan, Objective: Consideration), with specific actions and timelines for each identified area.
+
+### 5.1. Reconcile Campaign Budget & Spend Discrepancies
+
+*   **Insight from Outputs:**
+    *   Initial detail: Planned Budget: $10,025.72, Actual Spend: $2,760.83.
+    *   High-level summary: Budget (Planned Spend): $2,760.83, Total Ad Spend: $2,760.83, Budget Utilization: 100%.
+    *   Analysis: Contradiction between initial planned budget and reported utilized budget, indicating only 27.54% utilization of the original planned budget.
+*   **Action:** Conduct an immediate investigation to clarify the definitive planned budget for Campaign `CMP_2025_0005` and reconcile all spending reports.
+    *   If the original planned budget of $10,025.72 was intended: Determine why only $2,760.83 was spent. If the campaign is still active, allocate and utilize the remaining budget given the strong ROAS. If the campaign concluded prematurely, document the reasons to prevent future underutilization of funds.
+    *   If the planned budget was revised to $2,760.83: Ensure all reporting accurately reflects this revised figure to avoid confusion and provide a consistent view of budget utilization.
+*   **Objective:** Ensure accurate financial oversight and maximize campaign potential.
+*   **Timeline:** Immediately (within 2-3 business days) to clarify budget status and resolve reporting inconsistencies.
+
+### 5.2. Investigate and Reconcile Onsite Channel Ad Spend Anomaly
+
+*   **Insight from Output:** The 'Onsite' channel reported a Total Ad Spend of $63,499.09, which is significantly higher than the overall campaign's 'Total Actual Spend' of $2,760.83.
+*   **Action:** Investigate this large discrepancy. This could indicate a reporting error, a different aggregation scope, or a misunderstanding of how 'Onsite' spend is attributed to the overall campaign.
+    *   Ensure all channel-specific spending data is accurately integrated and reconciled with the total campaign spend to provide a unified and correct financial overview.
+    *   Clarify the methodology used for calculating 'Onsite' ad spend versus the overall campaign's actual spend.
+*   **Objective:** Achieve accurate overall cost assessment and financial reporting.
+*   **Timeline:** Within 5 business days, in conjunction with the budget reconciliation task.
+
+### 5.3. Optimize Onsite Channel Cost Efficiency (CPC)
+
+*   **Insight from Output:** The 'Onsite' channel has a considerably high CPC of $9.87, compared to the overall campaign average CPC of $0.98.
+*   **Action:** Perform a detailed analysis of the 'Onsite' channel to understand the drivers of its high CPC.
+    *   **Targeting Review:** Evaluate if the targeting on the 'Onsite' channel is too broad, leading to inefficient spend, or if it's highly competitive for a valuable audience. Refine targeting to focus on the most relevant and high-converting segments for 'App Installs'.
+    *   **Creative Performance:** Review the performance of 'Sponsored Product' creatives on 'Onsite'. Test different ad copy, visuals, and calls to action to improve engagement and potentially lower CPC.
+    *   **Bidding Strategy:** Explore alternative bidding strategies specific to the 'Onsite' channel to optimize for lower CPC while maintaining conversion volume.
+*   **Objective:** Improve cost efficiency and maximize ROI from the Onsite channel.
+*   **Timeline:** Initiate a deep-dive analysis within 1 week, followed by A/B testing and optimization efforts over the next 3-4 weeks.
+
+### 5.4. Strategic Budget Allocation & Performance Monitoring for Digital Channels
+
+*   **Insight from Outputs:**
+    *   Weekly Ad Spend: Google consistently leads, followed by Facebook and Instagram. All show a dip in Week 5 (likely due to an incomplete week).
+    *   Weekly Impressions: Google dominates, Facebook is second, and Instagram shows a clear upward trend. All channels exhibit overall growth in impressions.
+*   **Action:** Continue to leverage the strengths of each channel while optimizing for 'App Installs'.
+    *   **Maintain Google Investment:** Given Google's consistent dominance in ad spend and impressions, continue to allocate a significant portion of the budget to this channel, ensuring campaigns are optimized for conversions.
+    *   **Boost Instagram for Growth:** Acknowledge Instagram's upward trend in impressions. Consider a cautious increase in budget allocation to Instagram, coupled with A/B testing new creative formats or targeting strategies specifically designed for 'App Installs' on this platform. Monitor conversion rates closely to ensure ROI.
+    *   **Analyze Week 5 Dip:** Confirm if the Week 5 dip was due to an incomplete data collection period. If not, investigate potential external factors or campaign changes that may have contributed to this decline across all channels to inform future planning.
+*   **Objective:** Optimize budget allocation for maximum reach, engagement, and app installs across digital channels.
+*   **Timeline:** Weekly performance review meetings to assess channel performance. Monthly budget re-allocation based on performance trends. Week 5 dip investigation within 1 week.
+
+### 5.5. Enhance Granular Performance Tracking and Anomaly Detection
+
+*   **Insight from Output:** The overall campaign summary noted technical limitations prevented a detailed weekly performance trend analysis and anomaly detection.
+*   **Action:** Prioritize the development or integration of tools and processes for more granular daily and weekly performance tracking across all key metrics (impressions, clicks, conversions, ROAS, CPA) and across all channels.
+    *   Implement an automated anomaly detection system to identify unusual spikes or drops in performance promptly. This will enable faster reaction times and proactive optimization to capitalize on opportunities or mitigate issues.
+    *   Ensure data can be easily sliced and diced by date, channel, and creative to facilitate in-depth root cause analysis.
+*   **Objective:** Improve data analytics capabilities for faster insights and proactive campaign management.
+*   **Timeline:** Initiate a project to enhance data analytics capabilities within 1 month, with a target implementation of granular tracking and basic anomaly detection within 2-3 months.
