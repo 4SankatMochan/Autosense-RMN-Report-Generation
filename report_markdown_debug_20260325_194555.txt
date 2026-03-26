@@ -1,0 +1,118 @@
+# Campaign Performance Report for Cornetto - CMP_2025_0011
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaign Details
+
+**Table 1: Campaign Information for CMP_2025_0011**
+
+| Field             | Value                                                              |
+| :---------------- | :----------------------------------------------------------------- |
+| **Campaign ID**   | CMP_2025_0011                                                      |
+| **Campaign Name** | CMP_2025_0011 - Cornetto - Onsite - Consideration - Sponsored Product - 20250514-20250612 |
+| **Brand Name**    | Cornetto                                                           |
+| **Category**      | Not available                                                      |
+| **Media Types**   | Sponsored Product                                                  |
+| **Channels**      | Onsite                                                             |
+| **Objective**     | Consideration                                                      |
+| **Sub-Objective** | Engagement / Clicks                                                |
+| **Campaign Duration** | From 2025-05-14 to 2025-06-12                                      |
+| **Planned Spend** | 1530.7                                                             |
+| **Actual Spend**  | 1530.7                                                             |
+
+## 2. Executive Summary
+
+The campaign 'CMP_2025_0011' for the brand 'Cornetto', focused on a 'Consideration' objective, demonstrated highly stable and predictable performance across its duration. With 100% budget utilization, the campaign effectively deployed its planned spend of 1530.7. The 'Onsite' channel, a key component, recorded a Total Ad Spend of 23725.85, generating 148795 Impressions and a Unique Reach of 3815, with a Click-Through Rate (CTR) of 1.10%.
+
+Weekly analysis of ad spend and impressions across various channels (Google, Facebook, Instagram, and generic Channel A, B, C) revealed consistent investment patterns and impression delivery. Google consistently led in ad spend, followed by Facebook, while Instagram showed the lowest but stable investment. Impressions generally showed an upward trend across channels, with Channel B maintaining the highest delivery. Overall, key performance indicators such as Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, and CPCV remained remarkably stable week-over-week, indicating a well-controlled and predictable campaign execution without significant anomalies. These insights suggest a robust foundation for future campaign planning and optimization, particularly in leveraging consistent channel performance.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+**Table 2: High-Level Campaign Summary**
+
+| Start Date   | End Date   | Campaign ID   | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :----------- | :--------- | :------------ | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-05-14   | 2025-06-12 | CMP_2025_0011 | 1530.7        | Consideration      | 1530.7         | 100%                          |
+
+### 3.2. Objective Consideration Metrics
+
+For the 'Consideration' objective, the 'Onsite' channel's performance for Campaign ID 'CMP_2025_0011' for the brand 'Cornetto' is detailed below.
+
+**Table 3: Key Performance Indicators for Onsite Channel (Consideration Objective)**
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR   | CPC   | CPCV |
+| :------ | :------------- | :---------- | :----------- | :----- | :---- | :---- | :--- |
+| Onsite  | 23725.85       | 148795      | 3815         | 1641   | 1.10% | 14.46 | N/A  |
+
+## 4. Campaign Wise Analysis
+
+### 4.1. Campaign Details
+
+**Campaign Name:** CMP_2025_0011 - Cornetto - Onsite - Consideration - Sponsored Product - 20250514-20250612
+**Campaign ID:** CMP_2025_0011
+**Campaign Duration:** From 2025-05-14 to 2025-06-12
+**Campaign Objective:** Consideration
+
+**KPIs Analyzed:** Total Ad Spend, Impressions, Unique Reach, Clicks, Click-Through Rate (CTR), Cost Per Click (CPC), Cost Per Completed View (CPCV).
+
+**Campaign Analysis Text:**
+The weekly ad spend across different channels for Campaign ID 'CMP_2025_0011' shows consistent investment patterns. Google consistently leads in ad spend each week, followed by Facebook, which maintains the second-highest investment. Instagram has the lowest ad spend among the channels, but also follows a generally stable trend. Overall, ad spend across all channels appears relatively consistent over the observed weeks, with minor fluctuations, suggesting a stable budget allocation.
+
+Weekly impressions also show an overall upward trend for all observed channels (A, B, and C) from the week of '2023-01-01' to '2023-01-22'. Channel B consistently achieved the highest number of impressions, followed by Channel A, with Channel C registering the lowest. While there were slight week-over-week fluctuations (e.g., a dip around '2023-01-15'), the general trend remained positive.
+
+The comprehensive weekly performance trends for 2023 (weeks 26 to 52) indicate remarkable stability across all key metrics. Total Ad Spend fluctuated minimally around an average of approximately 119,692, showing consistent budget allocation. Impressions and Unique Reach were highly stable, averaging around 1.928 million and 977,000 respectively, indicating consistent ad delivery and audience reach. Clicks also exhibited stability, consistently around 86,000 weekly. The CTR remained very consistent, ranging from 4.45% to 4.49%, demonstrating steady engagement. Similarly, CPC ranged tightly between 1.38 and 1.41, and CPCV between 1.08 and 1.10. This high level of consistency across all KPIs suggests a very controlled and predictable ad campaign performance with minimal week-to-week variance.
+
+**Overall Campaign Impact:**
+The campaign demonstrates highly stable performance across all key metrics from week 26 to week 52 of 2023. This indicates a consistent ad strategy, stable audience engagement, and predictable cost structures without any significant anomalies or sharp deviations. The budget was fully utilized, and the Onsite channel contributed significantly to the consideration objective with a notable number of impressions and clicks.
+
+### 4.2. Weekly Performance
+
+**Table 4: Weekly Performance Trends (2023, Weeks 26-52)**
+
+| Year | Week | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR      | CPC      | CPCV     |
+| :--- | :--- | :------------- | :---------- | :----------- | :----- | :------- | :------- | :------- |
+| 2023 | 26   | 120281.02      | 1952541     | 989708       | 85526  | 0.043792 | 1.406385 | 1.096894 |
+| 2023 | 27   | 119842.17      | 1929947     | 978051       | 86278  | 0.044705 | 1.389088 | 1.094595 |
+| 2023 | 28   | 120930.22      | 1932314     | 979603       | 86532  | 0.044771 | 1.397519 | 1.089851 |
+| 2023 | 29   | 120353.76      | 1924045     | 975936       | 85998  | 0.044697 | 1.399432 | 1.094770 |
+| 2023 | 30   | 118556.09      | 1928014     | 977051       | 85390  | 0.044268 | 1.388383 | 1.082729 |
+| 2023 | 31   | 118579.80      | 1926679     | 976932       | 85686  | 0.044473 | 1.383827 | 1.082690 |
+| 2023 | 32   | 119934.77      | 1927702     | 976326       | 86524  | 0.044883 | 1.386105 | 1.081822 |
+| 2023 | 33   | 120917.47      | 1929013     | 977699       | 85793  | 0.044475 | 1.409328 | 1.097067 |
+| 2023 | 34   | 120537.47      | 1928131     | 977085       | 86016  | 0.044611 | 1.401323 | 1.095493 |
+| 2023 | 35   | 118949.26      | 1923420     | 975390       | 85732  | 0.044572 | 1.387431 | 1.087796 |
+| 2023 | 36   | 119289.47      | 1926839     | 976722       | 86205  | 0.044740 | 1.383794 | 1.090332 |
+| 2023 | 37   | 120405.00      | 1930263     | 978434       | 86088  | 0.044594 | 1.398625 | 1.095116 |
+| 2023 | 38   | 120941.01      | 1927453     | 976451       | 86532  | 0.044941 | 1.397640 | 1.094943 |
+| 2023 | 39   | 119859.39      | 1929007     | 977287       | 86390  | 0.044785 | 1.387425 | 1.086390 |
+| 2023 | 40   | 118744.02      | 1932170     | 978491       | 85590  | 0.044308 | 1.387228 | 1.084793 |
+| 2023 | 41   | 119045.19      | 1925345     | 975936       | 85652  | 0.044402 | 1.389803 | 1.091040 |
+| 2023 | 42   | 119855.93      | 1929653     | 977717       | 85954  | 0.044549 | 1.394411 | 1.085023 |
+| 2023 | 43   | 118858.98      | 1925576     | 976378       | 85860  | 0.044590 | 1.384381 | 1.085189 |
+| 2023 | 44   | 119934.02      | 1928549     | 977699       | 86301  | 0.044750 | 1.389714 | 1.095593 |
+| 2023 | 45   | 119097.37      | 1926662     | 976269       | 85888  | 0.044577 | 1.386762 | 1.088626 |
+| 2023 | 46   | 119257.06      | 1928424     | 977085       | 86241  | 0.044720 | 1.382835 | 1.092688 |
+| 2023 | 47   | 119808.43      | 1927702     | 976722       | 86259  | 0.044743 | 1.389028 | 1.090623 |
+| 2023 | 48   | 119616.48      | 1932314     | 978434       | 86016  | 0.044519 | 1.390623 | 1.086113 |
+| 2023 | 49   | 118939.81      | 1928549     | 977699       | 85954  | 0.044571 | 1.383792 | 1.086629 |
+| 2023 | 50   | 118987.97      | 1926662     | 976269       | 85793  | 0.044537 | 1.386996 | 1.090069 |
+| 2023 | 51   | 119918.42      | 1928424     | 977085       | 86016  | 0.044594 | 1.394139 | 1.094595 |
+| 2023 | 52   | 119859.39      | 1929007     | 977287       | 86390  | 0.044785 | 1.387425 | 1.086390 |
+
+## 5. Recommendations
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+Given the high consistency in weekly performance trends across all KPIs, it is recommended to delve deeper into daily or even hourly data, where available, to identify micro-fluctuations or specific time-based opportunities. This could reveal optimal times for ad delivery or content engagement that are masked by weekly aggregations.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+While overall ad spend is stable, the consistent leadership of Google and the lower investment in Instagram suggest opportunities for dynamic budget allocation. Consider A/B testing different budget distributions between channels, especially for Instagram, to determine if increased investment yields a proportional or even higher return on impressions and clicks, without compromising the stable performance of leading channels.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+The stable CTR indicates a consistent engagement rate, but there is always room for improvement. Implement systematic A/B testing for ad creatives, ad copy, and landing page elements within each channel. This can help identify specific combinations that resonate more strongly with the target audience, potentially leading to higher CTRs and more efficient use of ad spend, even within a stable performance environment.

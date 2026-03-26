@@ -600,7 +600,7 @@ Below are the examples for some sections that you can use as a reference to gene
     Sub-Objective: Drive Sales / Purchases, Add to Cart, Basket Building, Retarget PDP Viewers, Buy
     Box Wins
     Campaign Duration: 2025-05-01 – 2025-06-30
-    Planned Budget: $50,000
+    Planned Spend: $50,000
     Actual Spend: $45,000 (latest date)
     Campaign 2
     Campaign ID: CMP_2025_0002
@@ -613,10 +613,10 @@ Below are the examples for some sections that you can use as a reference to gene
     Sub-Objective: Brand Awareness, Brand Recall, Video Views, Product Launch, Reach New
     Households, Category Awareness
     Campaign Duration: 2025-05-01 – 2025-06-30
-    Planned Budget: $30,000
+    Planned Spend: $30,000
     Actual Spend: $28,000 (latest date)
 
-    ** “In this section, ensure that a single prompt is generated for each campaign_id, and that the prompt explicitly asks for all of the following details: Campaign ID, Campaign Name, Brand Name, Category, Media Types, Channel, Objective, Sub‑Objective, Campaign Duration, Planned Budget, and Actual Spend(for latest date).”
+    ** “In this section, ensure that a single prompt is generated for each campaign_id, and that the prompt explicitly asks for all of the following details: Campaign ID, Campaign Name, Brand Name, Category, Media Types, Channel, Objective, Sub‑Objective, Campaign Duration, Planned Spend, and Actual Spend(for latest date).”
 
 4. Campaign Overview:
     The prompt created for this section should be some thing similar to this-
@@ -626,7 +626,7 @@ Below are the examples for some sections that you can use as a reference to gene
 
     Campaign ID
     Campaign Name
-    Budget (Planned Spend)
+    Planned Spend
     Campaign Objective (Awareness, Consideration, Conversion, Retention)
     Total Ad Spend
     Budget Utilization

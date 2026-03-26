@@ -16,7 +16,7 @@
             "Start_Date": "",
             "End_Date": ""
           },
-          "Planned_Budget": "",
+          "Planned_Spend": "",
           "Actual_Spend": ""
         }
       ]
@@ -37,7 +37,7 @@
           "Start_Date": "",
           "End_Date": "",
           "Campaign_ID": "",
-          "Campaign_Budget": "",
+          "Planned_Spend": "",
           "Campaign_Objective": "",
           "Total_Ad_Spend": "",
           "Budget_Utilization_Percentage": ""

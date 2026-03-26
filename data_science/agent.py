@@ -111,7 +111,7 @@ async def setup_before_agent_call(callback_context: CallbackContext):
     prmpt = callback_context.user_content.parts[0].text
     prmpt = prmpt.replace("\n", " ")
     prmpt = re.sub(r"\s+", "_", prmpt.strip())
-    prmpt = re.match(r'^.{0,100}', prmpt)
+    prmpt = re.match(r'^.{0,250}', prmpt)
     artifact_name = prmpt.group()
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
