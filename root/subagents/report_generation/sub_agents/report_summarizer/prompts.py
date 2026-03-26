@@ -42,7 +42,8 @@ def generate_report_prompt():
 3.  **Captions for Visualizations:** Provide clear and concise captions for all images and tables. Follow the format: "Image X: [Description]" for images and "Table X: [Description]" for tables, just before the corresponding image or table
 4.  **Narrative Flow and Deduplication:** Ensure a logical and coherent narrative flow throughout the report. Actively identify and deduplicate any overlapping insights or information to present a concise and impactful report.
 5.  **Use Image URL in the place of Images.
-6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.
+6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.You need to fill in the sections of the report as per the report template using the information from these variables. Do not create any new sections or subsections that are not present in the report template.
+If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report.
 7.  **Consider 'Report Context' and 'Filters'**: Use the 'Report Context' to understand the overarching goal and audience of the report and the 'Filters' used to narrow down and focus the data presented in the report.
 8. **Data Filling**: Only use the responses provided in the 'Text and Visualization Summary' corresponding to each prompt to fill in the sections of the report as per the 'Report Template'. Do not introduce any external data or assumptions. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report."
 
