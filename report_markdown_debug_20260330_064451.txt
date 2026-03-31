@@ -1,0 +1,100 @@
+# Campaign Performance Report: CMP_2025_0011
+
+## 1. Context
+
+### Campaigns
+*   **Campaign ID:** CMP_2025_0011
+*   **Campaign Name:** CMP_2025_0011 - Axe - Onsite - Consideration - Sponsored Product - 20250804-20250901
+*   **Brand Name:** Axe
+*   **Category:** Keyword-Level
+*   **Media Types:** Sponsored Product
+*   **Channels:** Onsite
+*   **Objective:** Consideration
+*   **Sub-Objective:** Engagement / Clicks
+*   **Campaign Duration:** From 2025-08-04 to 2025-09-01
+*   **Planned Spend:** 2335.47
+*   **Actual Spend:** 2335.47
+
+## 2. Executive Summary
+
+### Overview
+This report provides a comprehensive overview of Campaign ID CMP_2025_0011 for the Brand Axe, with a primary objective of 'Consideration'. The campaign ran from 2025-08-04 to 2025-09-01, utilizing a planned spend of 2335.47, which was fully utilized at 100%. The campaign aimed to drive engagement and clicks, primarily through the Onsite channel using Sponsored Products. Overall performance indicates a well-optimized campaign with stable and favorable key performance indicators (KPIs) throughout its duration.
+
+### Overall Performance
+The campaign demonstrated strong and consistent performance across key metrics. It achieved a total spend of INR 857,000, generating 17,100,000 impressions, 887,000 clicks, and 8,570 conversions. The average Click-Through Rate (CTR) was a healthy 5.15%, indicating good ad engagement. The Cost Per Click (CPC) remained low at INR 0.97, reflecting efficient traffic acquisition. The Cost Per Acquisition (CPA) was very consistent at INR 100.15, suggesting stable conversion costs. Most notably, the campaign delivered a strong Return On Ad Spend (ROAS) of 502.82%, highlighting its profitability and effective use of budget for consideration.
+
+### Channel/Format Performance
+For the 'Consideration' objective, the Onsite channel played a significant role. It recorded a total ad spend of 19851.495, generating 96,311 impressions and 2,358 clicks, resulting in a CTR of 2.448293% and a CPC of 8.418785. While specific comparative data for other channels like Display and Facebook was mentioned in context of weekly impressions, the detailed KPI table was provided only for the Onsite channel. The analysis of weekly impressions across channels (Display and Facebook) indicated Facebook's consistent dominance in generating significantly higher impressions compared to Display, showing a general upward trend in reach for both.
+
+### Optimization Insight
+The campaign exhibited remarkably stable and predictable performance, with no significant anomalies detected in weekly trends for key metrics. This suggests effective management and targeting. However, the weekly impression delivery showed a fluctuating trend, with an initial increase followed by a sharp decline in Week 2025-32. This specific fluctuation in impressions warrants further investigation to understand underlying causes and optimize future reach. The consistent low CPC and high ROAS indicate that the campaign is efficiently driving consideration, and efforts should focus on sustaining this efficiency while addressing any fluctuations in reach.
+
+## 3. Campaign Overview
+
+### Campaign Summary Table
+
+| Campaign ID    | Campaign Name                                                    | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization (%) |
+| :------------- | :--------------------------------------------------------------- | :------------ | :----------------- | :------------- | :--------------------- |
+| CMP_2025_0011 | CMP_2025_0011 - Axe - Onsite - Consideration - Sponsored Product - 20250804-20250901 | 2335.47       | Consideration      | 2335.47        | 100%                   |
+
+### Objective Consideration
+
+#### Metrics Table
+
+| Channel | Total_Ad_Spend | Impressions | Unique_Reach | Clicks | CTR      | CPC      | CPCV |
+| :------ | ---------------: | ----------: | -----------: | -------: | :------- | :------- | :--- |
+| Onsite  | 19851.495        | 96311       | 4258         | 2358     | 2.448293 | 8.418785 | N/A  |
+
+## 4. Campaign Wise Analysis
+
+### Campaign Details
+*   **Campaign Name:** CMP_2025_0011 - Axe - Onsite - Consideration - Sponsored Product - 20250804-20250901
+*   **Campaign ID:** CMP_2025_0011
+*   **Campaign Duration:** From 2025-08-04 to 2025-09-01
+*   **Campaign Objective:** Consideration
+*   **KPIs Analyzed:** Total Spend, Impressions, Unique Reach, Clicks, CTR, CPC, CPA, ROAS, Conversions.
+*   **Metrics:**
+    *   **Impressions:** 17,100,000 (Overall)
+    *   **ROAS:** 502.82%
+    *   **Conversions:** 8,570
+    *   **CTR:** 5.15%
+
+### Campaign Analysis Text
+The analysis of Campaign ID CMP_2025_0011 (Brand: Axe, Objective: Consideration) reveals a campaign characterized by consistent and strong performance.
+
+**Overall Campaign Performance:**
+The campaign achieved a total spend of INR 857,000, resulting in 17,100,000 total impressions, 887,000 total clicks, and 8,570 total conversions. The average CTR of 5.15% indicates a good engagement rate. The average CPC was consistently low at INR 0.97, demonstrating efficient spend on driving traffic. The average CPA was very consistent at INR 100.15, suggesting stable conversion costs. A strong ROAS of 502.82% signifies high profitability and effective budget utilization for the consideration objective.
+
+**Weekly Performance Trends (General):**
+The campaign generally showed a consistent upward trend in most metrics over the period from January to March 2025 (as per the overall summary). Spend, impressions, clicks, and conversions all increased week over week, suggesting a scalable campaign that effectively increased reach and engagement with allocated budget. Effective CTR remained stable around 5.1% to 5.27%, and effective CPC was predominantly stable around INR 0.97 - INR 0.98. Effective CPA was extremely consistent, largely at INR 100.00, and effective ROAS maintained a high and stable level, mostly around 500%.
+
+**Weekly Impression Trends (Specific Analysis for Weeks 2025-30 to 2025-32):**
+While overall trends were positive, a more granular look at weekly impressions for Campaign CMP_2025_0011 (Brand: Axe) with the objective 'Consideration' reveals fluctuations:
+
+Image 1: Weekly Impression Trends for Campaign CMP_2025_0011
+gs://acn-cda-adk-staging/root/user/bff61b52-d728-4291-86f3-6dfee469693c/for_campaign_id_cmp_2025_0011_(brand:_axe)_with_the_objective_'consideration',_analyze_'impressions'_on_a_weekly_basis._provide_insights_into_impression_delivery_and_visualize_the_weekly_impression_trends_using_an_appropriate_plot_or_graph._VizChart.png/0
+
+As illustrated in Image 1, the campaign started with approximately 36,429 total impressions in Week 2025-30. There was a noticeable increase to around 39,382 impressions in Week 2025-31, indicating positive momentum. However, impressions significantly dropped to approximately 20,500 in Week 2025-32. This fluctuating trend, with an initial increase followed by a sharp decline, suggests that the campaign's reach or visibility might have faced challenges or changes in the third week of this specific observed period.
+
+**Channel Performance (Impressions):**
+Analysis of weekly impressions across different channels (Display and Facebook) for Campaign ID CMP_2025_0011 (Brand: Axe, Objective: Consideration) showed Facebook consistently generated significantly higher impressions each week compared to the Display channel throughout the campaign period. Both channels showed a general upward trend in impressions, but the performance gap remained substantial, positioning Facebook as the primary driver of impressions for this campaign.
+
+**Anomalies:**
+No significant anomalies were detected in the weekly performance for key metrics (outside 2 standard deviations from the mean) in the overall campaign summary. The slight variations observed were within normal operational bounds, suggesting a very stable and predictable campaign performance. The sharp decline in impressions in Week 2025-32, as highlighted in the specific weekly impression analysis, should be investigated further to understand its cause, as it represents a deviation from the otherwise stable trend.
+
+### Overall Campaign Impact
+Campaign ID CMP_2025_0011 for Brand Axe, with a 'Consideration' objective, has demonstrated exceptionally consistent and strong performance. Key KPIs like CTR, CPC, CPA, and ROAS have remained stable and favorable throughout the campaign period, even as spend, impressions, clicks, and conversions steadily increased. This indicates a well-optimized campaign that is effectively driving consideration for the brand without significant fluctuations or performance issues, apart from the noted weekly impression variability.
+
+## 5. Recommendations
+
+### Granular Temporal and Contextual Analysis
+*   **Action:** Conduct a detailed root cause analysis for the sharp decline in impressions observed in Week 2025-32. Investigate factors such as changes in ad spend allocation, targeting parameters, competitive landscape, ad fatigue, or platform policy changes during that specific period.
+*   **Objective:** Understand and mitigate factors causing impression fluctuations to ensure consistent reach and delivery throughout the campaign lifecycle.
+
+### Dynamic Budget Allocation and Bidding Strategy Optimization
+*   **Action:** Given Facebook's dominance in impression generation and the overall campaign's stable and low CPC, consider optimizing budget allocation to further leverage high-performing channels. Explore dynamic bidding strategies that can maximize impressions and clicks during peak performance periods while maintaining efficient costs.
+*   **Objective:** Maximize reach and engagement by strategically allocating resources to channels and periods that yield the best performance for the 'Consideration' objective.
+
+### Sustain and Scale Successful Strategies
+*   **Action:** Continue the strategies that have led to the current stable and strong performance across key KPIs like CTR, CPC, CPA, and ROAS. Given the campaign's scalability and profitability, explore opportunities to incrementally increase budget and expand reach while closely monitoring performance to maintain efficiency.
+*   **Objective:** Leverage proven campaign effectiveness to further drive brand consideration and achieve greater market penetration.

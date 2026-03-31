@@ -1,0 +1,76 @@
+# Campaign Performance Report: Lifebuoy - CMP_2025_2158
+
+## 1. Context
+
+This report provides a detailed overview of Campaign ID CMP_2025_2158 for the brand Lifebuoy. It is intended for the Marketing and Sales leadership team to understand the campaign's execution and high-level performance.
+
+### 1.1. Campaigns
+
+*   **Campaign ID**: CMP_2025_2158
+*   **Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name**: Lifebuoy
+*   **Category**: Not available
+*   **Media Types**: In-App Ads
+*   **Channels**: App
+*   **Objective**: Retention
+*   **Sub-Objective**: Subscription or Refill
+*   **Campaign Duration**: From 2025-06-13 to 2025-07-20
+*   **Planned Spend**: 271.02
+*   **Actual Spend**: 271.02
+
+## 2. Executive Summary
+
+### 2.1. Overview
+
+Campaign CMP_2025_2158 for the brand Lifebuoy was executed from June 13, 2025, to July 20, 2025. The campaign's primary objective was customer **Retention**, specifically aiming to drive Subscription or Refill actions through **In-App Ads** on the **App** channel.
+
+### 2.2. Overall Performance
+
+The campaign demonstrated efficient budget management, with the actual spend of 271.02 precisely matching the planned spend of 271.02, resulting in **100% budget utilization**.
+
+### 2.3. Channel/Format Performance
+
+The campaign exclusively leveraged the 'App' channel using 'In-App Ads' as its media type. No further channel-specific performance metrics were available for detailed analysis beyond spend.
+
+### 2.4. Optimization Insight
+
+While the campaign successfully managed its budget, the absence of detailed performance indicators such as conversions, CVR, or ROAS for the 'Retention' objective limits the ability to derive specific optimization insights regarding campaign effectiveness. Future reporting should aim to capture these metrics to provide a more comprehensive view of impact.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+Table 1: Campaign Summary for CMP_2025_2158
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 271.02 | 100% |
+
+## 4. Campaign Wise Analysis
+
+### 4.1. Campaign Details
+
+*   **Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Campaign ID**: CMP_2025_2158
+*   **Campaign Ad IDs**: Not available in the provided data.
+*   **Campaign Duration**: 2025-06-13 to 2025-07-20
+*   **KPIs Analyzed**: The primary KPIs available for analysis are Planned Spend, Actual Spend, and Budget Utilization.
+*   **Campaign Objective**: Retention
+*   **Campaign Analysis Text**: Campaign CMP_2025_2158 for the brand Lifebuoy was executed over a period from June 13, 2025, to July 20, 2025. The campaign's strategic focus was on customer Retention, specifically encouraging actions such as subscriptions or refills. It was exclusively deployed through In-App Ads, targeting users within the App channel. The campaign successfully utilized its entire allocated budget, with both the planned and actual spend recorded at 271.02.
+*   **Overall Campaign Impact**: The campaign achieved its financial target by fully utilizing the planned budget. However, without specific performance metrics related to retention (e.g., number of subscriptions/refills, customer lifetime value changes, or churn reduction), the direct impact of the campaign on its objective cannot be quantitatively determined from the current data.
+
+## 5. Recommendations
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: For future retention campaigns, implement robust tracking mechanisms to capture specific KPIs such as subscription renewal rates, refill frequency, or customer lifetime value. This data should be analyzed on a weekly or daily basis to identify performance trends and anomalies.
+*   **Objective**: To gain a deeper, actionable understanding of campaign effectiveness and optimize future retention strategies with data-driven insights.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: While 100% budget utilization is positive, future campaigns should explore dynamic budget allocation and bidding strategies that are directly linked to real-time performance against retention goals. This could involve optimizing bids for specific in-app actions that signify higher retention intent.
+*   **Objective**: To enhance the efficiency and effectiveness of ad spend by ensuring it is continuously optimized towards achieving the campaign's retention objective.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: For subsequent retention campaigns, conduct systematic A/B testing of various in-app ad creatives, messaging, and calls-to-action. This will help identify which elements resonate most effectively with the target audience to drive subscription or refill actions.
+*   **Objective**: To continuously improve the creative impact and user experience within the app, thereby maximizing retention rates and campaign ROI.

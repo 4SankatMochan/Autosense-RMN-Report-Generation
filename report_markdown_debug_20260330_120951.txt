@@ -1,0 +1,132 @@
+# Campaign Performance Report: CMP_2025_0001 - Dove
+
+## 1. Context
+
+This report provides a comprehensive overview of the performance of Campaign ID `CMP_2025_0001` for the brand `Dove`. The analysis focuses on understanding the campaign's effectiveness in achieving its objectives and identifying key performance indicators across relevant channels. This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaigns
+
+*   **Campaign ID:** CMP_2025_0001
+*   **Campaign Name:** CMP_2025_0001
+*   **Brand Name:** Dove
+*   **Category:** Keyword-Level
+*   **Media Types:** Sponsored Product
+*   **Channels:** Onsite
+*   **Objective:** Consideration
+*   **Sub Objective:** App Installs
+*   **Campaign Duration:** 35 Days
+*   **Planned Spend:** 494.49
+*   **Actual Spend:** 494.49
+
+## 2. Customization Options
+
+This section outlines available customization options for viewing the report data.
+
+### Timeline
+*   Full campaign period
+*   Weekly report view
+*   Daily report view
+
+### By Creative
+*   App
+*   Channel-CTV
+*   Onsite
+*   Offsite
+*   Instore
+
+## 3. Executive Summary
+
+### Overview
+
+The `CMP_2025_0001` campaign for the brand `Dove`, with an objective of 'Consideration' and sub-objective 'App Installs', has concluded with a 100% budget utilization, matching its planned spend of $494.49. The campaign, primarily leveraging 'Sponsored Product' media types on the 'Onsite' channel, ran for 35 days.
+
+### Overall Performance
+
+The campaign delivered a total of 19,030,000 impressions, reaching 20,210,000 unique users, resulting in 246,000 clicks and 24,200 conversions. The Click-Through Rate (CTR) stood at 1.29%, with a Conversion Rate (CVR) of 9.84%. The Cost Per Click (CPC) was $13.01, and the Cost Per Mille (CPM) was $168.16. These metrics indicate a robust performance in driving user consideration and subsequent app installs.
+
+### Channel Format Performance
+
+For the 'Onsite' channel, which was the primary channel for this campaign, the performance metrics were: Total Ad Spend of $494.49, 96,550 Impressions, 3,876 Unique Reach, and 546 Clicks. The CTR for this channel was 0.57%, and the CPC was $0.91. The Cost Per Completed View (CPCV) was not available.
+
+### Optimization Insight
+
+The campaign successfully utilized its entire budget, achieving its consideration objective. The high conversion rate and substantial reach suggest effective targeting and creative execution. Further optimization could focus on analyzing the weekly trends of spend and impressions to identify periods of higher engagement and allocate resources accordingly, as well as investigating the "Not available" CPCV to ensure all relevant metrics are tracked for future campaigns.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+Table 1: High-level Campaign Summary for CMP_2025_0001
+
+| Campaign ID   | Campaign Name                                    | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization |
+| :------------ | :----------------------------------------------- | :------------ | :----------------- | :------------- | :----------------- |
+| CMP_2025_0001 | CMP_2025_0001 - Dove - Onsite - Consideration ... | 494.49        | Consideration      | 494.49         | 100.0              |
+
+### Objective Consideration
+
+This section details the performance metrics specifically for the 'Consideration' objective, as delivered through the 'Onsite' channel.
+
+Table 2: Performance Metrics by Channel for Objective 'Consideration'
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR   | CPC  | CPCV               |
+| :------ | :------------- | :---------- | :----------- | :----- | :---- | :--- | :----------------- |
+| Onsite  | 494.49         | 96,550      | 3,876        | 546    | 0.57% | 0.91 | Not available (null) |
+
+## 5. Campaign-Wise Analysis
+
+### Visualizations
+
+Image 1: Weekly Trend of Total Ad Spend by Channel for CMP_2025_0001 (Brand Dove)
+gs://acn-cda-adk-staging/root/user/5edc10d4-2a0f-44ac-a826-71aa9b4f2862/for_campaign_id_cmp_2025_0001_and_brand_dove,_generate_a_weekly_trend_plot_showing_'total_ad_spend'_over_the_campaign_duration,_broken_down_by_'channel'._VizChart.png/0
+
+Image 2: Weekly Trend of Impressions by Channel for CMP_2025_0001 (Brand Dove)
+gs://acn-cda-adk-staging/root/user/5edc10d4-2a0f-44ac-a826-71aa9b4f2862/for_campaign_id_cmp_2025_0001_and_brand_dove,_generate_a_weekly_trend_plot_showing_'impressions'_over_the_campaign_duration,_broken_down_by_'channel'._VizChart.png/0
+The chart displays the weekly trend of total impressions across different channels for Campaign ID CMP_2025_0001 (Brand Dove). Each line on the graph represents a different channel, showing how impressions for that channel have changed week over week. This visualization helps to identify which channels are performing well in terms of impressions and to observe trends or anomalies over the campaign duration.
+
+### Campaign Details
+
+*   **Campaign Name:** CMP_2025_0001
+*   **Campaign ID:** CMP_2025_0001
+*   **Campaign Duration:** 35 Days
+*   **KPIs Analyzed:** Total Reach, Total Impressions, Total Clicks, Total Conversions, Total Spend, Click-Through Rate (CTR), Conversion Rate (CVR), Cost Per Click (CPC), Cost Per Mille (CPM).
+*   **Campaign Objective:** Consideration
+*   **Metrics:**
+    *   **Impressions:** 19,030,000
+    *   **Conversions:** 24,200
+    *   **CTR:** 1.29%
+
+### Campaign Analysis Text
+
+The overall performance for Campaign ID 'CMP_2025_0001', Brand 'Dove', and Objective 'Consideration' is as follows:
+*   **Total Reach:** 20,210,000
+*   **Total Impressions:** 19,030,000
+*   **Total Clicks:** 246,000
+*   **Total Conversions:** 24,200
+*   **Total Spend:** $3,200,000
+*   **Click-Through Rate (CTR):** 1.29%
+*   **Conversion Rate (CVR):** 9.84%
+*   **Cost Per Click (CPC):** $13.01
+*   **Cost Per Mille (CPM):** $168.16
+
+Weekly performance analysis was initiated to identify trends and potential anomalies, including the calculation of weekly CTR, CVR, CPC, and CPM. However, the detailed weekly performance data is not available in this report.
+
+### Overall Campaign Impact
+
+The campaign successfully reached a broad audience of over 20 million users, generating significant impressions and clicks, ultimately leading to 24,200 conversions. The 100% budget utilization indicates efficient financial management. The strong CTR and CVR demonstrate that the campaign effectively engaged the target audience and drove them towards the desired action of app installs, aligning with the 'Consideration' objective.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+**Action:** Conduct a deeper weekly or daily analysis of performance metrics (CTR, CVR, CPC, CPM) once the detailed data becomes available. Correlate these trends with specific campaign activities, external events, or creative changes to identify key drivers of performance fluctuations.
+**Objective:** To uncover actionable insights for optimizing future campaign timing, message deployment, and resource allocation based on historical performance patterns.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+**Action:** Based on the identified weekly trends in ad spend and impressions (as shown in Image 1 and Image 2), develop a dynamic budget allocation strategy that shifts spend towards periods or channels demonstrating higher efficiency and engagement. Review bidding strategies to ensure optimal CPC and CPM, especially for the 'Onsite' channel.
+**Objective:** To maximize ROI by strategically distributing the budget and optimizing bids to capture high-value impressions and clicks, particularly during peak performance windows.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+**Action:** Implement A/B testing for various creative elements (e.g., ad copy, visuals) and landing page experiences (e.g., app store page layout, call-to-action placement) within the 'Onsite' channel.
+**Objective:** To continuously improve CTR and CVR by identifying the most effective creative and user experience elements that resonate with the target audience and drive higher app installs.

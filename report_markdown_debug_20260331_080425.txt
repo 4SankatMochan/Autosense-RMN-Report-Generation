@@ -1,0 +1,107 @@
+# Campaign Performance Report: CMP_2025_0003 for Lux
+
+## 1. Context
+
+This report provides a comprehensive overview of Campaign CMP_2025_0003 for the brand Lux. It is prepared for the Marketing and Sales leadership team to understand campaign performance across different channels, identify key contributions to attributed sales, and analyze daily sales patterns. The insights will inform strategic decisions for optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaign Details
+
+The following table summarizes the essential details of Campaign CMP_2025_0003:
+
+| Detail                  | Description                                |
+| :---------------------- | :----------------------------------------- |
+| **Campaign ID**         | CMP_2025_0003                              |
+| **Campaign Name**       | CMP_2025_0003                              |
+| **Brand Name**          | Lux                                        |
+| **Category**            | Contextual / Placement-Based               |
+| **Media Types**         | Sponsored Product                          |
+| **Channel**             | Onsite                                     |
+| **Objective**           | Consideration                              |
+| **Sub-Objective**       | App Installs                               |
+| **Planned Duration**    | From 2025-08-01 to 2025-09-11 (41 days)    |
+| **Planned Spend**       | 586.15                                     |
+| **Actual Spend**        | 586.15                                     |
+
+## 3. Executive Summary
+
+Campaign CMP_2025_0003 for the brand Lux, with a primary objective of "Consideration" and a sub-objective of "App Installs", ran from August 1st to August 19th, 2025, within its planned duration of August 1st to September 11th, 2025. The campaign utilized a planned spend of $586.15, which was fully utilized.
+
+The campaign generated 113,438 impressions and achieved a unique reach of 37,086. It recorded 632 clicks, resulting in an overall Click-Through Rate (CTR) of 0.56% and an average Cost Per Click (CPC) of $0.93. The Cost Per Completed View (CPCV) could not be calculated, indicating no video completions were recorded.
+
+From August 1st to August 19th, 2025, the campaign accumulated a total spend of $586.15, generating $216.26 in attributed sales, leading to a Return on Ad Spend (ROAS) of 7.01 on the last recorded day. It drove 3 conversions with a conversion rate (CVR) of 11.11% and a Cost Per Acquisition (CPA) of $10.28. The campaign's daily spend was approximately $30.85, with the budget fully expended by August 19th, 2025.
+
+Visualizations indicate trends in weekly ad spend and impressions across channels, providing deeper insights into performance fluctuations. These findings suggest that while the campaign successfully drove engagement and conversions, further analysis into video content performance (CPCV) and channel-specific optimizations could enhance future campaign effectiveness.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date | End Date   | Campaign ID    | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :--------- | :------------- | :------------ | :----------------- | :------------- | :----------------------------- |
+| 2025-08-01 | 2025-09-11 | CMP_2025_0003  | 586.15        | Consideration      | 586.15         | 100%                           |
+
+### 4.2. Objective: Consideration
+
+The campaign's primary objective was Consideration, focusing on driving user engagement and app installs. The performance metrics for this objective are detailed below:
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR   | CPC   | CPCV                      | Viewed Units | Clicked Units | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :---- | :---- | :------------------------ | :----------- | :------------ | :---------- |
+| Onsite  | 586.15         | 113,438     | 37,086       | 632    | 0.56% | 0.93  | Could not be calculated   |              |               |             |
+
+The CPCV could not be calculated, likely due to no video completions recorded for this campaign, suggesting a potential area for review if video was a planned component of the media strategy.
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Campaign Details
+
+**Campaign Name**: CMP_2025_0003
+**Campaign ID**: CMP_2025_0003
+**Campaign Duration**: Planned from 2025-08-01 to 2025-09-11. The campaign actively ran and accumulated performance data from August 1st to August 19th, 2025.
+**KPIs Analyzed**: Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, CPCV, Attributed Sales, ROAS, Conversions, CVR, CPA.
+**Campaign Objective**: Consideration
+
+**Metrics:**
+*   **Impressions**: 113,438
+*   **ROAS**: 7.01
+*   **Conversions**: 3
+*   **CTR**: 0.56%
+
+**Campaign Analysis Text:**
+Campaign 'CMP_2025_0003' for brand 'Lux' aimed at driving consideration, specifically app installs, through 'Sponsored Product' media types on the 'Onsite' channel. The campaign fully utilized its planned budget of $586.15.
+
+Overall, the campaign delivered 113,438 impressions to a unique audience of 37,086 users, resulting in 632 clicks and a CTR of 0.56%. The average cost per click (CPC) was $0.93. A notable observation is the inability to calculate the Cost Per Completed View (CPCV), suggesting that video content either was not a primary component or did not lead to recorded completions.
+
+During its active performance period from August 1st to August 19th, 2025, the campaign generated $216.26 in attributed sales, achieving a strong ROAS of 7.01 by the end of this period. It successfully drove 3 conversions, translating to a conversion rate (CVR) of 11.11% and a Cost Per Acquisition (CPA) of $10.28. The daily spend averaged approximately $30.85, with the entire budget being expended by August 19th, 2025.
+
+Daily impression counts for this campaign varied, with examples including 7841, 5026, 4555, 8692, and 3347, indicating fluctuations in daily reach.
+
+**Overall Campaign Impact:**
+The campaign demonstrated a positive return on ad spend and achieved conversions, indicating its effectiveness in driving user action towards the consideration objective. The full utilization of the budget within the performance period suggests efficient spend management.
+
+### 5.2. Visualizations
+
+Image 1: Weekly Total Ad Spend Trend and Distribution Across Channels
+gs://acn-cda-adk-staging/root/user/6866c371-f0b0-496d-8dca-2b00dcc0e596/<function_execution_prompt_at_0x7c681788db20>_user_question:_generate_visualizations_illustrating_the_weekly_total_ad_spend_trend_and_its_distribution_across_channels_for_campaign_cmp_2025_0003_for_brand_lux,_with_a_'consideration'_objective,_for_the_VizChart.png/0
+
+Image 2: Weekly Impressions Across Different Channels
+gs://acn-cda-adk-staging/root/user/6866c371-f0b0-496d-8dca-2b00dcc0e596/<function_execution_prompt_at_0x7c681788db20>_user_question:_compare_the_weekly_impressions_across_different_channels_for_campaign_cmp_2025_0003_for_brand_lux,_focusing_on_a_'consideration'_objective,_for_the_available_time_period._VizChart.png/0
+
+Image 3: Weekly Impressions Trend and Its Distribution Across Channels
+gs://acn-cda-adk-staging/root/user/6866c371-f0b0-496d-8dca-2b00dcc0e596/<function_execution_prompt_at_0x7c681788db20>_user_question:_generate_visualizations_illustrating_the_weekly_impressions_trend_and_its_distribution_across_channels_for_campaign_cmp_2025_0003_for_brand_lux,_with_a_'consideration'_objective,_for_the_av_VizChart.png/0
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+**Action**: Conduct a detailed daily and weekly performance review, especially focusing on impression trends and spend distribution as highlighted in the visualizations. Investigate the daily impression fluctuations to understand underlying causes and optimize timing for ad delivery.
+**Objective**: To identify optimal timeframes and contextual placements for ad serving, thereby maximizing impression efficiency and engagement.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+**Action**: Given the full budget utilization and positive ROAS, explore opportunities for dynamic budget reallocation based on real-time performance insights. Review bidding strategies to ensure cost-effectiveness, particularly for CPC, and investigate the absence of CPCV data.
+**Objective**: To enhance budget efficiency and improve key performance indicators such as CPC and conversion rates for future campaigns.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+**Action**: Implement A/B testing for various creative elements and landing page designs, especially for the 'Sponsored Product' media type on the 'Onsite' channel. Focus on elements that could improve CTR and conversion rates, and if applicable, introduce or optimize video content to enable CPCV calculation.
+**Objective**: To continuously refine campaign assets and user experience, leading to improved engagement, higher conversion rates, and a more comprehensive understanding of video performance.

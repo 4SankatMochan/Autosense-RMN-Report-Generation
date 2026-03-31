@@ -1,0 +1,117 @@
+# Campaign Performance Report: CMP_2025_0011 - Axe
+
+## 1. Context
+
+### Campaigns
+
+*   **Campaign ID:** CMP_2025_0011
+*   **Campaign Name:** CMP_2025_0011 - Axe - Onsite - Consideration - Sponsored Product - 20250804-20250901
+*   **Brand Name:** Axe
+*   **Category:** Keyword-Level
+*   **Media Types:** Sponsored Product
+*   **Channels:** Onsite
+*   **Objective:** Consideration
+*   **Sub Objective:** Engagement / Clicks
+*   **Campaign Duration:** From 2025-08-04 to 2025-09-01
+*   **Planned Spend:** 2335.47
+*   **Actual Spend:** 2335.47
+
+## 3. Executive Summary
+
+### Overview
+
+This report provides a comprehensive overview of Campaign ID 'CMP_2025_0011' for Brand 'Axe', with a primary objective of 'Consideration'. The campaign ran from August 4, 2025, to September 1, 2025, with a planned and actual spend of $2335.47. Overall, the campaign achieved a budget utilization of approximately 53.12% against a larger planned spend of $37,367.52 for the overall campaign objective. Key performance indicators show varied performance across channels and weekly fluctuations in spend and impressions.
+
+### Overall Performance
+
+The campaign experienced its highest spend and attributed sales in the second week (starting 2025-08-10), followed by a significant decrease in the third week. Despite this reduction, the conversion rate showed a positive upward trend throughout the campaign, reaching its highest at 12.67% in the final week. The average Click-Through Rate (CTR) was approximately 2.03%, Average Conversion Rate 11.26%, Average Return on Ad Spend (ROAS) 8.87, Average Cost Per Click (CPC) $1.10, and Average Cost Per Acquisition (CPA) $10.10.
+
+### Channel Format Performance
+
+Among the analyzed channels, Facebook demonstrated the highest total ad spend and impressions, followed by Google and Instagram. Instagram showed the highest CTR (0.000133333), while Google and Facebook had comparable CTRs. Twitter had the lowest ad spend, impressions, and CTR, along with the highest CPC and CPCV, suggesting lower efficiency for this campaign's objective.
+
+### Optimization Insight
+
+A notable anomaly was the significant drop in total spend and attributed sales in the third week. However, the continued improvement in conversion rate during this period suggests that the remaining campaign efforts were highly efficient in converting users who interacted with the ads. This indicates potential for optimizing spend allocation towards higher-performing segments or channels, especially if the reduction was due to budget constraints or campaign end.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-08-04 | 2025-09-01 | CMP_2025_0011 | 37367.52 | Consideration | 19851.495 | 53.12% |
+
+### Objective Consideration
+
+#### Metrics Table
+
+| Channel | Total_Ad_Spend | Impressions | Unique_Reach | Clicks | CTR | CPC | CPCV |
+| :-------- | ---------------: | ------------: | -------------: | -------: | ----: | ----: | -----: |
+| Facebook | 20147.2 | 120000000 | 1000 | 10000 | 0.0000833333 | 2.01472 | 2.01472 |
+| Google | 10000 | 50000000 | 500 | 5000 | 0.0001 | 2 | 2.5 |
+| Instagram | 8000 | 30000000 | 300 | 4000 | 0.000133333 | 2 | 2.66667 |
+| Twitter | 1500 | 5000000 | 100 | 200 | 0.00004 | 7.5 | 7.5 |
+
+## 5. Campaign Wise Analysis
+
+### Campaign Details
+
+*   **Campaign Name:** CMP_2025_0011 - Axe - Onsite - Consideration - Sponsored Product - 20250804-20250901
+*   **Campaign ID:** CMP_2025_0011
+*   **Campaign Duration:** From 2025-08-04 to 2025-09-01
+*   **KPIs Analyzed:** Click-Through Rate (CTR), Conversion Rate, Return on Ad Spend (ROAS), Cost Per Click (CPC), Cost Per Acquisition (CPA), Impressions, Total Ad Spend.
+*   **Campaign Objective:** Consideration
+*   **Metrics:**
+    *   **Average Click-Through Rate (CTR):** Approximately 2.03%
+    *   **Average Conversion Rate:** Approximately 11.26%
+    *   **Average Return on Ad Spend (ROAS):** Approximately 8.87
+    *   **Average Cost Per Click (CPC):** Approximately $1.10
+    *   **Average Cost Per Acquisition (CPA):** Approximately $10.10
+
+### Campaign Analysis Text
+
+The campaign 'CMP_2025_0011' for Brand 'Axe' with the 'Consideration' objective ran for approximately three weeks, showing varied performance. The campaign experienced its highest spend and attributed sales in the second week, followed by a significant decrease in the third week. Interestingly, the conversion rate showed a positive upward trend throughout the campaign, even as spend and sales declined in the final week.
+
+The most notable anomaly is the significant drop in total spend and attributed sales in the third week. This could indicate the campaign reaching its budget limit, a planned reduction in activity, or the campaign's scheduled end. Despite this reduction, the continued improvement in conversion rate suggests that the remaining campaign efforts were highly efficient in converting users who interacted with the ads.
+
+#### Weekly Performance Trends
+
+*   **Week 1 (starting 2025-08-03):** The campaign started with a total spend of $875.80, generating $8162.47 in attributed sales. Key metrics included an average CTR of 2.16%, a conversion rate of 10.36%, and a ROAS of 9.32. The average CPC was $0.91 and CPA was $9.60.
+*   **Week 2 (starting 2025-08-10):** Spend increased to $1021.77, leading to a rise in attributed sales to $8800.34. While the CTR remained stable at 2.14% and the conversion rate slightly improved to 10.76%, the ROAS decreased to 8.61. Both CPC ($1.10) and CPA ($11.08) saw an increase.
+*   **Week 3 (starting 2025-08-17):** This week saw a sharp decline in activity, with total spend dropping to $437.90 and attributed sales to $3799.51. The CTR also decreased to 1.79%. However, the conversion rate continued its positive trend, reaching its highest at 12.67%. The ROAS slightly recovered to 8.68, and the CPA decreased to $9.62, similar to Week 1, despite a higher CPC of $1.29.
+
+### Visualizations
+
+Image 1: Weekly Total Impressions Across Different Channels
+gs://acn-cda-adk-staging/root/user/db9cf73e-2681-4fe0-b9cf-c30956e1cd09/for_campaign_id_cmp_2025_0011_(brand_axe)_with_the_objective_'consideration',_analyze_the_performance_of_'channel'_on_a_weekly_basis._provide_insights_through_plots_or_graphs_illustrating_trends_and_distribution_of_performance_across_different_channe_VizChart.png/2
+The line chart displays the weekly total impressions across different channels. 'week_start' is on the x-axis, representing the progression of time, and 'total_impressions' is on the y-axis, showing the volume of impressions. Each line on the chart represents a different channel (`cp_channels`), allowing for a direct comparison of impression trends for each channel over the observed weeks. This visualization helps in understanding which channels are performing well in terms of reach and how their performance fluctuates weekly.
+
+Image 2: Weekly Total Ad Spend for Campaign CMP_2025_0011 (Brand Axe)
+gs://acn-cda-adk-staging/root/user/db9cf73e-2681-4fe0-b9cf-c30956e1cd09/for_campaign_id_cmp_2025_0011_(brand_axe)_with_the_objective_'consideration',_analyze_'total_ad_spend'_on_a_weekly_basis._generate_plots_or_graphs_to_visualize_the_weekly_spending_patterns_and_identify_any_significant_fluctuations_or_trends._VizChart.png/0
+The line chart displays the weekly Total Ad Spend for Campaign CMP_2025_0011 (Brand Axe). The x-axis represents the 'Week Start' dates, and the y-axis shows the 'Total Ad Spend ($)'. The chart illustrates the spending patterns over time, highlighting any significant fluctuations or trends in the ad spend. For the week starting 2025-08-03, the Total Ad Spend was approximately $3,065.30. For the week starting 2025-08-10, the Total Ad Spend increased significantly to approximately $10,217.68. For the week starting 2025-08-17, the Total Ad Spend decreased to approximately $6,568.51. This indicates a clear fluctuation in weekly ad spend, with a peak in the week of August 10, 2025, followed by a decrease the subsequent week.
+
+Image 3: Weekly Impression Trends for Campaign ID CMP_2025_0011 (Brand Axe)
+gs://acn-cda-adk-staging/root/user/db9cf73e-2681-4fe0-b9cf-c30956e1cd09/for_campaign_id_cmp_2025_0011_(brand_axe)_with_the_objective_'consideration',_analyze_'impressions'_on_a_weekly_basis._create_plots_or_graphs_to_show_the_weekly_impression_trends,_highlighting_periods_of_high_or_low_reach._VizChart.png/0
+The line chart displays the weekly impression trends for Campaign ID CMP_2025_0011 (Brand Axe). The X-axis represents the 'Week Start Date', showing the progression of time, while the Y-axis indicates 'Total Impressions'. From the chart, we can observe that the total impressions started at 36,429 on August 3, 2025, increased to 39,382 by August 10, 2025, and then significantly dropped to 20,500 by August 17, 2025. This highlights a period of increasing reach followed by a notable decline.
+
+### Overall Campaign Impact
+
+The campaign successfully generated consideration for Brand Axe, with a notable average conversion rate of 11.26% and a ROAS of 8.87. While there were fluctuations in weekly spend and impressions, the consistently improving conversion rate, even during periods of reduced activity, suggests effective targeting or ad creative. The anomaly in the third week's spend and attributed sales warrants further investigation to understand if it was a planned reduction or an external factor.
+
+## 6. Recommendations
+
+### Granular Temporal and Contextual Analysis
+
+*   **Action:** Investigate the reasons behind the significant drop in total ad spend and attributed sales in the third week (starting 2025-08-17). Analyze if this was a planned budget reduction, campaign end, or an external factor. Correlate this with the continued improvement in conversion rate during that period.
+*   **Objective:** Understand the drivers of weekly performance fluctuations to optimize future campaign planning and budget allocation, ensuring sustained efficiency.
+
+### Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action:** Based on channel performance data, re-evaluate budget allocation. Consider shifting more budget towards channels like Instagram and Google, which show competitive CTRs and CPCs, and away from less efficient channels like Twitter, especially if the 'Consideration' objective is paramount.
+*   **Objective:** Maximize campaign efficiency and ROI by allocating resources to channels that demonstrate the best performance for the 'Consideration' objective.
+
+### Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action:** Given the high conversion rate, particularly in the later stages of the campaign, conduct A/B testing on ad creatives and landing page experiences across the top-performing channels (Facebook, Google, Instagram).
+*   **Objective:** Further enhance conversion rates and overall campaign effectiveness by identifying and implementing the most impactful creative and user experience elements.

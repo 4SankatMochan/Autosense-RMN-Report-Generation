@@ -1,0 +1,68 @@
+# Campaign Performance Report
+
+## 1. Context
+
+### Campaigns
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Brand Name**: Dove
+*   **Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub Objective**: App Installs
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Planned Spend**: 494.49
+*   **Actual Spend**: 494.49
+
+## 2. Executive Summary
+
+This report provides an overview of Campaign CMP_2025_0001 for the brand Dove, which ran from August 2nd, 2025, to September 6th, 2025, with a primary objective of Consideration and a sub-objective of App Installs. The campaign, focused on the 'Onsite' channel and 'Sponsored Product' media type, utilized its entire planned budget of 494.49, achieving 100% spend utilization.
+
+Key performance indicators for the 'Onsite' channel include 96,550 Impressions and a Unique Reach of 33,817. The campaign generated 546 Clicks, resulting in a Click-Through Rate (CTR) of 0.57% and a Cost Per Click (CPC) of 0.91. Further daily trend analysis and comprehensive performance insights could not be generated due to the unavailability of detailed daily performance data.
+
+## 3. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-08-02 | 2025-09-06 | CMP_2025_0001 | 494.49 | Consideration | 494.49 | 100% |
+
+### Objective: Consideration
+
+This campaign was designed with a 'Consideration' objective, aiming to drive user engagement and interest. The performance metrics for the 'Onsite' channel are detailed below.
+
+#### Metrics Table
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV |
+| :------ | :------------- | :---------- | :----------- | :----- | :-- | :-- | :--- |
+| Onsite | 494.49 | 96,550 | 33,817 | 546 | 0.57% | 0.91 | Not available |
+
+## 4. Campaign Wise Analysis
+
+### Visual Layers Per Objective
+
+*   Consideration
+
+### Campaign Details
+
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **KPIs Analyzed**: Impressions, Unique Reach, Clicks, CTR, CPC
+*   **Campaign Objective**: Consideration
+*   **Metrics**:
+    *   **Impressions**: 96,550
+    *   **CTR**: 0.57%
+
+### Campaign Analysis Text
+
+Campaign CMP_2025_0001 for the brand Dove, with a 'Consideration' objective, successfully utilized 100% of its planned spend of 494.49. The campaign, categorized as 'Keyword-Level' and using 'Sponsored Product' media on the 'Onsite' channel, ran for approximately five weeks. It achieved 96,550 impressions and reached 33,817 unique users. The campaign generated 546 clicks, indicating user interest, with a Click-Through Rate (CTR) of 0.57% and a Cost Per Click (CPC) of 0.91. The sub-objective for this campaign was 'App Installs'.
+
+Further analysis regarding daily trends for channel performance, unique reach, total ad spend, and impressions, as well as a comprehensive summary of overall performance, anomalies, and significant trends, could not be performed due to the lack of daily performance data.
+
+### Overall Campaign Impact
+
+Based on the available data, Campaign CMP_2025_0001 effectively deployed its budget to generate significant impressions and unique reach, driving a notable number of clicks towards its 'Consideration' objective. The full budget utilization suggests efficient execution. However, without detailed daily performance data, it is challenging to identify specific trends, anomalies, or to provide a more granular assessment of the campaign's overall impact and efficiency over time.

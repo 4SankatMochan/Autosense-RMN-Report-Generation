@@ -1,0 +1,125 @@
+# Campaign Performance Report for CMP_2025_0011 (Brand Cif)
+
+## 1. Executive Summary
+
+This report provides a comprehensive analysis of Campaign ID CMP_2025_0011 for the brand Cif, focusing on its performance against the 'Consideration' objective. The campaign, which ran from May 8, 2025, to May 24, 2025, utilized 'Sponsored Product' media types across the 'Onsite' channel.
+
+The campaign's planned spend was 90.9, with actual spend matching this figure as of the latest available date. Daily ad spend remained highly consistent at approximately 5.35 throughout the campaign duration, indicating a stable budget allocation. While daily impressions and clicks varied, the campaign consistently achieved 1 conversion per day, with a consistent daily CTR of 0.9% and conversion rates between 10% and 15%. Return on Ad Spend (ROAS) fluctuated daily, ranging from a low of 6.1 to a high of 11.82, and Cost Per Acquisition (CPA) remained constant at 5.35.
+
+Key performance indicators for the 'Onsite' channel show a total ad spend of 818.1, generating 99,782 impressions, reaching 4,451 unique users, and achieving 98 clicks, resulting in a CTR of 0.098216. The consistent daily spend and conversions, alongside varying engagement metrics, suggest a need for optimization strategies to maximize impressions and clicks within the established budget.
+
+## 2. Context
+
+### 2.1. Campaigns
+
+This report details the performance of a specific campaign:
+
+*   **Campaign ID**: CMP_2025_0011
+*   **Campaign Name**: CMP_2025_0011 - Cif - Onsite - Consideration - Sponsored Product - 20250508-20250524
+*   **Brand Name**: Cif
+*   **Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub-Objective**: Engagement / Clicks
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-05-08
+    *   **End Date**: 2025-05-24
+*   **Planned Spend**: 90.9
+*   **Actual Spend**: 90.9 (as of the latest available date)
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+This report analyzes Campaign ID CMP_2025_0011 for the brand Cif, which aimed for 'Consideration' with a sub-objective of 'Engagement / Clicks'. The campaign ran from May 8, 2025, to May 24, 2025, utilizing 'Sponsored Product' media on the 'Onsite' channel. The analysis focuses on understanding spending patterns, key performance indicators (KPIs), and overall campaign impact to inform future marketing strategies.
+
+### 3.2. Overall Performance
+
+The campaign successfully utilized its planned budget, with an actual spend of 90.9 against a planned spend of 90.9. Daily ad spend was remarkably consistent, averaging approximately 5.35 throughout the campaign period. Despite this stable spend, impressions and clicks showed variability. The campaign consistently delivered 1 conversion per day, maintaining a daily CTR of 0.9% and conversion rates between 10% and 15%. ROAS fluctuated significantly, ranging from 6.1 to 11.82, while CPA remained constant at 5.35.
+
+### 3.3. Channel Performance
+
+The 'Onsite' channel was the sole channel for this campaign. It generated 99,782 impressions and 98 clicks, with a unique reach of 4,451. The CTR for the Onsite channel was calculated as 0.098216. The total ad spend attributed to this channel was 818.1, which is notably higher than the overall campaign's total actual spend of 90.9, suggesting a potential discrepancy in how 'Total_Ad_Spend' is aggregated or reported for the channel versus the overall campaign.
+
+### 3.4. Optimization Insight
+
+The consistent daily spend and conversion rate, coupled with fluctuating impressions, clicks, and ROAS, indicate opportunities for optimizing ad creative and targeting. Given the fixed daily budget, strategies should focus on maximizing engagement (impressions and clicks) to improve the overall efficiency and ROAS. Further investigation into the discrepancy between overall campaign spend and channel-specific total ad spend is recommended.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Campaign ID    | Campaign Name                                                      | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :------------- | :----------------------------------------------------------------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| CMP_2025_0011 | CMP_2025_0011 - Cif - Onsite - Consideration - Sponsored Product - 20250508-20250524 | 90.9          | Consideration      | 90.9           | 100%                          |
+
+*Note: The 'Total Ad Spend' in this summary reflects the overall campaign's actual spend, which aligns with the planned spend. A higher 'Total Ad Spend' (818.1) was reported for the 'Onsite' channel in the detailed metrics table below, which may represent a different aggregation or reporting scope.*
+
+### 4.2. Objective Consideration
+
+The following table presents key performance indicators for the 'Consideration' objective, broken down by channel:
+
+| Channel | Total_Ad_Spend | Impressions | Unique_Reach | Clicks | CTR      | CPC      | CPCV |
+| :------ | -------------: | ----------: | -----------: | -----: | :------- | :------- | :--- |
+| Onsite  |          818.1 |       99782 |         4451 |     98 | 0.098216 | 8.347959 | N/A  |
+
+*Note: The 'Total_Ad_Spend' for the 'Onsite' channel (818.1) is significantly higher than the overall campaign's actual spend (90.9). This may indicate a different scope or aggregation for channel-level reporting.*
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Visualizations
+
+#### 5.1.1. Daily Ad Spend Trend
+
+Image 1: Daily Ad Spend for Campaign CMP_2025_0011 (Brand Cif)
+gs://acn-cda-adk-staging/root/user/4bb24ef1-5ec0-4410-8cbc-e52bd64909b4/for_campaign_id_cmp_2025_0011_and_brand_cif,_analyze_the_'total_ad_spend'_on_a_weekly_basis._provide_insights_into_spending_patterns_and_trends_over_time._include_a_visualization,_such_as_a_line_graph,_showing_the_weekly_'total_ad_spend'_to_highlight_VizChart.png/0
+
+The line chart above visualizes the daily ad spend for Campaign CMP_2025_0011 (Brand Cif) from May 8th, 2025, to May 24th, 2025. The daily ad spend for this campaign remained consistent at approximately $5.35 throughout the visualized period. There are no significant fluctuations, changes, or anomalies in the daily spending patterns during these dates, suggesting a very stable, possibly fixed, daily budget allocation for ad spend within this timeframe.
+
+#### 5.1.2. Weekly Impressions Trend
+
+Image 2: Weekly Impressions for Campaign CMP_2025_0011 (Brand Cif)
+gs://acn-cda-adk-staging/root/user/4bb24ef1-5ec0-4410-8cbc-e52bd64909b4/for_campaign_id_cmp_2025_0011_and_brand_cif,_analyze_the_'impressions'_generated_weekly._describe_the_trends_in_impressions_over_the_campaign_duration_and_identify_any_periods_of_unusually_high_or_low_performance._include_a_visualization,_such_as_a_b_VizChart.png/0
+
+This visualization displays the weekly impressions generated by Campaign CMP_2025_0011. While specific textual insights into trends or anomalies are not provided, the chart serves to illustrate the distribution of impressions over the campaign's duration.
+
+### 5.2. Campaign Details
+
+*   **Campaign Name**: CMP_2025_0011 - Cif - Onsite - Consideration - Sponsored Product - 20250508-20250524
+*   **Campaign ID**: CMP_2025_0011
+*   **Campaign Duration**: 2025-05-08 to 2025-05-24
+*   **KPIs Analyzed**: Impressions, Unique Reach, Clicks, CTR, CPC, CPCV, Conversions, Conversion Rates, ROAS, CPA.
+*   **Campaign Objective**: Consideration
+*   **Metrics**:
+    *   **Impressions**: 99,782 (total for Onsite channel)
+    *   **ROAS**: Fluctuated daily, with a high of 11.82 on May 17 and a low of 6.1 on May 9.
+    *   **Conversions**: Consistently 1 per day.
+    *   **CTR**: 0.098216 (for Onsite channel). *Note: Daily CTR was consistently reported as 0.9% in another summary, indicating a potential difference in aggregation or calculation basis.*
+
+### 5.3. Campaign Analysis Text
+
+The campaign demonstrated a highly consistent daily ad spend of approximately 5.35 from May 8, 2025, to May 24, 2025. This stability suggests a fixed daily budget. Impressions, however, varied significantly on a daily basis, ranging from 1,979 to 9,177, indicating fluctuations in ad visibility or reach. Daily clicks also varied, from 4 to 10.
+
+Despite the variability in impressions and clicks, the campaign consistently achieved 1 conversion per day. The daily Click-Through Rate (CTR) was consistently 0.9%, and conversion rates ranged between 10% and 15%. Cost Per Click (CPC) showed some fluctuation, from 0.53 to 1.34, while Cost Per Acquisition (CPA) remained constant at 5.35. Return on Ad Spend (ROAS) was dynamic, with a peak of 11.82 on May 17 and a low of 6.1 on May 9, reflecting the varying efficiency of the daily spend in generating value.
+
+### 5.4. Overall Campaign Impact
+
+The campaign successfully maintained a consistent daily budget and achieved a steady stream of conversions. The primary impact was in driving consideration, as evidenced by the impressions and clicks generated. The consistent daily conversions and CPA indicate a predictable cost per acquisition, which is valuable for budget planning. However, the varying impressions, clicks, and ROAS suggest that while the budget was stable, the effectiveness of ad delivery and user engagement fluctuated. Optimizing these aspects could lead to a more consistent and higher ROAS.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Conduct a deeper dive into the daily fluctuations of impressions and clicks, correlating them with specific ad creatives, targeting parameters, and time-of-day performance. Investigate the discrepancy in 'Total Ad Spend' between the overall campaign and the 'Onsite' channel. Clarify the correct CTR percentage (0.098216 vs. 0.9%) and its implications.
+*   **Objective**: To understand the underlying drivers of engagement variability and reconcile data discrepancies for accurate performance assessment.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Explore opportunities to dynamically adjust daily ad spend based on predicted periods of high impression and click potential, rather than a fixed daily budget. Implement A/B testing for different bidding strategies to optimize for higher ROAS.
+*   **Objective**: To maximize impressions and clicks within the campaign budget, leading to improved overall engagement and ROAS.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Given the consistent daily spend but varying engagement, systematically test different ad creatives and landing page variations. Focus on elements that can improve CTR and conversion rates.
+*   **Objective**: To enhance user engagement and conversion efficiency, thereby stabilizing and potentially increasing ROAS.

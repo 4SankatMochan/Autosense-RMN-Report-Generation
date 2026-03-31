@@ -7,6 +7,7 @@ from .subagents.Campaign_comparison.agent import campaign_comparison_root_agent
 from .subagents.Executive_summary.agent import executive_summary_root_agent
 from .subagents.Recommendation.agent import recommendation_root_agent
 from google.adk.agents.sequential_agent import SequentialAgent
+from .prompts import Execution_prompt as EXECUTION_PROMPT
 import time
 # async def agent_call(question, tool_context):
 #     agent_tool = AgentTool(agent=root_agent)
@@ -17,11 +18,18 @@ import time
  
 async def agent_call(question, tool_context):
     agent_tool = AgentTool(agent=root_agent)
- 
+
+    final_prompt = f"""
+    {EXECUTION_PROMPT}
+
+    User Question:
+    {question}
+    """
+
     try:
         result = await asyncio.wait_for(
             agent_tool.run_async(
-                args={"request": question},
+                args={"request": final_prompt},
                 tool_context=tool_context
             ),
             timeout=120
