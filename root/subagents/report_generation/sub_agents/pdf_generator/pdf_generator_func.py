@@ -473,7 +473,7 @@ class GCSJSONToPDF:
         if level <= 1:
             story.append(Spacer(1, 10))
 
-    def generate_pdf(self, json_input, output_filename="report.pdf", logo_path=None, cora_logo_path=None, gcs_pdf_path = None):
+    def generate_pdf(self, json_input, output_filename="report.pdf",clikable_path = None, logo_path=None, cora_logo_path=None, gcs_pdf_path = None):
         """Generate PDF from JSON input with Accenture branding and dual logos."""
         import json
 
@@ -585,10 +585,11 @@ class GCSJSONToPDF:
             print(f"bytes: {str(pdf_bytes)}")
             import gcsfs
             # gcs_pdf_path = f"gs://rmn-agentic/rmn_agent_engine_1/pdf2.pdf"
+
             fs = gcsfs.GCSFileSystem()
             with fs.open(gcs_pdf_path, "wb") as gcs_file:
                     gcs_file.write(pdf_bytes)
-            print(f"PDF  saved to '{gcs_pdf_path}' successfully.")
+            print(f"PDF  can be accessed at '{clikable_path}' successfully.")
             # print(f"✅ PDF generated successfully: {output_path}")
             return gcs_pdf_path
         except Exception as e:

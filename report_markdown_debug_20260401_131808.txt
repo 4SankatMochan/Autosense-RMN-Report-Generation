@@ -1,0 +1,128 @@
+```
+# Campaign Performance Report: CMP_2025_2158 - Lifebuoy
+
+## 1. Context
+
+### Campaigns
+
+*   **Campaign ID:** CMP_2025_2158
+*   **Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name:** Lifebuoy
+*   **Category:** Optimization-Based
+*   **Media Types:** In-App Ads
+*   **Channels:** App
+*   **Objective:** Retention
+*   **Sub-Objective:** Subscription or Refill
+*   **Campaign Duration:**
+    *   **Start Date:** 2025-06-13
+    *   **End Date:** 2025-07-20 (37 days)
+*   **Planned Spend:** 271.02
+*   **Actual Spend:** 813.06
+
+## 2. Customization Options
+
+*   **Timeline:** Full campaign period, Weekly report view, Daily report view
+*   **By Creative:** App, Channel-CTV, Onsite, Offsite, Instore
+
+## 3. Executive Summary
+
+### Overview
+
+The "CMP_2025_2158" campaign for Lifebuoy demonstrated strong financial efficiency and effective conversion generation, despite a relatively modest total spend. The campaign successfully drove a large volume of purchase intent (add to carts) and ultimately generated substantial sales and new brand customers at a low cost.
+
+### Overall Performance
+
+The campaign achieved an outstanding **Return on Ad Spend (ROAS) of 7.36**, generating $5,980.86 in sales value from a total spend of $813.06. The **Cost Per Acquisition (CPA) was highly efficient at $7.13**, indicating a low cost to acquire each conversion. It delivered significant visibility with **634,614 Total Impressions** and **134,820 Total Reach**. A strong **Conversion Rate of 12.46%** led to **114 Total Conversions**, with **33 new to brand conversions**, showcasing effective customer acquisition.
+
+### Channel/Format Performance
+
+The campaign was executed through **In-App Ads** on the **App** channel. While the **Click-Through Rate (CTR) was low at 0.14%**, resulting in 915 clicks, the **Cost Per Click (CPC) remained efficient at $0.89**. A remarkable **34,794 Total Add to Cart Events** were attributed to the campaign, alongside an **Average Dwell Time of 32.39 seconds**. This suggests that while direct clicks were moderate, the campaign had a substantial influence on user intent and deeper engagement on the platform, likely through view-through conversions or other attribution models. Video engagement metrics (starts, plays, completions, average watch time) were explicitly noted as not significant for this campaign.
+
+### Optimization Insight
+
+The campaign exhibits a trend of high return on investment and efficient conversion acquisition. The exceptionally high number of "Add to Cart Events" (34,794) compared to "Total Clicks" (915) is notable, indicating a significant influence beyond direct clicks. The primary area for review would be the lack of performance in video engagement, if that was a strategic objective. Otherwise, the campaign demonstrated robust performance in its core sales and conversion objectives.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 813.06 | 300.00% |
+
+### Objective: Retention
+
+The campaign's primary objective was 'Retention'. The following metrics reflect its performance towards this goal:
+
+| Channel | Total Ad Spend | Conversions | CVR | Total Campaign Revenue | ROAS |
+| :------ | :------------- | :---------- | :-- | :--------------------- | :--- |
+| App | 813.06 | 114 | 12.46% | 5980.86 | 7.36 |
+
+## 5. Campaign Wise Analysis
+
+### Visual Layers Per Objective
+
+*   Awareness
+*   Consideration
+*   Conversion
+*   Retention
+
+### Visualizations
+
+*   Impressions Reach Trend: Line Chart
+*   CTR Trend: Line Chart
+*   Spend vs Revenue: Column Chart
+*   ROAS Trend: Line Chart
+*   Frequency Distribution: Dual Axis Chart
+*   Add to Cart Funnel: Funnel Chart
+*   ROAS by Channel: Bar Chart
+*   Channel Comparison Retention CVR: Bar Chart
+*   Viewed vs Clicked Units: Dual Axis Line
+*   Conversion Funnel: Funnel Chart
+*   Channel-wise Reach CPM: Clustered Bar Chart
+*   CPA vs CVR: Scatter Plot
+
+### Campaign Details
+
+*   **Campaign Name:** CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Campaign ID:** CMP_2025_2158
+*   **Campaign Duration:** From 2025-06-13 to 2025-07-20 (37 days)
+*   **KPIs Analyzed:** Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, CPCV, Viewed Units, Conversions, CVR, ROAS, CPA, Add to Cart Events, Dwell Time.
+*   **Campaign Objective:** Retention
+*   **Metrics:**
+    *   **Impressions:** 634,614
+    *   **ROAS:** 7.36
+    *   **Conversions:** 114
+    *   **CTR:** 0.14%
+*   **Campaign Analysis Text:**
+    The "CMP_2025_2158" campaign for Lifebuoy demonstrated strong financial efficiency and effective conversion generation, despite a relatively modest total spend.
+
+    **Key KPI Performance:**
+    *   **Financial Efficiency:** The campaign achieved an outstanding **Return on Ad Spend (ROAS) of 7.36**, generating $5,980.86 in sales value from a total spend of $813.06. The **Cost Per Acquisition (CPA) was highly efficient at $7.13**, indicating a low cost to acquire each conversion.
+    *   **Awareness & Engagement:** The campaign delivered significant visibility with **634,614 Total Impressions** and **134,820 Total Reach**. While the **Click-Through Rate (CTR) was low at 0.14%**, resulting in 915 clicks, the **Cost Per Click (CPC) remained efficient at $0.89**.
+    *   **Conversion Success:** A strong **Conversion Rate of 12.46%** led to **114 Total Conversions**, with **33 new to brand conversions**, showcasing effective customer acquisition.
+    *   **High Engagement Signals (Indirect):** A remarkable **34,794 Total Add to Cart Events** were attributed to the campaign, alongside an **Average Dwell Time of 32.39 seconds**. This suggests that while direct clicks were moderate, the campaign had a substantial influence on user intent and deeper engagement on the platform, likely through view-through conversions or other attribution models.
+
+    **Detected Anomalies:**
+    *   **Video Engagement:** Video engagement metrics (starts, plays, completions, average watch time) were explicitly noted as **not significant** for this campaign. If video was a planned component of the strategy, this represents an area where performance was not met.
+    *   **Add to Cart vs. Clicks:** The exceptionally high number of "Add to Cart Events" (34,794) compared to "Total Clicks" (915) is notable. This indicates a significant influence of the campaign beyond direct clicks, potentially through view-through attribution or indirect impact on user behavior.
+*   **Overall Campaign Impact:**
+    The campaign exhibits a trend of **high return on investment and efficient conversion acquisition**. Despite a lower direct click-through rate, the campaign successfully drove a large volume of purchase intent (add to carts) and ultimately generated substantial sales and new brand customers at a low cost. The primary area for review would be the lack of performance in video engagement, if that was a strategic objective. Otherwise, the campaign demonstrated robust performance in its core sales and conversion objectives.
+
+## 6. Recommendations
+
+### Granular Temporal and Contextual Analysis
+
+*   **Action:** Investigate the discrepancy between planned and actual spend, as the campaign significantly overspent its budget (300% utilization). Additionally, conduct a deeper dive into daily performance trends across channels for key metrics like ad spend, impressions, and unique reach, particularly for the 'Retention' objective, to identify specific periods of high and low efficiency.
+*   **Objective:** To understand the drivers behind budget overruns and to pinpoint optimal timing and channel allocation for future retention campaigns.
+
+### Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action:** Given the high ROAS and efficient CPA, evaluate the possibility of reallocating budget towards similar retention-focused campaigns or scaling this campaign's successful elements. Review bidding strategies to ensure continued efficiency while potentially increasing reach or conversion volume, especially considering the high volume of 'Add to Cart' events.
+*   **Objective:** To maximize return on investment and scale successful campaign strategies by leveraging insights from financial efficiency and conversion success.
+
+### Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action:** Despite a low CTR, the campaign generated significant 'Add to Cart' events. This suggests that the ad creative or landing page might be effectively influencing user intent even without direct clicks. Implement A/B testing for different ad creatives (especially video formats, given their low engagement), call-to-actions, and landing page experiences to further optimize the conversion funnel and improve direct engagement metrics like CTR.
+*   **Objective:** To enhance direct user engagement and conversion rates by refining creative and landing page elements, and to address the underperformance of video engagement if it is a strategic component.
+```

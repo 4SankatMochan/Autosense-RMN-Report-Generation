@@ -19,17 +19,17 @@ import time
 async def agent_call(question, tool_context):
     agent_tool = AgentTool(agent=root_agent)
 
-    final_prompt = f"""
-    {EXECUTION_PROMPT}
+    # final_prompt = f"""
+    # {EXECUTION_PROMPT}
 
-    User Question:
-    {question}
-    """
+    # User Question:
+    # {question}
+    # """
 
     try:
         result = await asyncio.wait_for(
             agent_tool.run_async(
-                args={"request": final_prompt},
+                args={"request": question},
                 tool_context=tool_context
             ),
             timeout=120
@@ -78,6 +78,7 @@ async def call_db_ds_agent(
     # -------- FIRST BATCH (4 prompts) --------
     tasks_1 = [agent_call(question, tool_context) for question in flat_prompts_1]
     results_1 = await asyncio.gather(*tasks_1)
+    print(results_1[:10])
  
     print("batch1_end", time.strftime('%H:%M:%S'))
  
@@ -87,13 +88,13 @@ async def call_db_ds_agent(
  
     tasks_2 = [agent_call(question, tool_context) for question in flat_prompts_2]
     results_2 = await asyncio.gather(*tasks_2)
+    print(results_2[:10])
  
     print("batch2_end", time.strftime('%H:%M:%S'))
  
  
-    # Combine results
+    #Combine results
     all_results = results_1 + results_2
- 
  
     # -------- THIRD PASS (Retry Failed) --------
     retry_prompts = [
@@ -115,7 +116,6 @@ async def call_db_ds_agent(
                 all_results[i] = retry_map[r["question"]]
  
         print("retry_end", time.strftime('%H:%M:%S'))
- 
  
     # -------- FINAL OUTPUT --------
     final_results = [r["result"] for r in all_results]

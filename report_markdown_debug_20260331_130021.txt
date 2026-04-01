@@ -1,0 +1,158 @@
+# Campaign Performance Report: CMP_2025_0001 - Dove
+
+## 1. Context
+
+### Campaigns
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Brand Name**: Dove
+*   **Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub-objective**: App Installs
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-08-02
+    *   **End Date**: 2025-09-06
+*   **Planned Spend**: 494.49
+*   **Actual Spend**: 54.94
+
+## 3. Executive Summary
+
+This report provides a comprehensive overview of Campaign CMP_2025_0001 for the brand Dove, focusing on its performance and key metrics. The campaign, with a "Consideration" objective and "App Installs" sub-objective, ran from August 2, 2025, to September 6, 2025. It was primarily executed through "Onsite" channels using "Sponsored Product" media.
+
+The campaign's planned spend was 494.49, with an actual spend of 54.94. While the campaign overview indicated a 100% spend utilization based on a total ad spend of 494.49, a detailed KPI summary reported a total ad spend of 4697.655. Key performance indicators include 96,550 impressions, 33,817 unique reach, and 546 clicks, resulting in a Click-Through Rate (CTR) of 1.066111% and a Cost Per Click (CPC) of 0.974444. Notably, there were no video completions or viewed units recorded, leading to an uncalculable Cost Per Completed View (CPCV).
+
+Daily analysis reveals a consistent daily ad spend of 27.47 for the Onsite channel between August 2nd and August 19th, 2025. Daily CTR fluctuated, with peaks on August 5th (1.5%), August 12th (1.72%), and August 19th (1.69%). Daily clicks also varied, reaching highs of 55 on August 18th and 45 on August 15th. The absence of video completions throughout the campaign period suggests a potential misalignment with the "Consideration" objective if video content was intended to drive engagement.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-08-02 | 2025-09-06 | CMP_2025_0001 | 494.49 | Consideration | 494.49 | 100% |
+
+### Objective Consideration
+
+#### Metrics Table
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Viewed Units |
+| :------ | :------------- | :---------- | :----------- | :----- | :-- | :-- | :--- | :----------- |
+| Onsite | 4697.655 | 96550 | 33817 | 546 | 1.066111 | 0.974444 | Cannot be calculated | 0 |
+
+## 5. Campaign-Wise Analysis
+
+### Campaign Details
+
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Campaign Objective**: Consideration
+*   **KPIs Analyzed**: Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, CPCV, Viewed Units
+
+#### Metrics
+
+*   **Impressions**: 96550
+*   **CTR**: 1.066111
+
+#### Campaign Analysis Text
+
+The campaign 'CMP_2025_0001' for the brand 'Dove' with a 'Consideration' objective was analyzed across several key performance indicators and daily trends.
+
+**Daily Ad Spend Trend:**
+The daily total ad spend for Campaign 'CMP_2025_0001' by 'Dove' with a 'Consideration' objective, specifically for the 'Onsite' channel, shows a consistent daily spend of 27.47 from August 2nd, 2025, to August 19th, 2025.
+
+**Daily Viewed Units (Video Completions):**
+For Campaign 'CMP_2025_0001' by brand 'Dove' with 'Consideration' objective, the daily video completions from August 2, 2025, to August 19, 2025, were 0 for each day. This indicates that despite the campaign running, no video content was fully viewed during this period. The daily spend associated with the campaign also shows approximately 27.47, implying that spend occurred without resulting in video completions.
+
+**Daily CPC Trend:**
+The daily CPC for 'Campaign CMP_2025_0001' by Dove with a 'Consideration' objective has been calculated as follows (note: the provided dates are from 2024, not the campaign's 2025 duration):
+
+| Date | Daily CPC |
+| :--------- | :-------- |
+| 2024-01-01 | 0.100000 |
+| 2024-01-02 | 0.108333 |
+| 2024-01-03 | 0.105455 |
+| 2024-01-04 | 0.107692 |
+| 2024-01-05 | 0.105172 |
+
+**Daily CTR Trend:**
+The daily CTR analysis for Campaign CMP_2025_0001 by Dove with a 'Consideration' objective is as follows:
+*   On 2025-08-02, the average CTR was 0.9%.
+*   On 2025-08-03, the average CTR was 0.9%.
+*   On 2025-08-04, the average CTR was 1.35%.
+*   On 2025-08-05, the average CTR was 1.5%.
+*   On 2025-08-06, the average CTR was 0.9%.
+*   On 2025-08-07, the average CTR was 0.9%.
+*   On 2025-08-08, the average CTR was 1.23%.
+*   On 2025-08-09, the average CTR was 0.9%.
+*   On 2025-08-10, the average CTR was 0.9%.
+*   On 2025-08-11, the average CTR was 0.9%.
+*   On 2025-08-12, the average CTR was 1.72%.
+*   On 2025-08-13, the average CTR was 0.9%.
+*   On 2025-08-14, the average CTR was 0.9%.
+*   On 2025-08-15, the average CTR was 0.9%.
+*   On 2025-08-16, the average CTR was 0.9%.
+*   On 2025-08-17, the average CTR was 0.9%.
+*   On 2025-08-18, the average CTR was 0.9%.
+*   On 2025-08-19, the average CTR was 1.69%.
+
+**Daily Unique Reach Trend by Channel:**
+The daily unique reach trend for Campaign 'CMP_2025_0001' by Dove, with a 'Consideration' objective, has been analyzed across different channels (note: the provided dates are from 2025-01, not the campaign's 2025-08 duration):
+
+| Date | Channel: Digital | Channel: Offline |
+| :--------- | :--------------- | :--------------- |
+| 2025-01-01 | 1145100.0 | 2000.0 |
+| 2025-01-02 | 889300.0 | NaN |
+| 2025-01-03 | 678900.0 | 3400.0 |
+| 2025-01-04 | 1234500.0 | NaN |
+| 2025-01-05 | 987600.0 | 1200.0 |
+| 2025-01-06 | 1112200.0 | NaN |
+| 2025-01-07 | 876500.0 | 2300.0 |
+| 2025-01-08 | 1000000.0 | NaN |
+| 2025-01-09 | 765400.0 | 4500.0 |
+| 2025-01-10 | 1345600.0 | NaN |
+
+**Daily Clicks Trend:**
+The daily clicks for the campaign 'CMP_2025_0001' by Dove with a 'Consideration' objective are as follows:
+*   2025-08-02: 25 clicks
+*   2025-08-03: 36 clicks
+*   2025-08-04: 30 clicks
+*   2025-08-05: 23 clicks
+*   2025-08-06: 21 clicks
+*   2025-08-07: 26 clicks
+*   2025-08-08: 41 clicks
+*   2025-08-09: 28 clicks
+*   2025-08-10: 28 clicks
+*   2025-08-11: 25 clicks
+*   2025-08-12: 23 clicks
+*   2025-08-13: 24 clicks
+*   2025-08-14: 28 clicks
+*   2025-08-15: 45 clicks
+*   2025-08-16: 19 clicks
+*   2025-08-17: 37 clicks
+*   2025-08-18: 55 clicks
+*   2025-08-19: 32 clicks
+
+#### Overall Campaign Impact
+
+The campaign successfully generated a significant number of impressions and unique reach, driving a moderate number of clicks with a CTR above 1%. The consistent daily ad spend suggests a steady allocation of resources. However, the complete absence of video completions or viewed units, despite the "Consideration" objective, indicates a potential gap in the campaign's execution or the effectiveness of its video assets, if any were used. The discrepancy in reported total ad spend between the summary and detailed KPI table (494.49 vs 4697.655) should be noted for future reconciliation.
+
+## 6. Recommendations
+
+### Granular Temporal and Contextual Analysis
+
+*   **Action**: Investigate the discrepancy in the reported Total Ad Spend (494.49 vs 4697.655) for Campaign CMP_2025_0001 to ensure accurate financial reporting and performance evaluation. Additionally, reconcile the date ranges for daily CPC and Unique Reach trends, which currently show data from 2024-01 and 2025-01 respectively, instead of the campaign's actual 2025-08 to 2025-09 duration.
+*   **Objective**: Enhance data accuracy and consistency for reliable campaign performance analysis and future budget planning.
+
+### Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Analyze the daily click and CTR trends to identify specific days or periods with higher engagement. Given the consistent daily ad spend, consider adjusting budget allocation to capitalize on peak performance days and potentially reduce spend on lower-performing days to optimize efficiency.
+*   **Objective**: Maximize campaign efficiency and return on ad spend by aligning budget distribution with periods of higher user interaction.
+
+### Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Address the zero video completions and viewed units by reviewing the creative assets, targeting, and placement strategy, especially if video content was intended to drive "Consideration" and "App Installs." If video was not a primary medium, clarify the expected engagement metrics for the "Consideration" objective.
+*   **Objective**: Improve the effectiveness of campaign creatives and landing page experiences to drive desired user actions, particularly for the "Consideration" objective and "App Installs" sub-objective.

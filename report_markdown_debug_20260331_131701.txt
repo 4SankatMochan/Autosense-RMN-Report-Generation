@@ -1,0 +1,102 @@
+# Campaign Performance Report: CMP_2025_0001 (Dove)
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaigns
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Brand Name**: Dove
+*   **Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub-Objective**: App Installs
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Planned Spend**: 494.49
+*   **Actual Spend**: 164.83
+
+## 2. Executive Summary
+
+This report details the performance of Campaign `CMP_2025_0001` for the brand Dove, which aimed for 'Consideration' with a sub-objective of 'App Installs'. The campaign, utilizing 'Sponsored Product' media on the 'Onsite' channel, had a planned spend of 494.49 but an actual spend of 164.83, resulting in a budget utilization of 33.33%.
+
+The campaign generated a total of 88,590 impressions and 548 clicks over the analyzed period (August 2 to August 19, 2025). The average Cost Per Click (CPC) was approximately 1.09. Daily performance metrics show significant fluctuations in impressions, clicks, and CPC, indicating dynamic campaign delivery and user engagement. A notable finding is the complete absence of video engagement metrics (CPCV, viewed units), suggesting either no video assets were deployed or a critical tracking issue. These insights highlight opportunities for optimizing budget allocation, refining bidding strategies, and investigating video content integration to maximize campaign effectiveness.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+Table 1: Campaign CMP_2025_0001 Summary
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-08-02 | 2025-09-06 | CMP_2025_0001 | 494.49 | Consideration | 164.83 | 33.33% |
+
+### 3.2. Objective Consideration
+
+The primary objective of Campaign `CMP_2025_0001` was 'Consideration', with a sub-objective of 'App Installs'. The campaign was run on the 'Onsite' channel using 'Sponsored Product' media.
+
+Table 2: Key Performance Indicators for Consideration Objective
+
+| Channel | Total Ad Spend | Impressions | Clicks | CPC | CPCV | Viewed Units |
+| :------ | :------------- | :---------- | :----- | :-- | :--- | :----------- |
+| Onsite | 164.83 | 88590 | 548 | 1.09 | Undefined | 0 |
+
+*Note: CPCV is undefined due to zero video completions. Viewed Units are 0 as no video activity was recorded.*
+
+## 4. Campaign Wise Analysis
+
+### 4.1. Campaign Details
+
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Duration**: 2025-08-02 to 2025-09-06
+*   **KPIs Analyzed**: Impressions, Clicks, Cost Per Click (CPC), Cost Per Completed View (CPCV), Viewed Units
+*   **Campaign Objective**: Consideration
+*   **Metrics**:
+    *   **Impressions**: 88,590
+    *   **Clicks**: 548
+    *   **CPC (Average)**: 1.09
+
+### 4.2. Campaign Analysis Text
+
+The campaign `CMP_2025_0001` for Dove, targeting 'Consideration' and 'App Installs', ran from August 2, 2025, to September 6, 2025. The actual spend of 164.83 against a planned spend of 494.49 indicates a budget utilization of 33.33% during the analyzed period.
+
+#### 4.2.1. Daily Impressions Trend
+
+The campaign generated a total of 88,590 impressions. Daily impressions showed considerable variability, ranging from a low of 1,339 on August 12 to a peak of 9,431 on August 18. Other days with high impressions include August 16 (9,117), August 14 (8,141), August 11 (8,078), and August 2 (8,025). This fluctuation suggests dynamic ad delivery patterns or audience availability throughout the campaign.
+
+#### 4.2.2. Daily Clicks Trend
+
+A total of 548 clicks were recorded for the campaign. Similar to impressions, daily clicks also varied, with the highest number of clicks occurring on August 18 (55 clicks) and August 15 (45 clicks). Days with lower click volumes included August 6 (21 clicks) and August 5 (23 clicks). Generally, higher impression days correlated with higher click volumes, indicating that increased visibility translated into user engagement.
+
+#### 4.2.3. Daily Cost Per Click (CPC) Analysis
+
+The average CPC for the campaign was 1.09. Daily CPC values fluctuated, with the lowest recorded CPC on August 18 (0.50) and the highest on August 16 (1.45). It is notable that August 18, which had the lowest CPC, also recorded the highest number of clicks, suggesting efficient spend on that particular day. Conversely, August 16, with the highest CPC, had fewer clicks, indicating potentially less efficient ad delivery or targeting on that day.
+
+#### 4.2.4. Video Performance (CPCV and Viewed Units)
+
+Despite the campaign's objective of 'Consideration' and sub-objective of 'App Installs', which might typically involve video content, the data indicates a complete absence of video engagement. For all dates in August 2025, there were no video starts, plays, quartile views, completions, or average watch time recorded. Consequently, the Cost Per Completed View (CPCV) is undefined due to zero video completions, and viewed units are reported as 0. This suggests that either video assets were not part of this specific 'Sponsored Product' campaign, or there was a critical issue with video performance tracking.
+
+### 4.3. Overall Campaign Impact
+
+The campaign successfully delivered a significant number of impressions and clicks, contributing to the 'Consideration' objective. However, the substantial underutilization of the budget (33.33% actual spend) and the complete lack of video engagement metrics are key areas that warrant further investigation. The daily fluctuations in performance metrics also highlight opportunities for optimizing campaign execution.
+
+## 5. Recommendations
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Conduct a deeper dive into the daily fluctuations of impressions, clicks, and CPC. Analyze potential correlations with creative rotations, targeting adjustments, competitive activity, or specific day-of-week/time-of-day performance.
+*   **Objective**: Gain a more precise understanding of performance drivers to inform future campaign scheduling, creative deployment, and bidding strategies for improved efficiency and impact.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Investigate the reasons behind the significant underutilization of the planned budget (only 33.33% spent). Determine if this was due to campaign settings, audience saturation, or other factors. Based on the insights from daily performance, adjust bidding strategies and budget pacing to maximize spend efficiency and reach the full potential of the allocated budget.
+*   **Objective**: Ensure optimal budget deployment to maximize campaign reach and engagement, aligning actual spend more closely with planned investment.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Address the complete absence of video engagement metrics (CPCV, Viewed Units). Confirm whether video assets were intended for this 'Sponsored Product' campaign. If so, troubleshoot tracking mechanisms and ensure video content is properly integrated and measured. If not, verify that the campaign setup and creative strategy are aligned with the 'App Installs' sub-objective and explore opportunities for incorporating effective creative formats.
+*   **Objective**: Validate the effectiveness of all campaign components and ensure accurate measurement of performance, especially for a 'Consideration' objective that might benefit from rich media engagement.

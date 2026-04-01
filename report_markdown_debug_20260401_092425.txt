@@ -1,0 +1,140 @@
+# Campaign Performance Report: Kissan - CMP_2025_0005
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaigns
+
+The analysis focuses on Campaign ID 'CMP_2025_0005' for the brand 'Kissan'.
+
+*   **Campaign Name:** CMP_2025_0005
+*   **Brand Name:** Kissan
+*   **Category:** Optimization-Based
+*   **Media Type:** Sponsored Product
+*   **Channels:** Onsite
+*   **Objective:** Consideration
+*   **Sub-objective:** App Installs
+*   **Duration:** From 2025-07-29 to 2025-09-24
+*   **Planned Spend:** 2760.83
+*   **Actual Spend:** 31749.545
+
+## 2. Customization Options
+
+*   **Timeline:** Full campaign period, Weekly report view, Daily report view
+*   **By Creative:** App, Channel-CTV, Onsite, Offsite, Instore
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+Campaign 'CMP_2025_0005' for brand 'Kissan', with a 'Consideration' objective, ran from 2025-07-29 to 2025-09-24. The campaign's planned spend was $2,760.83, but the actual spend reached $31,749.545, indicating a spend utilization of 11.5 times the planned budget. Despite this significant overspend, the campaign demonstrated strong financial performance with an excellent Return on Ad Spend (ROAS) of 9.61 and an efficient Cost Per Acquisition (CPA) of $9.70. Engagement metrics were robust, including 286,942 impressions, 6,436 clicks, and a Click-Through Rate (CTR) of 1.98%, leading to a strong conversion rate of 10.49%. However, two critical anomalies were identified: an extremely high ad frequency of 126.76 and a substantial cart abandonment rate, with 16,404 'Add to Carts' but only 608 'Conversions'.
+
+### 3.2. Overall Performance
+
+The campaign demonstrates a highly profitable financial performance with an excellent Return on Ad Spend (ROAS) of 9.61 and a very efficient Cost Per Acquisition (CPA) of $9.70. The campaign generated a significant number of impressions (286,942) and clicks (6,436) with a reasonable Click-Through Rate (CTR) of 1.98%. The average conversion rate of 10.49% is strong, indicating that users who click are highly likely to convert into customers.
+
+### 3.3. Channel/Format Performance
+
+The campaign primarily utilized 'Sponsored Product' media type on 'Onsite' channels. Visualizations of daily trends for total ad spend, impressions, and unique reach across channels provide insights into how performance varies over time. These trends allow for a direct comparison of daily performance, highlighting fluctuations and patterns in engagement and spend.
+
+### 3.4. Optimization Insight
+
+Addressing the anomalies of extremely high ad frequency and, more critically, the high cart abandonment rate, could significantly enhance the campaign's overall effectiveness and profitability. The campaign also has a substantial remaining budget of $57,977.43, which could be leveraged for further optimization or exploration of new strategies.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-07-29 | 2025-09-24 | CMP_2025_0005 | 2760.83       | Consideration      | 31749.545      | 11.5                          |
+
+### 4.2. Objective: Consideration
+
+The following metrics provide an overview of the campaign's performance against its 'Consideration' objective.
+
+| Channel | Total Ad Spend | Impressions | Clicks | CTR   | Add To Cart |
+| :------ | :------------- | :---------- | :----- | :---- | :---------- |
+| Overall | 31749.545      | 286,942     | 6,436  | 1.98% | 16,404      |
+
+*Note: Unique Reach, CPC, CPCV, Viewed Units, and Clicked Units were not explicitly provided as single summary metrics in the available data.*
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Visual Layers Per Objective
+
+*   Awareness
+*   Consideration
+*   Conversion
+*   Retention
+
+### 5.2. Visualizations
+
+*   Impressions Reach Trend: Line Chart
+*   CTR Trend: Line Chart
+*   Spend vs Revenue: Column Chart
+*   ROAS Trend: Line Chart
+*   Frequency Distribution: Dual Axis Chart
+*   Add-to-Cart Funnel: Funnel Chart
+*   ROAS by Channel: Bar Chart
+*   Channel Comparison Retention CVR: Bar Chart
+*   Viewed vs Clicked Units: Dual Axis Line
+*   Conversion Funnel: Funnel Chart
+*   Channel-wise Reach CPM: Clustered Bar Chart
+*   CPA vs CVR: Scatter Plot
+
+### 5.3. Campaign Details
+
+*   **Campaign Name:** CMP_2025_0005
+*   **Campaign ID:** CMP_2025_0005
+*   **Campaign Duration:** From 2025-07-29 to 2025-09-24
+*   **KPIs Analyzed:** ROAS, CPA, Impressions, Clicks, CTR, Conversion Rate, Frequency, Add to Carts, Conversions.
+*   **Campaign Objective:** Consideration
+
+#### 5.3.1. Metrics
+
+*   **Impressions:** 286,942
+*   **ROAS:** 9.61
+*   **Conversions:** 608
+*   **CTR:** 1.98%
+
+#### 5.3.2. Campaign Analysis Text
+
+The analysis of Campaign 'CMP_2025_0005' for brand 'Kissan' reveals a financially successful campaign with strong engagement, but also highlights critical areas for optimization.
+
+**Daily Trends for Total Ad Spend**
+Image 1: Daily Trend of Total Ad Spend by Channel for Campaign 'CMP_2025_0005', Brand 'Kissan' (Consideration Objective)
+gs://acn-cda-adk-staging/root/user/3fec4a72-31a4-4d16-af00-37145f2476e8/<function_execution_prompt_at_0x7f7f84c99a80>_user_question:_for_campaign_cmp_2025_0005_by_brand_kissan,_with_a_consideration_objective,_what_are_the_daily_trends_for_total_ad_spend,_how_does_it_compare_across_channels,_and_what_visualizations_best_r_VizChart.png/0
+The line chart titled "Daily Trend of Total Ad Spend by Channel for Campaign 'CMP_2025_0005', Brand 'Kissan' (Consideration Objective)" illustrates the total daily ad spend over time, broken down by different campaign channels. The x-axis represents the date, and the y-axis shows the total daily spend in dollars. This visualization allows for easy comparison of spending trends across various channels and identification of any significant fluctuations or patterns over the specified period.
+
+**Daily Trends for Impressions**
+Image 2: Daily Trends for Total Impressions Across Different Channels
+gs://acn-cda-adk-staging/root/user/3fec4a72-31a4-4d16-af00-37145f2476e8/<function_execution_prompt_at_0x7f7f84c99a80>_user_question:_for_campaign_cmp_2025_0005_by_brand_kissan,_with_a_consideration_objective,_what_are_the_daily_trends_for_impressions,_how_do_they_compare_across_channels,_and_what_visualizations_best_repr_VizChart.png/0
+The line chart displays the daily trends for total impressions across different channels. The X-axis represents the 'daily_date', showing the progression of time, and the Y-axis represents 'Total Impressions', indicating the volume of impressions. Each line on the chart corresponds to a different 'channel', allowing for a direct comparison of impression trends between channels over the specified period. This visualization helps in understanding how impression performance varies daily for each channel.
+
+**Daily Trends for Unique Reach**
+Image 3: Daily Trends of Unique Reach by Channel for Campaign CMP_2025_0005
+gs://acn-cda-adk-staging/root/user/3fec4a72-31a4-4d16-af00-37145f2476e8/<function_execution_prompt_at_0x7f7f84c99a80>_user_question:_for_campaign_cmp_2025_0005_by_brand_kissan,_with_a_consideration_objective,_what_are_the_daily_trends_for_unique_reach,_how_does_it_compare_across_channels,_and_what_visualizations_best_rep_VizChart.png/0
+The line chart titled "Daily Trends of Unique Reach by Channel for Campaign CMP_2025_0005" effectively visualizes the fluctuations in unique reach over time, broken down by different channels. The x-axis represents the 'Date', and the y-axis shows 'Unique Reach'. This visualization clearly demonstrates the daily trends for each channel, allowing for easy comparison of unique reach performance across different channels for the specified campaign.
+
+#### 5.3.3. Overall Campaign Impact
+
+The campaign is financially successful due to its high ROAS and efficient CPA. However, addressing the anomalies of extremely high ad frequency and, more critically, the high cart abandonment rate, could significantly enhance its overall effectiveness and profitability. The campaign did not utilize video ads or direct messaging/email components, and has a substantial remaining budget of $57,977.43.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Action:** Investigate the extremely high ad frequency (126.76) to determine if it's intentional or a misconfiguration. Implement frequency capping strategies to prevent ad fatigue, negative brand perception, and potentially inefficient ad spend. This should involve a detailed analysis of user exposure patterns and their impact on engagement and conversion.
+*   **Objective:** Enhance user experience, prevent ad fatigue, and improve ad spend efficiency by ensuring optimal ad delivery.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action:** Analyze the significant drop-off between 'Add to Carts' (16,404) and 'Conversions' (608). This high cart abandonment rate suggests substantial friction in the checkout process. Conduct A/B testing on checkout flow, simplify forms, improve page load times, and implement targeted retargeting campaigns for users who abandon their carts.
+*   **Objective:** Increase conversion rates significantly by reducing friction in the purchase journey and maximizing profitability from engaged users.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action:** Explore the utilization of additional media types, such as video ads, and consider integrating direct messaging or email components into future campaigns, as these were not used in CMP_2025_0005. With a substantial remaining budget of $57,977.43, there is an opportunity to test new channels or creative formats to diversify reach and engagement.
+*   **Objective:** Expand campaign reach, test new engagement strategies, and optimize budget allocation to uncover new performance drivers and improve overall campaign effectiveness.

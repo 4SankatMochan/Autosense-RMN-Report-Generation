@@ -97,8 +97,7 @@ def return_instructions_root() -> str:
         #   * **BQ ML `call_bqml_agent`:** Query the BQ ML Agent if the user asks for it. Ensure that:
         #   A. You provide the fitting query.
         #   B. You pass the project and dataset ID.
-        #   C. You pass any additional context.
- 
+        #   C. You pass any additional context. 
  
         **Key Reminder:**
         * ** You do have access to the database schema! Do not ask the db agent about the schema, use your own information first!! **
@@ -110,6 +109,8 @@ def return_instructions_root() -> str:
         * **IF call_ds_agent is called with valid result, JUST SUMMARIZE ALL RESULTS FROM PREVIOUS STEPS USING RESPONSE FORMAT!**
         * **IF data is available from prevoius call_db_agent and call_ds_agent, YOU CAN DIRECTLY USE call_ds_agent TO DO NEW ANALYZE USING THE DATA FROM PREVIOUS STEPS**
         * **DO NOT ask the user for project or dataset ID. You have these details in the session context. For BQ ML tasks, just verify if it is okay to proceed with the plan.**
+        * **Ensure tables are returned only when requested and should be clear and structured. **
+        * **Provide charts or visual insights when requested
     </TASK>
  
  

@@ -92,8 +92,9 @@ async def generate_pdf_report(tool_context: Optional[ToolContext] = None):
         user_id = tool_context.state["user_id"]
         print(f"user_id : {user_id}")
         output_filename = f"gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf"
-        output_path = pdf_generator.generate_pdf(json_input, gcs_pdf_path = output_filename)
+        clickable_filename = f"https://storage.cloud.google.com/acn-cda-adk-staging/root/user/{session_id}/final_report.pdf"
+        output_path = pdf_generator.generate_pdf(json_input, gcs_pdf_path = output_filename, clikable_path= clickable_filename)
         print('PDF end time',time.strftime('%H:%M:%S'))
-        return output_path
+        return output_path, clickable_filename
     except Exception as e:
         return f"An error occurred while generating the PDF: {str(e)}"

@@ -616,13 +616,15 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
             Context
             Generate single prompts requesting campaign details including:
             Campaign ID, Campaign Name, Brand Name, Category, Media Types, Channel,
-            Objective, Sub-Objective, Campaign Duration, Planned Spend, Actual Spend.
+            Objective, Sub-Objective, Campaign Duration, Planned Spend, Actual Spend for {time_period}.
 
             Campaign Overview
             Generate multiple prompts requesting campaign overview tables including:
             Campaign ID, Campaign Name, Planned Spend, Campaign Objective,
             Total Ad Spend, Spend Utilization in one prompt  and KPI tables based on {focus_kpis} in another single prompt.
-
+            Here , we want aggregated values (over date range grouped by channel) of KPIs.
+            -Should strictly not be any example from all values.
+ 
             Campaign-wise Analysis
             Generate prompts requesting analysis for each KPI in {focus_kpis[:3]} including:
             *trend analysis, *channel comparison, and *visualizations.
@@ -639,6 +641,12 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
 
             Also generate single prompt asking for a concise campaign performance summary
             highlighting KPI performance, anomalies, and trends.
+
+
+            DATA FILTERING
+                Always filter by:
+                • Campaign ID
+                • Brand           
 
             Return JSON:
 

@@ -1,0 +1,51 @@
+# Campaign Performance Report: Dove - CMP_2025_0001
+
+## 1. Context
+
+This report provides a comprehensive overview of the performance for Campaign CMP_2025_0001 for the brand Dove. It is prepared for the Marketing and Sales leadership team to understand campaign effectiveness and inform future strategic decisions.
+
+### 1.1. Campaign Details
+
+The following are the key details for Campaign CMP_2025_0001:
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Brand Name**: Dove
+*   **Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub-objective**: App Installs
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Planned Spend**: 494.49
+*   **Actual Spend**: 164.83
+
+## 2. Executive Summary
+
+Campaign CMP_2025_0001 for Dove, primarily focused on 'Consideration' with a sub-objective of 'App Installs' via 'Onsite' channels and 'Sponsored Product' media type, demonstrated a significant spend utilization. With a planned spend of 494.49, the total actual spend reached 4944.9, indicating a spend utilization of 1000% relative to the planned budget. The campaign ran from August 2, 2025, to September 6, 2025. Daily ad spend trends by channel were analyzed, providing insights into how spending was distributed and evolved over the campaign's duration.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+The table below summarizes the key financial and objective-related aspects of Campaign CMP_2025_0001.
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-08-02 | 2025-09-06 | CMP_2025_0001 | 494.49        | Consideration      | 4944.9         | 1000.0%                       |
+
+### 3.2. Objective: Consideration
+
+#### 3.2.1. Daily Ad Spend Trend Analysis
+
+An analysis of the daily ad spend for Campaign CMP_2025_0001, with its 'Consideration' objective, was performed to understand spending patterns across different channels over time. The daily ad spend for the campaign was analyzed and visualized by channel. This analysis provides a clear comparison of how spending was distributed and changed across various channels day by day throughout the campaign duration.
+
+## 4. Campaign-Wise Analysis
+
+### 4.1. Campaign Details
+
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Campaign Objective**: Consideration
+*   **Campaign Analysis Text**: The daily ad spend for Campaign `CMP_2025_0001` with a 'Consideration' objective has been analyzed and visualized by channel. The line chart displayed shows the trend of daily ad spend for each channel over the campaign duration. This visualization allows for a clear comparison of how spending has been distributed and changed across different channels day by day. This completes the analysis for the requested query.

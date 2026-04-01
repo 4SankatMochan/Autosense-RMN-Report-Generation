@@ -1,0 +1,111 @@
+# Campaign Performance Report: CMP_2025_0001 - Dove
+
+## 1. Context
+
+### Campaigns
+
+This report focuses on the performance of a specific campaign for the brand Dove.
+
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Brand Name**: Dove
+*   **Category**: Keyword-Level
+*   **Media Types**: Sponsored Product
+*   **Channels**: Onsite
+*   **Objective**: Consideration
+*   **Sub-objective**: App Installs
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-08-02
+    *   **End Date**: 2025-09-06
+*   **Planned Spend**: 494.49
+*   **Actual Spend**: 494.49
+
+## 2. Executive Summary
+
+### Overview
+
+Campaign 'CMP_2025_0001' for Dove, with a 'Consideration' objective and 'App Installs' sub-objective, ran from August 2nd, 2025, to September 6th, 2025. The campaign utilized a 'Sponsored Product' media type within the 'Onsite' channel. The planned spend of $494.49 was fully utilized, indicating 100% budget execution.
+
+### Overall Performance
+
+The campaign generated significant engagement and positive returns. It achieved 96,550 impressions and reached 33,817 unique users, leading to 546 clicks and an average Click-Through Rate (CTR) of 1.07%. With 56 total conversions and an average conversion rate of 10.52%, the campaign resulted in a total attributed sales value of $4,332.56. The Return on Ad Spend (ROAS) was a strong 8.76, with an average Cost Per Click (CPC) of $0.97 and an average Cost Per Acquisition (CPA) of $10.25. Additionally, there were 4,644 add-to-cart events and 22 new-to-brand conversions.
+
+### Channel and Format Performance
+
+The 'Onsite' channel was the sole channel recorded for this campaign, accounting for the entire total ad spend and all impressions. Daily ad spend remained consistent at $27.47 from August 2nd to August 19th, 2025. Daily impressions varied, peaking at 9,431 on August 18th, 2025. Unique reach trends over the campaign period are visualized, showing daily fluctuations across the 'Onsite' channel. No video engagement was recorded for this campaign.
+
+### Optimization Insight
+
+The consistent daily ad spend suggests a stable budget allocation strategy. The strong ROAS and conversion metrics indicate effective targeting and creative for the 'Consideration' objective. Monitoring daily trends in unique reach and impressions is crucial for understanding audience engagement patterns and optimizing ad delivery schedules.
+
+## 3. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-08-02 | 2025-09-06 | CMP_2025_0001 | 494.49 | Consideration | 494.49 | 100% |
+
+### Objective: Consideration
+
+This campaign was designed with a 'Consideration' objective, aiming to drive user engagement and interest in the product, with a sub-objective of 'App Installs'.
+
+#### Metrics Table
+
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Viewed Units | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :-- | :-- | :--- | :----------- | :---------- |
+| Onsite | 494.49 | 96,550 | 33,817 | 546 | 1.07% | 0.97 | Not available | 0 | 4,644 |
+
+## 4. Campaign-Wise Analysis
+
+### Campaign Details: CMP_2025_0001
+
+*   **Campaign Name**: CMP_2025_0001 - Dove - Onsite - Consideration - Sponsored Product - 20250802-20250906
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Campaign Objective**: Consideration
+*   **KPIs Analyzed**: Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, CPA, Conversions, ROAS, Attributed Sales Value, Add to Cart Events, New to Brand Conversions.
+
+#### Metrics
+
+*   **Impressions**: 96,550
+*   **ROAS**: 8.76
+*   **Conversions**: 56
+*   **CTR**: 1.07%
+
+#### Campaign Analysis
+
+For the 'Dove' campaign 'CMP_2025_0001' with a 'Consideration' objective, the following daily trends and channel performance were observed:
+
+**Daily Trends for Total Ad Spend:**
+From August 2nd, 2025, to August 19th, 2025, the daily Total Ad Spend was consistently $27.47. The 'Onsite' channel was responsible for the entire Total Ad Spend of $494.49.
+
+**Daily Trends for Unique Reach:**
+Image 1: Daily Trends of Unique Reach for Campaign CMP_2025_0001 by Dove
+gs://acn-cda-adk-staging/root/user/f2dcb43f-3944-4c2f-97bb-0ccc35f4f388/<function_execution_prompt_at_0x799f9fde1a80>_user_question:_for_campaign_cmp_2025_0001_by_dove,_with_a_'consideration'_objective,_what_are_the_daily_trends_for_unique_reach_over_the_entire_campaign_period?_how_does_unique_reach_compare_across_differ_VizChart.png/0
+
+The line chart (Image 1) illustrates the daily trends of 'total_unique_reach' over 'cp_date' for the 'Onsite' channel. This visualization helps in understanding how unique reach has varied over time for the campaign, showing periods of higher or lower reach.
+
+**Daily Trends for Impressions:**
+Daily impressions varied throughout August 2025. Impressions started at 8,025 on August 2nd, fluctuated, reaching a peak of 9,431 on August 18th, and ended at 1,888 on August 19th. The 'Onsite' channel was the only channel recorded, generating a total of 96,550 impressions for this campaign.
+
+#### Overall Campaign Impact
+
+The campaign demonstrated strong performance in driving consideration, evidenced by a high ROAS of 8.76 and 56 conversions, including 22 new-to-brand conversions. The substantial number of add-to-cart events (4,644) further indicates effective engagement leading towards purchase intent. The full utilization of the planned budget suggests efficient resource allocation within the 'Onsite' channel.
+
+## 5. Recommendations
+
+### Granular Temporal and Contextual Analysis
+
+*   **Action**: Conduct a more detailed analysis of daily unique reach and impression fluctuations, particularly identifying specific dates or events that correlate with peaks and troughs. Investigate the content or creative deployed on days with high engagement.
+*   **Objective**: To understand optimal timing and content strategies for future campaigns, leveraging insights from daily performance patterns to maximize reach and engagement.
+
+### Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Given the consistent daily ad spend, explore opportunities for dynamic budget allocation based on observed daily performance trends (e.g., shifting budget to days with historically higher unique reach or conversion rates).
+*   **Objective**: To optimize spend efficiency and potentially increase overall campaign performance by aligning budget deployment with periods of higher audience receptivity and engagement.
+
+### Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: Implement A/B testing for different ad creatives and landing page experiences within the 'Onsite' channel. Focus on elements that could further enhance CTR and conversion rates.
+*   **Objective**: To continuously improve the effectiveness of ad assets and user journeys, driving higher consideration and app installs by identifying the most impactful creative and user experience variations.

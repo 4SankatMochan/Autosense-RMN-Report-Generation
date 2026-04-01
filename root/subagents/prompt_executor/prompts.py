@@ -60,47 +60,47 @@ def Execution_prompt() -> str:
     GROUPING
     Group results by Channel unless user specifies otherwise.
 
-    METRIC AGGREGATION
+    METRIC AGGREGATION Rules (must follow)
 
-    Additive Metrics → SUM
+    ## Additive Metrics → SUM
+      Daily_spend
+      Impressions
+      Clicks
+      Viewed_Units
+      Clicked_Units
+      Add_To_Cart
+      Viewed_Transactions
+      Clicked_Transactions
+      Conversions
+      Units_Sold
+      Viewed_Revenue
+      Clicked_Revenue
+      Total_Campaign_Revenue
+      Incremental_Sales_Lift
+      Transactions_Repeat
 
-    Daily_spend
-    Impressions
-    Clicks
-    Viewed_Units
-    Clicked_Units
-    Add_To_Cart
-    Viewed_Transactions
-    Clicked_Transactions
-    Conversions
-    Units_Sold
-    Viewed_Revenue
-    Clicked_Revenue
-    Total_Campaign_Revenue
-    Incremental_Sales_Lift
-    Transactions_Repeat
+    ##Reach Metrics
+      Unique_Reach → MAX or DISTINCT per channel
 
-    Reach Metrics
-    Unique_Reach → MAX or DISTINCT per channel
     Actual_spend_to_date → MAX
     Planned Spend → Any 
 
     Derived Metrics
     Compute AFTER aggregation.
 
-    CTR = Clicks / Impressions
-    CPC = Ad_Spend / Clicks
-    CPM = (Ad_Spend / Impressions) * 1000
-    Frequency = Impressions / Unique_Reach
-    ROAS = Total_Campaign_Revenue / Ad_Spend
-    CPCV = Ad_Spend / Completed_Views
-    CVA = Conversions / Clicks
+    CTR  = SUM(clicks) / SUM(impressions)
+    CPC  = SUM(spend) / SUM(clicks)
+    CPM  = (SUM(spend) / SUM(impressions)) * 1000
+    ROAS = SUM(revenue) / SUM(spend)
+    CVR  = SUM(conversions) / SUM(clicks)
+    CPA  = SUM(spend) / SUM(conversions)
+    Frequency = SUM(impressions) / MAX(reach)
 
     Important rules:
 
-    • Never average derived metrics
-    • Always compute derived metrics after aggregation
-    • Ensure tables are clear and structured
-    • Provide charts or visual insights when requested """
+      Never aggregate or average pre-calculated KPI columns.
+      Always recompute them from base metrics after aggregation.
+      Ensure tables are clear and structured
+      Provide charts or visual insights when requested """
 
   return Executive_prompt
