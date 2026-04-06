@@ -1,0 +1,158 @@
+# Campaign Performance Report: CMP_2025_0003 - Lux
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+The core details for Campaign CMP_2025_0003 for brand Lux are as follows:
+
+*   **Campaign ID:** CMP_2025_0003
+*   **Unique Campaign Name:** CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911
+*   **Brand Name:** Lux
+*   **Unique Campaign Ad ID:** AD_00000021
+*   **Category:** Contextual / Placement-Based
+*   **Media Types:** Sponsored Product
+*   **Channels:** Onsite
+*   **Objective:** Consideration
+*   **Sub-Objective:** App Installs
+*   **Campaign Duration:** From 2025-08-01 to 2025-09-11
+*   **Planned Spend:** 586.15
+*   **Actual Spend:** 586.15
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+
+*   Timeline: Daily/ Weekly
+*   By Objective: Awareness / Conversion / Consideration / Retension
+*   By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell) / Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: AI Engineer (Sell)
+Brand: Lux
+Campaign ID: CMP_2025_0003
+Period:
+Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Daily Spend, Impressions, Reach, Clicks, Conversions, CTR, Conversion Rate, Return on Ad Spend (ROAS), Cost Per Click (CPC), Cost Per Acquisition (CPA), Add-to-Cart Events, New-to-Brand Conversions, Dwell Time.
+
+## 3. Executive Summary
+
+### Overview
+This report details the performance of Campaign CMP_2025_0003 for the brand Lux, which ran from August 1st to September 11th, 2025, with a primary objective of "Consideration" and a sub-objective of "App Installs". The campaign utilized a "Sponsored Product" media type through the "Onsite" channel.
+
+### Overall Performance
+The campaign achieved 100% spend utilization, with both planned and actual spend totaling $586.15. Daily ad spend remained consistent at $30.85. While impressions and reach showed daily fluctuations, the campaign generated 632 clicks with a Click-Through Rate (CTR) of 1.07% and a Cost Per Click (CPC) of $0.99 for the 'Onsite' channel. Key performance indicators like CTR, Conversion Rate, ROAS, and CPA varied significantly day-to-day, highlighting dynamic user engagement and conversion efficiency.
+
+### Channel and Format Performance
+The campaign was executed solely through the 'Onsite' channel, focusing on 'Sponsored Product' placements. This channel delivered 113,438 impressions and reached 37,086 unique users. Video metrics (starts, plays, completions, average watch time) were consistently zero, suggesting either no video ad component or a tracking issue.
+
+### Optimization Insight
+Analysis revealed specific days with higher CTRs (e.g., August 11th and 16th) and a highly efficient conversion day (August 9th with lowest CPA). Conversely, some days showed lower efficiency. Dwell time also varied considerably. These insights suggest opportunities for optimizing ad targeting, creative content, and budget allocation based on historical performance patterns and user engagement signals. Further investigation into the zero video metrics is recommended if video was intended to be part of the campaign.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+Table 1: Campaign Summary for CMP_2025_0003
+
+| Metric                 | Value                                                         |
+|:-----------------------|:--------------------------------------------------------------|
+| Campaign ID            | CMP_2025_0003                                                 |
+| Campaign Name          | CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911 |
+| Planned Spend          | 586.15                                                        |
+| Objective              | Consideration                                                 |
+| Total Actual Ad Spend  | 586.15                                                        |
+| Spend Utilization (%)  | 100.0                                                         |
+
+### Objective: Consideration
+
+#### Metrics Range Value Table
+
+Table 2: Range of Performance Metrics for CMP_2025_0003
+
+| Metric            | Minimum Value | Maximum Value |
+|:------------------|:--------------|:--------------|
+| Total Ad Spend    | 30.85         | 30.85         |
+| Impressions       | 1251          | 9683          |
+| Reach             | 516           | 4265          |
+| Clicks            | 22            | 52            |
+| CTR               | 0.9%          | 2.5%          |
+| CPC               | 0.59          | 1.4           |
+| CPCV              | Not available | Not available |
+| Viewed Units      | 0             | 0             |
+
+#### Aggregated Metrics Table
+
+Table 3: Aggregated Performance Metrics by Channel for CMP_2025_0003
+
+| Channel | Total Ad Spend | Impressions | Reach  | Clicks | CTR   | CPC  |
+|:--------|:---------------|:------------|:-------|:-------|:------|:-----|
+| Onsite  | 586.15         | 113,438     | 37,086 | 632    | 1.07% | 0.99 |
+
+## 5. Campaign Wise Analysis
+
+### Visualizations
+
+Image 1: Daily Trend Plot for Total Ad Spend
+gs://acn-cda-adk-staging/root/user/c8a72fe1-d613-4ef1-8cba-c0bcef6e0420/generate_a_daily_trend_plot_for_total_ad_spend_for_campaign_cmp_2025_0003_by_brand_lux,_considering_a_'consideration'_objective_over_the_specified_time_period._VizChart.png/0
+The chart shows the daily trend of 'Total Ad Spend' over time. The x-axis represents the date ('cp_date'), and the y-axis represents the 'Total Ad Spend' in dollars. The chart indicates that the 'Total Ad Spend' remained constant at approximately $30.85 throughout the displayed period from August 1st to August 19th, 2025.
+
+Image 2: Daily Trend Plot for Impressions
+gs://acn-cda-adk-staging/root/user/c8a72fe1-d613-4ef1-8cba-c0bcef6e0420/generate_a_daily_trend_plot_for_impressions_for_campaign_cmp_2025_0003_by_brand_lux,_considering_a_'consideration'_objective_over_the_specified_time_period._VizChart.png/0
+The line chart shows the daily trend of impressions for Campaign CMP_2025_0003 by Brand Lux, considering a 'Consideration' objective. The X-axis represents the 'Date', and the Y-axis represents 'Impressions'. The chart indicates fluctuations in daily impressions, reaching a peak around August 7th and a lower point around August 11th. Overall, the impressions generally range between approximately 1000 and 10000.
+
+Image 3: Daily Trend Plot for Reach
+gs://acn-cda-adk-staging/root/user/c8a72fe1-d613-4ef1-8cba-c0bcef6e0420/generate_a_daily_trend_plot_for_reach_for_campaign_cmp_2025_0003_by_brand_lux,_considering_a_'consideration'_objective_over_the_specified_time_period._VizChart.png/0
+This line chart illustrates the daily trend of total reach for Campaign CMP_2025_0003, associated with the brand Lux and focused on a 'Consideration' objective. The x-axis represents the date, and the y-axis shows the total reach. The chart reveals fluctuations in daily reach, with notable peaks and troughs throughout the specified period, indicating varying levels of audience engagement over time.
+
+### Campaign Insights
+
+**KPIs Analyzed:** Daily Spend, Impressions, Reach, Clicks, Conversions, Click-Through Rate (CTR), Conversion Rate, Return on Ad Spend (ROAS), Cost Per Click (CPC), Cost Per Acquisition (CPA), Add-to-Cart Events, New-to-Brand Conversions, Dwell Time.
+
+**Campaign Analysis Text:**
+
+*   **Trends:**
+    *   **Daily Spend:** Consistently around $30.85 each day throughout the observed period (August 1st to August 19th, 2025).
+    *   **Impressions & Reach:** Showed fluctuations, with a peak in impressions (9,683) and reach (4,265) around August 7th, and a low point around August 11th.
+    *   **Clicks:** Daily clicks ranged from 22 to 52, indicating varying user interaction.
+    *   **CTR:** Mostly around 0.9%, but with notable peaks of 2.5% on August 11th and 2.46% on August 16th.
+    *   **Conversion Rate:** Fluctuated between 8% and 15%.
+    *   **ROAS:** Ranged from 6.44 to 11.83, indicating varying returns on investment.
+    *   **CPA:** Ranged from $5.14 to $15.00, reflecting different costs to acquire a conversion.
+    *   **Add-to-Cart Events:** Showed significant daily variation, from 64 to 845.
+    *   **Dwell Time:** Varied considerably, from 6 seconds to 60 seconds, suggesting inconsistent user engagement depth.
+
+*   **Anomalies:**
+    *   **High CTR Days:** August 11th and 16th exhibited significantly higher CTRs (2.5% and 2.46%) compared to the average, despite lower impressions on these days. This suggests effective ad creatives or better targeting on those specific days.
+    *   **Efficient Conversion Day:** August 9th stood out with the highest number of conversions (6) and the lowest CPA ($5.14), indicating a highly efficient day for driving conversions.
+    *   **Less Efficient Conversion Days:** August 1st, 11th, and 14th had the highest CPA ($15.00) and lowest conversions (2), pointing to less effective conversion performance.
+    *   **Video Metrics:** Video starts, plays, completions, completion rate, and average watch time were consistently zero. This is a significant anomaly if video ads were part of the campaign strategy, suggesting either a lack of video ad deployment or a tracking malfunction.
+
+*   **Overall Impact:** The campaign successfully utilized its budget and generated a considerable number of impressions, reach, and clicks. The varying performance across days and metrics highlights the dynamic nature of campaign effectiveness and the importance of continuous monitoring and optimization. The identified peaks in CTR and efficient conversion days offer valuable lessons for future campaign planning. The issue with video metrics needs immediate attention to ensure comprehensive performance tracking.
+
+## 6. Recommendations
+
+### Granular Temporal and Contextual Analysis
+*   **Insights:** The campaign exhibited significant daily fluctuations in key metrics like CTR, conversions, CPA, and dwell time. Specific days (e.g., August 11th, 16th for CTR; August 9th for conversions) showed exceptional performance, while others were less efficient.
+*   **Action:** Conduct a deeper dive into the audience segments, ad creatives, placement, and time of day for the high-performing days. Correlate these factors with external events or competitive activity if possible. Investigate the reasons behind the low dwell times on certain days.
+*   **Objective:** To understand the specific drivers of high and low performance to replicate successful strategies and mitigate underperforming elements.
+*   **Timeline:** Immediately for the next campaign cycle.
+
+### Dynamic Budget Allocation and Bidding Strategy Optimization
+*   **Insights:** The consistent daily spend of $30.85 did not align with the fluctuating daily performance. Days with high efficiency (e.g., August 9th) could have benefited from increased budget, while less efficient days might have warranted a reduction.
+*   **Action:** Implement a more dynamic budget allocation strategy that adjusts spend based on real-time or near real-time performance indicators, focusing more budget on periods and contexts that demonstrate higher ROAS and lower CPA. Explore dynamic bidding strategies that optimize for conversions on efficient days.
+*   **Objective:** To maximize campaign ROI by strategically allocating resources to periods of peak performance and efficiency.
+*   **Timeline:** Implement within the next campaign iteration.
+
+### Systematic A/B Testing of Creative and Landing Page Elements
+*   **Insights:** The observed peaks in CTR on August 11th and 16th, despite lower impressions, suggest that the ad creative or targeting on those days was particularly effective.
+*   **Action:** Isolate the characteristics of the ad creatives, targeting parameters, and landing page experiences used on high-CTR days. Conduct systematic A/B tests to validate these elements and integrate the most effective variations into future campaigns.
+*   **Objective:** To continuously improve ad effectiveness and user engagement by identifying and scaling high-performing creative and landing page strategies.
+*   **Timeline:** Ongoing, as part of continuous campaign optimization.
+
+### Address Video Ad Tracking/Deployment
+*   **Insights:** All video-related metrics (starts, plays, completions, completion rate, average watch time) were consistently zero throughout the campaign.
+*   **Action:** Verify if video ads were indeed part of the campaign strategy. If so, investigate the tracking setup to ensure proper data capture. If not, confirm that future campaigns intending to use video have appropriate tracking in place.
+*   **Objective:** To ensure comprehensive and accurate reporting for all campaign components and to leverage video advertising effectively if it's part of the marketing strategy.
+*   **Timeline:** Immediate investigation and resolution.

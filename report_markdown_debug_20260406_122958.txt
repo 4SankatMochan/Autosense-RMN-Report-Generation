@@ -1,0 +1,117 @@
+# Campaign Performance Report for Lifebuoy - CMP_2025_2158
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaigns
+
+*   **Campaign ID**: CMP_2025_2158
+*   **Unique Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name**: Lifebuoy
+*   **Media Types**: In-App Ads
+*   **Channels**: App
+*   **Objective**: Retention
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-06-13
+    *   **End Date**: 2025-07-20
+*   **Planned Spend**: 271.02
+*   **Actual Spend**: 813.06
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+*   Timeline: Daily/ Weekly
+*   By Objective: Awareness / Conversion / Consideration / Retension
+*   By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: Ad Ops Manager
+Brand: Lifebuoy
+Campaign ID: CMP_2025_2158
+Period:
+Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, Spend Utilization.
+
+## 3. Executive Summary
+
+### Overview
+
+This report details the performance of Lifebuoy's campaign 'CMP_2025_2158', which had a 'Retention' objective and ran from June 13, 2025, to July 20, 2025. The analysis focuses on key metrics such as ad spend, impressions, reach, clicks, and associated costs, primarily within the 'App' channel.
+
+### Overall Performance
+
+The campaign significantly overspent its planned budget, with an actual total ad spend of 813.06 against a planned spend of 271.02, resulting in a spend utilization of approximately 300%. Performance metrics varied across the campaign duration, with impressions ranging from 1,219 to 9,588, unique reach from 211 to 2,950, and clicks from 5 to 14. The Click-Through Rate (CTR) showed a tight range of 0.50% to 0.57%, while Cost Per Click (CPC) ranged from 0.51 to 1.43. Notably, there were no video completions recorded, making CPCV not applicable and Viewed Units zero.
+
+### Channel Format Performance
+
+The 'App' channel was the primary focus, aggregating a total ad spend of 813.06, generating 634,614 impressions, and reaching 134,820 unique users. This resulted in 915 clicks, an average CTR of 0.50%, and an average CPC of 1.00. The absence of video completions in this channel indicates a potential gap in video content engagement or tracking.
+
+### Optimization Insight
+
+The substantial overspend (300% utilization) suggests either a highly successful campaign that warranted additional investment or a significant deviation from the planned budget. Further investigation into the reasons for this overspend and its corresponding return on investment, particularly regarding retention goals, is recommended. The lack of video completions also highlights an area for optimizing creative formats or tracking mechanisms if video content was part of the retention strategy.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+Table 1: Campaign Summary for CMP_2025_2158
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 813.06 | 300% |
+
+### Objective: Retention
+
+#### Metrics Range Value Table
+
+Table 2: Range of Performance Metrics for Retention Objective
+
+| Metric | Min Value | Max Value |
+| :---------------- | :-------- | :-------- |
+| Total Ad Spend | 7.13 | 7.13 |
+| Impressions | 1,219 | 9,588 |
+| Unique Reach | 211 | 2,950 |
+| Clicks | 5 | 14 |
+| CTR | 0.50% | 0.57% |
+| CPC | 0.51 | 1.43 |
+| CPCV | Not available | Not available |
+| Viewed Units | Null | Null |
+
+#### Aggregated Metrics Table
+
+Table 3: Aggregated Performance Metrics by Channel for Retention Objective
+
+| Channel | Channel Total Ad Spend | Channel Impressions | Channel Unique Reach | Channel Clicks | Channel CTR | Channel CPC | Channel CPCV | Channel Viewed Units |
+| :------ | :--------------------- | :------------------ | :------------------- | :------------- | :---------- | :---------- | :----------- | :------------------- |
+| App | 813.06 | 634,614 | 134,820 | 915 | 0.50% | 1.00 | Not applicable | 0 |
+
+## 5. Campaign Wise Analysis
+
+### Visual Layers Based on Objective: Retention
+
+No visualizations were generated for daily trend analysis of total ad spend, impressions, or unique reach for Lifebuoy's campaign 'CMP_2025_2158' with a 'Consideration' objective. The system indicated no data was found for these specific requests, implying either the data was unavailable or the objective filter was not met for these visual requests.
+
+### Campaign Insights
+
+**KPIs Analyzed:** Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC, Spend Utilization.
+
+**Campaign Analysis Text:**
+*   **Trends**: Daily trend data for ad spend, impressions, and unique reach was not available for analysis.
+*   **Anomalies**: A significant anomaly is the 300% spend utilization, indicating that the campaign spent three times its planned budget. Another notable anomaly is the absence of any recorded video completions (Viewed Units = 0, CPCV = Not applicable), which might be critical for a 'Retention' objective, depending on the campaign's creative strategy.
+*   **Overall Impact**: The campaign achieved substantial impressions (634,614) and unique reach (134,820) within the 'App' channel. However, the high spend utilization and the lack of video completion data warrant further investigation to assess the true effectiveness and ROI of the campaign in achieving its retention objective. The consistent daily ad spend (7.13) suggests a fixed daily budget, but the total actual spend far exceeded the planned total.
+
+## 6. Recommendations
+
+*   **Title**: Granular Analysis of Spend Utilization and Effectiveness
+    *   **Insights**: The campaign significantly exceeded its planned budget (300% utilization) while operating under a 'Retention' objective. The impact of this additional spend on actual retention metrics (e.g., repeat purchases, user churn reduction) is not immediately clear from the available data.
+    *   **Action**: Conduct a detailed post-campaign analysis to understand the drivers behind the budget overruns and correlate the increased spend with specific retention outcomes. Evaluate if the additional investment yielded a proportional or superior return in terms of user retention.
+    *   **Objective**: Optimize future budget allocation and maximize ROI for retention campaigns.
+    *   **Timeline**: Immediately post-campaign completion.
+
+*   **Title**: Review of Video Content Strategy and Tracking
+    *   **Insights**: The campaign reported zero 'Viewed Units' and 'CPCV' was not applicable, suggesting either no video content was used, or there's an issue with video completion tracking. For a 'Retention' objective, video content can be a powerful tool for re-engagement.
+    *   **Action**: Verify if video creatives were part of the campaign. If so, investigate the tracking setup to ensure video completions are accurately recorded. If not, consider incorporating video content into future retention strategies and ensure proper measurement.
+    *   **Objective**: Enhance engagement tactics and improve measurement accuracy for retention efforts.
+    *   **Timeline**: Prior to planning the next retention campaign.

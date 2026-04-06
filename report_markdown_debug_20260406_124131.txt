@@ -1,0 +1,105 @@
+# Campaign Performance Report for Dove's CMP_2025_0001
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+The campaign under review is **CMP_2025_0001** for the brand **Dove**.
+*   **Campaign ID**: CMP_2025_0001
+*   **Campaign Ad ID**: AD_00000009
+*   **Category**: Keyword-Level
+*   **Media Type**: Sponsored Product
+*   **Channel**: Onsite
+*   **Objective**: Consideration
+*   **Sub-Objective**: App Installs
+*   **Campaign Duration**: From 2025-08-02 to 2025-09-06
+*   **Planned Spend**: 494.49
+*   **Actual Spend**: 494.49 (Daily actual spend was consistently 27.47 for each day from August 2, 2025, to August 19, 2025)
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+*   Timeline: Daily/ Weekly
+*   By Objective: Awareness / Conversion / Consideration / Retension
+*   By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: Media & Campaign Manager_New
+Brand: Dove
+Campaign ID: CMP_2025_0001
+Period:
+Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC.
+
+## 3. Executive Summary
+
+### Overview
+
+This report details the performance of Dove's campaign **CMP_2025_0001**, which had a 'Consideration' objective with a sub-objective of 'App Installs'. The campaign, running from August 2 to September 6, 2025, had a planned spend of 494.49, which was fully utilized. The campaign primarily leveraged the 'Onsite' channel with 'Sponsored Product' media type.
+
+### Overall Performance
+
+The campaign demonstrated consistent daily ad spend. Performance metrics showed variability, with impressions ranging from 1,339 to 9,431, unique reach from 334 to 3,876, and clicks from 19 to 55. The Click-Through Rate (CTR) varied between 0.9% and 1.72%, and Cost Per Click (CPC) ranged from 0.5 to 1.45.
+
+### Channel Format Performance
+
+The 'Onsite' channel was the sole channel reported, showing a total ad spend of 494.49, generating 96,550 impressions, 33,817 unique reach, and 546 clicks. The average CTR for this channel was 1.066%, with an average CPC of 0.974. No viewed units were recorded for this channel.
+
+### Optimization Insight
+
+The consistent daily spend suggests a fixed budget allocation strategy. The fluctuations in impressions and unique reach indicate varying audience availability or engagement over time. Further analysis of these daily trends could reveal optimal periods for ad delivery to maximize reach and engagement for future campaigns.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+Table 1: Campaign CMP_2025_0001 Summary
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-08-02 | 2025-09-06 | CMP_2025_0001 | 494.49 | Consideration | 494.49 | 100% |
+
+### Objective_Consideration
+
+#### Metrics_RangeValue_Table
+
+Table 2: Range of Performance Metrics for Campaign CMP_2025_0001
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Viewed Units | Clicked Units | Add To Cart |
+| :------ | :------------- | :---------- | :----------- | :----- | :-- | :-- | :--- | :----------- | :------------ | :---------- |
+| N/A | 27.47 to 27.47 | 1,339 to 9,431 | 334 to 3,876 | 19 to 55 | 0.9% to 1.72% | 0.5 to 1.45 | N/A | N/A | N/A | N/A |
+
+#### Aggregated_Metrics_Table
+
+Table 3: Aggregated Performance Metrics by Channel for Campaign CMP_2025_0001
+| Channel | Channel_Total_Ad_Spend | Channel_Impressions | Channel_Unique_Reach | Channel_Clicks | Channel_CTR | Channel_CPC | Channel_CPCV | Channel_Viewed_Units | Channel_Clicked_Units | Channel_Add_To_Cart |
+| :------ | :--------------------- | :------------------ | :------------------- | :------------- | :---------- | :---------- | :----------- | :------------------- | :-------------------- | :------------------ |
+| Onsite | 494.49 | 96550 | 33817 | 546 | 1.066% | 0.974 | N/A | 0 | N/A | N/A |
+
+## 5. Campaign_Wise_Analysis
+
+### Visualizations
+
+Image 1: Daily Trend of Total Ad Spend for Dove's Campaign CMP_2025_0001
+gs://acn-cda-adk-staging/root/user/c12f949a-bf6a-44a6-b3bf-b18429cd38b5/for_dove's_campaign_cmp_2025_0001,_with_a_'consideration'_objective,_can_you_show_a_daily_trend_plot_for_total_ad_spend_over_the_available_time_period?_VizChart.png/0
+The chart shows the daily trend of CP Daily Spend for Dove's Campaign CMP_2025_0001 with a 'Consideration' Objective. The x-axis represents the date and the y-axis shows the daily spend in dollars. It illustrates how the campaign's daily spend has varied over the given period.
+
+Image 2: Daily Trend of Impressions for Dove's Campaign CMP_2025_0001
+gs://acn-cda-adk-staging/root/user/c12f949a-bf6a-44a6-b3bf-b18429cd38b5/for_dove's_campaign_cmp_2025_0001,_with_a_'consideration'_objective,_can_you_show_a_daily_trend_plot_for_impressions_over_the_available_time_period?_VizChart.png/0
+This chart illustrates the daily trend of impressions for Dove's campaign CMP_2025_0001. The x-axis represents the date, and the y-axis shows the daily impressions, allowing you to observe how impressions fluctuated over time for this campaign.
+
+Image 3: Daily Trend of Unique Reach for Dove's Campaign CMP_2025_0001
+gs://acn-cda-adk-staging/root/user/c12f949a-bf6a-44a6-b3bf-b18429cd38b5/for_dove's_campaign_cmp_2025_0001,_with_a_'consideration'_objective,_can_you_show_a_daily_trend_plot_for_unique_reach_over_the_available_time_period?_VizChart.png/0
+The chart illustrates the daily trend of Unique Reach for Dove's campaign CMP_2025_0001, focusing on the 'Consideration' objective. The x-axis represents the date, and the y-axis shows the Unique Reach. The line graph clearly displays fluctuations in unique reach over the observed period.
+
+### Campaign_Insights
+
+**KPIs Analyzed:** Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC.
+
+**Campaign Analysis Text:**
+*   **Trends:** The daily ad spend for campaign CMP_2025_0001 has been remarkably consistent, as shown in Image 1. In contrast, both impressions (Image 2) and unique reach (Image 3) show significant daily fluctuations. Impressions peaked on certain days, indicating varying audience exposure, while unique reach followed a similar pattern, suggesting that the campaign reached different numbers of unique users on a day-to-day basis. The range of CTR and CPC also indicates daily variability in user engagement and cost efficiency.
+*   **Anomalies:** No explicit anomalies were highlighted in the provided data. However, the consistent daily spend alongside fluctuating impressions and reach could imply that the budget was spent regardless of audience availability or engagement levels, which might not be the most efficient approach.
+*   **Overall Impact:** The campaign successfully utilized its planned budget and achieved a considerable number of impressions and unique reach through the 'Onsite' channel. With a 'Consideration' objective, the clicks and CTR are important indicators of user interest. The average CTR of 1.066% and CPC of 0.974 suggest a moderate level of engagement and cost-effectiveness for driving consideration. The absence of 'Viewed Units' might indicate that the media type 'Sponsored Product' was not intended for video views or that this metric was not applicable/tracked for this specific ad format.
+
+## 6. Recommendations
+
+The provided template includes specific recommendation titles which cannot be populated with the given information. Therefore, this section will be omitted.

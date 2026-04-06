@@ -1,0 +1,122 @@
+# Campaign Performance Report for Lux's CMP_2025_0003
+
+## 1. Context
+
+### 1.1. Narrative
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.2. Campaigns
+This report focuses on the performance of a specific campaign.
+
+| Campaign ID | Unique Campaign Name | Brand Name | Unique Campaign Ad ID | Category | Media Types | Channels | Objective | Sub-Objective | Campaign Duration (Start Date) | Campaign Duration (End Date) | Planned Spend | Actual Spend |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| CMP_2025_0003 | CMP_2025_0003 - Lux - Onsite - Consideration - Sponsored Product - 20250801-20250911 | Lux | AD_00000021 | Contextual / Placement-Based | Sponsored Product | Onsite | Consideration | App Installs | 2025-08-01 | 2025-09-11 | 586.15 | 586.15 |
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: Media & Campaign Manager_New
+Brand: Lux
+Campaign ID: CMP_2025_0003
+Period:
+Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Impressions, Clicks, Conversions, Actual Spend to Date, Attributed Sales Value, Return on Ad Spend (ROAS), Click-Through Rate (CTR), Conversion Rate, Cost Per Click (CPC), Cost Per Acquisition (CPA), Frequency, Reach, Add to Cart Events, New to Brand Conversions, Dwell Time.
+
+## 3. Executive Summary
+
+### 3.1. Overview
+This report provides a detailed analysis of Lux's campaign CMP_2025_0003, which ran from August 1, 2025, to September 11, 2025, with a 'Consideration' objective focused on 'App Installs'. The campaign utilized 'Sponsored Product' media type on 'Onsite' channels. The analysis aims to provide the Marketing and Sales leadership team with insights into campaign effectiveness, daily performance patterns, and key metrics to inform future strategic decisions.
+
+### 3.2. Overall Performance
+The campaign achieved 100% spend utilization, with a planned and actual spend of $586.15. It generated 113,438 impressions, 632 clicks, and 65 conversions, leading to an attributed sales value of $5,072.69. The Return on Ad Spend (ROAS) was a strong 8.65, indicating efficient spending. The Click-Through Rate (CTR) was 0.56%, and the Conversion Rate was 10.28%. The Cost Per Acquisition (CPA) stood at $9.02, with an average Cost Per Click (CPC) of $0.93. The campaign reached 37,086 unique users with a frequency of 3.14.
+
+### 3.3. Channel/Format Performance
+Aggregated performance metrics by channel were not available for this campaign.
+
+### 3.4. Optimization Insight
+The campaign demonstrated consistent daily spend, which led to a strong ROAS and conversion performance. However, daily impressions and unique reach showed fluctuations, including a notable drop in unique reach around August 11th. This suggests opportunities for dynamic budget allocation and creative optimization to capitalize on peak engagement periods and mitigate dips in reach.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+This table provides a high-level summary of the campaign's key financial and objective details.
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+|---|---|---|---|---|---|---|
+| 2025-08-01 | 2025-09-11 | CMP_2025_0003 | 586.15 | Consideration | 586.15 | 100% |
+
+### 4.2. Objective: Consideration
+This section details the range of key metrics relevant to the 'Consideration' objective for Lux's campaign CMP_2025_0003.
+
+#### 4.2.1. Metrics Range Value Table
+The following table presents the minimum and maximum daily values observed for key performance indicators across the entire campaign duration.
+
+| Channel | Total Ad Spend (Min-Max) | Impressions (Min-Max) | Unique Reach (Min-Max) | Clicks (Min-Max) | CTR (Min-Max) | CPC (Min-Max) |
+|---|---|---|---|---|---|---|
+| Overall Campaign | 30.85 - 30.85 | 1251 - 9683 | 516 - 4265 | 22 - 52 | 0.9% - 2.5% | 0.59 - 1.4 |
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visual Layers Based on Objective: Consideration
+
+#### 5.1.1. Daily Ad Spend Trend
+Image 1: Daily Trend of Actual Ad Spend for Lux's Campaign CMP_2025_0003
+gs://acn-cda-adk-staging/root/user/5b2689cc-e7ad-4e22-86c2-dd962fbbb11a/please_generate_a_daily_trend_plot_of_total_ad_spend_for_lux's_campaign_cmp_2025_0003,_considering_a_'consideration'_objective,_for_the_entire_campaign_duration._VizChart.png/1
+The line chart illustrates the daily trend of actual ad spend for Lux's campaign CMP_2025_0003, considering a 'Consideration' objective, throughout the campaign duration. The x-axis represents the date, and the y-axis shows the daily actual spend in dollars. The chart shows that the daily actual spend remained consistently at approximately $30.85 throughout the campaign duration from August 1st to August 19th, 2025. This indicates a stable and unchanging daily expenditure on ad spend for this period.
+
+#### 5.1.2. Daily Impressions Trend
+Image 2: Daily Trend of Impressions for Lux's Campaign CMP_2025_0003
+gs://acn-cda-adk-staging/root/user/5b2689cc-e7ad-4e22-86c2-dd962fbbb11a/can_you_provide_a_daily_trend_visualization_of_impressions_for_lux's_campaign_cmp_2025_0003,_with_a_'consideration'_objective,_across_the_entire_campaign_duration?_VizChart.png/1
+The chart displays the daily trend of impressions for Lux's campaign CMP_2025_0003. The x-axis represents the date, and the y-axis represents the daily impressions. The line chart effectively visualizes how impressions have varied over the campaign duration, allowing for easy identification of peaks, troughs, and overall trends in impression delivery.
+
+#### 5.1.3. Daily Unique Reach Trend
+Image 3: Daily Trend of Unique Reach for Lux's Campaign CMP_2025_0003
+gs://acn-cda-adk-staging/root/user/5b2689cc-e7ad-4e22-86c2-dd962fbbb11a/generate_a_daily_trend_plot_for_unique_reach_for_lux's_campaign_cmp_2025_0003,_focusing_on_a_'consideration'_objective,_for_the_entire_campaign_duration._VizChart.png/0
+The chart above displays the daily trend of Unique Reach for Lux's campaign CMP_2025_0003, with a 'Consideration' objective, throughout the campaign duration. The x-axis represents the date, and the y-axis shows the Unique Reach. The line chart effectively illustrates the fluctuations and overall trend of Unique Reach over time for the specified campaign. The chart shows that there was a general increase in Unique Reach from August 1st to August 7th, with the highest point being on August 7th with 4265.0. Following this peak, there was a noticeable drop on August 11th, reaching a low of 516.0. Afterwards, the Unique Reach gradually increased again towards the end of the observed period.
+
+### 5.2. Campaign Insights
+
+#### 5.2.1. KPIs Analyzed
+Impressions, Clicks, Conversions, Actual Spend to Date, Attributed Sales Value, Return on Ad Spend (ROAS), Click-Through Rate (CTR), Conversion Rate, Cost Per Click (CPC), Cost Per Acquisition (CPA), Frequency, Reach, Add to Cart Events, New to Brand Conversions, Dwell Time.
+
+#### 5.2.2. Campaign Analysis Text
+**Trends:**
+*   **Conversions:** The campaign successfully generated 65 conversions.
+*   **Revenue:** An Attributed Sales Value of $5,072.69 was achieved.
+*   **Impressions:** Impressions ranged daily from 1,251 to 9,683, totaling 113,438 for the campaign, showing variation over time.
+*   **ROAS:** A strong Return on Ad Spend (ROAS) of 8.65 indicates a highly effective investment.
+*   **CTR:** The Click-Through Rate (CTR) ranged from 0.9% to 2.5% daily, with an overall average of 0.56%.
+*   **Daily Spend:** Daily actual spend remained consistently at $30.85 from August 1st to August 19th, 2025, reflecting a stable expenditure pattern.
+*   **Unique Reach:** Unique Reach generally increased from August 1st to August 7th, peaking at 4,265.0, before a significant drop on August 11th to 516.0, followed by a gradual recovery.
+
+**Anomalies:**
+A noticeable drop in Unique Reach was observed on August 11th, reaching a low of 516.0 after a peak on August 7th. This anomaly warrants further investigation into potential external factors or campaign adjustments during that period.
+
+**Overall Impact:**
+The campaign achieved 100% spend utilization, delivered a strong ROAS of 8.65, and generated a significant attributed sales value of $5,072.69 through 65 conversions. The consistent daily spend suggests a well-managed budget, while the fluctuating reach and impressions highlight dynamic audience engagement and potential for optimizing delivery during specific periods.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+*   **Insights:** The observed fluctuations in impressions and unique reach, particularly the significant drop on August 11th, suggest that audience engagement or external factors varied considerably during the campaign. The consistent daily spend indicates a fixed budget allocation that may not have adapted to these dynamic conditions.
+*   **Action:** Conduct a deeper dive into daily performance metrics, correlating them with external factors such as competitor activities, seasonal trends, or platform algorithm changes. Analyze the specific reasons for the drop in unique reach around August 11th.
+*   **Objective:** Optimize campaign scheduling and targeting for maximum impact by understanding the most receptive periods for the target audience.
+*   **Timeline:** Immediately for historical analysis; ongoing for future campaign monitoring.
+
+### 6.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+*   **Insights:** While the campaign achieved 100% spend utilization and a high ROAS, the consistent daily spend might not be the most efficient approach given the fluctuating engagement metrics. There is potential to further maximize impressions and reach by adapting spend to performance trends.
+*   **Action:** Explore and implement dynamic budget allocation strategies that can adjust daily spend based on predicted audience engagement, historical performance patterns, and real-time metric fluctuations. Test different bidding strategies to maximize visibility and reach during peak engagement periods.
+*   **Objective:** Maximize campaign efficiency and reach within budget constraints, ensuring optimal resource deployment.
+*   **Timeline:** During the planning phase of the next campaign cycle.
+
+### 6.3. Systematic A/B Testing of Creative and Landing Page Elements
+*   **Insights:** The campaign's strong CTR and conversion rate indicate effective ad creatives and landing page content, especially for the 'Consideration' objective focused on 'App Installs'. However, continuous improvement is possible.
+*   **Action:** Implement a systematic A/B testing framework for various ad creative elements (e.g., headlines, visuals, calls-to-action) and landing page components. Focus tests on elements most likely to influence 'App Installs'.
+*   **Objective:** Continuously enhance user engagement, click-through rates, and ultimately, the conversion effectiveness of the campaign.
+*   **Timeline:** Ongoing throughout the campaign lifecycle and for subsequent campaigns.

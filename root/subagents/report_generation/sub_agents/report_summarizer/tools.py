@@ -364,6 +364,7 @@ def process_str(st):
     txt_counter=1
     obj={}
     tcaption=''
+    img_counter=1
     
     for line in lines:
         #Check for images and image captions
@@ -377,9 +378,11 @@ def process_str(st):
             tcaption=table_caption[0]
         
         if urls and caption:
-            obj['image']={}
-            obj['image']['chart_link']=urls[0]
-            obj['image']['caption']=caption[0]
+            
+            obj[f'image_{img_counter}']={}
+            obj[f'image_{img_counter}']['chart_link']=urls[0]
+            obj[f'image_{img_counter}']['caption']=caption[0]
+            img_counter+=1
         
 
         elif table:
@@ -418,7 +421,6 @@ def process_list(lst):
         return lst
     if isinstance(lst,list):
         return '\n'.join([process_list(i) for i in lst])
-
 
 def process_value(obj):
     if isinstance(obj, str):

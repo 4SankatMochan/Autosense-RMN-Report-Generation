@@ -248,7 +248,7 @@ def extract_explicit_time_period(user_query: str):
 #             "Channel": "",
 #             "Total_Ad_Spend": "",
 #             "Impressions": "",
-#             "Unique_Reach": "",
+#             "Reach": "",
 #             "Frequency": "",
 #             "ROAS": "",
 #             "CPM": ""
@@ -259,7 +259,7 @@ def extract_explicit_time_period(user_query: str):
 #             "Channel": "",
 #             "Total_Ad_Spend": "",
 #             "Impressions": "",
-#             "Unique_Reach": "",
+#             "Reach": "",
 #             "Clicks": "",
 #             "CTR": "",
 #             "CPC": "",
@@ -304,8 +304,8 @@ def extract_explicit_time_period(user_query: str):
 
 # Objective-specific KPIs (list of KPI names)
 OBJECTIVE_KPIS = {
-    "Awareness": ["Total_Ad_Spend", "Impressions", "Unique_Reach", "Frequency", "ROAS", "CPM"],
-    "Consideration": ["Total_Ad_Spend", "Impressions", "Unique_Reach", "Clicks", "CTR", "CPC", "CPCV", "Viewed_Units", "Clicked_Units", "Add_To_Cart"],
+    "Awareness": ["Total_Ad_Spend", "Impressions", "Reach", "Frequency", "ROAS", "CPM"],
+    "Consideration": ["Total_Ad_Spend", "Impressions", "Reach", "Clicks", "CTR", "CPC", "CPCV", "Viewed_Units", "Clicked_Units", "Add_To_Cart"],
     "Conversion": ["Total_Ad_Spend", "Impressions", "Clicks", "CTR", "CPC", "Viewed_Transactions", "Clicked_Transactions", "Viewed_Revenue", "Clicked_Revenue", "Total_Campaign_Revenue", "ROAS", "Incremental_Sales_Lift", "Conversions"],
     "Retention": ["Total_Ad_Spend", "Conversions", "CVA", "Transactions_Repeat", "Units_Sold", "Total_Campaign_Revenue", "Incremental_Sales_Lift", "ROAS"]
 }

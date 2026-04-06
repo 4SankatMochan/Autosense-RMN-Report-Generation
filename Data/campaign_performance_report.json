@@ -1,9 +1,7 @@
 {
   "Campaign_Performance_Report": {
     "1.Context": {
-      
-      "Narrative": "",
-      
+      "Text": {
       "Campaigns": [
         {
           "Campaign_ID": "",
@@ -23,7 +21,7 @@
           "Actual_Spend": ""
         }
       ]
-    }
+    }}
     ,
     "2.Customization_Options": {
       "Timeline": ["Full campaign period", "Weekly report view", "Daily report view"],
@@ -56,7 +54,7 @@
             "Channel": "",
             "Total_Ad_Spend": "",
             "Impressions": "",
-            "Unique_Reach": "",
+            "Reach": "",
             "Frequency": "",
             "ROAS": "",
             "CPM": ""
@@ -70,7 +68,7 @@
             "Channel": "",
             "Total_Ad_Spend": "",
             "Impressions": "",
-            "Unique_Reach": "",
+            "Reach": "",
             "Clicks": "",
             "CTR": "",
             "CPC": "",
@@ -125,7 +123,7 @@
             "Channel": "",
             "Channel_Total_Ad_Spend": "",
             "Channel_Impressions": "",
-            "Channel_Unique_Reach": "",
+            "Channel_total_Reach": "",
             "Channel_Frequency": "",
             "Channel_ROAS": "",
             "Channel_CPM": ""
@@ -139,7 +137,7 @@
             "Channel": "",
             "Channel_Total_Ad_Spend": "",
             "Channel_Impressions": "",
-            "Channel_Unique_Reach": "",
+            "Channel_total_Reach": "",
             "Channel_Clicks": "",
             "Channel_CTR": "",
             "Channel_CPC": "",
