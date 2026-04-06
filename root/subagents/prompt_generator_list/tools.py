@@ -242,65 +242,65 @@ def extract_explicit_time_period(user_query: str):
     return result
 
 # Campaign objective–specific KPI templates (used for prompt generation)
-campaign_object_specific_Kpi = {
-    "Awareness": {
-        "Metrics_Table": {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Unique_Reach": "",
-            "Frequency": "",
-            "ROAS": "",
-            "CPM": ""
-        }
-    },
-    "Consideration": {
-        "Metrics_Table": {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Unique_Reach": "",
-            "Clicks": "",
-            "CTR": "",
-            "CPC": "",
-            "CPCV": "",
-            "Viewed_Units": "",
-            "Clicked_Units": "",
-            "Add_To_Cart": ""
-        }
-    },
-    "Conversion": {
-        "Metrics_Table": {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Impressions": "",
-            "Clicks": "",
-            "CTR": "",
-            "CPC": "",
-            "Viewed_Transactions": "",
-            "Clicked_Transactions": "",
-            "Viewed_Revenue": "",
-            "Clicked_Revenue": "",
-            "Total_Campaign_Revenue": "",
-            "ROAS": "",
-            "Incremental_Sales_Lift": "",
-            "Conversions": ""
-        }
-    },
-    "Retention": {
-        "Metrics_Table": {
-            "Channel": "",
-            "Total_Ad_Spend": "",
-            "Conversions": "",
-            "CVA": "",
-            "Transactions_Repeat": "",
-            "Units_Sold": "",
-            "Total_Campaign_Revenue": "",
-            "Incremental_Sales_Lift": "",
-            "ROAS": ""
-        }
-    },
-}
+# OBJECTIVE_KPIS = {
+#     "Awareness": {
+#         "Metrics_Table": {
+#             "Channel": "",
+#             "Total_Ad_Spend": "",
+#             "Impressions": "",
+#             "Unique_Reach": "",
+#             "Frequency": "",
+#             "ROAS": "",
+#             "CPM": ""
+#         }
+#     },
+#     "Consideration": {
+#         "Metrics_Table": {
+#             "Channel": "",
+#             "Total_Ad_Spend": "",
+#             "Impressions": "",
+#             "Unique_Reach": "",
+#             "Clicks": "",
+#             "CTR": "",
+#             "CPC": "",
+#             "CPCV": "",
+#             "Viewed_Units": "",
+#             "Clicked_Units": "",
+#             "Add_To_Cart": ""
+#         }
+#     },
+#     "Conversion": {
+#         "Metrics_Table": {
+#             "Channel": "",
+#             "Total_Ad_Spend": "",
+#             "Impressions": "",
+#             "Clicks": "",
+#             "CTR": "",
+#             "CPC": "",
+#             "Viewed_Transactions": "",
+#             "Clicked_Transactions": "",
+#             "Viewed_Revenue": "",
+#             "Clicked_Revenue": "",
+#             "Total_Campaign_Revenue": "",
+#             "ROAS": "",
+#             "Incremental_Sales_Lift": "",
+#             "Conversions": ""
+#         }
+#     },
+#     "Retention": {
+#         "Metrics_Table": {
+#             "Channel": "",
+#             "Total_Ad_Spend": "",
+#             "Conversions": "",
+#             "CVA": "",
+#             "Transactions_Repeat": "",
+#             "Units_Sold": "",
+#             "Total_Campaign_Revenue": "",
+#             "Incremental_Sales_Lift": "",
+#             "ROAS": ""
+#         }
+#     },
+# }
 
 # Objective-specific KPIs (list of KPI names)
 OBJECTIVE_KPIS = {
@@ -309,6 +309,13 @@ OBJECTIVE_KPIS = {
     "Conversion": ["Total_Ad_Spend", "Impressions", "Clicks", "CTR", "CPC", "Viewed_Transactions", "Clicked_Transactions", "Viewed_Revenue", "Clicked_Revenue", "Total_Campaign_Revenue", "ROAS", "Incremental_Sales_Lift", "Conversions"],
     "Retention": ["Total_Ad_Spend", "Conversions", "CVA", "Transactions_Repeat", "Units_Sold", "Total_Campaign_Revenue", "Incremental_Sales_Lift", "ROAS"]
 }
+
+# OBJECTIVE_KPIS = {
+# "Awareness": ["Channel_Total_Ad_Spend","Channel_Impressions","Channel_Unique_Reach","Channel_Frequency","Channel_ROAS","Channel_CPM"],
+# "Consideration": ["Channel_Total_Ad_Spend","Channel_Impressions","Channel_Unique_Reach","Channel_Clicks","Channel_CTR","Channel_CPC","Channel_CPCV","Channel_Viewed_Units","Channel_Clicked_Units","Channel_Add_To_Cart"],
+# "Conversion": ["Channel_Total_Ad_Spend","Channel_Impressions","Channel_Clicks","Channel_CTR","Channel_CPC","Channel_Viewed_Transactions","Channel_Clicked_Transactions","Channel_Viewed_Revenue","Channel_Clicked_Revenue","Channel_Total_Revenue","Channel_ROAS","Channel_Incremental_Sales_Lift","Channel_Conversions"],
+# "Retention": ["Channel_Total_Ad_Spend","Channel_Conversions","Channel_CVR","Channel_Repeat_Transactions","Channel_Units_Sold","Channel_Total_Revenue","Channel_Incremental_Sales_Lift","Channel_ROAS"]
+# }
 
 def get_tone_and_kpis(personas, role, objective=None):
     # Find the persona
@@ -615,27 +622,30 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
 
             Context
             Generate single prompts requesting campaign details including:
-            Campaign ID, Campaign Name, Brand Name, Category, Media Types, Channel,
-            Objective, Sub-Objective, Campaign Duration, Planned Spend, Actual Spend for {time_period}.
+            Campaign ID, Unique Campaign Names, Brand Name,Unique Campaign Ad Id, Category, Media Types, Channel,
+            Objective, Sub-Objective, Campaign Duration, Unique Planned Spend,Daily Actual Spend for {time_period}.
 
             Campaign Overview
             Generate multiple prompts requesting campaign overview tables including:
             Campaign ID, Campaign Name, Planned Spend, Campaign Objective,
-            Total Ad Spend, Spend Utilization in one prompt  and KPI tables based on {focus_kpis} in another single prompt.
-            Here , we want aggregated values (over date range grouped by channel) of KPIs.
+            Total Ad Spend, Spend Utilization in one prompt.
+            KPI tables based on {focus_kpis} in another 2 prompts as follows:
+            1. We want range of values available( variation in values) for each KPIs.
+            2. We want aggregated values ( *grouped by channel) of KPIs.
             -Should strictly not be any example from all values.
  
             Campaign-wise Analysis
-            Generate prompts requesting analysis for each KPI in {focus_kpis[:3]} including:
-            *trend analysis, *channel comparison, and *visualizations.
+            Generate prompts requesting visualization for each KPI in {focus_kpis[:3]} including:
+            *trend analysis.
 
             Must include in this section's prompts:
             1. Campaign and brand: {campaign_id} and {brand_name}.
             2. Data granularity: {data_granularity} (Daily, Weekly)
             3. Campaign objective: {objective}
             4. Time Period: {time_period}
+            5. Ask for plots of KPIs.
 
-            Ask for details of each KPI in separate prompt.
+            Ask for visualizations of each KPIs in separate prompt.
             For example :
                 if the focus KPIs are ROAS, CTR, and Conversions, the prompt for ROAS, CTR and Conversion sections should be separate . 
 

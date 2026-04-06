@@ -1,0 +1,129 @@
+# Campaign Performance Report for Kissan - CMP_2025_0005
+
+## 1. Context
+
+This report provides a comprehensive analysis of Campaign ID `CMP_2025_0005` for the brand `Kissan`, focusing on its performance and key metrics. It is prepared for the Marketing and Sales leadership team to understand campaign effectiveness, channel contributions, and daily sales patterns, ultimately informing strategic decisions for optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI. The analysis focuses on the 'Onsite' channel and 'Sponsored Product' media type for a 'Consideration' objective.
+
+### 1.1. Campaigns
+
+The following table summarizes the key details for the analyzed campaign:
+
+| Field             | Value                                                              |
+| :---------------- | :----------------------------------------------------------------- |
+| **Campaign ID**   | CMP_2025_0005                                                      |
+| **Campaign Name** | CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924 |
+| **Brand Name**    | Kissan                                                             |
+| **Category**      | Not available                                                      |
+| **Media Types**   | Sponsored Product                                                  |
+| **Channels**      | Onsite                                                             |
+| **Objective**     | Consideration                                                      |
+| **Sub-Objective** | App Installs                                                       |
+| **Campaign Duration** | Start Date: 2025-07-29, End Date: 2025-09-24                     |
+| **Planned Spend** | 2760.83                                                            |
+| **Actual Spend**  | 5521.66                                                            |
+
+## 2. Executive Summary
+
+This report details the performance of Campaign ID `CMP_2025_0005` for the brand `Kissan`, which aimed for a 'Consideration' objective via 'Onsite' channels using 'Sponsored Product' media. The campaign ran from July 29, 2025, to September 24, 2025.
+
+### 2.1. Overview
+
+The campaign significantly overspent its planned budget, with a spend utilization of 2.00 (200%), indicating actual spend was double the planned amount. Despite this, the campaign generated varying daily impressions, unique reach, and clicks within the 'Onsite' channel.
+
+### 2.2. Overall Performance
+
+The campaign's total ad spend reached 5521.66 against a planned spend of 2760.83. Daily metrics showed fluctuations: impressions ranged from 4,324 to 19,712, unique reach from 1,206 to 9,018, and clicks from 170 to 474. The average CTR varied between 0.9% and 2.5%, with CPC ranging from 0.53 to 1.48.
+
+### 2.3. Channel/Format Performance
+
+All reported performance metrics are attributed to the 'Onsite' channel and 'Sponsored Product' media type. The daily trends for total ad spend, unique reach, and impressions demonstrate dynamic activity within this single channel, with noticeable peaks and troughs.
+
+### 2.4. Optimization Insight
+
+The significant overspend highlights a need for tighter budget management and potentially more dynamic allocation strategies. The daily fluctuations in key performance indicators (KPIs) suggest opportunities for optimizing ad delivery timing and creative based on observed engagement patterns.
+
+## 3. Campaign Overview
+
+### 3.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Budget Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :---------------------------- |
+| 2025-07-29 | 2025-09-24 | CMP_2025_0005 | 2760.83       | Consideration      | 5521.66        | 200.00%                       |
+
+### 3.2. Objective: Consideration
+
+This campaign was designed with a 'Consideration' objective, aiming to drive user engagement and interest. The following metrics provide a detailed view of its performance on the 'Onsite' channel.
+
+#### 3.2.1. Metrics Table
+
+| Channel | Total Ad Spend | Impressions               | Unique Reach            | Clicks                  | CTR (%)                 | CPC                     |
+| :------ | :------------- | :------------------------ | :---------------------- | :---------------------- | :---------------------- | :---------------------- |
+| Onsite  | 5521.66        | 4,324 to 19,712 (daily) | 1,206 to 9,018 (daily) | 170 to 474 (daily)    | 0.9% to 2.5% (daily)  | 0.53 to 1.48 (daily)  |
+
+## 4. Campaign-Wise Analysis
+
+### 4.1. Visual Layers Per Objective
+
+The primary objective for this analysis is 'Consideration'.
+
+### 4.2. Visualizations
+
+The following visualizations illustrate the daily trends of key performance indicators for Campaign ID `CMP_2025_0005` on the 'Onsite' channel.
+
+Image 1: Daily Trend of Total Ad Spend
+gs://acn-cda-adk-staging/root/user/6e575d51-6dcb-4125-a16d-ddce557d4db8/for_campaign_id_cmp_2025_0005_for_the_brand_kissan,_with_a_'consideration'_objective,_what_is_the_daily_trend_analysis_of_'total_ad_spend',_how_does_it_compare_across_channels,_and_what_visualizations_are_available?_VizChart.png/0
+*This line chart displays the daily trend of total daily spend across different channels for Campaign ID 'CMP_2025_0005' for the brand 'Kissan' with a 'Consideration' objective. Each line represents a different channel, showing how the total daily spend varies over time for each. This visualization helps to identify spending patterns, peaks, and troughs for each channel over the specified period.*
+
+Image 2: Daily Trend of Total Unique Reach
+gs://acn-cda-adk-staging/root/user/6e575d51-6dcb-4125-a16d-ddce557d4db8/for_campaign_id_cmp_2025_0005_for_the_brand_kissan,_with_a_'consideration'_objective,_what_is_the_daily_trend_analysis_of_'unique_reach',_how_does_it_compare_across_channels,_and_what_visualizations_are_available?_VizChart.png/0
+*This line chart illustrates the daily trend of 'Total Unique Reach' for the 'Onsite' channel over the campaign period. It clearly shows the fluctuations in unique reach from July 29, 2025, to August 19, 2025. This visualization can help identify peak performance days and understand the overall engagement pattern for the 'Onsite' channel.*
+
+Image 3: Daily Trend of Total Impressions
+gs://acn-cda-adk-staging/root/user/6e575d51-6dcb-4125-a16d-ddce557d4db8/for_campaign_id_cmp_2025_0005_for_the_brand_kissan,_with_a_'consideration'_objective,_what_is_the_daily_trend_analysis_of_'impressions',_how_does_it_compare_across_channels,_and_what_visualizations_are_available?_VizChart.png/0
+*The chart illustrates the daily trend of "Total Impressions" for Campaign CMP_2025_0005, broken down by channel. As the dataset provided only contains data for the 'Onsite' channel, the chart displays a single line showing the fluctuation of total impressions over time for this channel. The X-axis represents the dates from July 29, 2025, to August 19, 2025, and the Y-axis shows the "Total Impressions."*
+
+### 4.3. Campaign Details
+
+#### 4.3.1. Campaign: CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924
+
+*   **Campaign Name**: CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924
+*   **Campaign ID**: CMP_2025_0005
+*   **Campaign Duration**: 2025-07-29 to 2025-09-24
+*   **KPIs Analyzed**: Total Ad Spend, Impressions, Unique Reach, Clicks, CTR, CPC
+*   **Campaign Objective**: Consideration
+
+#### 4.3.2. Metrics
+
+*   **Impressions**: Varied daily, ranging from 4,324 to 19,712.
+*   **CTR**: Varied daily, ranging from 0.9% to 2.5%.
+
+#### 4.3.3. Campaign Analysis Text
+
+The campaign, targeting 'Consideration' for the Kissan brand via 'Onsite' channels, exhibited consistent daily spend around 250.98 for a period between July 29, 2025, and August 19, 2025. This contrasts with the overall total ad spend of 5521.66, which was double the planned spend.
+
+Daily impressions fluctuated significantly, ranging from 4,324 to 19,712. There were notable dips around August 2nd, August 5th, August 9th, and August 12th, followed by recovery. Similarly, unique reach varied daily from 1,206 to 9,018, indicating dynamic audience engagement. Clicks ranged from 170 to 474 daily, with average CTR percentages between 0.9% and 2.5%. The average CPC also showed daily variation, from 0.53 to 1.48.
+
+The visualizations of daily trends for total ad spend, unique reach, and impressions provide a clear picture of the campaign's activity over time. For example, the impressions chart shows no consistent upward or downward trend, but rather a series of peaks and valleys, suggesting that external factors or internal campaign adjustments might be influencing daily performance. The data for all these metrics is exclusively for the 'Onsite' channel.
+
+#### 4.3.4. Overall Campaign Impact
+
+The campaign successfully generated impressions, unique reach, and clicks within the 'Onsite' channel, aligning with its 'Consideration' objective. However, the substantial overspend (200% budget utilization) suggests that while the campaign was active and driving engagement, its cost-efficiency needs to be critically reviewed. The daily fluctuations in key metrics indicate both opportunities for optimization during peak performance days and challenges during periods of lower engagement.
+
+## 5. Recommendations
+
+Based on the analysis of Campaign ID `CMP_2025_0005`, the following recommendations are provided to optimize future campaign performance and resource allocation:
+
+### 5.1. Granular Temporal and Contextual Analysis
+
+*   **Action**: Conduct a deeper dive into the daily trends of spend, unique reach, and impressions to identify specific days or timeframes that yielded the highest engagement and efficiency for the 'Onsite' channel. Investigate the causes of the observed dips in impressions to understand if they were due to budget constraints, ad fatigue, or external factors.
+*   **Objective**: Improve the efficiency and impact of ad delivery by aligning spend with periods of optimal user activity and engagement.
+
+### 5.2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Action**: Re-evaluate the significant discrepancy between the planned spend (2760.83) and the actual spend (5521.66), which resulted in a 200% budget utilization. Implement more rigorous budget monitoring and dynamic allocation mechanisms to prevent future overspending, especially for campaigns with a 'Consideration' objective where cost-efficiency is crucial.
+*   **Objective**: Optimize spend utilization and ensure campaigns operate within planned financial parameters, maximizing ROI.
+
+### 5.3. Systematic A/B Testing of Creative and Landing Page Elements
+
+*   **Action**: While not explicitly detailed in the provided data, for a 'Consideration' objective, systematically A/B test different creative variations, ad copy, and landing page experiences within the 'Onsite' channel. Analyze how these variations impact metrics like CTR and unique reach.
+*   **Objective**: Enhance user engagement and drive higher consideration by identifying the most effective creative and user experience elements.

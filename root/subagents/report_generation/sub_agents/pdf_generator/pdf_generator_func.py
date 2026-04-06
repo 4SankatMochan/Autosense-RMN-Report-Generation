@@ -589,7 +589,7 @@ class GCSJSONToPDF:
             fs = gcsfs.GCSFileSystem()
             with fs.open(gcs_pdf_path, "wb") as gcs_file:
                     gcs_file.write(pdf_bytes)
-            print(f"PDF  can be accessed at '{clikable_path}' successfully.")
+            print(f"PDF  saved to '{gcs_pdf_path}' successfully and can be accessed at '{clikable_path}' finally.")
             # print(f"✅ PDF generated successfully: {output_path}")
             return gcs_pdf_path
         except Exception as e:

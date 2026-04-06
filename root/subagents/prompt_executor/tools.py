@@ -57,12 +57,33 @@ async def call_db_ds_agent(
     # print("inside prompt executor agent")
     # print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
     question_list = tool_context.state.get("prompt_generator_out")
-    # question_list=  ["Provide a trend analysis for CTR for Campaign ID CMP_2025_2049 (Baby Dove), including a visualization to highlight performance trends for March 2025.",
-    #                 "Identify the best KPIs for evaluating the performance of Campaign ID CMP_2025_2049 (Baby Dove) for March 2025.",
-    #                "Illustrate the conversion performance for Campaign ID CMP_2025_2049 for Baby Dove Brand with a chart for March 2025." ,
-    #                "Generate a high-level ROAS plot of brand Brooke Bond for july 2025.", # provde the month range
-    #                "Illustrate the conversion performance for Brooke Bond with a chart for july 2025."]
- 
+    # question_list = [
+    #         {
+    #             "section_name": "Context",
+    #             "prompts": [
+    #                 "What are the campaign details for CMP_2025_0005 for brand Kissan, including its unique name, associated ad IDs, category, media types, and channels?",
+    #                 "Provide the objective, sub-objective, and duration for campaign CMP_2025_0005 for brand Kissan.",
+    #                 "What are the planned and actual spend figures for campaign CMP_2025_0005 for brand Kissan?"
+    #             ]
+    #         },
+    #         {
+    #             "section_name": "Campaign Overview",
+    #             "prompts": [
+    #                 "Provide an overview of campaign CMP_2025_0005 for brand Kissan, including its name, planned spend, objective, total actual ad spend, and spend utilization.",
+    #                 "What are the aggregated daily performance metrics for campaign CMP_2025_0005 for brand Kissan, grouped by channel, for 'Channel_Total_Ad_Spend', 'Channel_Impressions', 'Channel_Unique_Reach', 'Channel_Clicks', 'Channel_CTR', 'Channel_CPC', 'Channel_CPCV', and 'Channel_Viewed_Units' for the specified time period?"
+    #             ]
+    #         },
+    #         {
+    #             "section_name": "Campaign-wise Analysis",
+    #             "prompts": [
+    #                 "Analyze the daily trend of 'Channel_Total_Ad_Spend' for campaign CMP_2025_0005 for brand Kissan, with a campaign objective of Consideration. Provide a channel comparison and suggest suitable visualizations for the specified time period.",
+    #                 "Examine the daily trend of 'Channel_Impressions' for campaign CMP_2025_0005 for brand Kissan, with a campaign objective of Consideration. Include a channel comparison and recommend appropriate visualizations for the specified time period.",
+    #                 "Investigate the daily trend of 'Channel_Unique_Reach' for campaign CMP_2025_0005 for brand Kissan, with a campaign objective of Consideration. Provide insights on channel comparison and suggest relevant visualizations for the specified time period.",
+    #                 "Provide a concise summary of the overall performance for campaign CMP_2025_0005 for brand Kissan, highlighting key KPI performance, any detected anomalies, and significant trends observed daily for the specified time period."
+    #             ]
+    #         }
+    #     ]
+
     flat_prompts = [
     prompt
     for section in question_list

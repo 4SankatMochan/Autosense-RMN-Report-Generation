@@ -17,13 +17,15 @@
 - **Conversion Rate** = `conversion_rate_percent`  
 - **CPC (Cost Per Click)** = `actual_spend_to_date / clicks`  
 - Apply **date filters** for time-based queries  
+
+## Aggregation Rules
 - Important data processing rules when aggregating (**When daily basis values not required rather a single value for overall duration required.**):  
-                **DATE HANDLING**
-                ***Dataset contains multiple dates. Unless all date values required
-                Aggregate rows across dates before computing KPIs (CTR, CPC etc).
+                **Aggregation Rules**
+                Dataset contains daily record of Campaigns for any brand. So, If aggregate( Sum, Max , Min etc) values required follow these rules:
             
                 **GROUPING**
-                Group results by Channel unless user specifies otherwise.
+                Group by Channels only unless user specifies otherwise.
+                Donot at all groupby date in aggredation cases, as dates are only unique identity and there's no point in grouping by date.
             
                 METRIC AGGREGATION Rules (must follow)
             
@@ -48,7 +50,7 @@
                 Unique_Reach → MAX or DISTINCT per channel
             
                 Actual_spend_to_date → MAX
-                Planned Spend → Any
+                **Planned Spend → Any (Do not sum at all)
             
                 Derived Metrics
                 Compute AFTER aggregation.
@@ -57,6 +59,8 @@
             
                 -Never aggregate or average pre-calculated KPI columns.
                 -Always recompute them from base metrics after aggregation.
+                -Group on channel basis unless otherwise specified.
+                
 - Handle **NULLs** carefully  
 
 ---

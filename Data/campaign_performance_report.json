@@ -1,17 +1,20 @@
 {
   "Campaign_Performance_Report": {
     "1.Context": {
+      
+      "Narrative": "",
+      
       "Campaigns": [
         {
           "Campaign_ID": "",
-          "Campaign_Name": "",
+          "Unique_Campaign_Name": "",
           "Brand_Name": "",
+          "Unique_Campaign_Ad_Id": "",
           "Category": "",
           "Media_Types": [],
           "Channels": [],
           "Objective": "",
           "Sub_Objective": [],
-          "Campaign_Manager": "",
           "Campaign_Duration": {
             "Start_Date": "",
             "End_Date": ""
@@ -20,11 +23,15 @@
           "Actual_Spend": ""
         }
       ]
-    },
+    }
+    ,
     "2.Customization_Options": {
       "Timeline": ["Full campaign period", "Weekly report view", "Daily report view"],
-      "By_Creative": ["App", "Channel-CTV", "Onsite", "Offsite", "Instore"]
+
+      "By Objective": ["Awareness", "Conversion" , "Consideration" ,"Retension"],
+      "By Persona" : ["Client Solution Manager", "Ad Ops Analyst", "Ad Ops Manager", "AI Engineer (Sell)", "Retail Media Owner" , "Media & Campaign Manager_New",  "Brand Manager new" ,"AI Engineer (Buy)"]
     },
+
     "3.Executive_Summary": {
       "Overview": "",
       "Overall_Performance": "",
@@ -40,11 +47,11 @@
           "Planned_Spend": "",
           "Campaign_Objective": "",
           "Total_Ad_Spend": "",
-          "Budget_Utilization_Percentage": ""
+          "Spend_Utilization_Percentage": ""
         }
       ],
       "Objective_Awareness": {
-        "Metrics_Table": [
+        "Metrics_RangeValue_Table": [
           {
             "Channel": "",
             "Total_Ad_Spend": "",
@@ -56,8 +63,9 @@
           }
         ]
       },
+
       "Objective_Consideration": {
-        "Metrics_Table": [
+        "Metrics_RangeValue_Table": [
           {
             "Channel": "",
             "Total_Ad_Spend": "",
@@ -73,8 +81,9 @@
           }
         ]
       },
+
       "Objective_Conversion": {
-        "Metrics_Table": [
+        "Metrics_RangeValue_Table": [
           {
             "Channel": "",
             "Total_Ad_Spend": "",
@@ -86,112 +95,166 @@
             "Clicked_Transactions": "",
             "Viewed_Revenue": "",
             "Clicked_Revenue": "",
-            "Total_Campaign_Revenue": "",
+            "Total_Revenue": "",
             "ROAS": "",
             "Incremental_Sales_Lift": "",
             "Conversions": ""
           }
         ]
       },
-      "Objective_Retention": {
-        "Metrics_Table": [
+
+      "Objective_Retension": {
+        "Metrics_RangeValue_Table": [
           {
             "Channel": "",
             "Total_Ad_Spend": "",
             "Conversions": "",
             "CVR": "",
-            "Transactions_Repeat": "",
+            "Repeat_Transactions": "",
             "Units_Sold": "",
-            "Total_Campaign_Revenue": "",
+            "Total_Revenue": "",
             "Incremental_Sales_Lift": "",
             "ROAS": ""
           }
         ]
-      }
-    },
-    
-    "5.Campaign_Wise_Analysis": {
-      "Visual_Layers_Per_Objective": [
-        "Awareness",
-        "Consideration",
-        "Conversion",
-        "Retention"
-      ],
-      "Visualizations": {
-        "Impressions_Reach_Trend": "Line Chart",
-        "CTR_Trend": "Line Chart",
-        "Spend_vs_Revenue": "Column Chart",
-        "ROAS_Trend": "Line Chart",
-        "Frequency_Distribution": "Dual Axis Chart",
-        "Add_to_Cart_Funnel": "Funnel Chart",
-        "ROAS_by_Channel": "Bar Chart",
-        "Channel_Comparison_Retention_CVR": "Bar Chart",
-        "Viewed_vs_Clicked_Units": "Dual Axis Line",
-        "Conversion_Funnel": "Funnel Chart",
-        "Channel_wise_Reach_CPM": "Clustered Bar Chart",
-        "CPA_vs_CVR": "Scatter Plot"
       },
-      "Campaign_Details": [
-        {
-          "Campaign_Name": "",
-          "Campaign_ID": "",
-          "Campaign_Ad_IDs": [],
-          "Campaign_Duration": "",
-          "KPIs_Analyzed": [],
-          "Campaign_Objective": "",
-          "Metrics": {
-            "Impressions": "",
-            "ROAS": "",
-            "Conversions": "",
-            "CTR": ""
-          },
-          "Campaign_Analysis_Text": "",
-          "Weekly_Performance": [
-            {
-              "Week": 1,
-              "Conversions": "",
-              "Revenue": ""
-            },
-            {
-              "Week": 2,
-              "Conversions": "",
-              "Revenue": ""
-            },
-            {
-              "Week": 3,
-              "Conversions": "",
-              "Revenue": ""
-            },
-            {
-              "Week": 4,
-              "Conversions": "",
-              "Revenue": ""
+
+      "objective_Awareness": {
+        "Aggregated_Metrics_Table": [
+          {
+            "Channel": "",
+            "Channel_Total_Ad_Spend": "",
+            "Channel_Impressions": "",
+            "Channel_Unique_Reach": "",
+            "Channel_Frequency": "",
+            "Channel_ROAS": "",
+            "Channel_CPM": ""
+          }
+        ]
+      },
+
+      "objective_Consideration": {
+        "Aggregated_Metrics_Table": [
+          {
+            "Channel": "",
+            "Channel_Total_Ad_Spend": "",
+            "Channel_Impressions": "",
+            "Channel_Unique_Reach": "",
+            "Channel_Clicks": "",
+            "Channel_CTR": "",
+            "Channel_CPC": "",
+            "Channel_CPCV": "",
+            "Channel_Viewed_Units": "",
+            "Channel_Clicked_Units": "",
+            "Channel_Add_To_Cart": ""
+          }
+        ]
+      },
+
+      "objective_Conversion": {
+        "Aggregated_Metrics_Table": [
+          {
+            "Channel": "",
+            "Channel_Total_Ad_Spend": "",
+            "Channel_Impressions": "",
+            "Channel_Clicks": "",
+            "Channel_CTR": "",
+            "Channel_CVR": "",
+            "Channel_Viewed_Transactions": "",
+            "Channel_Clicked_Transactions": "",
+            "Channel_Viewed_Revenue": "",
+            "Channel_Clicked_Revenue": "",
+            "Channel_Total_Revenue": "",
+            "Channel_ROAS": "",
+            "Channel_Incremental_Sales_Lift": "",
+            "Channel_Conversions": ""
+          }
+        ]
+      },
+
+      "objective_Retention": {
+        "Aggregated_Metrics_Table": [
+          {
+            "Channel": "",
+            "Channel_Total_Ad_Spend": "",
+            "Channel_Conversions": "",
+            "Channel_CVR": "",
+            "Channel_Repeat_Transactions": "",
+            "Channel_Units_Sold": "",
+            "Channel_Total_Revenue": "",
+            "Channel_Incremental_Sales_Lift": "",
+            "Channel_ROAS": ""
+          }
+        ]
+      },
+
+    "5.Campaign_Wise_Analysis": {
+        "Visual_Layers_Based_on_Objective": [
+          "Awareness",
+          "Consideration",
+          "Conversion",
+          "Retention"
+        ]
+        ,
+        "Visualizations": {
+          "Impressions_Reach_Trend": "Line Chart",
+          "CTR_Trend": "Line Chart",
+          "Spend_vs_Revenue": "Column Chart",
+          "ROAS_Trend": "Line Chart",
+          "Frequency_Distribution": "Dual Axis Chart",
+          "Add_to_Cart_Funnel": "Funnel Chart",
+          "ROAS_by_Channel": "Bar Chart",
+          "Channel_Comparison_Retention_CVR": "Bar Chart",
+          "Viewed_vs_Clicked_Units": "Dual Axis Line",
+          "Conversion_Funnel": "Funnel Chart",
+          "Channel_wise_Reach_CPM": "Clustered Bar Chart",
+          "CPA_vs_CVR": "Scatter Plot"
+        },
+        "Campaign_Insights": [
+          {
+            "KPIs_Analyzed": [],
+
+          "Campaign_Analysis_Text": {
+              "Trends":  {
+                "Conversions": "",
+                "Revenue": "",
+                "Impressions": "",
+                "ROAS": "",
+                "CTR": ""
+              },
+              "Anomalies": "",
+              "Overall Impact": ""
             }
-          ],
-          "Overall_Campaign_Impact": ""
-        }
-      ],
-      "Campaign_Comparison": {
+          }
+        ]
+      },
+    "5. Campaign_Comparison": {
         "Applicable_Condition": "Only if objective and SKUs are same",
         "Comparison_Notes": ""
       }
-    },
+    ,
     "6.Recommendations": [
       {
         "Title": "Granular Temporal and Contextual Analysis",
-        "Action": "",
-        "Objective": ""
+        "Insights": "[Enter insights]",
+        "Action": "[Enter recommended action]",
+        "Objective": "[Enter goal of analysis]",
+        "Timeline": "[Enter timeline]"
       },
       {
         "Title": "Dynamic Budget Allocation and Bidding Strategy Optimization",
-        "Action": "",
-        "Objective": ""
+        "Insights": "[Enter insights]",
+        "Action": "[Enter recommended action]",
+        "Objective": "[Enter goal of strategy]",
+        "Timeline": "[Enter timeline]"
       },
       {
         "Title": "Systematic A/B Testing of Creative and Landing Page Elements",
-        "Action": "",
-        "Objective": ""
+        "Insights": "[Enter insights]",
+        "Action": "[Enter recommended action]",
+        "Objective": "[Enter goal of A/B testing]",
+        "Timeline": "[Enter timeline]"
       }
     ]
   }
-}
+  }}

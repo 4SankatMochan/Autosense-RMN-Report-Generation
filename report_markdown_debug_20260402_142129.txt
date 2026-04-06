@@ -1,0 +1,106 @@
+# Campaign Performance Report
+
+## 1. Context
+### campaign_metadata
+**Campaign ID**: CMP_2025_0005  
+**Campaign Name**: Not Available  
+**Brand Name**: Kissan  
+**Category**: Not Available  
+**Media Type(s)**: Not Available  
+**Channel(s)**: Onsite  
+**Objective**: Consideration  
+**Sub-Objective**: Not Available  
+**Campaign_Ad_ID**: Not Available  
+**Number_of_unique_Campaign_Ad_Id**: Not Available  
+**Campaign Duration**: July 29, 2025 – August 19, 2025  
+**Planned Budget**: Not Available  
+**Actual Spend**: 5521.66   
+
+## 2. Customization Options
+This report can be filtered and customized along the following dimensions:
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+ 
+## 3. Executive Summary
+**Overview**: This report analyzes the performance of Campaign ID CMP_2025_0005 for the brand Kissan, with a primary objective of Consideration, covering the period from July 29, 2025, to August 19, 2025. The campaign demonstrated a consistent daily spend, primarily through the 'Onsite' channel. Key performance indicators show daily fluctuations without a clear upward or downward trend, indicating a fixed daily budget allocation.
+
+*   **Overall Performance**: The campaign achieved an average daily ROAS of around 9.7, with an average CTR of 2.9% and a conversion rate of 10.8%. Daily impressions averaged approximately 12,900, leading to about 290 clicks and 28 conversions.
+*   **Channel/Format Performance**: The 'Onsite' channel was the sole recorded channel for this campaign, showing aggregated metrics of 286,942 impressions, 6,436 clicks, and a CTR of 2.24%.
+*   **Optimization Insight**: Anomalies included a high conversion rate on August 2nd despite lower impressions, suggesting effective targeting. Conversely, a low CTR on August 11th with high impressions points to potential audience mismatch or creative fatigue. Another instance on August 13th showed a high conversion rate with low clicks, implying highly qualified leads.
+*   **Mid-Funnel Engagement**: The campaign's 'Consideration' objective was supported by metrics like unique reach and impressions, which showed daily variations.
+*   **Top Performing Segments**: The 'Onsite' channel is the only segment for which detailed performance data is available, showing consistent daily spend and contributions to overall campaign metrics.
+*   **Underperforming Areas**: Instances of low CTR despite high impressions suggest opportunities for creative optimization or more refined audience targeting within the 'Onsite' channel.
+
+## 4. Campaign Overview
+Period: July 29, 2025 – August 19, 2025
+
+Table 1: Campaign overview
+| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Spend Utilization % |
+|--------------|--------------------------------|--------------------|----------------|----------------------|
+| CMP_2025_0005 | Not Available | Consideration | 5521.66 | Not Available |
+
+Table 2: Campaign channel performance
+| Channel | Total Ad Spend | Impressions | Unique Reach | Clicks | CTR | CPC | CPCV | Viewed Units |
+|---------|----------------|-------------|--------------|--------|-----|-----|------|--------------|
+| Onsite  | 5521.66        | 286942      | 4509         | 6436   | 2.24% | 0.86 | Not available | 0 |
+
+Table 3: Overall Campaign performance aggregated over Channel
+| Total Ad Spend | Overall Impressions | Overall CTR percent | Overall ROAS | Overall Conversion Rate |
+|----------------|---------------------|---------------------|--------------|-------------------------|
+| 5521.66        | 286942              | 2.24%               | ~9.7 (Daily Avg) | ~10.8% (Daily Avg)      |
+
+## 5. Campaign Wise Analysis
+
+### Campaign 1
+This section provides a detailed analysis of Campaign ID CMP_2025_0005 for the brand Kissan, focusing on its performance against the 'Consideration' objective from July 29, 2025, to August 19, 2025. The insights are derived from daily trends and aggregated channel performance, primarily for the 'Onsite' channel.
+
+#### Visualization for Metric 1: Channel Unique Reach
+Image 1: Daily Trend and Channel Comparison for Unique Reach
+gs://acn-cda-adk-staging/root/user/6c12f37a-476d-46de-8d9f-4a66b72223b4/for_campaign_id_cmp_2025_0005_of_brand_kissan,_with_a_campaign_objective_of_consideration,_please_provide_a_daily_trend_analysis_plot_and_a_channel_comparison_plot_for_channel_unique_reach_for_all_available_periods._VizChart.png/0  
+*Caption:* The daily trend analysis plot shows the variation in 'Channel Unique Reach' over time for the 'Onsite' channel. The channel comparison plot displays the total 'Channel Unique Reach' for the 'Onsite' channel. Since the provided data only contains the 'Onsite' channel, only one bar is visible on the chart.
+
+#### Visualization for Metric 2: Channel Impressions
+Image 2: Daily Trend and Channel Comparison for Impressions
+gs://acn-cda-adk-staging/root/user/6c12f37a-476d-46de-8d9f-4a66b72223b4/for_campaign_id_cmp_2025_0005_of_brand_kissan,_with_a_campaign_objective_of_consideration,_please_provide_a_daily_trend_analysis_plot_and_a_channel_comparison_plot_for_channel_impressions_for_all_available_periods._VizChart.png/1  
+*Caption:* This visualization displays the daily trend and channel comparison for 'Channel Impressions' for the 'Onsite' channel over the campaign period.
+
+### Campaign Insight
+The analysis of Campaign ID CMP_2025_0005 for brand Kissan, covering July 29, 2025, to August 19, 2025, reveals a consistent daily spend of approximately $251.
+
+**Key KPI Performance (Daily Averages):**
+*   **Impressions:** Approximately 12,900
+*   **Clicks:** Approximately 290
+*   **Conversions:** Approximately 28
+*   **Attributed Sales Value:** Approximately $2,400
+*   **ROAS (Return on Ad Spend):** Around 9.7
+*   **CTR (Click-Through Rate):** Around 2.9%
+*   **Conversion Rate:** Around 10.8%
+
+**Anomalies Observed:**
+*   **High Conversion Rate with Lower Impressions (August 2, 2025):** On this day, impressions were relatively low (4,852), but the conversion rate was exceptionally high at 23.33%, leading to a strong ROAS of 10.60. This suggests highly effective targeting or ad creative on that specific day.
+*   **Low CTR with High Impressions (August 11, 2025):** Impressions were high (19,480), but the CTR was very low (0.90%), indicating that the ad might have been shown to a less engaged audience or the creative was not compelling enough.
+*   **High Conversion Rate despite Low Clicks (August 13, 2025):** Despite a low number of clicks (174) and a low CTR (1.01%) on high impressions (17,250), the conversion rate was very high at 21.84%. This could imply that the clicks received were from highly qualified leads.
+
+**Overall Trends:**
+The campaign's daily performance metrics, including impressions, clicks, conversions, attributed sales, ROAS, CTR, and conversion rate, show daily fluctuations without a clear upward or downward trend over the observed period. The actual spend remained constant throughout, suggesting a fixed daily budget allocation. The 'Onsite' channel was the primary driver of all reported metrics.
+
+## 6. Recommendations
+ 
+### 1. Conduct Granular Temporal and Contextual Analysis
+**Insights from Output**: The campaign exhibited daily fluctuations in key performance indicators and specific anomalies such as high conversion rates with low impressions/clicks, and low CTR with high impressions. These suggest that performance is highly sensitive to daily nuances and audience engagement.  
+**Action**: Implement a more granular analysis framework to identify specific days or timeframes where performance deviates significantly. Investigate the contextual factors (e.g., promotional events, external news, competitive activity) that might have influenced these anomalies.  
+**Objective**: To understand the underlying drivers of daily performance variations and anomalies, enabling more informed tactical adjustments.
+**Timeline**: Ongoing, with weekly deep-dives into performance outliers.
+ 
+### 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Insights from Output**: The campaign maintained a consistent daily spend, yet exhibited significant daily fluctuations in metrics like ROAS and conversion rate. This indicates that a fixed budget allocation might not be optimal for maximizing efficiency.  
+**Action**: Explore dynamic budget allocation strategies that can shift spend to periods or contexts demonstrating higher efficiency and conversion potential. Review bidding strategies to ensure they are optimized for the 'Consideration' objective, potentially adjusting bids based on real-time performance signals.  
+**Objective**: To improve ROAS and conversion efficiency by aligning spend with periods of higher performance, moving away from a rigid daily budget.  
+**Timeline**: Begin pilot testing dynamic strategies within the next quarter.
+
+### 3. Systematic A/B Testing of Creative and Landing Page Elements
+**Insights from Output**: The observed low CTR with high impressions on certain days suggests that the ad creative or targeting might not always resonate with the audience. Conversely, high conversion rates despite low clicks indicate that when the right users click, they are highly qualified.  
+**Action**: Implement systematic A/B testing for various ad creatives, headlines, call-to-actions, and landing page experiences specifically for the 'Onsite' channel. Focus on improving CTR to capture more qualified leads, while also analyzing the elements that contribute to high conversion rates from existing clicks.  
+**Objective**: To enhance user engagement, increase click-through rates, and further optimize the conversion funnel by identifying the most effective creative and landing page combinations.  
+**Timeline**: Initiate A/B testing cycles immediately, with regular review of results.

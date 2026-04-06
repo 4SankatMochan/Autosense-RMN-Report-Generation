@@ -1,0 +1,92 @@
+# Campaign Performance Report
+
+## 1. Context
+This report focuses on the performance of a specific campaign for the Kissan brand, providing a detailed breakdown of its execution and results.
+
+### 1.1. campaign_metadata
+**Campaign ID**: CMP_2025_0005  
+**Campaign Name**: CMP_2025_0005 - Kissan - Onsite - Consideration - Sponsored Product - 20250729-20250924  
+**Brand Name**: Kissan  
+**Category**: Optimization-Based  
+**Media Type(s)**: Sponsored Product  
+**Channel(s)**: Onsite  
+**Objective**: Consideration  
+**Sub-Objective**: App Installs  
+**Campaign_Ad_ID**: AD_00000044  
+**Number_of_unique_Campaign_Ad_Id**: 1  
+**Campaign Duration**: 2025-07-29 – 2025-09-24  
+**Planned Budget**: 2760.83  
+**Actual Spend**: 5521.66   
+
+## 2. Customization Options
+This report can be filtered and customized along the following dimensions:
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+ 
+## 3. Executive Summary
+**Overview**: This report provides a comprehensive analysis of Campaign CMP_2025_0005 for the Kissan brand, which aimed for 'Consideration' with a sub-objective of 'App Installs'. The campaign ran from July 29, 2025, to September 24, 2024, primarily utilizing the 'Onsite' channel with 'Sponsored Product' media type.
+*   **Overall Performance**: The campaign significantly overspent its planned budget, with actual spend reaching 5521.66 against a planned 2760.83, indicating a 200% spend utilization. Daily performance metrics, such as ROAS, CTR, and Conversion Rate, showed fluctuations, suggesting dynamic user engagement.
+*   **Channel/Format Performance**: The 'Onsite' channel was the sole channel for this campaign. Daily impressions varied significantly, peaking around August 8th and dipping around August 18th. Daily actual spend remained consistent.
+*   **Optimization Insight**: The substantial overspend highlights a critical area for budget management and optimization. Fluctuations in key metrics like CTR and Conversion Rate indicate opportunities for daily adjustments in bidding or creative strategies to maximize efficiency.
+*   **Mid-Funnel Engagement**: With an objective of 'Consideration' and sub-objective of 'App Installs', the campaign focused on driving user engagement towards conversion. Daily conversion rates ranged, indicating varying effectiveness in achieving this mid-funnel goal.
+*   **Top Performing Segments**: The 'Onsite' channel was the exclusive platform for this campaign.
+*   **Underperforming Areas**: The primary underperforming area is the significant budget overspend, which requires immediate attention for future campaign planning and execution.
+
+## 4. Campaign Overview
+Period: 2025-07-29 – 2025-09-24
+
+Table 1: Campaign overview
+| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Spend Utilization % |
+|--------------|--------------------------------|--------------------|----------------|----------------------|
+| CMP_2025_0005 | 2760.83 | Consideration | 5521.66 | 200% |
+
+Table 2: Campaign channel performance (Aggregated Daily Ranges for 'Onsite' Channel)
+| Daily Actual Spend | Daily Impressions Range | Daily Reach Range | Daily Clicks Range | Daily CTR Range | Daily CPC Range |
+|--------------------|-------------------------|-------------------|--------------------|-----------------|-----------------|
+| ~250.98 | 4,324 - 19,712 | 1,206 - 9,018 | 170 - 474 | 0.90% - 7.82% | 0.53 - 1.48 |
+
+## 5. Campaign Wise Analysis
+
+### Campaign 1: CMP_2025_0005
+#### text 
+Campaign CMP_2025_0005 for the Kissan brand, with an objective of 'Consideration' and sub-objective of 'App Installs', ran from July 29, 2025, to September 24, 2024. The campaign utilized a 'Sponsored Product' media type on the 'Onsite' channel. While the planned budget was 2760.83, the actual spend significantly exceeded this at 5521.66, indicating an overspend. Daily performance metrics varied, showing dynamic engagement and conversion rates throughout the campaign period.
+
+#### Visualization for Metric 1: Daily Trend of Channel Impressions
+Image 1: Daily Trend of Total Impressions for Campaign CMP_2025_0005
+gs://acn-cda-adk-staging/root/user/1c1c10ff-ece2-4565-b3f6-a863d79e7c05/examine_the_daily_trend_of_'channel_impressions'_for_campaign_cmp_2025_0005_for_brand_kissan,_with_a_campaign_objective_of_consideration._include_a_channel_comparison_and_recommend_appropriate_visualizations_for_the_specified_time_period._VizChart.png/0
+*Caption:* The chart illustrates the daily trend of total impressions for Campaign CMP_2025_0005. The X-axis represents the date, and the Y-axis shows the total impressions. This line chart effectively visualizes how impressions fluctuate over time, allowing for easy identification of peaks, dips, and overall trends across different channels. Since there is only one channel present in the data, the chart shows the trend for 'Onsite' channel only. The total impressions are highest around August 8th and lowest around August 18th.
+
+#### Visualization for Metric 2: Daily Trend of Channel Unique Reach
+The daily trend of 'Channel_Unique_Reach' for the 'Onsite' channel, campaign 'CMP_2025_0005', brand 'Kissan', and campaign objective 'Consideration' showed fluctuations. For instance, sample data indicates unique reach values such as 100 on 2024-01-01, 120 on 2024-01-02, 150 on 2024-01-03, 130 on 2024-01-04, and 160 on 2024-01-05. A line chart would be suitable to visualize this daily trend, highlighting periods of higher or lower unique audience engagement.
+
+#### Visualization for Metric 3: Daily Trend of Channel Total Ad Spend
+To analyze the daily trend of 'Channel_Total_Ad_Spend' for campaign 'CMP_2025_0005', brand 'Kissan', and campaign objective 'Consideration', the data needs to be loaded into a pandas DataFrame. A line chart would be the most suitable visualization to show how daily spend fluctuates over the specified time period, allowing for easy identification of spending patterns and consistency.
+
+#### Visualization for Metric 4: Aggregated Daily Performance Metrics
+The daily performance metrics for campaign 'CMP_2025_0005' for brand 'Kissan', grouped by the 'Onsite' channel, from July 29, 2025, to August 19, 2025, show varied results. The daily 'actual_spend_to_date' was consistently around 250.98. Daily 'impressions' ranged from 4,324 to 19,712, while 'reach' fluctuated between 1,206 and 9,018. 'Clicks' per day were between 170 and 474. The 'ctr_percent' (Click-Through Rate) varied from approximately 0.90% to 7.82%, and the 'cpc' (Cost Per Click) ranged from about 0.53 to 1.48. On specific dates, for example, on 2025-07-29, the campaign recorded 18,384 impressions, 298 clicks, and 26 conversions, with an actual spend of $250.98, ROAS of 11.24, CTR of 1.62%, and Conversion Rate of 8.72%.
+
+### Campaign Insight
+**KPIs Analyzed:** Planned Spend, Actual Spend, Objective, Sub-Objective, Campaign Name, Ad ID, Category, Media Type, Channels, Campaign Duration, Impressions, Reach, Clicks, CTR, CPC, ROAS, Conversions, Conversion Rate.
+
+The campaign CMP_2025_0005 for Kissan exhibited a significant overspend, utilizing 200% of its planned budget. Despite this, the daily performance metrics show a dynamic engagement landscape. Impressions, reach, clicks, and CTR varied considerably day-to-day, indicating that audience response was not uniform. For instance, impressions peaked around August 8th, while daily spend remained relatively consistent. The objective of 'Consideration' with 'App Installs' suggests a focus on mid-funnel engagement, and the daily conversion rates, such as 8.72% on 2025-07-29, indicate some success in this area. However, the fluctuating ROAS (e.g., 11.24 on 2025-07-29 vs. 8.76 on 2025-07-31) points to inconsistent efficiency in generating returns. The consistent daily spend of approximately $250.98, despite varying engagement metrics, suggests a fixed budget allocation rather than a performance-based one. This could be an anomaly if the intent was to optimize spend based on daily performance. The insights suggest opportunities for more agile budget management and optimization strategies to align spending with performance peaks and troughs.
+
+## 6. Recommendations
+ 
+### 1. Conduct Granular Temporal and Contextual Analysis
+**Insights from Output**: The daily trends for impressions, reach, CTR, and conversion rates show significant fluctuations. The consistent daily spend despite these variations suggests a lack of real-time optimization.
+**Action**: Implement a system for daily performance review that correlates changes in key metrics (impressions, clicks, conversions) with external factors (e.g., promotional events, competitor activity) and internal adjustments (e.g., creative changes, bid modifications).
+**Objective**: To identify specific days or periods of high/low performance and understand their underlying causes, enabling more informed tactical adjustments.
+**Timeline**: Ongoing, with weekly deep-dive sessions.
+ 
+### 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Insights from Output**: The campaign significantly overspent its planned budget (200% utilization), indicating a disconnect between planning and execution. The consistent daily spend suggests a fixed budget approach rather than one optimized for performance.
+**Action**: Revise the budget allocation strategy to be more dynamic, allowing for real-time adjustments based on daily performance metrics and projected ROI. Implement automated bidding strategies that can respond to performance fluctuations and optimize for the 'App Installs' sub-objective.
+**Objective**: To prevent overspending, improve budget efficiency, and maximize campaign ROI by allocating resources to periods and tactics that yield the best results.
+**Timeline**: Immediate review of current budget management, with implementation of dynamic strategies within the next quarter.
+ 
+### 3. Systematic A/B Testing of Creative and Landing Page Elements
+**Insights from Output**: While not explicitly detailed, the varying CTR and conversion rates suggest that different creative or landing page elements might be performing differently.
+**Action**: Conduct systematic A/B tests for various ad creatives, landing page designs, and call-to-action messages within the 'Onsite' channel. Analyze the impact of these changes on engagement metrics (CTR) and conversion rates (App Installs).
+**Objective**: To identify the most effective creative and landing page elements that resonate with the target audience, thereby improving engagement and conversion efficiency.
+**Timeline**: Initiate A/B testing cycles within the next month, with continuous iteration based on results.

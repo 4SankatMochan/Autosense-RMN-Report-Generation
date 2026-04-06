@@ -42,18 +42,29 @@ def generate_report_prompt():
 3.  **Captions for Visualizations:** Provide clear and concise captions for all images and tables. Follow the format: "Image X: [Description]" for images and "Table X: [Description]" for tables, just before the corresponding image or table
 4.  **Narrative Flow and Deduplication:** Ensure a logical and coherent narrative flow throughout the report. Actively identify and deduplicate any overlapping insights or information to present a concise and impactful report.
 5.  **Use Image URL in the place of Images.
-6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.You need to fill in the sections of the report as per the report template using the information from these variables. Do not create any new sections or subsections that are not present in the report template.
-If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report.
+6.  **Adherence to 'Report Template'**: Strictly follow the structure and content requirements outlined in the 'Report Template'.You need to fill in the sections of the report as per the report template using the information from these variables. 
+    -Do not create any new sections or subsections that are not present in the report template.
+    -Strictly follow the order of sections in the report template.
+    -Strictly follow the format provided in the report template. For example if context is a general text in the report template. Do not make it a table.
+    - *If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report.
 7.  **Consider 'Report Context' and 'Filters'**: Use the 'Report Context' to understand the overarching goal and audience of the report and the 'Filters' used to narrow down and focus the data presented in the report.
-8. **Data Filling**: Only use the responses provided in the 'Text and Visualization Summary' corresponding to each prompt to fill in the sections of the report as per the 'Report Template'. Do not introduce any external data or assumptions. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report."
+8. **Data Filling**: Only use the responses provided in the 'Text and Visualization Summary' corresponding to each prompt or that section text from tool_context to fill in the sections of the report as per the 'Report Template'. Do not introduce any external data or assumptions. 
+    - Filling Customization and Filtering section : Always keep this section and fill 
+            This report can be filtered and customized along the following dimensions:
+            * Timeline: Daily/ Weekly
+            * By Objective: Awareness / Conversion / Consideration / Retension
+            * By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+    -Filters: [Enter filters here] - from tool_context
+    -KPI Analyzed: [Enter KPIs here] - from LLM logic.
+
 
 **CONSTRAINTS**
 
 1. **DO NOT** introduce any external data or assumptions.
 2. **DO NOT** create any chart links or images on your own.
 3. **DO NOT** fabricate any statistics or insights that are not present in the provided 'Text and Visualization Summary'.
-4. Only use the information provided in the 'Text and Visualization Summary' to generate the report.
-5. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary', omit that section from the report."
+4. Only use the information provided in the 'Text and Visualization Summary' and text from respective section from tool_context to generate the report.
+5. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary' or section text from tool_context, omit that section from the report."
 
 **Few Shot Example:**
     These should be taken as examples to understand how to use the Text and Visualization Summary to fill in the report template, and not as actual content to be included in the report.Do not use data from the few shot example in the generated report unless it is present in the Text and Visualization Summary.

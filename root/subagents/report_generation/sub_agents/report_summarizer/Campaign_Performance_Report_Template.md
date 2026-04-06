@@ -13,15 +13,22 @@ This block should be repeated for each campaign or rendered as a list/table when
 **Channel(s)**: [Enter Channels]  
 **Objective**: [Enter Objective]  
 **Sub-Objective**: [Enter Sub-Objectives]  
+**Campaign_Ad_ID**: [Enter Campaign_Ad_ID]  
+**Number_of_unique_Campaign_Ad_Id**: [Enter Number_of_unique_Campaign_Ad_Id]  
 **Campaign Duration**: [Start Date – End Date]  
 **Planned Budget**: [Enter Planned Budget]  
 **Actual Spend**: [Enter Actual Spend]   
 
 # 2. Customization Options
 This report can be filtered and customized along the following dimensions:
-* Timeline: <Specify timeline e.g., Daily, Weekly as per period in report filters>
-* By Creative: <Specify segmentation logic e.g., Channel, Platform, Format as per report context>  
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
 
+**Filters** : [Enter filters]  (from tool_context)
+
+**KPI analyzed** : [Enter KPI]  
+ 
 # 3. Executive Summary
 **Overview**: [Describe overall campaign objectives and analysis summary]  
 * Overall Performance: [Enter summary points]  
@@ -35,15 +42,20 @@ This report can be filtered and customized along the following dimensions:
 Period: [Enter reporting period]
 
 Table 1: Campaign overview
-| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Budget Utilization % |
+| Campaign ID | Campaign Budget (planned spend) | Campaign Objective | Total Ad Spend | Spend Utilization % |
 |--------------|--------------------------------|--------------------|----------------|----------------------|
 | [CMP_ID] | [Budget] | [Objective] | [Spend] | [Utilization %] |
 | [CMP_ID] | [Budget] | [Objective] | [Spend] | [Utilization %] |
 
-Table 2: Campaign channel performance
-| Channel | Total Ad Spend | Impressions | Unique Reach | Frequency | ROAS | CPM |
-|----------|----------------|-------------|---------------|------------|------|------|
-| [Dimension Name] | [Value] | [Value] | [Value]  | [Value]  | [Value]  | [Value]  |
+Table 2: Campaign channel performance (RangeValue_Table)
+| KPI_1 | KPI_2 | KPI_3 | KPI_4 | KPI_5 |...
+|-------|-------|-------|-------|-------|
+| [Value] | [Value] | [Value] | [Value] | [Value] |...
+
+Table 3: Overall Campaign performance aggregated over Channel()
+| KPI_1(Eg: Total Spend) | KPI_2(Eg: Overall Impression) | KPI_3(Eg: Overall CTR percent) | KPI_4(Eg: Overall ROAS) | KPI_5 (Eg: Overall Conversion Rate) |...
+|-------|-------|-------|-------|-------|
+| [Total Value across all channels] | [Total Value across all channels] | [Total Value across all channels] | [Total Value across all channels] | [Total Value across all channels] ...
 
 # 5. Campaign Wise Analysis
 
@@ -54,7 +66,7 @@ Table 2: Campaign channel performance
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
-#### Visualization for Metric 2: Metric Nameame
+#### Visualization for Metric 2: Metric Name
 ![Chart](path/to/chart.png)  
 *Caption:* [Add caption text]
 
@@ -67,15 +79,11 @@ Table 2: Campaign channel performance
 *Caption:* [Add caption text]
 
 ### Campaign Insight
-[Add paragraph detailing campaign results, CTR, CVR, ROAS, and performance summary.]
+[Names and numbers of KPIs Analyzed.]
+[Add paragraph detailing campaign results,analysis of KPIs and performance summary, Anomalies, Insights etc.]
 
 ---
 (Repeatable - Repeat for number of campaigns)
-
-### Campaign Analysis
-[Add performance summary similar to Campaign 1 section]
-
----
 
 ## Campaigns Comparison
 **Cross-Campaign Insights**  
@@ -86,15 +94,21 @@ Table 2: Campaign channel performance
 * **Recommendation**: [Enter summary]  
 
 # 6. Recommendations
-
+ 
 ## 1. Conduct Granular Temporal and Contextual Analysis
+**Insights from Output**: [Enter insights]  
 **Action**: [Enter recommended action]  
-**Objective**: [Enter goal of analysis]  
-
+**Objective**: [Enter goal of analysis]
+**Timeline**: [Enter timeline]  
+ 
 ## 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+**Insights from Output**: [Enter insights]  
 **Action**: [Enter recommended action]  
 **Objective**: [Enter goal of strategy]  
-
+**Timeline**: [Enter timeline]
+ 
 ## 3. Systematic A/B Testing of Creative and Landing Page Elements
+**Insights from Output**: [Enter insights]  
 **Action**: [Enter recommended action]  
 **Objective**: [Enter goal of A/B testing]  
+**Timeline**: [Enter timeline]
