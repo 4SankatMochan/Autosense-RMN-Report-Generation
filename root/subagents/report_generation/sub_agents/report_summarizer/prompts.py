@@ -65,6 +65,7 @@ def generate_report_prompt():
 3. **DO NOT** fabricate any statistics or insights that are not present in the provided 'Text and Visualization Summary'.
 4. Only use the information provided in the 'Text and Visualization Summary' and text from respective section from tool_context to generate the report.
 5. If certain sections of the 'Report Template' cannot be populated due to a lack of relevant information in the 'Text and Visualization Summary' or section text from tool_context, omit that section from the report."
+6. Context section: Contents in context segment should be in text format always.
 
 **Few Shot Example:**
     These should be taken as examples to understand how to use the Text and Visualization Summary to fill in the report template, and not as actual content to be included in the report.Do not use data from the few shot example in the generated report unless it is present in the Text and Visualization Summary.

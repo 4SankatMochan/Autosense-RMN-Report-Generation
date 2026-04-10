@@ -1,0 +1,131 @@
+# Campaign Performance Report
+
+## 1. Context
+
+### 1.1. Report Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.2. Filters
+
+**Filters:**
+Persona: Ad Ops Manager
+Brand: Lifebuoy
+Campaign ID: CMP_2025_2158
+Period:
+Report Type: Campaign Performance Report
+
+### 1.3. KPI Analyzed
+
+The Key Performance Indicators (KPIs) analyzed in this report include Total Ad Spend, Conversions, CVA (Attributed Sales Value / Cost Per Acquisition), Total Campaign Revenue, ROAS (Return on Ad Spend), Transactions Repeat, Units Sold, and Incremental Sales Lift.
+
+### 1.4. Campaigns
+
+This report focuses on the following campaign:
+
+*   **Campaign ID**: CMP_2025_2158
+*   **Unique Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name**: Lifebuoy
+*   **Unique Campaign Ad ID**: AD_00021575
+*   **Category**: Optimization-Based
+*   **Media Types**: In-App Ads
+*   **Channels**: App
+*   **Objective**: Retention
+*   **Sub-Objective**: Subscription or Refill
+*   **Campaign Duration**:
+    *   **Start Date**: 2025-06-13
+    *   **End Date**: 2025-07-20
+*   **Planned Spend**: 271.02
+*   **Total Actual Spend**: 813.06
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+*   Timeline: Daily/ Weekly
+*   By Objective: Awareness / Conversion / Consideration / Retension
+*   By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+This report provides a detailed analysis of Lifebuoy's 'CMP_2025_2158' campaign, which ran from June 13 to July 20, 2025, with a primary objective of Retention. The campaign utilized In-App Ads within the App channel. Key performance metrics, including ad spend, conversions, revenue, and ROAS, have been evaluated to assess the campaign's effectiveness and identify areas for future optimization.
+
+### 3.2. Overall Performance
+
+The 'CMP_2025_2158' campaign demonstrated robust performance, particularly in its ability to generate revenue and maintain a strong Return on Ad Spend (ROAS). The total ad spend for the campaign was 813.06, significantly exceeding the planned spend of 271.02, resulting in a spend utilization of approximately 300%. Despite this substantial overspend, the campaign achieved a total campaign revenue ranging from 36.87 to 69.75 (on a daily basis) and an aggregated total campaign revenue of 5980.86. The ROAS ranged from 5.17 to 9.78, with an aggregated ROAS of 7.36, indicating efficient use of advertising dollars to drive returns. Conversions ranged from 1 to 1 (on a daily basis), with an aggregated 114 conversions, and CVA (Attributed Sales Value) ranged from 36.87 to 69.75.
+
+### 3.3. Channel/Format Performance
+
+The campaign was exclusively run through the 'App' channel using 'In-App Ads'. For this channel, the total ad spend was 813.06, yielding 114 conversions and a total campaign revenue of 5980.86. The Cost Per Acquisition (CVA) for the App channel was approximately 7.13, and the ROAS was 7.36. Metrics for Transactions Repeat, Units Sold, and Incremental Sales Lift were not available for this specific query.
+
+### 3.4. Optimization Insight
+
+The campaign's high spend utilization (300%) coupled with a strong ROAS suggests that while the budget was significantly exceeded, the spend was effective in driving positive outcomes. This indicates a potential for more dynamic budget allocation strategies in future campaigns to capitalize on high-performing periods or channels more effectively, or a need for more accurate initial budget forecasting.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 813.06 | 300% |
+
+### 4.2. Objective_Retention
+
+#### 4.2.1. Metrics RangeValue Table
+
+This table presents the range of daily values for key metrics observed during the campaign period for Lifebuoy's campaign CMP_2025_2158.
+
+| Metric | Minimum Value | Maximum Value |
+| :------------------------- | :------------ | :------------ |
+| Total Ad Spend | 7.13 | 7.13 |
+| Conversions | 1 | 1 |
+| CVA (Attributed Sales Value) | 36.87 | 69.75 |
+| Total Revenue | 36.87 | 69.75 |
+| ROAS | 5.17 | 9.78 |
+| Repeat Transactions | Not Available | Not Available |
+| Units Sold | Not Available | Not Available |
+| Incremental Sales Lift | Not Available | Not Available |
+
+#### 4.2.2. Aggregated Metrics Table
+
+This table provides aggregated performance metrics for Lifebuoy's campaign CMP_2025_2158, grouped by channel.
+
+| Channel | Channel Total Ad Spend | Channel Conversions | Channel CVR | Channel Repeat Transactions | Channel Units Sold | Channel Total Revenue | Channel Incremental Sales Lift | Channel ROAS |
+| :------ | :--------------------- | :------------------ | :---------- | :-------------------------- | :----------------- | :-------------------- | :----------------------------- | :----------- |
+| App | 813.06 | 114 | Not Available | Not Available | Not Available | 5980.86 | Not Available | 7.36 |
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Visualizations
+
+Image 1: Daily Trend Plot for Conversions
+gs://acn-cda-adk-staging/root/user/c0376dbb-f990-4a08-bccd-d330951dfcb6/for_lifebuoy's_campaign_cmp_2025_2158,_with_a_retention_objective,_please_show_a_daily_trend_plot_for_conversions_over_the_relevant_time_period._VizChart.png/0
+This chart illustrates the daily trend of conversions for Lifebuoy's campaign CMP_2025_2158. The X-axis represents the date, and the Y-axis shows the number of conversions. From the chart, we can observe the fluctuations in daily conversions over the specified time period.
+
+Image 2: Daily Trend Plot for Total Ad Spend
+gs://acn-cda-adk-staging/root/user/c0376dbb-f990-4a08-bccd-d330951dfcb6/for_lifebuoy's_campaign_cmp_2025_2158,_with_a_retention_objective,_please_show_a_daily_trend_plot_for_total_ad_spend_over_the_relevant_time_period._VizChart.png/0
+The chart displays the daily trend of Total Ad Spend for Lifebuoy's campaign CMP_2025_2158 over the relevant time period. You can observe the fluctuations and overall patterns in ad spending day by day. The x-axis represents the 'Date', and the y-axis represents the 'Total Ad Spend ($)'. This visualization helps in understanding the daily spending behavior and identifying any significant changes or trends.
+
+### 5.2. Campaign Insights
+
+*   **KPIs Analyzed**: Total Ad Spend, Conversions, CVA (Attributed Sales Value), Total Campaign Revenue, ROAS, Spend Utilization.
+*   **Campaign Analysis Text**:
+    *   **Trends**: The campaign demonstrated a strong aggregated ROAS of 7.36 and generated substantial total campaign revenue of 5980.86. Daily trends for both conversions and total ad spend show fluctuations over the campaign period, suggesting dynamic engagement and spending patterns that warrant further investigation into specific daily drivers.
+    *   **Anomalies**: A significant anomaly observed is the spend utilization of approximately 300%, indicating that the actual ad spend (813.06) was considerably higher than the planned spend (271.02). This suggests either a highly effective campaign that justified increased investment or an initial underestimation of the required budget.
+    *   **Overall Impact**: Despite the substantial overspend relative to the planned budget, the campaign achieved positive results in terms of conversions and ROAS, indicating that the additional spend was effectively utilized to drive retention. The campaign successfully delivered on its retention objective through the 'App' channel using 'In-App Ads', highlighting its efficiency in generating returns.
+
+## 6. Recommendations
+
+1.  **Granular Temporal and Contextual Analysis**
+    *   **Insights**: Daily trends show fluctuations in both ad spend and conversions. Understanding the specific drivers behind these daily variations is crucial for optimizing future campaign performance.
+    *   **Action**: Conduct a deeper dive into daily performance data, correlating ad spend and conversion spikes/dips with specific ad placements, creative changes, or external market factors. This analysis should aim to identify patterns or events that lead to higher efficiency or unexpected costs.
+    *   **Objective**: Enhance campaign responsiveness and efficiency by identifying optimal spending periods and creative strategies.
+    *   **Timeline**: Post-campaign analysis for immediate learning; integrate into ongoing monitoring for future campaigns.
+
+2.  **Dynamic Budget Allocation and Bidding Strategy Optimization**
+    *   **Insights**: The campaign significantly exceeded its planned spend by 300% while maintaining a strong ROAS (7.36). This indicates that the initial budget might have been too conservative or that the campaign found unexpected opportunities for efficient spend.
+    *   **Action**: Review the initial budget planning process and implement more flexible or dynamic budget allocation strategies. Explore advanced bidding strategies that can automatically scale spend based on real-time performance to capitalize on high-performing periods without overshooting planned targets unnecessarily.
+    *   **Objective**: Optimize budget utilization, maximize ROI, and improve forecasting accuracy for future campaigns.
+    *   **Timeline**: Immediately for future campaign planning and execution.

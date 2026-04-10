@@ -1,0 +1,126 @@
+# Campaign Performance Report: Lifebuoy - CMP_2025_2158
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaign Details
+
+*   **Campaign ID**: CMP_2025_2158
+*   **Campaign Name**: 'CMP_2025_2158 - Lipton - App - Retention - In-App Ads - 20250801-20250829'
+*   **Brand Name**: Lifebuoy
+*   **Campaign Objective**: Retention
+*   **Planned Spend**: 325.67
+*   **Total Ad Spend**: 325.67
+*   **Spend Utilization**: 100.00%
+*   **Campaign Duration**: August 1, 2025 - August 29, 2025
+*   **Media Types**: In-App Ads
+*   **Channels**: App
+*   **Other Details**: Unique Campaign Ad Id, Category, and Sub-Objective details were not available in the provided data.
+
+### Filters
+
+*   **Persona**: Ad Ops Manager
+*   **Brand**: Lifebuoy
+*   **Campaign ID**: CMP_2025_2158
+*   **Period**: Not specified for the entire report, but specific prompts refer to daily trends.
+*   **Report Type**: Campaign Performance Report
+
+### KPI Analyzed
+
+The Key Performance Indicators (KPIs) analyzed in this report include: Campaign ID, Campaign Name, Planned Spend, Campaign Objective, Total Ad Spend, Spend Utilization, Conversions, Cost Per Acquisition (CPA/CVA), Return on Ad Spend (ROAS), Total Campaign Revenue, Impressions, Clicks, Click-Through Rate (CTR), Conversion Rate, and Cost Per Click (CPC).
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+*   **Timeline**: Daily/ Weekly
+*   **By Objective**: Awareness / Conversion / Consideration / Retension
+*   **By Persona**: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+## 3. Executive Summary
+
+### Overview
+
+This report provides a detailed analysis of Lifebuoy's campaign CMP_2025_2158, which focused on a Retention objective and ran from August 1, 2025, to August 29, 2025. The campaign achieved 100% spend utilization, matching its planned spend of 325.67. Performance metrics show some interesting trends, particularly the consistent daily ad spend and conversions, which warrant further investigation.
+
+### Overall Performance
+
+The campaign demonstrated a high spend utilization of 100%. While the aggregated ROAS for the 'App' channel was 7.36, daily ROAS fluctuated between 5.17 and 9.78. A notable anomaly observed was the constant daily total ad spend (approximately 21.40) and conversions (3) across recorded days, which suggests either a fixed daily budget/tracking mechanism or a potential data anomaly requiring deeper scrutiny. Other metrics like impressions, clicks, and attributed sales value showed daily variations.
+
+### Channel Format Performance
+
+The 'App' channel was a key contributor to this campaign, with a total ad spend of 813.06, generating 114 conversions and a strong Return on Ad Spend (ROAS) of 7.36. The Cost Per Acquisition (CPA) for this channel was 7.13. No units sold or total campaign revenue were specifically recorded for this channel in the aggregated view.
+
+### Optimization Insight
+
+The consistent daily spend and conversions are the most significant observations, indicating a need to investigate the campaign's setup or data collection methodologies. Understanding if this consistency is intended or an anomaly will be crucial for accurate performance assessment and future optimization strategies.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-08-01 | 2025-08-29 | CMP_2025_2158 | 325.67 | Retention | 325.67 | 100.00% |
+
+### Objective: Retention
+
+#### Metrics Range Value Table
+
+This table presents the minimum and maximum values observed for key retention metrics during the campaign period.
+
+| Channel | Total Ad Spend | Conversions | CVA (Cost Per Acquisition) | Repeat Transactions | Units Sold | Total Revenue | Incremental Sales Lift | ROAS |
+| :------ | :------------- | :---------- | :------------------------- | :------------------ | :--------- | :------------ | :--------------------- | :--- |
+| N/A | 7.13 - 7.13 | 1 - 1 | 10 - 10 | Not available | Not available | 36.87 - 69.75 | Not available | 5.17 - 9.78 |
+
+#### Aggregated Metrics Table (Retention Objective)
+
+This table summarizes the aggregated performance for the 'App' channel under the Retention objective.
+
+| Channel | Channel Total Ad Spend | Channel Conversions | Channel CVR | Channel Repeat Transactions | Channel Units Sold | Channel Total Revenue | Channel Incremental Sales Lift | Channel ROAS |
+| :------ | :--------------------- | :------------------ | :---------- | :-------------------------- | :----------------- | :-------------------- | :----------------------------- | :----------- |
+| App | 813.06 | 114 | N/A | Not recorded | Not recorded | Not recorded | N/A | 7.36 |
+
+## 5. Campaign Wise Analysis
+
+### Visualizations
+
+Image 1: Daily Trend of CVA for Lifebuoy's Campaign CMP_2025_2158 (Retention Objective)
+gs://acn-cda-adk-staging/root/user/664edf1b-68bf-4395-9d6d-7e11de893d4f/please_provide_a_daily_trend_plot_for_cva_for_lifebuoy's_campaign_cmp_2025_2158,_focusing_on_the_retention_objective_for_the_specified_time_period._VizChart.png/0
+The chart shows the daily trend of CVA (Conversions) for Lifebuoy's campaign CMP_2025_2158, focusing on the Retention objective. The CVA remained constant at 3.0 throughout the period from June 13, 2025, to July 20, 2025.
+
+Image 2: Daily Trend of Conversions for Lifebuoy's Campaign CMP_2025_2158 (Retention Objective)
+gs://acn-cda-adk-staging/root/user/664edf1b-68bf-4395-9d6d-7e11de893d4f/please_provide_a_daily_trend_plot_for_conversions_for_lifebuoy's_campaign_cmp_2025_2158,_focusing_on_the_retention_objective_for_the_specified_time_period._VizChart.png/0
+This line chart displays the daily trend of total conversions for Lifebuoy's campaign CMP_2025_2158. The X-axis shows the dates, and the Y-axis represents the total conversions. This visualization helps to observe the conversion performance over time, identifying any patterns or significant changes in daily conversions.
+
+Image 3: Daily Trend of Total Ad Spend for Lifebuoy's Campaign CMP_2025_2158 (Retention Objective)
+gs://acn-cda-adk-staging/root/user/664edf1b-68bf-4395-9d6d-7e11de893d4f/please_provide_a_daily_trend_plot_for_total_ad_spend_for_lifebuoy's_campaign_cmp_2025_2158,_focusing_on_the_retention_objective_for_the_specified_time_period._VizChart.png/0
+The chart displays the daily trend of CP Daily Spend for Lifebuoy's campaign CMP_2025_2158 with the Retention objective. The x-axis represents the CP Date, and the y-axis shows the CP Daily Spend in dollars, illustrating the fluctuations in daily spending over the specified period.
+
+### Campaign Insights
+
+*   **KPIs Analyzed**: Actual Spend to Date, Conversions, Impressions, Clicks, Attributed Sales Value, Click-Through Rate (CTR), Conversion Rate, Return on Ad Spend (ROAS), Cost Per Click (CPC).
+*   **Trends**:
+    *   **Conversions**: Remained constant at approximately 3 across all recorded days.
+    *   **Revenue**: Attributed sales value ranged from approximately 110.61 to 209.25.
+    *   **Impressions**: Ranged from a low of 3,657 on June 15th to a high of 28,764 on June 21st.
+    *   **ROAS**: Fluctuated between 5.17 and 9.78.
+    *   **CTR**: Varied daily, influenced by changes in impressions and clicks.
+*   **Anomalies**: The 'actual_spend_to_date' (approximately 21.40) and 'conversions' (3) metrics remained constant across all recorded days. This consistency is unusual for daily campaign performance.
+*   **Overall Impact**: The constant daily conversions and actual spend are the most notable observations, suggesting a need for further investigation into the campaign's setup or data collection methods to understand if these are expected behaviors or anomalies. Other KPIs such as impressions, clicks, attributed sales value, CTR, conversion rate, ROAS, and CPC showed expected daily fluctuations.
+
+## 6. Recommendations
+
+### Granular Temporal and Contextual Analysis
+
+*   **Insights**: The daily total ad spend and conversions for campaign CMP_2025_2158 were consistently flat, which is an unusual pattern for campaign performance and could indicate a fixed daily budget, a specific conversion tracking methodology, or a data anomaly.
+*   **Action**: Conduct a thorough investigation into the campaign's configuration, budget allocation mechanisms, and conversion tracking setup to ascertain the root cause of the constant daily spend and conversion figures. This should involve reviewing raw data logs and platform settings.
+*   **Objective**: Ensure data accuracy and gain a precise understanding of the campaign's operational mechanics and performance drivers.
+*   **Timeline**: Immediate (within 1-2 weeks)
+
+### Optimize Retention Channel Performance
+
+*   **Insights**: The 'App' channel demonstrated strong aggregated performance for the Retention objective, with a Total Ad Spend of 813.06, 114 conversions, and a high ROAS of 7.36. However, the daily trends for CVA, conversions, and ad spend show unusual consistency, as highlighted in the campaign insights.
+*   **Action**: Following the data anomaly investigation, perform a deep dive into the 'App' channel's daily performance, focusing on understanding the true fluctuations and identifying specific optimization opportunities. This could involve A/B testing different in-app ad creatives or targeting strategies.
+*   **Objective**: Maximize the effectiveness and return on investment from the 'App' channel for retention efforts by leveraging accurate and granular performance data.
+*   **Timeline**: Short-term to Mid-term (2-4 weeks post data validation)

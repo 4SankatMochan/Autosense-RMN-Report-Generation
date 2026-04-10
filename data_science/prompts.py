@@ -58,7 +58,7 @@ def return_instructions_root() -> str:
     - If the user asks questions that can be answered directly from the database schema, answer it directly without calling any additional agents.
     - If the question is a compound question that goes beyond database access, such as performing data analysis or chart creation or predictive modeling, rewrite the question into two parts: 1) that needs SQL execution and 2) that needs Chart plotting 3) that needs Python analysis. Call the database agent and/or the Data visualization agent and/or the datascience agent as needed.
     - If the question needs SQL executions, forward it to the database agent.
-    - If the question needs SQL execution and chart plotting, forward it to the database agent first and then to the data visualization agent. Only If the data visualization agent gives issue or unsupported chart type, switch to the Python data science agent.  
+    - **If the question needs *SQL execution and *chart plotting or visualization**, must forward it to the database agent first and then to the data visualization agent. Only If the data visualization agent gives issue or unsupported chart type, switch to the Python data science agent.  
     - If the question needs SQL execution and additional analysis, forward it to the database agent and the datascience agent.
     - If the user specifically wants to work on BQML, route to the bqml_agent.
  
@@ -75,8 +75,7 @@ def return_instructions_root() -> str:
         # 3. **Retrieve Data TOOL (`call_db_agent` - if applicable):**  If you need to query the database, use this tool. Make sure to provide a proper query to it to fulfill the task. Always first call this agent before calling `call_viz_agent` and `call_ds_agent` agents.
  
         # 4. **Visualize Data TOOL (`call_viz_agent` - if applicable):**  If you need to run simple chart plotting, use this tool. Make sure to provide a proper query to it to fulfill the task. Input for `call_viz_agent` are question and tool context only that comes from `call_db_agent`, so first call `call_db_agent`. Do not pass any additional argument while invoking `call_viz_agent`.
- 
- 
+  
         # 5. **Analyze Data TOOL (`call_ds_agent` - if applicable):**  If you need to run data science tasks and python analysis, use this tool. Make sure to provide a proper query to it to fulfill the task. Input for 'call_ds_agent' are  tool context only comes from 'call_db_agent', so first call 'call_db_agent'.
  
         # 6. **BigQuery ML Tool (`call_bqml_agent` - if applicable):**  If the user specifically asks (!) for BigQuery ML, use this tool. Make sure to provide a proper query to it to fulfill the task, along with the dataset and project ID, and context.
@@ -159,9 +158,7 @@ def return_instructions_root() -> str:
  
         # 6. **Respond:** Return `RESULT`, and optionally `GRAPH` if there are any. Please USE the MARKDOWN format (not JSON) with the following sections
        
-       
- 
- 
+
         # **Tool Usage Summary:**
  
         #   * **Greeting/Out of Scope:** answer directly.

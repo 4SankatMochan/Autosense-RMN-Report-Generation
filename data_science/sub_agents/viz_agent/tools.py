@@ -37,6 +37,7 @@ async def chart_plotting_tool(
     tool_context.state['categorical_columns'] = categorical_columns
     tool_context.state['continuous_columns'] = continuous_columns
     tool_context.state['series_by'] = series_by
+    print(f"Inside plot tool {chart_type}")
 
     def chart_meta_data(chart_type, x,y, x_axis_label, y_axis_label,title, series_by, chart_data):
         json_formate = {

@@ -10,6 +10,7 @@ async def call_ds_agent(
     tool_context: ToolContext,
 ):
     """Tool to call data science (nl2py) agent."""
+    print(f"ds in viz: at time: {datetime.datetime.now().strftime("%H:%M:%S")}called que: {question}")
 
     if question == "N/A":
         return tool_context.state["db_agent_output"]

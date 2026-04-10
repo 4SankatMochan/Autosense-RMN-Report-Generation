@@ -621,9 +621,9 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
             Section requirements:
 
             Context
-            Generate single prompts requesting campaign details including:
+            Generate single prompts requesting campaign details including all below:
             Campaign ID, Unique Campaign Names, Brand Name,Unique Campaign Ad Id, Category, Media Types, Channel,
-            Objective, Sub-Objective, Campaign Duration, Unique Planned Spend,Daily Actual Spend for {time_period}.
+            Objective, Sub-Objective, Campaign Duration, Unique Planned Spend,Daily Total Actual Spend for {time_period}.
 
             Campaign Overview
             Generate multiple prompts requesting campaign overview tables including:

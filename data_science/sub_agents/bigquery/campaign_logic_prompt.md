@@ -12,10 +12,10 @@
 ---
 
 ## Business Rules & Standard Metrics
-- **ROAS (Return on Ad Spend)** = `attributed_sales_value / actual_spend_to_date`  
+- **ROAS (Return on Ad Spend)** = `attributed_sales_value / sum(daily_spend)`  
 - **CTR (Click-Through Rate)** = `ctr_percent`  
 - **Conversion Rate** = `conversion_rate_percent`  
-- **CPC (Cost Per Click)** = `actual_spend_to_date / clicks`  
+- **CPC (Cost Per Click)** = `sum(daily_spend) / clicks`  
 - Apply **date filters** for time-based queries  
 
 ## Aggregation Rules
@@ -53,12 +53,20 @@
                 **Planned Spend → Any (Do not sum at all)
             
                 Derived Metrics
-                Compute AFTER aggregation.
+                Compute these AFTER aggregation.
+
+                  CTR  
+                  CPC  
+                  CPM  
+                  ROAS 
+                  CVR  
+                  CPA 
+                  Frequency 
          
                 **Important in the above case**
             
-                -Never aggregate or average pre-calculated KPI columns.
-                -Always recompute them from base metrics after aggregation.
+                -For Derived metrices (for e.g, ctr_percent, conversion_rate), always calculate using Metrics Calculation Logic given below. Never average pre-calculated KPI columns or use own logic.
+                -Always recompute them from base metrics after aggregation use Business Rules & Standard Metrics and Metrics Calculation Logic.
                 -Group on channel basis unless otherwise specified.
                 
 - Handle **NULLs** carefully  

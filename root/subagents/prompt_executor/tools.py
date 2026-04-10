@@ -54,36 +54,33 @@ async def agent_call(question, tool_context):
 async def call_db_ds_agent(
     tool_context: ToolContext,):
     """Tool to execute prompts"""
-    # print("inside prompt executor agent")
-    # print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
+    print("inside prompt executor agent")
+    print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
     question_list = tool_context.state.get("prompt_generator_out")
-    # question_list = [
-    #         {
-    #             "section_name": "Context",
-    #             "prompts": [
-    #                 "What are the campaign details for CMP_2025_0005 for brand Kissan, including its unique name, associated ad IDs, category, media types, and channels?",
-    #                 "Provide the objective, sub-objective, and duration for campaign CMP_2025_0005 for brand Kissan.",
-    #                 "What are the planned and actual spend figures for campaign CMP_2025_0005 for brand Kissan?"
-    #             ]
-    #         },
-    #         {
-    #             "section_name": "Campaign Overview",
-    #             "prompts": [
-    #                 "Provide an overview of campaign CMP_2025_0005 for brand Kissan, including its name, planned spend, objective, total actual ad spend, and spend utilization.",
-    #                 "What are the aggregated daily performance metrics for campaign CMP_2025_0005 for brand Kissan, grouped by channel, for 'Channel_Total_Ad_Spend', 'Channel_Impressions', 'Channel_Unique_Reach', 'Channel_Clicks', 'Channel_CTR', 'Channel_CPC', 'Channel_CPCV', and 'Channel_Viewed_Units' for the specified time period?"
-    #             ]
-    #         },
-    #         {
-    #             "section_name": "Campaign-wise Analysis",
-    #             "prompts": [
-    #                 "Analyze the daily trend of 'Channel_Total_Ad_Spend' for campaign CMP_2025_0005 for brand Kissan, with a campaign objective of Consideration. Provide a channel comparison and suggest suitable visualizations for the specified time period.",
-    #                 "Examine the daily trend of 'Channel_Impressions' for campaign CMP_2025_0005 for brand Kissan, with a campaign objective of Consideration. Include a channel comparison and recommend appropriate visualizations for the specified time period.",
-    #                 "Investigate the daily trend of 'Channel_Unique_Reach' for campaign CMP_2025_0005 for brand Kissan, with a campaign objective of Consideration. Provide insights on channel comparison and suggest relevant visualizations for the specified time period.",
-    #                 "Provide a concise summary of the overall performance for campaign CMP_2025_0005 for brand Kissan, highlighting key KPI performance, any detected anomalies, and significant trends observed daily for the specified time period."
-    #             ]
-    #         }
-    #     ]
-
+#     question_list = [{
+#             "section_name": "Context",
+#             "prompts": [
+#             # "Could you provide the campaign details for Campaign ID CMP_2025_2158 for the brand Lifebuoy, including its unique campaign names, unique campaign ad IDs, category, media types, channels, objective, sub-objective, campaign duration, unique planned spend, and daily actual spend?"
+#             ]
+#         },
+#         {
+#             "section_name": "Campaign Overview",
+#             "prompts": [
+#             # "For Campaign ID CMP_2025_2158 for the brand Lifebuoy, please provide an overview table including the campaign name, planned spend, campaign objective, total ad spend, and spend utilization.",
+#             # "What is the range of values observed for Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, CPCV, and Viewed Units for Campaign ID CMP_2025_2158 for the brand Lifebuoy?",
+#             # "Please provide the aggregated values for Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, CPCV, and Viewed Units, grouped by channel, for Campaign ID CMP_2025_2158 for the brand Lifebuoy."
+#             ]
+#         },
+#         {
+#             "section_name": "Campaign-wise Analysis",
+#             "prompts": [
+#             "Could you provide a daily trend visualization of Total Ad Spend for Campaign ID CMP_2025_2158 for the brand Lifebuoy, focusing on the 'Consideration' objective, do provide plot using viz agent?",
+#             "Could you provide a daily trend visualization of Impressions for Campaign ID CMP_2025_2158 for the brand Lifebuoy, focusing on the 'Consideration' objective,do provide plot using viz agent?",
+#             "Could you provide a daily trend visualization of Reach for Campaign ID CMP_2025_2158 for the brand Lifebuoy, focusing on the 'Consideration' objective, do provide plot using viz agent?",
+#             # "Please provide a concise summary of the overall performance for Campaign ID CMP_2025_2158 for the brand Lifebuoy, highlighting key KPI performance, any observed anomalies, and significant trends."
+#             ]
+#         }
+# ]
     flat_prompts = [
     prompt
     for section in question_list

@@ -78,7 +78,6 @@ def parse_response(response: str) -> str:
         query = response
     return query.strip()
 
-
 def initial_bq_nl2sql(
     question: str,
     tool_context: ToolContext,

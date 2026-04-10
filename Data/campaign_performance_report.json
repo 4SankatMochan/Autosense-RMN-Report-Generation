@@ -1,7 +1,6 @@
 {
   "Campaign_Performance_Report": {
     "1.Context": {
-      "Text": {
       "Campaigns": [
         {
           "Campaign_ID": "",
@@ -18,10 +17,10 @@
             "End_Date": ""
           },
           "Planned_Spend": "",
-          "Actual_Spend": ""
+          "Total_Actual_Spend": ""
         }
       ]
-    }}
+    }
     ,
     "2.Customization_Options": {
       "Timeline": ["Full campaign period", "Weekly report view", "Daily report view"],

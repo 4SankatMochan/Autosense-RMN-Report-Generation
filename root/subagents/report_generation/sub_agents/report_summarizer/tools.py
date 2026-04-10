@@ -359,73 +359,183 @@ async def format_report(tool_context: Optional[ToolContext] = None):
 #     print(f"Report JSON saved to: {path}")
 #     return "report formatted to json"
 
-def process_str(st):
-    lines = st.split('\n\n')
-    txt_counter=1
-    obj={}
-    tcaption=''
-    img_counter=1
+# def process_str(st):
+#     lines = st.split('\n\n')
+#     txt_counter=1
+#     obj={}
+#     tcaption=''
+#     img_counter=1
     
-    for line in lines:
-        #Check for images and image captions
-        urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)/\d', line)
-        caption = re.findall(r'(?:\*?\*?)?Image \d: .*', line)
+#     for line in lines:
+#         #Check for images and image captions
+#         urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)/\d', line)
+#         caption = re.findall(r'(?:\*?\*?)?Image \d: .*', line)
         
-        #Check for tables and table captions
-        table=re.findall(r'(\|.+\|)', line,flags=re.DOTALL)
-        table_caption=re.findall(r'\*?\*?Table \d: .+', line)
-        if table_caption:
-            tcaption=table_caption[0]
+#         #Check for tables and table captions
+#         table=re.findall(r'(\|.+\|)', line,flags=re.DOTALL)
+#         table_caption=re.findall(r'\*?\*?Table \d: .+', line)
+#         if table_caption:
+#             tcaption=table_caption[0]
         
-        if urls and caption:
+#         if urls and caption:
             
-            obj[f'image_{img_counter}']={}
-            obj[f'image_{img_counter}']['chart_link']=urls[0]
-            obj[f'image_{img_counter}']['caption']=caption[0]
-            img_counter+=1
+#             obj[f'image_{img_counter}']={}
+#             obj[f'image_{img_counter}']['chart_link']=urls[0]
+#             obj[f'image_{img_counter}']['caption']=caption[0]
+#             img_counter+=1
         
 
-        elif table:
-            obj['table']={'table_content':{}}
-            buf=StringIO(table[0])
-            df = pd.read_table(buf,sep='|')
-            df=df.dropna(how='all',axis=1)
-            df=df.drop(index=0,axis=0)
-            df =df.map(lambda x : x.strip())
-            obj['table']['table_content']['headers'] = list(df.columns)
-            obj['table']['table_content']['rows'] = df.values.tolist()
-            if tcaption:
-                obj['table']['caption']=tcaption
-                tcaption=''
-            else:
-                if txt_counter>1:
-                    txt_counter-=1
+#         elif table:
+#             obj['table']={'table_content':{}}
+#             buf=StringIO(table[0])
+#             df = pd.read_table(buf,sep='|')
+#             df=df.dropna(how='all',axis=1)
+#             df=df.drop(index=0,axis=0)
+#             df =df.map(lambda x : x.strip())
+#             obj['table']['table_content']['headers'] = list(df.columns)
+#             obj['table']['table_content']['rows'] = df.values.tolist()
+#             if tcaption:
+#                 obj['table']['caption']=tcaption
+#                 tcaption=''
+#             else:
+#                 if txt_counter>1:
+#                     txt_counter-=1
                     
-                    obj['table']['caption']=f'Table : {obj[f'text_{txt_counter}']}'
-                    del obj[f'text_{txt_counter}']
+#                     obj['table']['caption']=f'Table : {obj[f'text_{txt_counter}']}'
+#                     del obj[f'text_{txt_counter}']
                 
             
+#         else:
+#             if re.match(r'^\[.+\]$',line):
+#                 try:
+#                     line = '\n'.join([str(i) for i in ast.literal_eval(line)])
+#                 except:
+#                     print(line)
+#             obj[f'text_{txt_counter}'] = line
+#             txt_counter+=1
+
+#     return obj
+
+# def process_list(lst):
+#     if isinstance(lst,str):
+#         return lst
+#     if isinstance(lst,list):
+#         return '\n'.join([process_list(i) for i in lst])
+
+# def process_value(obj):
+#     if isinstance(obj, str):
+#         return process_str(obj)
+#     if isinstance(obj,list):
+#         return process_list(obj)
+#     if isinstance(obj, dict):
+#         return {i:process_value(j) for i,j in obj.items()}
+
+SKIP_TABLE_SECTIONS = [
+    'campaigns',
+    'campaign_metadata',
+    '1.context',
+    'context',
+    'customization_options',
+    '2.customization_options',
+]
+ 
+ 
+def process_str(st, skip_table=False):
+    lines = st.split('\n\n')
+    txt_counter = 1
+    obj = {}
+    tcaption = ''
+    img_counter = 1
+ 
+    for line in lines:
+        # Check for images and image captions
+        urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)/\d', line)
+        caption = re.findall(r'(?:\*?\*?)?Image \d: .*', line)
+ 
+        # Check for tables and table captions
+        table = re.findall(r'(\|.+\|)', line, flags=re.DOTALL)
+        table_caption = re.findall(r'\*?\*?Table \d: .+', line)
+ 
+        if table_caption:
+            tcaption = table_caption[0]
+ 
+        if urls and caption:
+            obj[f'image_{img_counter}'] = {}
+            obj[f'image_{img_counter}']['chart_link'] = urls[0]
+            obj[f'image_{img_counter}']['caption'] = caption[0]
+            img_counter += 1
+ 
+        elif table and not skip_table:
+            # Guard: skip if it's only a separator row like |---|---|
+            if re.match(r'^[\|\s\-:]+$', table[0].strip()):
+                obj[f'text_{txt_counter}'] = line
+                txt_counter += 1
+                continue
+ 
+            # Guard: skip if the table has only 1 column (likely not a real table)
+            col_count = table[0].count('|') - 1
+            if col_count <= 1:
+                obj[f'text_{txt_counter}'] = line
+                txt_counter += 1
+                continue
+ 
+            try:
+                obj['table'] = {'table_content': {}}
+                buf = StringIO(table[0])
+                df = pd.read_table(buf, sep='|')
+                df = df.dropna(how='all', axis=1)
+                df = df.iloc[1:]               # drop separator row by position
+                df = df.reset_index(drop=True)
+                df = df.fillna('')             # replace NaN with empty string
+                df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
+                obj['table']['table_content']['headers'] = list(df.columns)
+                obj['table']['table_content']['rows'] = df.values.tolist()
+ 
+                if tcaption:
+                    obj['table']['caption'] = tcaption
+                    tcaption = ''
+                else:
+                    if txt_counter > 1:
+                        txt_counter -= 1
+                        obj['table']['caption'] = f'Table : {obj[f"text_{txt_counter}"]}'
+                        del obj[f'text_{txt_counter}']
+ 
+            except Exception as e:
+                # If table parsing fails for any reason, fall back to plain text
+                print(f"⚠️ Table parsing failed, falling back to text: {e}")
+                obj[f'text_{txt_counter}'] = line
+                txt_counter += 1
+ 
         else:
-            if re.match(r'^\[.+\]$',line):
+            # Plain text block (also handles skip_table=True case)
+            if re.match(r'^\[.+\]$', line):
                 try:
                     line = '\n'.join([str(i) for i in ast.literal_eval(line)])
-                except:
+                except Exception:
                     print(line)
             obj[f'text_{txt_counter}'] = line
-            txt_counter+=1
-
+            txt_counter += 1
+ 
     return obj
-
+ 
+ 
 def process_list(lst):
-    if isinstance(lst,str):
+    if isinstance(lst, str):
         return lst
-    if isinstance(lst,list):
+    if isinstance(lst, list):
         return '\n'.join([process_list(i) for i in lst])
-
-def process_value(obj):
+ 
+ 
+def process_value(obj, section_key=''):
     if isinstance(obj, str):
-        return process_str(obj)
-    if isinstance(obj,list):
+        # Check if this section should skip table parsing
+        skip_table = any(
+            s in section_key.lower() for s in SKIP_TABLE_SECTIONS
+        )
+        return process_str(obj, skip_table=skip_table)
+ 
+    if isinstance(obj, list):
         return process_list(obj)
+ 
     if isinstance(obj, dict):
-        return {i:process_value(j) for i,j in obj.items()}
+        return {i: process_value(j, section_key=i) for i, j in obj.items()}

@@ -1,0 +1,133 @@
+# Campaign Performance Report for Lifebuoy's CMP_2025_2158
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaigns
+
+| Campaign ID | Unique Campaign Name | Brand Name | Campaign Objective | Planned Spend | Total Actual Spend | Spend Utilization | Campaign Duration (Start Date) | Campaign Duration (End Date) |
+| :---------- | :------------------- | :--------- | :----------------- | :------------ | :----------------- | :---------------- | :----------------------------- | :--------------------------- |
+| CMP_2025_2158 | CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720 | Lifebuoy | Retention | 271.02 | 813.06 | 300.00% | 2025-06-13 | 2025-07-20 |
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: Ad Ops Manager
+Brand: Lifebuoy
+Campaign ID: CMP_2025_2158
+Period: Full campaign period
+Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Total Ad Spend, Conversions, CVA, Units Sold, Total Campaign Revenue, ROAS
+
+## 3. Executive Summary
+
+### Overview
+
+This report provides a detailed analysis of Lifebuoy's campaign CMP_2025_2158, which focused on a Retention objective, running from June 13, 2025, to July 20, 2025. The primary channel for this campaign was 'App'.
+
+### Overall Performance
+
+The campaign significantly overspent its planned budget, with a spend utilization of 300.00% (Total Ad Spend: 813.06 vs. Planned Spend: 271.02). Despite this, the campaign generated a strong Return on Ad Spend (ROAS) of 7.36 and 114 conversions, leading to a Total Campaign Revenue of 5980.86. The Cost Per Acquisition (CVA) for the 'App' channel was 7.13.
+
+### Channel Format Performance
+
+The 'App' channel was the sole channel identified for this campaign, demonstrating aggregated metrics of 813.06 in Total Ad Spend, 114 Conversions, a CVA of 7.13, a ROAS of 7.36, and Total Campaign Revenue of 5980.86. No units sold were recorded for this channel.
+
+### Optimization Insight
+
+Daily trends show a consistent ad spend and conversion rate, with conversions holding steady at 3.0 per day. However, the CVA exhibited fluctuations, notably dipping around June 23rd, June 29th, and July 19th, while generally hovering around 12%. This suggests that while spend and conversions were stable, the cost-effectiveness of conversions varied, indicating opportunities to optimize CVA during periods of lower efficiency. The substantial overspend relative to the planned budget also highlights a need for better budget management or a reassessment of planned spend for future retention campaigns.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 813.06 | 300.00% |
+
+### Objective Retention
+
+#### Metrics Range Value Table
+
+| Channel | Total Ad Spend (Range) | Conversions (Range) | CVA (Range) | Units Sold (Range) | Total Revenue (Range) | ROAS (Range) |
+| :------ | :--------------------- | :------------------ | :---------- | :----------------- | :-------------------- | :----------- |
+| App | 7.13 to 7.13 | 1 to 1 | 36.87 to 69.75 | No data available | 36.87 to 69.75 | 5.17 to 9.78 |
+
+*Note: 'Transactions_Repeat' and 'Incremental_Sales_Lift' were not available in the data used for this query.*
+
+#### Aggregated Metrics Table
+
+| Channel | Channel Total Ad Spend | Channel Conversions | Channel CVR | Channel Repeat Transactions | Channel Units Sold | Channel Total Revenue | Channel Incremental Sales Lift | Channel ROAS |
+| :------ | :--------------------- | :------------------ | :---------- | :-------------------------- | :----------------- | :-------------------- | :----------------------------- | :----------- |
+| App | 813.06 | 114 | N/A | N/A | N/A | 5980.86 | N/A | 7.36 |
+
+*Note: CVR, Repeat Transactions, Incremental Sales Lift, and Units Sold were not available or recorded for this specific channel and campaign in the provided data.*
+
+## 5. Campaign Wise Analysis
+
+### Visual Layers Based on Objective
+
+Retention
+
+### Visualizations
+
+Image 1: Daily Trend of Conversions for Lifebuoy's Campaign CMP_2025_2158
+gs://acn-cda-adk-staging/root/user/43847b76-f43e-4e2a-a811-481b035e7da9/please_provide_a_daily_trend_plot_for_conversions_for_lifebuoy's_campaign_cmp_2025_2158,_focusing_on_the_retention_objective_for_the_specified_time_period._VizChart.png/0
+
+Image 2: Daily Trend of CVA for Lifebuoy's Campaign CMP_2025_2158
+gs://acn-cda-adk-staging/root/user/43847b76-f43e-4e2a-a811-481b035e7da9/please_provide_a_daily_trend_plot_for_cva_for_lifebuoy's_campaign_cmp_2025_2158,_focusing_on_the_retention_objective_for_the_specified_time_period._VizChart.png/0
+
+Image 3: Daily Trend of Total Ad Spend for Lifebuoy's Campaign CMP_2025_2158
+gs://acn-cda-adk-staging/root/user/43847b76-f43e-4e2a-a811-481b035e7da9/please_provide_a_daily_trend_plot_for_total_ad_spend_for_lifebuoy's_campaign_cmp_2025_2158,_focusing_on_the_retention_objective_for_the_specified_time_period._VizChart.png/0
+
+### Campaign Insights
+
+#### KPIs Analyzed
+
+Conversions, CVA, Total Ad Spend
+
+#### Campaign Analysis Text
+
+##### Trends
+
+*   **Conversions**: As shown in Image 1, the daily conversions remained constant at 3.0 throughout the campaign period, from June 13, 2025, to July 20, 2025. This indicates a consistent, though potentially low, daily conversion rate.
+*   **CVA**: Image 2 illustrates the daily trend of CVA. The CVA generally hovered around 12% for most of the period, but exhibited noticeable dips around June 23rd, June 29th, and July 19th. This suggests variability in the cost-effectiveness of conversions.
+*   **Total Ad Spend**: Image 3 demonstrates that the Total Ad Spend remained constant at approximately $21.40 per day throughout the campaign duration.
+
+##### Anomalies
+
+The primary anomaly observed is the significant overspend, with Total Ad Spend reaching 300.00% of the Planned Spend. Additionally, the fluctuations in CVA, particularly the dips on specific dates, indicate periods where the cost per acquisition was less efficient, despite consistent daily spend and conversions.
+
+##### Overall Impact
+
+The campaign successfully generated conversions and revenue with a healthy ROAS of 7.36. However, the substantial overspend suggests a disconnect between planning and execution or an intentional scaling of a successful campaign without updating the planned spend. The consistent daily conversions, coupled with fluctuating CVA, imply that while the campaign maintained a steady output, its efficiency varied.
+
+## 6. Recommendations
+
+### 1. Granular Temporal and Contextual Analysis
+
+*   **Insights**: The CVA showed noticeable dips on specific dates (June 23rd, June 29th, July 19th) despite consistent daily ad spend and conversions. This indicates periods of decreased efficiency in acquiring conversions.
+*   **Action**: Conduct a deeper dive into the specific factors influencing CVA on these dates. This could include examining ad creatives, targeting parameters, competitive landscape, or external events during those periods.
+*   **Objective**: Optimize campaign efficiency and reduce Cost Per Acquisition (CVA) by identifying and mitigating factors leading to performance dips.
+*   **Timeline**: Immediately for retrospective analysis; ongoing for future campaign monitoring.
+
+### 2. Dynamic Budget Allocation and Bidding Strategy Optimization
+
+*   **Insights**: The campaign significantly exceeded its planned spend (300% utilization) while maintaining a constant daily ad spend. This suggests either a poorly estimated planned spend or a missed opportunity for dynamic budget adjustments based on real-time performance.
+*   **Action**: Implement a more flexible budget allocation strategy that allows for real-time adjustments based on CVA trends and conversion efficiency. Consider exploring smart bidding strategies that optimize for CVA or ROAS.
+*   **Objective**: Improve budget management, ensure spend aligns with planned targets, and maximize ROAS by dynamically allocating resources to periods of higher efficiency.
+*   **Timeline**: Short-term (next campaign cycle) for implementation, continuous monitoring.
+
+### 3. Review of Planned Spend and Performance Forecasting
+
+*   **Insights**: The substantial difference between planned spend (271.02) and total actual spend (813.06) suggests a potential mismatch in initial campaign planning or an unrecorded decision to scale the campaign.
+*   **Action**: Review the process for setting planned spend and integrate performance forecasting models to better anticipate actual spend and potential ROI. Ensure clear documentation for any budget adjustments made during the campaign.
+*   **Objective**: Enhance accuracy in campaign planning and forecasting, leading to more realistic budget expectations and improved strategic decision-making.
+*   **Timeline**: Prior to the launch of the next campaign.

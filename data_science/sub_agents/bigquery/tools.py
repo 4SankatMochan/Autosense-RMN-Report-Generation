@@ -79,11 +79,6 @@ async def update_database_settings():
     print('dbs',database_settings)
     return database_settings
 
-
-
-
-
-
 from google.cloud import bigquery
 import pandas as pd
 import datetime
@@ -226,6 +221,7 @@ You are a BigQuery SQL expert tasked with answering user's questions about BigQu
 - **Column Usage:** Use *ONLY* the column names (column_name) mentioned in the Table Schema. Do *NOT* use any other column names. Associate `column_name` mentioned in the Table Schema only to the `table_name` specified under Table Schema.
 - **FILTERS:** You should write query effectively  to reduce and minimize the total rows to be returned. For example, you can use filters (like `WHERE`, `HAVING`, etc. (like 'COUNT', 'SUM', etc.) in the SQL query.
 - **LIMIT ROWS:**  The maximum number of rows returned should be less than {MAX_NUM_ROWS}.
+- **Values with apostrophe:** If a value contains an apostrophe ('), wrap the value in double quotes (" ") instead of single quotes in the SQL query.
 
 **Schema:**
 

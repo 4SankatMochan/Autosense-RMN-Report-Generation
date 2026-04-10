@@ -1,0 +1,134 @@
+# Campaign Performance Report for Brooke Bond's CMP_2025_0011
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### 1.1. Campaign Details
+
+| Campaign ID | Unique Campaign Name | Brand Name | Category | Media Types | Channels | Objective | Sub Objective | Campaign Duration (Start Date) | Campaign Duration (End Date) | Planned Spend | Total Actual Spend |
+| :---------- | :------------------- | :--------- | :------- | :---------- | :------- | :-------- | :------------ | :----------------------------- | :--------------------------- | :------------ | :----------------- |
+| CMP_2025_0011 | CMP_2025_0011 - Brooke Bond - Onsite - Consideration - Sponsored Product - 20250505-20250610 | Brooke Bond | | Sponsored Product | Onsite | Consideration | | 2025-05-05 | 2025-06-10 | 32.21 | 32.21 |
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+* Persona: Client Solution Manager
+* Brand: Brooke Bond
+* Campaign ID: CMP_2025_0011
+* Period:
+* Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, CPCV, Viewed Units, Spend Utilization.
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+This report details the performance of Brooke Bond's campaign 'CMP_2025_0011', which ran from May 5, 2025, to June 10, 2025. The campaign, focused on the 'Consideration' objective, utilized an 'Onsite' channel with 'Sponsored Product' media types. The planned spend of 32.21 was fully utilized, indicating efficient budget allocation.
+
+### 3.2. Overall Performance
+
+The campaign demonstrated consistent performance in key metrics, with total ad spend, impressions, reach, clicks, CTR, and CPC showing specific ranges. Total Ad Spend remained stable at 0.87. Impressions ranged from 1050 to 9383, and Reach from 396 to 4446. Clicks varied between 1 and 2, with a consistent CTR of 0.9%. The CPC ranged from 0.5 to 0.87. Notably, there were no video completions or viewed units recorded (CPCV and Viewed Units were 0).
+
+### 3.3. Channel Performance
+
+For the 'Onsite' channel, the campaign achieved a total ad spend of 32.21, generating 183,631 impressions and reaching 66,965 users. There were 40 clicks, resulting in an average CTR of 0.9% and an average CPC of 0.84. The absence of video completions meant CPCV could not be calculated for this channel.
+
+### 3.4. Optimization Insight
+
+The 100% spend utilization is a positive indicator of budget management. However, the lack of video completions suggests that the video components, if any, were not engaged with, or the campaign did not include video elements. Further analysis of daily trends in ad spend and reach provides insights into campaign dynamics, which can inform future optimization strategies, particularly concerning creative effectiveness and media mix.
+
+## 4. Campaign Overview
+
+### 4.1. Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-05-05 | 2025-06-10 | CMP_2025_0011 | 32.21 | Consideration | 32.21 | 100% |
+
+### 4.2. Objective: Consideration
+
+#### 4.2.1. Metrics Range Value Table
+
+This table summarizes the minimum and maximum values observed for key metrics during the campaign 'CMP_2025_0011' for Brooke Bond, focusing on the 'Consideration' objective.
+
+| Metric | Min Value | Max Value |
+| :---------------- | :-------- | :-------- |
+| Total Ad Spend | 0.87 | 0.87 |
+| Impressions | 1050 | 9383 |
+| Reach | 396 | 4446 |
+| Clicks | 1 | 2 |
+| CTR | 0.9% | 0.9% |
+| CPC | 0.5 | 0.87 |
+| CPCV | 0 | 0 |
+| Viewed Units | 0 | 0 |
+
+#### 4.2.2. Aggregated Metrics Table
+
+This table presents the aggregated performance metrics for Brooke Bond's campaign 'CMP_2025_0011', grouped by channel, for the 'Consideration' objective.
+
+| Channel | Channel Total Ad Spend | Channel Impressions | Channel Total Reach | Channel Clicks | Channel CTR | Channel CPC | Channel CPCV | Channel Viewed Units | Channel Clicked Units | Channel Add To Cart |
+| :------ | :--------------------- | :------------------ | :------------------ | :------------- | :---------- | :---------- | :----------- | :------------------- | :-------------------- | :------------------ |
+| Onsite | 32.21 | 183,631 | 66,965 | 40 | 0.9% | 0.84 | N/A | | | |
+
+## 5. Campaign-Wise Analysis
+
+### 5.1. Visualizations
+
+Image 1: Daily Trend of Total Ad Spend for Brooke Bond's Campaign CMP_2025_0011
+gs://acn-cda-adk-staging/root/user/68029a51-311a-4ebe-99fb-16144ed972ce/please_provide_a_daily_trend_analysis_plot_for_total_ad_spend_for_brooke_bond's_campaign_cmp_2025_0011,_focusing_on_the_consideration_objective_for_<specify_time_period>._VizChart.png/0
+The chart displays the daily trend of total ad spend for Brooke Bond's Campaign CMP_2025_0011 over time. The x-axis represents the date, and the y-axis shows the total daily ad spend in dollars. The chart visually demonstrates how the ad spend has changed each day during the campaign period.
+
+Image 2: Daily Trend of Reach for Brooke Bond's Campaign CMP_2025_0011
+gs://acn-cda-adk-staging/root/user/68029a51-311a-4ebe-99fb-16144ed972ce/i_need_a_daily_trend_analysis_plot_for_reach_for_brooke_bond's_campaign_cmp_2025_0011,_focusing_on_the_consideration_objective_for_<specify_time_period>._VizChart.png/0
+The line chart illustrates the daily trend of 'Reach'. You can observe how the reach metric has changed over time, highlighting periods of higher or lower engagement.
+
+### 5.2. Campaign Insights
+
+#### KPIs Analyzed:
+Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, CPCV, Viewed Units, Spend Utilization.
+
+#### Campaign Analysis Text:
+
+**Trends:**
+*   **Total Ad Spend:** The daily trend analysis plot (Image 1) visually demonstrates the fluctuation of ad spend throughout the campaign duration. This indicates a dynamic allocation of budget over time.
+*   **Reach:** The daily trend analysis plot for Reach (Image 2) shows how the number of unique users exposed to the campaign varied each day. This trend can be correlated with ad spend patterns and campaign scheduling.
+*   **Impressions:** Daily impression data was not available for analysis, which limits our ability to understand the day-to-day visibility of the campaign.
+*   **CTR:** The Click-Through Rate remained consistent at 0.9% throughout the campaign, suggesting stable ad creative effectiveness relative to impressions.
+*   **CPC:** The Cost Per Click varied between 0.5 and 0.87, indicating some efficiency fluctuations in driving clicks.
+*   **CPCV & Viewed Units:** Consistently 0, implying that video content, if part of the campaign, did not result in any completions or views, or was not a component of this specific campaign setup.
+
+**Anomalies:**
+The most significant observation is the consistent zero values for CPCV (Cost Per Completed View) and Viewed Units (Video Plays). This suggests either an issue with video asset tracking, a lack of video content in the campaign, or that the video content failed to engage users to the point of completion.
+
+**Overall Impact:**
+The campaign successfully utilized 100% of its planned budget, indicating effective budget management. The consistent CTR and ranges for other key metrics provide a baseline for future campaigns. However, the absence of video engagement metrics warrants further investigation to ensure all campaign components are contributing effectively to the 'Consideration' objective.
+
+## 6. Recommendations
+
+### 6.1. Granular Temporal and Contextual Analysis
+
+*   **Insights:** Daily trends for ad spend and reach are available, providing a granular view of campaign activity. However, the lack of daily impression data hinders a complete understanding of daily visibility. The consistent CTR suggests stable ad performance, but daily variations in clicks and CPC could be further explored.
+*   **Action:** Investigate the reason for the unavailability of daily impression data and implement measures to collect it for future campaigns. Conduct a deeper analysis of the daily ad spend and reach trends, correlating them with specific campaign events, creative changes, or external market factors to identify optimal pacing strategies.
+*   **Objective:** Improve understanding of daily campaign performance drivers and optimize future media planning.
+*   **Timeline:** Ongoing, with immediate focus on data collection for impressions.
+
+### 6.2. Evaluate Video Content Strategy
+
+*   **Insights:** The CPCV and Viewed Units metrics were consistently 0, indicating a complete absence of video completions or plays. This suggests that any video assets included in the campaign were not engaged with, or that video was not a component of this specific campaign, despite the template allowing for these metrics.
+*   **Action:** Verify if video content was intended for this campaign. If so, analyze the creative, placement, and targeting to understand why no video completions or views were recorded. If video is not a core component of the 'Consideration' objective for this channel, ensure that irrelevant metrics are excluded from future reporting to avoid confusion.
+*   **Objective:** Optimize media mix and content effectiveness by ensuring all campaign elements contribute meaningfully to the objective.
+*   **Timeline:** Immediate review of campaign setup and creative assets.
+
+### 6.3. Optimize Click-Through Performance
+
+*   **Insights:** The campaign maintained a stable CTR of 0.9%, and clicks ranged from 1 to 2 daily, with CPC varying between 0.5 and 0.87. While the spend utilization was 100%, there might be opportunities to enhance user engagement and click volume within the allocated budget.
+*   **Action:** Conduct A/B testing on different ad creatives, headlines, calls-to-action, and landing page experiences. Focus on elements that can improve the relevance and appeal of the ads to the target audience, aiming to increase CTR and drive more clicks.
+*   **Objective:** Enhance user engagement, improve the efficiency of ad spend, and potentially drive higher consideration outcomes.
+*   **Timeline:** Implement A/B testing in the next campaign cycle or during ongoing campaign optimization.

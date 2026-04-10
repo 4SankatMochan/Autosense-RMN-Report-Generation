@@ -1,0 +1,121 @@
+# Campaign Performance Report: CMP_2025_2158 - Lifebuoy
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaign Details
+
+Table 1: Campaign Details for CMP_2025_2158
+| Field | Value |
+| :---------------------- | :------------------------------------------------------------------- |
+| Campaign ID | CMP_2025_2158 |
+| Unique Campaign Name | CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720 |
+| Brand Name | Lifebuoy |
+| Unique Campaign Ad ID | AD_00021575 |
+| Category | Not available |
+| Media Types | In-App Ads |
+| Channels | App |
+| Objective | Retention |
+| Sub-Objective | Subscription or Refill |
+| Campaign Duration | 2025-06-13 to 2025-07-20 |
+| Planned Spend | 271.02 |
+| Total Actual Spend | 813.06 |
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+* Timeline: Daily/ Weekly
+* By Objective: Awareness / Conversion / Consideration / Retension
+* By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: Ad Ops Manager
+Brand: Lifebuoy
+Campaign ID: CMP_2025_2158
+Period: Full campaign period (June 13, 2025 - July 20, 2025)
+Report Type: Campaign Performance Report
+
+**KPI Analyzed:** Total Ad Spend, Conversions, Cost Per Acquisition (CPA), Total Campaign Revenue, Return on Ad Spend (ROAS).
+
+## 3. Executive Summary
+
+### Overview
+
+Campaign `CMP_2025_2158` for Lifebuoy, with a Retention objective, ran from June 13, 2025, to July 20, 2025. This report provides a detailed analysis of its performance, focusing on key metrics and daily trends to inform future marketing and sales strategies.
+
+### Overall Performance
+
+The campaign significantly exceeded its planned spend, utilizing 300% of the allocated budget (Total Ad Spend: 813.06 vs. Planned Spend: 271.02). Despite this, it achieved a healthy aggregated Return on Ad Spend (ROAS) of 7.36 and generated 114 conversions. The daily Total Ad Spend remained constant at $21.40, and daily conversions were consistently 3.0 throughout the campaign period, indicating a stable, albeit potentially over-resourced, execution.
+
+### Channel & Format Performance
+
+The campaign was executed entirely through the 'App' channel using 'In-App Ads'. This channel delivered the aggregated performance metrics highlighted above, including a Total Ad Spend of 813.06, 114 conversions, and a Total Campaign Revenue of 5980.86.
+
+### Optimization Insight
+
+The consistent daily performance for both ad spend and conversions suggests a predictable campaign rhythm. However, the substantial overspend (300% utilization) warrants further investigation to determine if the additional expenditure yielded proportional returns or if efficiency could be improved. Analyzing the Cost Per Acquisition (CPA) trend, which also remained consistent, is crucial for understanding the cost-effectiveness of each conversion.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+Table 2: Summary of Campaign CMP_2025_2158
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 813.06 | 300.00% |
+
+### Retention Objective Performance
+
+#### Metrics Range Value Table
+
+Table 3: Range of Key Performance Indicators for Campaign CMP_2025_2158
+| Metric | Range |
+| :-------------------------- | :------------------ |
+| Total Ad Spend | 7.13 to 7.13 |
+| Conversions | 1 to 1 |
+| Cost Per Acquisition (CPA) | 10 to 10 |
+| Units Sold | No units sold data was found |
+| Total Campaign Revenue | 36.87 to 69.75 |
+| Return on Ad Spend (ROAS) | 5.17 to 9.78 |
+
+#### Aggregated Metrics Table
+
+Table 4: Aggregated Performance by Channel for Campaign CMP_2025_2158
+| Channel | Channel Total Ad Spend | Channel Conversions | Channel CVR | Channel Repeat Transactions | Channel Units Sold | Channel Total Revenue | Channel Incremental Sales Lift | Channel ROAS |
+| :------ | :--------------------- | :------------------ | :---------- | :-------------------------- | :----------------- | :-------------------- | :----------------------------- | :----------- |
+| App | 813.06 | 114 | Not available | Not available | Not available | 5980.86 | Not available | 7.36 |
+
+## 5. Campaign Wise Analysis
+
+### Visual Layers Based on Objective: Retention
+
+### Visualizations
+
+Image 1: Daily Trend of Conversions for Campaign CMP_2025_2158
+gs://acn-cda-adk-staging/root/user/6de96db6-c2c4-487b-96e1-1e03bae3f381/for_campaign_cmp_2025_2158_by_lifebuoy,_with_a_retention_objective,_please_provide_a_daily_trend_analysis_plot_for_conversions_for_all_available_data._VizChart.png/0
+The chart displays the daily trend of conversions for Campaign CMP_2025_2158 by Lifebuoy, which has a Retention objective. The x-axis represents the date and the y-axis shows the daily conversions. The plot illustrates the number of daily conversions over time for the specified campaign. From the chart, we can see that daily conversions have been consistently at 3.0 throughout the period shown. This suggests a stable conversion rate for this campaign during this timeframe.
+
+Image 2: Daily Trend of Total Ad Spend for Campaign CMP_2025_2158
+gs://acn-cda-adk-staging/root/user/6de96db6-c2c4-487b-96e1-1e03bae3f381/for_campaign_cmp_2025_2158_by_lifebuoy,_with_a_retention_objective,_please_provide_a_daily_trend_analysis_plot_for_total_ad_spend_for_all_available_data._VizChart.png/0
+This line chart illustrates the daily trend of 'Total Ad Spend' for Campaign CMP_2025_2158 by Lifebuoy, with a Retention objective. The x-axis represents the 'Date', and the y-axis represents the 'Total Ad Spend ($)'. The chart shows that the Total Ad Spend remained constant at $21.40 throughout the observed period, from June 13, 2025, to July 20, 2025.
+
+Image 3: Daily Trend of CPA for Campaign CMP_2025_2158
+gs://acn-cda-adk-staging/root/user/6de96db6-c2c4-487b-96e1-1e03bae3f381/for_campaign_cmp_2025_2158_by_lifebuoy,_with_a_retention_objective,_please_provide_a_daily_trend_analysis_plot_for_cva_for_all_available_data._VizChart.png/0
+The line chart displays the daily trend of CPA (Cost Per Acquisition) for Campaign CMP_2025_2158. The x-axis represents the date, and the y-axis shows the daily CPA in dollars. This visualization helps to track how the cost per acquisition changes over time for this particular campaign.
+
+### Campaign Insights
+
+**KPIs Analyzed:** Conversions, Total Ad Spend, Cost Per Acquisition (CPA), Total Campaign Revenue, Return on Ad Spend (ROAS).
+
+**Campaign Analysis Text:**
+*   **Trends:**
+    *   **Conversions:** Daily conversions have been consistently at 3.0 throughout the period shown, suggesting a stable conversion rate for this campaign during this timeframe.
+    *   **Total Ad Spend:** The Total Ad Spend remained constant at $21.40 throughout the observed period, from June 13, 2025, to July 20, 2025.
+    *   **CPA:** The daily trend for CPA also appears stable, as indicated by its consistent range of 10 to 10.
+*   **Anomalies:** The most significant anomaly is the campaign's spend utilization of 300% of the planned budget, despite a consistent daily ad spend and conversion rate. This suggests either a significant underestimation of the planned budget or a deliberate strategy to overspend to maintain a stable daily conversion volume. The consistent daily values for conversions, ad spend, and CPA are notable, implying a highly controlled or automated campaign execution.
+*   **Overall Impact:** The campaign successfully drove retention with a stable conversion rate and a strong aggregated ROAS of 7.36. While the overspend is significant, the consistent daily performance across key metrics indicates that the additional investment effectively maintained performance. The campaign generated a total revenue of 5980.86.
+
+## 6. Recommendations
+
+No specific recommendations can be provided without further analysis of the daily KPI data and a deeper understanding of the campaign's strategic goals in relation to its budget overruns. The current data indicates a stable, albeit expensive, campaign performance.

@@ -1,0 +1,92 @@
+# Campaign Performance Report
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+The report focuses on the following campaign:
+
+*   **Campaign ID**: CMP_2025_0011
+*   **Brand Name**: Ben & Jerry's
+
+Due to a data retrieval issue, further details such as Unique Campaign Name, Category, Media Types, Channels, Objective, Sub-Objective, Campaign Duration, Planned Spend, and Total Actual Spend are currently unavailable.
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+
+*   **Timeline**: Full campaign period, Weekly report view, Daily report view
+*   **By Objective**: Awareness, Conversion, Consideration, Retension
+*   **By Persona**: Client Solution Manager, Ad Ops Analyst, Ad Ops Manager, AI Engineer (Sell), Retail Media Owner, Media & Campaign Manager_New, Brand Manager new, AI Engineer (Buy)
+
+**Filters Applied for this Report:**
+
+*   Persona: Client Solution Manager
+*   Brand: Ben & Jerry's
+*   Campaign ID: CMP_2025_0011
+*   Period: Not specified
+*   Report Type: Campaign Performance Report
+
+**KPIs Analyzed**: None
+
+## 3. Executive Summary
+
+### 3.1. Overview
+
+This report aims to provide a comprehensive overview of campaign performance for Campaign ID CMP_2025_0011 for Ben & Jerry's. However, due to a parsing error encountered when processing the brand name 'Ben & Jerry''s', the system was unable to retrieve the requested performance metrics. Consequently, detailed analysis and insights for this campaign cannot be provided at this time.
+
+### 3.2. Overall Performance
+
+Performance metrics for Campaign ID CMP_2025_0011 are currently unavailable due to a data retrieval issue. The validation tool encountered an internal limitation with handling escaped apostrophes in the brand name, preventing the successful execution of the query.
+
+### 3.3. Channel and Format Performance
+
+Analysis of channel and format performance cannot be conducted as underlying data could not be accessed.
+
+### 3.4. Optimization Insight
+
+No optimization insights can be generated without access to campaign performance data.
+
+## 4. Campaign Overview
+
+Due to the data retrieval issue mentioned in the Executive Summary, detailed campaign performance metrics and tables for various objectives (Awareness, Consideration, Conversion, Retention) cannot be provided in this report.
+
+## 5. Campaign Wise Analysis
+
+### 5.1. Visual Layers Based on Objective
+
+The potential visual layers for analysis, based on campaign objectives, include:
+
+*   Awareness
+*   Consideration
+*   Conversion
+*   Retention
+
+### 5.2. Visualizations
+
+The types of visualizations typically available for campaign analysis include:
+
+*   Impressions Reach Trend (Line Chart)
+*   CTR Trend (Line Chart)
+*   Spend vs Revenue (Column Chart)
+*   ROAS Trend (Line Chart)
+*   Frequency Distribution (Dual Axis Chart)
+*   Add to Cart Funnel (Funnel Chart)
+*   ROAS by Channel (Bar Chart)
+*   Channel Comparison Retention CVR (Bar Chart)
+*   Viewed vs Clicked Units (Dual Axis Line)
+*   Conversion Funnel (Funnel Chart)
+*   Channel-wise Reach CPM (Clustered Bar Chart)
+*   CPA vs CVR (Scatter Plot)
+
+### 5.3. Campaign Insights
+
+Campaign insights, including trends, anomalies, and overall impact, cannot be generated as the underlying performance data could not be retrieved.
+
+## 5. Campaign Comparison
+
+This section is not applicable as no campaign performance data could be retrieved for comparison.
+
+## 6. Recommendations
+
+Specific recommendations cannot be formulated at this time due to the absence of campaign performance data. It is advised to resolve the data parsing issue to enable comprehensive analysis and actionable insights.

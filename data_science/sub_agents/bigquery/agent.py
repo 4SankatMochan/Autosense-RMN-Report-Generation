@@ -39,7 +39,7 @@ database_agent = Agent(
     model=os.getenv("BIGQUERY_AGENT_MODEL"),
     name="database_agent",
     instruction=return_instructions_bigquery(),
-    tools=[
+    tools =[
         (
             chase_db_tools.initial_bq_nl2sql
             if NL2SQL_METHOD == "CHASE"

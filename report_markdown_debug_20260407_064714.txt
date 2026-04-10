@@ -1,0 +1,102 @@
+# Campaign Performance Report: Lifebuoy - CMP_2025_2158
+
+## 1. Context
+
+This report is prepared for the Marketing and Sales leadership team to provide a comprehensive overview of campaign performance across different channels. The primary objective is to understand which channels contribute most effectively to attributed sales and to identify overall daily sales patterns. The insights derived from this analysis will be crucial in informing strategic decisions related to optimizing future marketing spend, resource allocation, and campaign targeting to maximize ROI.
+
+### Campaigns
+
+*   **Campaign ID**: CMP_2025_2158
+*   **Unique Campaign Name**: CMP_2025_2158 - Lifebuoy - App - Retention - In-App Ads - 20250613-20250720
+*   **Brand Name**: Lifebuoy
+*   **Unique Campaign Ad ID**: AD_00021575
+*   **Category**: Optimization-Based
+*   **Media Types**: In-App Ads
+*   **Channels**: App
+*   **Objective**: Retention
+*   **Sub-objective**: Subscription or Refill
+*   **Campaign Duration**: From 2025-06-13 to 2025-07-20
+*   **Planned Spend**: 271.02
+*   **Actual Spend**: 7.13 (Daily Actual Spend)
+
+## 2. Customization Options
+
+This report can be filtered and customized along the following dimensions:
+*   Timeline: Full campaign period, Weekly report view, Daily report view
+*   By Objective: Awareness / Conversion / Consideration / Retension
+*   By Persona: Client Solution Manager / Ad Ops Analyst / Ad Ops Manager / AI Engineer (Sell)/ Retail Media Owner / Media & Campaign Manager_New / Brand Manager new / AI Engineer (Buy)
+
+**Filters:**
+Persona: Ad Ops Manager
+Brand: Lifebuoy
+Campaign ID: CMP_2025_2158
+Period:
+Report Type: Campaign Performance Report
+
+## 3. Executive Summary
+
+### Overview
+This report details the performance of Campaign ID 'CMP_2025_2158' for the brand 'Lifebuoy', which was an 'Optimization-Based' 'Retention' campaign utilizing 'In-App Ads' through the 'App' channel. The campaign ran from 2025-06-13 to 2025-07-20 with a planned spend of 271.02.
+
+### Overall Performance
+The campaign significantly overspent its planned budget, with a total ad spend of 813.06, resulting in a spend utilization of approximately 300%. Despite this, the campaign generated impressions ranging from 1,219 to 9,588, and achieved a reach of 211 to 2,950. Clicks varied between 5 and 14, with a Click-Through Rate (CTR) between 0.50% and 0.57%. The Cost Per Click (CPC) ranged from 0.51 to 1.43. No data was available for Cost Per Completed View (CPCV) or Viewed Units.
+
+### Channel Format Performance
+The 'App' channel, the sole channel for this campaign, recorded a total daily spend of 813.06. It delivered 634,614 impressions, reached 134,820 unique users, and generated 915 clicks. The channel's CTR was 57.33%, with a CPC of 114.39.
+
+### Optimization Insight
+The substantial overspend (300% utilization) indicates a potential disconnect between planning and execution or a highly aggressive bidding strategy. While the 'App' channel showed a high CTR (57.33%), the high CPC (114.39) suggests that the cost per engagement might be elevated. Future campaigns should focus on optimizing spend utilization and evaluating the cost-effectiveness of clicks within the 'App' channel for retention objectives.
+
+## 4. Campaign Overview
+
+### Campaign Summary Table
+
+| Start Date | End Date | Campaign ID | Planned Spend | Campaign Objective | Total Ad Spend | Spend Utilization Percentage |
+| :--------- | :------- | :---------- | :------------ | :----------------- | :------------- | :--------------------------- |
+| 2025-06-13 | 2025-07-20 | CMP_2025_2158 | 271.02 | Retention | 813.06 | 300% |
+
+### Objective Retention
+
+#### Metrics Range Value Table
+
+| Channel | Total Ad Spend | Impressions | Reach | Clicks | CTR | CPC | CPCV | Viewed Units |
+| :------ | :------------- | :---------- | :---- | :----- | :-- | :-- | :--- | :----------- |
+| N/A | 7.13 to 7.13 | 1219 to 9588 | 211 to 2950 | 5 to 14 | 0.50% to 0.57% | 0.51 to 1.43 | No values were observed for CPCV, likely due to no video completions recorded for this campaign. | This metric was not directly available in the dataset. |
+
+#### Aggregated Metrics Table
+
+| Channel | Channel Total Ad Spend | Channel Impressions | Channel total Reach | Channel Clicks | Channel CTR | Channel CPC |
+| :------ | :--------------------- | :------------------ | :------------------ | :------------- | :---------- | :---------- |
+| App | 813.06 | 634,614 | 134,820 | 915 | 57.33% | 114.39 |
+
+## 5. Campaign Wise Analysis
+
+### Campaign Insights
+
+#### KPIs Analyzed
+Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, Spend Utilization.
+
+#### Campaign Analysis Text
+*   **Trends**: The campaign demonstrated consistent daily ad spend, though the range of other metrics like impressions, reach, and clicks indicates daily fluctuations. The CTR range was narrow (0.50% to 0.57%), suggesting a relatively stable engagement rate at the ad level.
+*   **Anomalies**: A significant anomaly is the 300% spend utilization, indicating a substantial overspend relative to the planned budget. This could be due to aggressive bidding, an extended campaign duration beyond initial planning, or incorrect budget allocation.
+*   **Overall Impact**: The campaign successfully generated a large volume of impressions and reach, particularly through the 'App' channel. While the CTR was stable, the high CPC in the 'App' channel (114.39) warrants further investigation into the cost-efficiency of user acquisition or retention efforts. The absence of CPCV data suggests that video completions were not a primary metric or were not tracked for this campaign.
+
+## 6. Recommendations
+
+*   **1. Granular Temporal and Contextual Analysis**
+    *   **Insights**: The campaign exhibited a 300% spend utilization, significantly exceeding the planned budget. While the 'App' channel delivered high impressions and clicks, the CPC of 114.39 is notably high.
+    *   **Action**: Conduct a detailed daily breakdown of ad spend, impressions, clicks, and CPC for the 'App' channel. Investigate the specific factors contributing to the budget overruns and the high CPC. Analyze ad creative performance and targeting effectiveness within the app environment.
+    *   **Objective**: To identify the root causes of budget overruns and high CPC, and to pinpoint specific days or ad placements that drove inefficient spend.
+    *   **Timeline**: Immediate (within 1 week)
+
+*   **2. Dynamic Budget Allocation and Bidding Strategy Optimization**
+    *   **Insights**: The substantial overspend suggests that the current bidding strategy or budget allocation for the 'App' channel may not be optimized for cost-efficiency, especially given the retention objective.
+    *   **Action**: Implement a more dynamic budget allocation strategy, potentially using automated bidding rules that cap daily spend or adjust bids based on real-time performance metrics (e.g., target CPC for retention actions). Re-evaluate the campaign's bidding strategy to ensure it aligns with the retention objective and planned spend.
+    *   **Objective**: To control spend utilization, reduce the average CPC, and improve the cost-effectiveness of retention efforts within the 'App' channel.
+    *   **Timeline**: Ongoing (continuous optimization)
+
+*   **3. Systematic A/B Testing of Creative and Landing Page Elements**
+    *   **Insights**: The CTR range (0.50% to 0.57%) is relatively narrow, and while the aggregated CTR for the 'App' channel is high (57.33%), the high CPC indicates that the quality of engagement or conversion intent might be costly.
+    *   **Action**: Launch A/B tests for different ad creatives, call-to-actions, and in-app landing page experiences to identify combinations that drive higher quality clicks and lower CPC for retention-focused actions. Focus on improving the relevance and value proposition for existing users.
+    *   **Objective**: To enhance user engagement quality, optimize ad creative performance, and ultimately reduce the cost per valuable retention action.
+    *   **Timeline**: Short-term (next campaign cycle)

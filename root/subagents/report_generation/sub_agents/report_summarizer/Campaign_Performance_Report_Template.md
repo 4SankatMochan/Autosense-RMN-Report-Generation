@@ -4,7 +4,6 @@ Campaign Performance Report
 # 1. Context
 This block should be repeated for each campaign or rendered as a list/table when multiple campaigns exist.
 ## campaign_metadata(repeatable)
-### text
 **Campaign ID**: [Enter Campaign ID]  
 **Campaign Name**: [Enter Campaign Name]  
 **Brand Name**: [Enter Brand Name]  

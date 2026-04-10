@@ -21,10 +21,6 @@ from .tools import chart_plotting_tool
 from google.adk.tools import ToolContext
 from .ds_tool import call_ds_agent
 
-
-
-
-
 root_agent = Agent(
     model=os.getenv("VIZ_AGENT_MODEL"),
     name="data_visualization_agent",
