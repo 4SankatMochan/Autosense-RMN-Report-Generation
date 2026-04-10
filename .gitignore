@@ -24,7 +24,7 @@ test_ssl.py
 generated_prompts_*.txt
 report_json*.json
 report_markdown*.md
-
+report_markdown_debug*.md
 
 # Jupyter
 .ipynb_checkpoints/
