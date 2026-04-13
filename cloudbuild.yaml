@@ -7,7 +7,7 @@ steps:
       - '-c'
       - |
         echo "Deploying Cloud Run service using .env..."
-        gcloud run deploy rmn-agent-main \
+        gcloud run deploy rmn-agent-report \
           --source . \
           --project acn-cda \
           --region us-central1 \
@@ -18,19 +18,19 @@ steps:
     id: 'pull-source-image'
     args:
       - 'pull'
-      - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-main:latest'
+      - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-report:latest'
 
   # Step 3: Tag the image for the destination repo
   - name: 'gcr.io/cloud-builders/docker'
     id: 'tag-destination-image'
     args:
       - 'tag'
-      - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-main:latest'
-      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-main:latest'
+      - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-report:latest'
+      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
 
   # Step 4: Push the image to the destination repo
   - name: 'gcr.io/cloud-builders/docker'
     id: 'push-destination-image'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-main:latest'
+      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
