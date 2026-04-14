@@ -1,36 +1,95 @@
+# steps:
+#     # Step 1: Deploy to Cloud Run with updated .env vars
+#   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#     id: 'deploy-cloud-run'
+#     entrypoint: 'bash'
+#     args:
+#       - '-c'
+#       - |
+#         echo "Deploying Cloud Run service using .env..."
+#         gcloud run deploy rmn-agent-report \
+#           --source . \
+#           --project acn-cda \
+#           --region us-central1 \
+#           --env-vars-file .env
+
+#    # Step 2: Pull the image from the source repo
+#   - name: 'gcr.io/cloud-builders/docker'
+#     id: 'pull-source-image'
+#     args:
+#       - 'pull'
+#       - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-report:latest'
+
+#   # Step 3: Tag the image for the destination repo
+#   - name: 'gcr.io/cloud-builders/docker'
+#     id: 'tag-destination-image'
+#     args:
+#       - 'tag'
+#       - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-report:latest'
+#       - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
+
+#   # Step 4: Push the image to the destination repo
+#   - name: 'gcr.io/cloud-builders/docker'
+#     id: 'push-destination-image'
+#     args:
+#       - 'push'
+#       - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
+
 steps:
-    # Step 1: Deploy to Cloud Run with updated .env vars
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    id: 'deploy-cloud-run'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        echo "Deploying Cloud Run service using .env..."
-        gcloud run deploy rmn-agent-report \
-          --source . \
-          --project acn-cda \
-          --region us-central1 \
-          --env-vars-file .env
-
-   # Step 2: Pull the image from the source repo
+  # Step 1: Build the Docker image directly
   - name: 'gcr.io/cloud-builders/docker'
-    id: 'pull-source-image'
+    id: 'build-image'
     args:
-      - 'pull'
-      - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-report:latest'
-
-  # Step 3: Tag the image for the destination repo
-  - name: 'gcr.io/cloud-builders/docker'
-    id: 'tag-destination-image'
-    args:
-      - 'tag'
-      - 'us-central1-docker.pkg.dev/acn-cda/cloud-run-source-deploy/rmn-agent-report:latest'
+      - 'build'
+      - '-t'
       - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:$SHORT_SHA'
+      - '.'
 
-  # Step 4: Push the image to the destination repo
+  # Step 2: Push the image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    id: 'push-destination-image'
+    id: 'push-image'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
+      - '--all-tags'
+      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report'
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-cloud-run'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'rmn-agent-report'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:$SHORT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--project'
+      - 'acn-cda'
+      - '--platform'
+      - 'managed'
+      - '--no-allow-unauthenticated'
+      - '--env-vars-file'
+      - '.env'
+      - '--memory'
+      - '512Mi'
+      - '--cpu'
+      - '1'
+      - '--timeout'
+      - '300'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '3'
+
+# Store the built images in Artifact Registry
+images:
+  - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:latest'
+  - 'us-central1-docker.pkg.dev/acn-cda/rmn-agent-repo/rmn-agent-image-report:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
