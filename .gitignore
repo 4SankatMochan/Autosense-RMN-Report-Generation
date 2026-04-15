@@ -26,7 +26,7 @@ generated_prompts_*.txt
 report_json*.json
 report_markdown*.md
 report_markdown_debug*.md
-
+report_markdown_debug*.txt
 # Jupyter
 .ipynb_checkpoints/
 
