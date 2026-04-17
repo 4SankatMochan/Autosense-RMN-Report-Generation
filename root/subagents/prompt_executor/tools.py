@@ -1,4 +1,4 @@
-from data_science.agent import root_agent
+from root.subagents.data_science.agent import root_agent
 from google.adk.tools import ToolContext
 from google.adk.tools.agent_tool import AgentTool
 import asyncio

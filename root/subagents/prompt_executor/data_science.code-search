@@ -1,0 +1,207 @@
+# Query: data_science
+# ContextLines: 1
+
+50 results - 22 files
+
+~/rmn_agent_work/evaluation.py:
+   51  
+   52: APP_NAME = os.environ.get("APP_NAME", "data_science")
+   53  
+
+  212      """Client for communicating with a Cloud Run endpoint using ID tokens."""
+  213:     def __init__(self, app_url: str, app_name: str = "data_science"):
+  214          self.app_url = app_url.rstrip("/")
+
+~/rmn_agent_work/README.md:
+  121  
+  122:     *   You will find the datasets inside 'data-science/data_science/utils/data/'.
+  123          Make sure you are still in the working directory (`agents/data-science`). To load the test and train tables into BigQuery, run the following commands:
+  124          ```bash
+  125:         python3 data_science/utils/create_bq_table.py
+  126          ```
+
+  135      To set up the RAG Corpus for your project, run the methods `create_RAG_corpus()` and `ingest_files()` in
+  136:     `data-science/data_science/utils/reference_guide_RAG.py` by running the below command from the working directory:
+  137  
+  138      ```bash
+  139:     python3 data_science/utils/reference_guide_RAG.py
+  140      ```
+
+  167      ```bash
+  168:     poetry run adk run data_science
+  169      ```
+
+  174      ```
+  175:     Select the data_science from the dropdown
+  176  
+
+  298  
+  299: This will create a file named `data_science-0.1-py3-none-any.whl` in the
+  300  `deployment` directory.
+
+  375      You can do so by adding additional tools and sub_agents to the root agent inside
+  376:     `agents/data-science/data_science/agent.py`.
+  377  *   **Partial imports:** If you only need certain capabilities inside the multi-agent system,
+
+~/rmn_agent_work/test_ADKApp.ipynb:
+  351        "           \u001b[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n",
+  352:       "  File \u001b[35m\"c:\\Users\\krishnendhu.murali\\Documents\\RMN\\clone\\parallel_agentcall\\rmn_agent_work\\data_science\\tools.py\"\u001b[0m, line \u001b[35m160\u001b[0m, in \u001b[35mcall_viz_agent\u001b[0m\n",
+  353        "    dv_agent_output = \u001b[1;31mawait agent_tool.run_async(\u001b[0m\n",
+
+  420        "           \u001b[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n",
+  421:       "  File \u001b[35m\"c:\\Users\\krishnendhu.murali\\Documents\\RMN\\clone\\parallel_agentcall\\rmn_agent_work\\data_science\\sub_agents\\viz_agent\\tools.py\"\u001b[0m, line \u001b[35m105\u001b[0m, in \u001b[35mchart_plotting_tool\u001b[0m\n",
+  422        "    max_val = np.max(\u001b[31mdb_data\u001b[0m\u001b[1;31m[y]\u001b[0m)\n",
+
+~/rmn_agent_work/test_script.py:
+   25   
+   26: def query_data_science_agent(
+   27      remote_app: agent_engines.AgentEngine,
+
+   98      location = os.environ.get("GOOGLE_CLOUD_LOCATION", "us-central1")
+   99:     app_name = os.environ.get("APP_NAME", "DATA_SCIENCE_AGENT_ADK")
+  100      bucket_name = f"gs://{project_id}-bucket002"
+
+  133   
+  134:     responses = query_data_science_agent(remote_app, USER_ID, SESSION_ID, messages_to_query)
+  135   
+
+~/rmn_agent_work/ADKApp_testing/data_science.ipynb:
+  23      "from vertexai.preview import reasoning_engines\n",
+  24:     "from data_science.agent import root_agent as Main_Agent\n",
+  25      "app = reasoning_engines.AdkApp(\n",
+
+~/rmn_agent_work/ADKApp_testing/root.ipynb:
+  1826        "           \u001b[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n",
+  1827:       "  File \u001b[35m\"c:\\Users\\krishnendhu.murali\\Documents\\RMN\\clone\\parallel_agentcall\\rmn_agent_work\\data_science\\tools.py\"\u001b[0m, line \u001b[35m163\u001b[0m, in \u001b[35mcall_viz_agent\u001b[0m\n",
+  1828        "    dv_agent_output = \u001b[1;31mawait agent_tool.run_async(\u001b[0m\n",
+
+~/rmn_agent_work/root/agent.py:
+  6  from .subagents.prompt_executor.agent import root_agent as prompt_executor
+  7: from data_science.agent import root_agent as db_ds_multiagent
+  8  from .subagents.report_generation.agent import root_agent as report_generator
+
+~/rmn_agent_work/root/prompts.py:
+   7  - **report_generator**
+   8: - **data_science**
+   9  
+
+  32  ### 2. Other Requests
+  33: For any request that is **not report generation**, call the **`data_science` agent**.
+  34  
+
+  58  - **prompt_executor**
+  59: - **data_science**
+  60  
+
+~/rmn_agent_work/root/subagents/data_science/sub_agents/analytics/agent.py:
+  24      model=os.getenv("ANALYTICS_AGENT_MODEL"),
+  25:     name="data_science_agent",
+  26      instruction=return_instructions_ds(),
+
+~/rmn_agent_work/root/subagents/data_science/sub_agents/bigquery/test.py:
+   1  # import os
+   2: # from data_science.sub_agents.bigquery.prompts import return_instructions_bigquery
+   3: # from data_science.sub_agents.bigquery.campaign_logic_prompt import return_campaign_logic_prompt
+   4  
+
+   6  # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+   7: # PROMPT_DIR = os.path.join(BASE_DIR, "data_science", "sub_agents", "bigquery")
+   8  # CAMPAIGN_MD_PATH = os.path.join(PROMPT_DIR, "campaign_logic_prompt.md")
+
+  50  import os
+  51: from .sub_agents.bigquery.prompts import (
+  52      return_instructions_bigquery,
+
+~/rmn_agent_work/root/subagents/data_science/sub_agents/bigquery/tools.py:
+  22  import asyncio
+  23: from .utils.utils import get_env_var
+  24  from google.adk.tools import ToolContext
+
+~/rmn_agent_work/root/subagents/data_science/sub_agents/bqml/agent.py:
+  22  
+  23: from .sub_agents.bqml.tools import (
+  24      check_bq_models,
+
+  30  
+  31: from .sub_agents.bigquery.agent import database_agent as bq_db_agent
+  32: from .sub_agents.bigquery.tools import (
+  33      get_database_settings as get_bq_database_settings,
+
+~/rmn_agent_work/root/subagents/data_science/utils/create_bq_table.py:
+  90      dataset_name = "marketing_data"
+  91:     fact_performance_csv_filepath = "root/subagents/data_science/utils/data/fact_performance.csv"
+  92:     fact_reach_csv_filepath = "root/subagents/data_science/utils/data/fact_reach.csv"
+  93  
+
+~/rmn_agent_work/root/subagents/prompt_executor/agent.py:
+  12  from google.adk.tools import FunctionTool
+  13: from root.subagents.data_science.agent import setup_before_agent_call
+  14: # from root.subagents.data_science.agent import root_agent
+  15   
+
+~/rmn_agent_work/root/subagents/prompt_executor/tools.py:
+  1: from root.subagents.data_science.agent import root_agent
+  2  from google.adk.tools import ToolContext
+
+~/rmn_agent_work/root/subagents/prompt_executor_2/agent.py:
+  12  from google.adk.tools import FunctionTool
+  13: from root.subagents.data_science.agent import setup_before_agent_call
+  14  from google.adk.agents.sequential_agent import SequentialAgent
+
+~/rmn_agent_work/root/subagents/prompt_executor_2/tools.py:
+  1: from root.subagents.data_science.agent import root_agent
+  2  from google.adk.tools import ToolContext
+
+~/rmn_agent_work/root/subagents/prompt_executor_2/subagents/Campaign_analysis/tools.py:
+   17  #     bucket_name = os.getenv("BUCKET_NAME")
+   18: #     # session_prefix = f'data_science/user/{session_id}/'
+   19  #     session_prefix = f'prompt_executor/user/{session_id}/'
+
+  141      # print("The Bucket name is : ",bucket_name)
+  142:     # # session_prefix = f'data_science/user/{session_id}/'
+  143      # session_prefix = f'prompt_executor/user/{session_id}/'
+
+~/rmn_agent_work/root/subagents/report_generation/sub_agents/pdf_generator/pdf_generator_func.py:
+  29          # Set logo paths (either provided or default logos)
+  30:         # self.logo_path = logo_path or r"C:\Users\rasheena.a.t\OneDrive - Accenture\Documents\RMN\rmn_agent_work\data_science\sub_agents\phase1_report gen\Phase_1\Accenture_Logo.png"
+  31:         # self.cora_logo_path = cora_logo_path or r"C:\Users\rasheena.a.t\OneDrive - Accenture\Documents\RMN\rmn_agent_work\data_science\sub_agents\phase1_report gen\Phase_1\Cora.png"
+  32          self.logo_path = logo_path or "gs://acn-cda-adk-staging/shared_docs/Accenture_Logo.png"
+
+~/rmn_agent_work/root/subagents/report_generation/sub_agents/report_summarizer/Campaign_Performance_Summary_Text_Viz.json:
+  12          "prompt": "Display the daily ROAS trend for Dove campaigns during July 2025.",
+  13:         "chart_base64_string": "gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_daily_roas_dove_july2025.png/0",
+  14          "json_data": {
+
+  36          "prompt": "Compare CTR and CVR performance across key media channels (Onsite, Offsite, CTV).",
+  37:         "chart_base64_string": "gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_ctr_cvr_by_channel_july2025.png/0",
+  38          "json_data": {
+
+  56          "prompt": "Summarize total spend vs. budget utilization by campaign objective.",
+  57:         "chart_base64_string": "gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_spend_vs_budget_by_objective_july2025.png/0",
+  58          "json_data": {
+
+  76          "prompt": "Show the attributed conversions and revenue by week for Dove campaigns.",
+  77:         "chart_base64_string": "gs://rmn-agentic/data_science/user/12ab34cd-5678-90ef-gh12-ijkl34567890/chart_weekly_conversions_revenue_july2025.png/0",
+  78          "json_data": {
+
+~/rmn_agent_work/root/subagents/report_generation/sub_agents/report_summarizer/prompts.py:
+   90              "prompt": "Show the hourly average bounce rate for the past week.",
+   91:             "chart_base64_string": "gs://rmn-agentic/data_science/user/f3d7e9b0-1234-5678-90ab-cdef01234567/chart_hourly_bounce_rate_20250930_100000.png/0",
+   92              "json_data": {
+
+  219  Image 1: Hourly Average Bounce Rate (Last Week)
+  220: gs://rmn-agentic/data_science/user/f3d7e9b0-1234-5678-90ab-cdef01234567/chart_hourly_bounce_rate_20250930_100000.png/0
+  221  
+
+  454  #             "prompt": "Show the hourly average bounce rate for the past week.",
+  455: #             "chart_base64_string": "gs://rmn-agentic/data_science/user/f3d7e9b0-1234-5678-90ab-cdef01234567/chart_hourly_bounce_rate_20250930_100000.png/0",
+  456  #             "json_data": {
+
+  583  # Image 1: Hourly Average Bounce Rate (Last Week)
+  584: # gs://rmn-agentic/data_science/user/f3d7e9b0-1234-5678-90ab-cdef01234567/chart_hourly_bounce_rate_20250930_100000.png/0
+  585  
+
+~/rmn_agent_work/root/subagents/report_generation/sub_agents/text_viz_json_agent/tools.py:
+  15      bucket_name = os.getenv("BUCKET_NAME")
+  16:     # session_prefix = f'data_science/user/{session_id}/'
+  17      session_prefix = f'root/user/{session_id}/'

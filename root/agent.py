@@ -4,7 +4,7 @@ from google.adk.agents import Agent, LlmAgent, SequentialAgent
 from google.adk.agents.callback_context import CallbackContext
 from .subagents.prompt_generator_list.agent import root_agent as prompt_generator
 from .subagents.prompt_executor.agent import root_agent as prompt_executor
-from data_science.agent import root_agent as db_ds_multiagent
+from .subagents.data_science.agent import root_agent as db_ds_multiagent
 from .subagents.report_generation.agent import root_agent as report_generator
 from .prompts import return_instructions_root
 from io import BytesIO

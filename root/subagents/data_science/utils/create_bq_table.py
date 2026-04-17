@@ -88,8 +88,8 @@ def main():
         raise ValueError("BQ_PROJECT_ID environment variable not set.")
 
     dataset_name = "marketing_data"
-    fact_performance_csv_filepath = "data_science/utils/data/fact_performance.csv"
-    fact_reach_csv_filepath = "data_science/utils/data/fact_reach.csv"
+    fact_performance_csv_filepath = "root/subagents/data_science/utils/data/fact_performance.csv"
+    fact_reach_csv_filepath = "root/subagents/data_science/utils/data/fact_reach.csv"
 
     # Create the dataset if it doesn't exist
     print("Creating dataset.")
