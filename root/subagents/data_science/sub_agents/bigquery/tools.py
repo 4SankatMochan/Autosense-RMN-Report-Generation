@@ -98,6 +98,19 @@ async def get_bigquery_schema(dataset_id, client=None, project_id=None, max_exam
     # Get all table-like objects in the dataset
     tables_objs = [client.get_table(dataset_ref.table(t.table_id)) for t in client.list_tables(dataset_ref)]
 
+    # Restrict the schema to a single configured table when BQ_TABLE_ID is set. The dataset holds
+    # multiple tables (e.g. mv_flat_campaign_measurement_1 with brand *codes* and
+    # mv_campaign_day_features_v1 with brand *names* + daily grain). Handing the NL2SQL model all of
+    # them made it mix tables/columns, so brand-name filters hit the wrong table and returned 0 rows.
+    target_table = os.environ.get("BQ_TABLE_ID")
+    if target_table:
+        filtered = [t for t in tables_objs if t.reference.table_id == target_table]
+        if filtered:
+            tables_objs = filtered
+            print(f"[schema] Restricted NL2SQL schema to table: {target_table}")
+        else:
+            print(f"[schema] WARNING: BQ_TABLE_ID='{target_table}' not found in dataset; using all tables")
+
     # Separate base tables and materialized views
     base_tables = [t for t in tables_objs if t.table_type == "TABLE"]
     mvs = [t for t in tables_objs if t.table_type == "MATERIALIZED_VIEW"]

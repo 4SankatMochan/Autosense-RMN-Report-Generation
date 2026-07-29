@@ -5,7 +5,7 @@ description = "Data Science and Data QnA Multi-Agent"
 authors = ["Meltem Subasioglu <msubasioglu@google.com>"]
 license = "Apache License 2.0"
 readme = "README.md"
-package-mode = true
+package-mode = false
 
 
 [tool.poetry.dependencies]

@@ -425,7 +425,9 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
         "Lux", "Magnum", "Nutrafol", "OLLY", "OMO", "Onnit", "Paula's Choice", "Pepsodent",
         "Pond's", "Pureit", "Rexona", "Rin", "Seventh Generation", "Signal", "Simple",
         "SmartyPants", "Sunlight", "Sunsilk", "Surf Excel", "TRESemme", "The Vegetarian Butcher",
-        "Vaseline"
+        "Vaseline",
+        # Present in mv_campaign_day_features_v1 but were missing from this list:
+        "Boost", "Bru", "Clinic Plus", "Close Up", "Domex", "Horlicks",
     ]
 
     BRAND_REGEX = build_brand_pattern(RAW_BRANDS)
@@ -444,7 +446,8 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     # 🆕 Detect campaign ID if present (CMP_XXXX style)
     #campaign_id_match = re.search(r"(?i)\b(CMP[_\-]?\d{4,})\b", user_query)
     #campaign_id_match = re.search(r"(?i)(CMP[_\-]?\d{4,})", user_query)
-    campaign_id_match = re.search(r"(?i)(CMP[_\-0-9]+)", user_query)
+    # Match campaign IDs with any short letter prefix (e.g. CMP_2025_0001, SYN_2025_0056), not just CMP_.
+    campaign_id_match = re.search(r"(?i)\b([A-Za-z]{2,6}[_\-]\d{4}[_\-]\d+)\b", user_query)
 
     campaign_id = campaign_id_match.group(1).strip() if campaign_id_match else "None"
 

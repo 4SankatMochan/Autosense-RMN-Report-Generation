@@ -38,11 +38,129 @@ class ToolInput(BaseModel):
 
 # import datetime
 # import json
+
+# Visualization intent keywords. If a db prompt contains any of these, we deterministically
+# build a chart from the fetched data (no LLM decision involved).
+_VIZ_KEYWORDS = (
+    "plot", "chart", "graph", "trend", "visuali", "over time",
+    "comparison", "compare", "distribution",
+)
+
+
+async def _maybe_build_deterministic_chart(question, tool_context, folder_name):
+    """Deterministically build & save a chart from ``query_result`` for visualization prompts.
+
+    The chart is saved as ``<folder_name>_VizChart.png`` (+ ``<folder_name>_data.json``) — the exact
+    names the report's ``text_viz_json`` step already harvests — so charts reach the PDF WITHOUT
+    depending on the LLM router calling the viz agent. Best-effort: never raises.
+    """
+    tag = "[deterministic-chart]"
+    try:
+        rows = tool_context.state.get("query_result")
+        if isinstance(rows, str):
+            try:
+                rows = json.loads(rows)
+            except Exception:
+                rows = None
+        n = len(rows) if isinstance(rows, list) else 0
+        print(f"{tag} prompt={str(folder_name)[:60]!r} rows={n}")
+        if not rows or not isinstance(rows, list) or not isinstance(rows[0], dict) or n < 2:
+            print(f"{tag} skip: no usable multi-row tabular data (rows={n})")
+            return
+
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        import io
+
+        df = pd.DataFrame(rows)
+        if df.empty or df.shape[1] < 2:
+            print(f"{tag} skip: df shape {df.shape}")
+            return
+
+        # Identify a date/time-like x column
+        date_col = None
+        for c in df.columns:
+            cl = str(c).lower()
+            if any(k in cl for k in ("date", "day", "week", "month", "time")):
+                parsed = pd.to_datetime(df[c], errors="coerce")
+                if parsed.notna().sum() >= max(2, int(len(df) * 0.5)):
+                    df[c] = parsed
+                    date_col = c
+                    break
+
+        # Numeric columns (coerce where possible)
+        numeric_cols = []
+        for c in df.columns:
+            if c == date_col:
+                continue
+            coerced = pd.to_numeric(df[c], errors="coerce")
+            if coerced.notna().sum() >= max(1, int(len(df) * 0.5)):
+                df[c] = coerced
+                numeric_cols.append(c)
+        if not numeric_cols:
+            print(f"{tag} skip: no numeric columns among {list(df.columns)}")
+            return
+
+        plt.figure(figsize=(10, 5))
+        title = (question or "Chart").strip()
+        if len(title) > 90:
+            title = title[:90] + "..."
+
+        if date_col is not None:
+            d = df.sort_values(date_col)
+            for c in numeric_cols[:4]:
+                plt.plot(d[date_col], d[c], marker="o", label=str(c))
+            plt.xlabel(str(date_col))
+            plt.xticks(rotation=45)
+            plt.legend()
+            chart_type = "line"
+        else:
+            cat_cols = [c for c in df.columns if c not in numeric_cols]
+            if not cat_cols:
+                print(f"{tag} skip: no categorical column for bar chart")
+                plt.close("all")
+                return
+            x, y = cat_cols[0], numeric_cols[0]
+            plt.bar(df[x].astype(str), df[y])
+            plt.xlabel(str(x))
+            plt.ylabel(str(y))
+            plt.xticks(rotation=45)
+            chart_type = "bar"
+
+        plt.title(title, fontsize=11)
+        plt.tight_layout()
+        buf = io.BytesIO()
+        plt.savefig(buf, format="png", dpi=120)
+        plt.close("all")
+        buf.seek(0)
+        image_bytes = buf.read()
+
+        image_artifact = Part(inline_data=Blob(data=image_bytes, mime_type="image/png"))
+        meta = {
+            "title": title,
+            "chart_type": chart_type,
+            "x": str(date_col) if date_col is not None else None,
+            "series": [str(c) for c in numeric_cols[:4]],
+        }
+        json_artifact = Part(
+            inline_data=Blob(mime_type="text/plain", data=json.dumps(meta).encode("utf-8"))
+        )
+        await tool_context.save_artifact(f"{folder_name}_VizChart.png", image_artifact)
+        await tool_context.save_artifact(f"{folder_name}_data.json", json_artifact)
+        print(f"{tag} SAVED {str(folder_name)[:50]}_VizChart.png ({chart_type}, series={[str(c) for c in numeric_cols[:4]]})")
+    except Exception as e:
+        import traceback
+        print(f"[deterministic-chart] ERROR ({type(e).__name__}): {e}")
+        traceback.print_exc()
+
+
 async def call_db_agent(
     question: str,
     tool_context: ToolContext,
     **kwargs
-    
+
 ):
     """Tool to call database (nl2sql) agent."""
     print(f"db: at time: {datetime.datetime.now().strftime("%H:%M:%S")} called que: {question}")
@@ -79,6 +197,10 @@ async def call_db_agent(
     text_path = f"{folder_name}_db_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
+
+    # Deterministically produce a chart for visualization prompts (does not rely on the LLM
+    # router choosing call_viz_agent). Saved as <folder_name>_VizChart.png for the report.
+    await _maybe_build_deterministic_chart(question, tool_context, folder_name)
 
     ###### logging #######
     log_db_agent(question, tool_context, db_agent_output)

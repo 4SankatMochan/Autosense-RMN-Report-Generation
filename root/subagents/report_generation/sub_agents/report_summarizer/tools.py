@@ -262,10 +262,19 @@ async def format_report(tool_context: Optional[ToolContext] = None):
     report = tool_context.state['report_markdown']
     dct = json.loads(markdown_to_json.jsonify(report))
     res={}
-    context=list(dct.keys())[0]
-    res['context']=context
-    for i,j in dct[context].items():
-        res[i]=process_value(j)
+    keys = list(dct.keys())
+    context = keys[0]
+    res['context'] = context
+    top = dct.get(context)
+    if isinstance(top, dict):
+        # Sections nested under a single report-title heading (# Title / ## Section ...)
+        for i, j in top.items():
+            res[i] = process_value(j, section_key=i)
+    else:
+        # No single wrapping title: the top-level headings ARE the sections themselves.
+        # (Previously this raised "'list' object has no attribute 'items'".)
+        for i in keys:
+            res[i] = process_value(dct[i], section_key=i)
 
     
     

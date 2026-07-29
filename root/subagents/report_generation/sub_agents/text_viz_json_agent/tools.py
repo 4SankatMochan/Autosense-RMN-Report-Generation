@@ -26,8 +26,10 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
 
     print(f"All blobs in session prefix {session_prefix}: {[blob.name for blob in blobs]}")
 
-    # Filter out unwanted blobs before sorting
-    filtered_blobs = [blob for blob in blobs if 'code_execution_image_' not in blob.name]
+    # Keep all blobs. (Previously code_execution_image_* charts were dropped here, which is the
+    # main reason code-interpreter-generated charts never reached the report. They are now kept
+    # and harvested below.)
+    filtered_blobs = list(blobs)
     sorted_blobs = sorted(filtered_blobs, key=lambda b: b.updated)
 
     # Step 2: Group blobs by base path (without /N), keep highest version
@@ -124,6 +126,37 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
               result_data[f'prompt{idx}']['db_text'] = nl_text
             except:
               result_data[f'prompt{idx}']['db_text'] = db_string
+
+    # ---- Step 5b: Harvest charts NOT produced by the viz_agent ----
+    # Charts drawn by the code interpreter (via call_ds_agent) are saved with generic names such as
+    # `code_execution_image_1.png` / `daily_trends_chart.png` instead of the `<prompt>_VizChart.png`
+    # convention, so the prompt_map logic above never captures them and every chart_url stays None.
+    # Attach each such image artifact as its own chart entry so it is embedded in the report.
+    already_charted = {
+        v['chart_url'] for v in result_data.values() if v.get('chart_url')
+    }
+    extra_idx = len(result_data)
+    for base_path, blob in sorted(latest_blobs.items(), key=lambda kv: kv[1].updated):
+        filename = base_path.split('/')[-1]
+        if filename.endswith('_VizChart.png'):
+            continue  # already handled by the prompt_map logic above
+        if not filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+            continue
+        chart_url = f'gs://{bucket_name}/{blob.name}'
+        if chart_url in already_charted:
+            continue
+        already_charted.add(chart_url)
+        extra_idx += 1
+        label = filename.rsplit('.', 1)[0].replace('_', ' ').strip()
+        result_data[f'prompt{extra_idx}'] = {
+            'prompt': f'campaign performance visualization ({label})',
+            'chart_url': chart_url,
+            'json_data': None,
+            'viz_text': None,
+            'db_text': None,
+            'ds_text': None,
+        }
+
     print("resulting text_viz_json: ")
     print(result_data)
     tool_context.state['text_viz_json'] = result_data

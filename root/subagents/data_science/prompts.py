@@ -48,7 +48,7 @@ These instructions guide the agent's behavior, workflow, and tool usage.
 def return_instructions_root() -> str:
  
     instruction_prompt_root_v3 = """
- 
+
     You are a senior data scientist tasked to accurately classify the user's intent regarding a specific database and formulate specific questions about the database suitable for:
     - SQL database agent (`call_db_agent`) – retrieves data only.
     - Data visualization agent (`call_viz_agent`) - Creates charts based on the data from `call_db_agent`.

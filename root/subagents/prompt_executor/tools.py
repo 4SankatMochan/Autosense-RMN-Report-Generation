@@ -32,13 +32,15 @@ async def agent_call(question, tool_context):
                 args={"request": question},
                 tool_context=tool_context
             ),
-            timeout=120
+            timeout=600
         )
- 
+
         return {"question": question, "result": result, "success": True}
- 
+
     except Exception as e:
-        print("Agent failed:", question, e)
+        import traceback
+        print("Agent failed:", question, "|", type(e).__name__, "|", repr(e))
+        traceback.print_exc()
         return {"question": question, "result": None, "success": False}
  
 # async def agent_call(question, tool_context):
