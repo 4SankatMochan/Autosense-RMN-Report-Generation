@@ -46,7 +46,7 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
     model_name = (
         tool_context.state.get("generator_model")
         or os.getenv("SEQUENTIAL_AGENT")
-        or "gemini-1.5-pro"
+        or "gemini-2.5-flash"
     )
     tool_context.state["modelused"] = model_name
 

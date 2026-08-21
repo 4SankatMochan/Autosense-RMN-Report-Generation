@@ -2,10 +2,145 @@ from google.cloud import storage
 import base64
 import json
 import re
+import pathlib
 from collections import defaultdict
 from typing import List, Optional
 import os
 from google.adk.tools import ToolContext
+
+
+def _upload_local_artifacts_to_gcs(session_id: str, bucket_name: str, user_id: str = "user") -> dict:
+    """
+    Fallback for when adk web uses local file artifact service instead of GCS.
+    Scans .adk/artifacts for the session, uploads PNGs/JSONs/txts to GCS at the
+    same path prefix that the main GCS-scan branch expects, then returns a
+    result_data dict in the same format so the rest of the pipeline is unchanged.
+
+    ADK local store layout:
+      artifacts/{art_name}/versions/{version}/metadata.json   ← skipped
+      artifacts/{art_name}/versions/{version}/{art_name}      ← content
+    """
+    cwd = pathlib.Path(os.getcwd())
+    local_root = cwd / ".adk" / "artifacts" / "users" / user_id / "sessions" / session_id / "artifacts"
+    if not local_root.exists():
+        print(f"[local-fallback] Artifact dir not found: {local_root}")
+        return {}
+
+    versioned_pat = re.compile(r'^(.+)/versions/(\d+)/(.+)$')
+    # art_name → list of (version_int, content_filepath); metadata.json is excluded
+    artifact_versions: dict = defaultdict(list)
+
+    for fp in local_root.rglob("*"):
+        if not fp.is_file():
+            continue
+        rel = fp.relative_to(local_root).as_posix()
+        m = versioned_pat.match(rel)
+        if not m:
+            continue
+        # m.group(3) is the filename inside the version directory.
+        # Skip ADK's own metadata sidecar files.
+        if m.group(3) == "metadata.json":
+            continue
+        art_name = m.group(1)
+        version  = int(m.group(2))
+        artifact_versions[art_name].append((version, fp))
+
+    if not artifact_versions:
+        print("[local-fallback] No versioned artifacts found locally.")
+        return {}
+
+    gcs_client = storage.Client()
+    bucket     = gcs_client.bucket(bucket_name)
+
+    # Pick the highest-version content file for each artifact, upload to GCS
+    latest_gcs: dict = {}   # art_name → gs:// URL of highest-version copy in GCS
+    for art_name, versions in artifact_versions.items():
+        best_version, best_path = max(versions, key=lambda x: x[0])
+        fname = pathlib.Path(art_name).name
+        # Mirror the GCS path the normal artifact service would use:
+        # root/user/<session_id>/<artifact_filename>/<version>
+        gcs_blob_name = f"root/user/{session_id}/{fname}/{best_version}"
+        blob = bucket.blob(gcs_blob_name)
+        if not blob.exists():
+            if fname.lower().endswith(".png"):
+                mime = "image/png"
+            elif fname.lower().endswith(".json"):
+                mime = "application/json"
+            else:
+                mime = "text/plain"
+            blob.upload_from_filename(str(best_path), content_type=mime)
+            print(f"[local-fallback] Uploaded → gs://{bucket_name}/{gcs_blob_name}")
+        else:
+            print(f"[local-fallback] Already in GCS: {gcs_blob_name}")
+        latest_gcs[art_name] = f"gs://{bucket_name}/{gcs_blob_name}"
+
+    # Group by prompt key (strip well-known suffixes to find the prompt name)
+    SUFFIXES = [
+        ("_VizChart.png",   "chart"),
+        ("_data.json",      "json"),
+        ("_viz_agent.txt",  "viz_text"),
+        ("_db_agent.txt",   "db_text"),
+        ("_ds_agent.txt",   "ds_text"),
+    ]
+    prompt_map: dict = defaultdict(dict)
+    for art_name, gcs_url in latest_gcs.items():
+        fname = pathlib.Path(art_name).name
+        for suffix, key in SUFFIXES:
+            if fname.endswith(suffix):
+                prompt = fname[: -len(suffix)]
+                prompt_map[prompt][key] = (gcs_url, art_name)
+                break
+
+    # Build result_data in the same shape as the GCS-scan branch
+    result_data: dict = {}
+    for idx, (prompt, blobs) in enumerate(prompt_map.items(), start=1):
+        entry: dict = {
+            "prompt":    prompt.replace("_", " "),
+            "chart_url": None,
+            "json_data": None,
+            "viz_text":  None,
+            "db_text":   None,
+            "ds_text":   None,
+        }
+
+        if "chart" in blobs:
+            # blobs["chart"] is (gcs_url, art_name)
+            entry["chart_url"] = blobs["chart"][0]
+            if "json" in blobs:
+                _, best_json_fp = max(artifact_versions[blobs["json"][1]], key=lambda x: x[0])
+                try:
+                    entry["json_data"] = json.loads(best_json_fp.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+            if "viz_text" in blobs:
+                _, best_vt_fp = max(artifact_versions[blobs["viz_text"][1]], key=lambda x: x[0])
+                try:
+                    entry["viz_text"] = best_vt_fp.read_text(encoding="utf-8")
+                except Exception:
+                    pass
+        elif "ds_text" in blobs:
+            _, best_ds_fp = max(artifact_versions[blobs["ds_text"][1]], key=lambda x: x[0])
+            try:
+                entry["ds_text"] = best_ds_fp.read_text(encoding="utf-8")
+            except Exception:
+                pass
+        elif "db_text" in blobs:
+            _, best_db_fp = max(artifact_versions[blobs["db_text"][1]], key=lambda x: x[0])
+            try:
+                raw = best_db_fp.read_text(encoding="utf-8")
+                if raw.startswith("```json"):
+                    raw = raw.split("\n", 1)[1]
+                if raw.endswith("```"):
+                    raw = raw.rsplit("\n", 1)[0]
+                data = json.loads(raw)
+                entry["db_text"] = data["nl_results"]
+            except Exception:
+                entry["db_text"] = raw if "raw" in dir() else ""
+
+        result_data[f"prompt{idx}"] = entry
+
+    return result_data
+
 
 async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
     print("inside text_viz_json agent")
@@ -126,6 +261,15 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
               result_data[f'prompt{idx}']['db_text'] = nl_text
             except:
               result_data[f'prompt{idx}']['db_text'] = db_string
+
+    # ---- Step 5a: Local-artifact fallback (adk web uses local file store) ----
+    # When no GCS blobs were found the artifact service is local-file mode.
+    # Upload the local PNGs/texts to GCS so the PDF generator can reach them.
+    if not result_data:
+        user_id = getattr(tool_context._invocation_context, "user_id", None) or "user"
+        result_data = _upload_local_artifacts_to_gcs(session_id, bucket_name, user_id)
+        if result_data:
+            print(f"[local-fallback] Built result_data with {len(result_data)} prompts from local store.")
 
     # ---- Step 5b: Harvest charts NOT produced by the viz_agent ----
     # Charts drawn by the code interpreter (via call_ds_agent) are saved with generic names such as

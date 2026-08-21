@@ -36,9 +36,11 @@ from .sub_agents.bigquery.tools import (
 from .prompts import return_instructions_root
 from .tools import call_db_agent, call_viz_agent, call_ds_agent
 import logging
+import concurrent.futures
 from google.cloud import storage
 from io import BytesIO
 import re
+from root.subagents.gcs_cache import get_cached
 
 #from .sub_agents.nl2sql.agent import nl2sql_agent
 #from .sub_agents.descriptive_analysis.agent import descriptive_analysis_agent
@@ -85,33 +87,37 @@ def excel_to_json(df):
     return grouped
 
 async def setup_before_agent_call(callback_context: CallbackContext):
-    """Setup the agent."""
-    ## File Reading
+    """Setup the agent — parallel GCS reads with module-level TTL cache."""
     bucket_name = os.getenv("BUCKET_NAME")
-    persona = os.getenv('persona_file_path')
-    persona_report = os.getenv('persona_report_map_path')
+    persona_path = os.getenv('persona_file_path')
+    persona_report_path = os.getenv('persona_report_map_path')
     client = storage.Client()
     bucket = client.bucket(bucket_name)
-    ########## Reading persona.json
-    blob = bucket.blob(persona)
-    persona = blob.download_as_text()
-    callback_context.state['persona'] = persona
 
-    ######## Adding report_context (Madhuresh work)
-    # client = storage.Client()
-    # bucket = client.bucket(bucket_name)
-    # Get the blob (file object)
-    blob = bucket.blob(persona_report)
-    # Download the file content as bytes
-    excel_bytes = blob.download_as_bytes()
-    # Read it into a pandas DataFrame
+    # Download persona.json and persona_report.xlsx in parallel threads.
+    # get_cached avoids re-downloading within CACHE_TTL (1 h).
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        f_persona = pool.submit(
+            get_cached, bucket.blob(persona_path),
+            lambda b: b.download_as_text()
+        )
+        f_report = pool.submit(
+            get_cached, bucket.blob(persona_report_path),
+            lambda b: b.download_as_bytes()
+        )
+        persona_text = f_persona.result()
+        excel_bytes  = f_report.result()
+
+    callback_context.state['persona'] = persona_text
+
     df = pd.read_excel(BytesIO(excel_bytes), engine='openpyxl')
-    persona_report_context = excel_to_json(df)
-    callback_context.state['persona_report'] = persona_report_context
+    callback_context.state['persona_report'] = excel_to_json(df)
     prmpt = callback_context.user_content.parts[0].text
     prmpt = prmpt.replace("\n", " ")
     prmpt = re.sub(r"\s+", "_", prmpt.strip())
-    prmpt = re.match(r'^.{0,250}', prmpt)
+    # Remove characters that are invalid in Windows file/folder names
+    prmpt = re.sub(r'[<>:"/\\|?*]', '', prmpt)
+    prmpt = re.match(r'^.{0,150}', prmpt)  # keep well under MAX_PATH
     artifact_name = prmpt.group()
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:

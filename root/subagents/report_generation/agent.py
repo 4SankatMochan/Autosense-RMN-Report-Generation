@@ -1,5 +1,7 @@
 """Data Visualiztion Agent V1: generate simple plots using tools."""
 import os
+import time
+import logging
 from google.adk.agents import SequentialAgent
 from .sub_agents.text_viz_json_agent.agent import root_agent as text_viz_json_agent
 from .sub_agents.report_summarizer.agent import root_agent as text_viz_report_summarizer_agent
@@ -8,7 +10,8 @@ from google.adk.agents.callback_context import CallbackContext
 from google.adk.tools import ToolContext
 from google.genai import types
 from vertexai.preview.generative_models import GenerativeModel
-import time
+
+logger = logging.getLogger(__name__)
 def setup_before_agent_call(callback_context: CallbackContext):
     callback_context.state["persona_context"] = """
 """
@@ -73,11 +76,19 @@ def setup_before_agent_call(callback_context: CallbackContext):
     #         parts=[types.Part(text="I’m sorry, but your request doesn't appear to be about generating a session report. Agent not triggered.")]
     #     )
 
+def stage3_after_agent_call(callback_context: CallbackContext):
+    t = time.perf_counter()
+    callback_context.state['stage3_end_perf'] = t
+    start = callback_context.state.get('stage2_end_perf', t)
+    logger.info("Stage 3 — Report Generation done in %.1f s", t - start)
+
+
 root_agent = SequentialAgent(
-    description= "Sequential Report Generation Agent",
+    description="Sequential Report Generation Agent",
     name="report_generation_agent",
-    sub_agents = [text_viz_json_agent,text_viz_report_summarizer_agent,pdf_generator_agent],
+    sub_agents=[text_viz_json_agent, text_viz_report_summarizer_agent, pdf_generator_agent],
     before_agent_callback=setup_before_agent_call,
+    after_agent_callback=stage3_after_agent_call,
 )
 
     # before_agent_callback=setup_before_agent_call,

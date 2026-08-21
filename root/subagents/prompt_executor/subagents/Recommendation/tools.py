@@ -43,11 +43,7 @@ def _select_recommendation_model_name():
     candidate_models = [
         os.getenv("GEMINI_MODEL"),
         os.getenv("RECOMMENDATION_MODEL"),
-        "gemini-1.5-pro",
-        "gemini-1.5-mini",
-        "gemini-1.5",
-        "gemini-1.0",
-        "gemini-1.5-flash",
+        "gemini-2.5-flash",
     ]
  
     seen = set()
@@ -66,7 +62,7 @@ def _select_recommendation_model_name():
             continue
  
     # If no candidate is available, fallback to a safe default.
-    return "gemini-1.5-pro"
+    return "gemini-2.5-flash"
  
  
 async def run_recommendation(

@@ -69,7 +69,7 @@ async def run_campaign_analysis(
     Executes the Campaign Analysis agent on aggregated DB results
     while conditioning on the original user question.
     """
-    model = GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-1.5-flash"))
+    model = GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-2.5-flash"))
     response = model.generate_content(
         aggregated_results,
         generation_config={

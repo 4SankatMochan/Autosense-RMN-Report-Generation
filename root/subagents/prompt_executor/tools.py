@@ -2,182 +2,186 @@ from root.subagents.data_science.agent import root_agent
 from google.adk.tools import ToolContext
 from google.adk.tools.agent_tool import AgentTool
 import asyncio
-from .subagents.Campaign_analysis.agent import campaign_analysis_root_agent # try another way, might be issue
+import logging
+import time
+
+from .subagents.Campaign_analysis.agent import campaign_analysis_root_agent
 from .subagents.Campaign_comparison.agent import campaign_comparison_root_agent
 from .subagents.Executive_summary.agent import executive_summary_root_agent
 from .subagents.Recommendation.agent import recommendation_root_agent
-from google.adk.agents.sequential_agent import SequentialAgent
-from .prompts import Execution_prompt as EXECUTION_PROMPT
-import time
-# async def agent_call(question, tool_context):
-#     agent_tool = AgentTool(agent=root_agent)
-#     db_ds_agent_output = await agent_tool.run_async(
-#             args={"request": question}, tool_context=tool_context
-#         )
-#     return db_ds_agent_output
- 
-async def agent_call(question, tool_context):
+
+logger = logging.getLogger(__name__)
+
+# ── Tuning knobs ─────────────────────────────────────────────────────────────
+# Lower concurrency = fewer quota conflicts = fewer timeouts.
+# Raise _MAX_CONCURRENT only if your Vertex AI QPM limit supports it.
+_MAX_CONCURRENT  = 4    # max simultaneous data-science agent calls
+_CALL_TIMEOUT    = 600  # seconds per individual agent call
+_MAX_RETRIES     = 3    # attempts per prompt before giving up
+_BACKOFF_BASE    = 5    # seconds; doubles each retry (5 → 10 → 20)
+
+_semaphore: asyncio.Semaphore | None = None
+
+
+def _get_semaphore() -> asyncio.Semaphore:
+    """Lazily create the semaphore inside the running event loop."""
+    global _semaphore
+    if _semaphore is None:
+        _semaphore = asyncio.Semaphore(_MAX_CONCURRENT)
+    return _semaphore
+
+
+# ── Single-prompt executor with per-call retry + backoff ────────────────────
+
+async def agent_call(question: str, tool_context: ToolContext) -> dict:
+    """Run one data-science agent call.
+
+    Retries up to _MAX_RETRIES times with exponential backoff so transient
+    quota / timeout errors don't cascade into the outer retry pass.
+    Keeping retries here (not in the caller) means the semaphore stays
+    acquired during backoff — preventing a thundering-herd of retries from
+    all firing at once when quota is tight.
+    """
     agent_tool = AgentTool(agent=root_agent)
+    last_err: Exception | None = None
 
-    # final_prompt = f"""
-    # {EXECUTION_PROMPT}
+    for attempt in range(1, _MAX_RETRIES + 1):
+        try:
+            result = await asyncio.wait_for(
+                agent_tool.run_async(
+                    args={"request": question},
+                    tool_context=tool_context,
+                ),
+                timeout=_CALL_TIMEOUT,
+            )
+            if attempt > 1:
+                logger.info("Succeeded on attempt %d | %.80s", attempt, question)
+            return {"question": question, "result": result, "success": True}
 
-    # User Question:
-    # {question}
-    # """
+        except asyncio.TimeoutError as e:
+            last_err = e
+            logger.warning(
+                "Attempt %d/%d TIMEOUT (%.0fs) | %.80s",
+                attempt, _MAX_RETRIES, _CALL_TIMEOUT, question,
+            )
+        except Exception as e:
+            last_err = e
+            logger.warning(
+                "Attempt %d/%d FAILED | %s | %r | %.80s",
+                attempt, _MAX_RETRIES, type(e).__name__, e, question,
+            )
 
-    try:
-        result = await asyncio.wait_for(
-            agent_tool.run_async(
-                args={"request": question},
-                tool_context=tool_context
-            ),
-            timeout=600
-        )
+        if attempt < _MAX_RETRIES:
+            wait = _BACKOFF_BASE * (2 ** (attempt - 1))  # 5 s, 10 s, 20 s
+            logger.info("Backoff %.0f s before retry %d…", wait, attempt + 1)
+            await asyncio.sleep(wait)
 
-        return {"question": question, "result": result, "success": True}
+    logger.error(
+        "All %d attempts exhausted | %s | %r | %.80s",
+        _MAX_RETRIES, type(last_err).__name__, last_err, question,
+    )
+    return {"question": question, "result": None, "success": False}
 
-    except Exception as e:
-        import traceback
-        print("Agent failed:", question, "|", type(e).__name__, "|", repr(e))
-        traceback.print_exc()
-        return {"question": question, "result": None, "success": False}
- 
-# async def agent_call(question, tool_context):
-#     agent_tool = AgentTool(agent=root_agent)
-#     try:
-#         result = await agent_tool.run_async(
-#             args={"request": question}, tool_context=tool_context
-#         )
-#         return {"question": question, "result": result, "success": True}
-#     except Exception as e:
-#         return {"question": question, "result": None, "success": False}
-   
-async def call_db_ds_agent(
-    tool_context: ToolContext,):
-    """Tool to execute prompts"""
-    print("inside prompt executor agent")
-    print(f"session id inside call_db_ds_agent tool inside prompt_executor: {tool_context._invocation_context.session.id}")
-    question_list = tool_context.state.get("prompt_generator_out")
-#     question_list = [{
-#             "section_name": "Context",
-#             "prompts": [
-#             # "Could you provide the campaign details for Campaign ID CMP_2025_2158 for the brand Lifebuoy, including its unique campaign names, unique campaign ad IDs, category, media types, channels, objective, sub-objective, campaign duration, unique planned spend, and daily actual spend?"
-#             ]
-#         },
-#         {
-#             "section_name": "Campaign Overview",
-#             "prompts": [
-#             # "For Campaign ID CMP_2025_2158 for the brand Lifebuoy, please provide an overview table including the campaign name, planned spend, campaign objective, total ad spend, and spend utilization.",
-#             # "What is the range of values observed for Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, CPCV, and Viewed Units for Campaign ID CMP_2025_2158 for the brand Lifebuoy?",
-#             # "Please provide the aggregated values for Total Ad Spend, Impressions, Reach, Clicks, CTR, CPC, CPCV, and Viewed Units, grouped by channel, for Campaign ID CMP_2025_2158 for the brand Lifebuoy."
-#             ]
-#         },
-#         {
-#             "section_name": "Campaign-wise Analysis",
-#             "prompts": [
-#             "Could you provide a daily trend visualization of Total Ad Spend for Campaign ID CMP_2025_2158 for the brand Lifebuoy, focusing on the 'Consideration' objective, do provide plot using viz agent?",
-#             "Could you provide a daily trend visualization of Impressions for Campaign ID CMP_2025_2158 for the brand Lifebuoy, focusing on the 'Consideration' objective,do provide plot using viz agent?",
-#             "Could you provide a daily trend visualization of Reach for Campaign ID CMP_2025_2158 for the brand Lifebuoy, focusing on the 'Consideration' objective, do provide plot using viz agent?",
-#             # "Please provide a concise summary of the overall performance for Campaign ID CMP_2025_2158 for the brand Lifebuoy, highlighting key KPI performance, any observed anomalies, and significant trends."
-#             ]
-#         }
-# ]
+
+async def _guarded_call(question: str, tool_context: ToolContext) -> dict:
+    """Semaphore-limited wrapper — holds the slot across retries intentionally."""
+    async with _get_semaphore():
+        return await agent_call(question, tool_context)
+
+
+# ── Prompt executor ──────────────────────────────────────────────────────────
+
+async def call_db_ds_agent(tool_context: ToolContext):
+    """Execute all prompts concurrently (semaphore-capped, 3 retries each).
+
+    Each prompt runs inside _guarded_call which holds the semaphore slot
+    across its own retries, preventing a surge of re-queued calls from
+    overwhelming Vertex AI quota when multiple prompts fail simultaneously.
+    """
+    logger.info(
+        "call_db_ds_agent | session=%s",
+        tool_context._invocation_context.session.id,
+    )
+
+    question_list = tool_context.state.get("prompt_generator_out", [])
     flat_prompts = [
-    prompt
-    for section in question_list
-    for prompt in section.get("prompts", [])
+        prompt
+        for section in question_list
+        for prompt in section.get("prompts", [])
     ]
-    print(f"prompt generator output: {str(flat_prompts)}")
- 
-    flat_prompts_1 =  flat_prompts[:4]
-    flat_prompts_2 =  flat_prompts[4:]
- 
-    print("batch1_start", time.strftime('%H:%M:%S'))
- 
-    # -------- FIRST BATCH (4 prompts) --------
-    tasks_1 = [agent_call(question, tool_context) for question in flat_prompts_1]
-    results_1 = await asyncio.gather(*tasks_1)
-    print(results_1[:10])
- 
-    print("batch1_end", time.strftime('%H:%M:%S'))
- 
- 
-    # -------- SECOND BATCH (remaining prompts) --------
-    print("batch2_start", time.strftime('%H:%M:%S'))
- 
-    tasks_2 = [agent_call(question, tool_context) for question in flat_prompts_2]
-    results_2 = await asyncio.gather(*tasks_2)
-    print(results_2[:10])
- 
-    print("batch2_end", time.strftime('%H:%M:%S'))
- 
- 
-    #Combine results
-    all_results = results_1 + results_2
- 
-    # -------- THIRD PASS (Retry Failed) --------
-    retry_prompts = [
-        r["question"] for r in all_results
-        if not r["success"] or not r["result"]
-    ]
- 
-    if retry_prompts:
-        print("retry_start", time.strftime('%H:%M:%S'))
-        print("Retrying:", retry_prompts)
- 
-        retry_tasks = [agent_call(q, tool_context) for q in retry_prompts]
-        retry_results = await asyncio.gather(*retry_tasks)
- 
-        retry_map = {r["question"]: r for r in retry_results}
- 
-        for i, r in enumerate(all_results):
-            if r["question"] in retry_map and (not r["success"] or not r["result"]):
-                all_results[i] = retry_map[r["question"]]
- 
-        print("retry_end", time.strftime('%H:%M:%S'))
- 
-    # -------- FINAL OUTPUT --------
-    final_results = [r["result"] for r in all_results]
- 
-    print(final_results)
- 
-    tool_context.state["db_ds_agent_output"] = final_results
+
+    if not flat_prompts:
+        logger.warning("No prompts in prompt_generator_out; skipping.")
+        tool_context.state["db_ds_agent_output"] = []
+        return "Executed Successfully (no prompts)"
+
+    logger.info(
+        "Executing %d prompt(s), max %d concurrent, %d retries each, timeout %ds",
+        len(flat_prompts), _MAX_CONCURRENT, _MAX_RETRIES, _CALL_TIMEOUT,
+    )
+    t0 = time.perf_counter()
+
+    results: list[dict] = list(
+        await asyncio.gather(*[_guarded_call(q, tool_context) for q in flat_prompts])
+    )
+
+    n_failed = sum(1 for r in results if not r["success"] or not r["result"])
+    logger.info(
+        "Done in %.1f s | %d succeeded | %d failed after %d retries each",
+        time.perf_counter() - t0,
+        len(results) - n_failed,
+        n_failed,
+        _MAX_RETRIES,
+    )
+
+    tool_context.state["db_ds_agent_output"] = [r["result"] for r in results]
     return "Executed Successfully"
-   
-# async def Sequential_Agent(question, tool_context: ToolContext):
-#     SequentialAgent(
-#         name="Sequential_Agent",
-#         sub_agents=[campaign_analysis_root_agent,campaign_comparison_root_agent, executive_summary_root_agent, recommendation_root_agent],
-#         description="Executes a sequence of code writing, reviewing, and refactoring.", # add this as a wrapper in agent file
-#         )# add agent as a tool in agent.py
-#     Sequential_agent_output = await SequentialAgent.run_async(
-#          args= {'request':"\n".join(tool_context.state["db_ds_agent_output"])}, tool_context=tool_context
-#     )
-#     tool_context.state[" Sequential_agent_output"] =  Sequential_agent_output
-#     return "Executed Sucessfully"
+
+
+# ── Partially-parallel analysis pipeline ────────────────────────────────────
+#
+# Dependency graph:
+#   campaign_analysis  ──┬──► recommendation ──► executive_summary
+#   campaign_comparison ─┘
+#
+#   Phase 1 (parallel):   campaign_analysis ‖ campaign_comparison
+#   Phase 2 (sequential): recommendation        (needs phase-1 outputs)
+#   Phase 3 (sequential): executive_summary     (needs phase-1 + phase-2 outputs)
+
 async def Sequential_Agent(tool_context: ToolContext):
- 
-    sequential_agent = SequentialAgent(
-        name="Sequential_Agent",
-        sub_agents=[
-            campaign_analysis_root_agent,
-            campaign_comparison_root_agent,
-            executive_summary_root_agent,
-            recommendation_root_agent
-        ],
-        description="Executes campaign analysis pipeline sequentially."
+    """Run analysis sub-agents in dependency order with phase-1 parallelism."""
+    input_text = "\n".join(map(str, tool_context.state.get("db_ds_agent_output", [])))
+    args = {"request": input_text}
+
+    analysis_tool       = AgentTool(agent=campaign_analysis_root_agent)
+    comparison_tool     = AgentTool(agent=campaign_comparison_root_agent)
+    recommendation_tool = AgentTool(agent=recommendation_root_agent)
+    executive_tool      = AgentTool(agent=executive_summary_root_agent)
+
+    t0 = time.perf_counter()
+
+    # Phase 1: independent — run in parallel
+    logger.info("Sequential_Agent Phase 1: analysis ‖ comparison")
+    await asyncio.gather(
+        analysis_tool.run_async(args=args, tool_context=tool_context),
+        comparison_tool.run_async(args=args, tool_context=tool_context),
     )
- 
-    agent_tool = AgentTool(agent=sequential_agent)
- 
-    input_text = "\n".join(map(str, tool_context.state["db_ds_agent_output"]))
- 
-    Sequential_agent_output = await agent_tool.run_async(
-        args={"request": input_text},
-        tool_context=tool_context
+    logger.info("Phase 1 done in %.1f s", time.perf_counter() - t0)
+
+    # Phase 2: needs phase-1 state keys
+    logger.info("Sequential_Agent Phase 2: recommendation")
+    t1 = time.perf_counter()
+    await recommendation_tool.run_async(args=args, tool_context=tool_context)
+    logger.info("Phase 2 done in %.1f s", time.perf_counter() - t1)
+
+    # Phase 3: needs phase-1 + phase-2 state keys
+    logger.info("Sequential_Agent Phase 3: executive summary")
+    t2 = time.perf_counter()
+    await executive_tool.run_async(args=args, tool_context=tool_context)
+    logger.info("Phase 3 done in %.1f s", time.perf_counter() - t2)
+
+    tool_context.state["Sequential_agent_output"] = tool_context.state.get(
+        "executive_summary_output", ""
     )
- 
-    tool_context.state["Sequential_agent_output"] = Sequential_agent_output
- 
+    logger.info("Sequential_Agent total: %.1f s", time.perf_counter() - t0)
     return "Executed Successfully"

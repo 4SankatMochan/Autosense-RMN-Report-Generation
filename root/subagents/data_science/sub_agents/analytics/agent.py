@@ -20,15 +20,21 @@ from .prompts import return_instructions_ds
 
 
 
+try:
+    _code_executor = VertexAiCodeExecutor(
+        optimize_data_file=True,
+        stateful=True,
+    )
+except Exception as e:
+    import warnings
+    warnings.warn(f"VertexAiCodeExecutor unavailable ({e}); analytics agent will run without code execution.")
+    _code_executor = None
+
 root_agent = Agent(
     model=os.getenv("ANALYTICS_AGENT_MODEL"),
     name="data_science_agent",
     instruction=return_instructions_ds(),
-    code_executor=VertexAiCodeExecutor(
-        optimize_data_file=True,
-        stateful=True,
-
-    ),
+    code_executor=_code_executor,
 )
 
 

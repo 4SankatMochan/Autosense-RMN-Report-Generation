@@ -145,7 +145,7 @@ Return only this JSON format:
     model_name = (
         tool_context.state.get("generator_model")
         or os.getenv("SEQUENTIAL_AGENT")
-        or "gemini-1.5-pro"
+        or "gemini-2.5-flash"
     )
     if not model_name:
         raise ValueError("❌ No model specified in tool_context.state or environment variable SEQUENTIAL_AGENT.")

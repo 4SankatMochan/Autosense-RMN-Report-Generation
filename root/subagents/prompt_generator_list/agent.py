@@ -35,9 +35,11 @@ from .prompts import return_instructions_root
 from .tools import generate_prompt
 from io import BytesIO
 from google.cloud import storage
+import concurrent.futures
 import pandas as pd
 import time
 import json
+from root.subagents.gcs_cache import get_cached
 
 date_today = date.today()
 
@@ -78,35 +80,34 @@ def excel_to_json(df):
     return grouped
 
 def setup_before_agent_call(callback_context: CallbackContext):
-    """Setup the agent."""
-    ## File Reading
+    """Setup the agent — parallel GCS reads with module-level TTL cache."""
+    print('Prompt generation start', time.strftime('%H:%M:%S'))
     bucket_name = os.getenv("BUCKET_NAME")
-    persona = os.getenv('persona_file_path')
-    persona_report = os.getenv('persona_report_map_path')
+    persona_path = os.getenv('persona_file_path')
+    persona_report_path = os.getenv('persona_report_map_path')
     client = storage.Client()
     bucket = client.bucket(bucket_name)
 
-    ########## Reading persona.json
-    blob = bucket.blob(persona)
-    persona = blob.download_as_text()
-    persona = json.loads(persona)
-    print(f"Persona loaded into context: {type(persona)}")  # Print the first 100 characters to verify
+    # Download both files in parallel; get_cached avoids re-downloading
+    # within CACHE_TTL (1 h) — eliminates sequential GCS round-trips.
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+        f_persona = pool.submit(
+            get_cached, bucket.blob(persona_path),
+            lambda b: b.download_as_text()
+        )
+        f_report = pool.submit(
+            get_cached, bucket.blob(persona_report_path),
+            lambda b: b.download_as_bytes()
+        )
+        persona_text = f_persona.result()
+        excel_bytes  = f_report.result()
+
+    persona = json.loads(persona_text)
+    print(f"Persona loaded into context: {type(persona)}")
     callback_context.state['persona'] = persona
 
-    # print(f"Persona loaded into context: {persona[:100]}...")  # Print the first 100 characters to verify
-
-    ######## Adding report_context (Madhuresh work)
-    # client = storage.Client()
-    # bucket = client.bucket(bucket_name)
-    # Get the blob (file object)
-    print('Prompt generation start',time.strftime('%H:%M:%S'))
-    blob = bucket.blob(persona_report)
-    # Download the file content as bytes
-    excel_bytes = blob.download_as_bytes()
-    # Read it into a pandas DataFrame
     df = pd.read_excel(BytesIO(excel_bytes), engine='openpyxl')
-    persona_report_context = excel_to_json(df)
-    callback_context.state['persona_report'] = persona_report_context
+    callback_context.state['persona_report'] = excel_to_json(df)
     log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
     with open(log_file_path, 'a') as f:
         # f.write(f"CallbackContext attributes:, {dir(callback_context)}\n")
@@ -125,8 +126,19 @@ def setup_before_agent_call(callback_context: CallbackContext):
         print(f"Original user query: {original_prompt}")
         callback_context.state['user_query'] = original_prompt
 
+import logging
 from functools import wraps
 import inspect
+
+_pg_logger = logging.getLogger(__name__)
+
+
+def stage1_after_agent_call(callback_context: CallbackContext):
+    """Stamp Stage 1 (prompt generation) end time into session state."""
+    t = time.perf_counter()
+    callback_context.state['stage1_end_perf'] = t
+    start = callback_context.state.get('pipeline_start_perf', t)
+    _pg_logger.info("Stage 1 — Prompt Generation done in %.1f s", t - start)
 
 def single_call_guard(tool_fn):
     @wraps(tool_fn)
@@ -173,5 +185,6 @@ root_agent = Agent(
     instruction=return_instructions_root(),
     tools=[guarded_generate_prompt],
     before_agent_callback=setup_before_agent_call,
+    after_agent_callback=stage1_after_agent_call,
     generate_content_config=types.GenerateContentConfig(temperature=0.01),
 )

@@ -91,7 +91,7 @@ def load_report_inputs(tool_context=None, auto_handle=True):
             raise FileNotFoundError(f"Template file not found: {template_path.resolve()}")
         template_text = template_path.read_text(encoding="utf-8")
 
-    if not summary_text:
+    if summary_text is None:
         if not summary_path.exists():
             raise FileNotFoundError(f"Summary JSON not found: {summary_path.resolve()}")
         with open(summary_path, "r", encoding="utf-8") as f:
