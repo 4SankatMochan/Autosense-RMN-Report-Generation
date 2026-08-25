@@ -140,32 +140,6 @@ def stage1_after_agent_call(callback_context: CallbackContext):
     start = callback_context.state.get('pipeline_start_perf', t)
     _pg_logger.info("Stage 1 — Prompt Generation done in %.1f s", t - start)
 
-def single_call_guard(tool_fn):
-    @wraps(tool_fn)
-    async def wrapper(*args, **kwargs):
-        state = kwargs.get("state", {})
-
-        if state.get("tool_called"):
-            return {
-                "final_answer": True,
-                "data": "Tool already called once."
-            }
-
-        state["tool_called"] = True
-
-        # 👇 Handle async vs sync properly
-        if inspect.iscoroutinefunction(tool_fn):
-            result = await tool_fn(*args, **kwargs)
-        else:
-            result = tool_fn(*args, **kwargs)
-
-        return {
-            "final_answer": True,
-            "data": result
-        }
-
-    return wrapper
-
 from pydantic import BaseModel
 from typing import List
 
@@ -176,14 +150,12 @@ class Section(BaseModel):
 class PromptListOutput(BaseModel):
     prompt_list: List[Section]
 
-guarded_generate_prompt = single_call_guard(generate_prompt)
-
 # ✅ Root Agent for Prompt Generator
 root_agent = Agent(
     model=os.getenv("ROOT_AGENT_MODEL"),
     name="prompt_generator",
     instruction=return_instructions_root(),
-    tools=[guarded_generate_prompt],
+    tools=[generate_prompt],
     before_agent_callback=setup_before_agent_call,
     after_agent_callback=stage1_after_agent_call,
     generate_content_config=types.GenerateContentConfig(temperature=0.01),

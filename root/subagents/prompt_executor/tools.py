@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 # ── Tuning knobs ─────────────────────────────────────────────────────────────
 # Lower concurrency = fewer quota conflicts = fewer timeouts.
 # Raise _MAX_CONCURRENT only if your Vertex AI QPM limit supports it.
-_MAX_CONCURRENT  = 4    # max simultaneous data-science agent calls
+_MAX_CONCURRENT  = 5    # max simultaneous data-science agent calls
 _CALL_TIMEOUT    = 600  # seconds per individual agent call
 _MAX_RETRIES     = 3    # attempts per prompt before giving up
 _BACKOFF_BASE    = 5    # seconds; doubles each retry (5 → 10 → 20)

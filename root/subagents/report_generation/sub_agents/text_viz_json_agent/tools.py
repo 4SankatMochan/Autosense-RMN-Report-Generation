@@ -22,9 +22,35 @@ def _upload_local_artifacts_to_gcs(session_id: str, bucket_name: str, user_id: s
     """
     cwd = pathlib.Path(os.getcwd())
     local_root = cwd / ".adk" / "artifacts" / "users" / user_id / "sessions" / session_id / "artifacts"
+    print(f"[local-fallback] session_id={session_id!r}, looking at: {local_root}")
+
     if not local_root.exists():
         print(f"[local-fallback] Artifact dir not found: {local_root}")
-        return {}
+        # Scan all available sessions and pick the most recently-modified one with artifacts
+        sessions_root = cwd / ".adk" / "artifacts" / "users" / user_id / "sessions"
+        print(f"[local-fallback] Scanning all sessions under: {sessions_root}")
+        best_root = None
+        best_mtime = 0.0
+        if sessions_root.exists():
+            for session_dir in sessions_root.iterdir():
+                if not session_dir.is_dir():
+                    continue
+                art_dir = session_dir / "artifacts"
+                if not art_dir.exists():
+                    continue
+                file_list = [f for f in art_dir.rglob("*") if f.is_file()]
+                if not file_list:
+                    continue
+                mtime = max(f.stat().st_mtime for f in file_list)
+                if mtime > best_mtime:
+                    best_mtime = mtime
+                    best_root = art_dir
+        if best_root:
+            print(f"[local-fallback] Falling back to most-recent session: {best_root.parent.name}")
+            local_root = best_root
+        else:
+            print("[local-fallback] No session directories with artifacts found.")
+            return {}
 
     versioned_pat = re.compile(r'^(.+)/versions/(\d+)/(.+)$')
     # art_name → list of (version_int, content_filepath); metadata.json is excluded
@@ -144,8 +170,8 @@ def _upload_local_artifacts_to_gcs(session_id: str, bucket_name: str, user_id: s
 
 async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
     print("inside text_viz_json agent")
-    # print(tool_context.state)
     session_id = tool_context.state.get("session_id")
+    print(f"[text_viz_json] session_id from state: {session_id!r}")
     # print(f"session id inside text_viz_json: {session_id}")
     bucket_name = os.getenv("BUCKET_NAME")
     # session_prefix = f'data_science/user/{session_id}/'

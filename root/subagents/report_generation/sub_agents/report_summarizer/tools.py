@@ -450,24 +450,30 @@ SKIP_TABLE_SECTIONS = [
  
  
 def process_str(st, skip_table=False):
+    # Normalise: when the LLM puts a blank line between "Image N:" and the gs:// URL,
+    # collapse those two adjacent blocks into one so the regex below still matches them.
+    import re as _re
+    caption_pat = _re.compile(r'((?:\*?\*?)?Image \s*\d+\s*:.+?)(\n\n)(gs?://\S+\.(?:png|jpg|jpeg)/\d+)', _re.IGNORECASE)
+    st = caption_pat.sub(r'\1\n\3', st)
+
     lines = st.split('\n\n')
     txt_counter = 1
     obj = {}
     tcaption = ''
     img_counter = 1
- 
+
     for line in lines:
         # Check for images and image captions
         urls = re.findall(r'gs?://\S+.(?:png|jpg|jpeg)/\d', line)
         caption = re.findall(r'(?:\*?\*?)?Image \d: .*', line)
- 
+
         # Check for tables and table captions
         table = re.findall(r'(\|.+\|)', line, flags=re.DOTALL)
         table_caption = re.findall(r'\*?\*?Table \d: .+', line)
- 
+
         if table_caption:
             tcaption = table_caption[0]
- 
+
         if urls and caption:
             obj[f'image_{img_counter}'] = {}
             obj[f'image_{img_counter}']['chart_link'] = urls[0]

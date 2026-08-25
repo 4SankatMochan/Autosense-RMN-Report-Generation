@@ -648,9 +648,7 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
             4. Time Period: {time_period}
             5. Ask for plots of KPIs.
 
-            Ask for visualizations of each KPIs in separate prompt.
-            For example :
-                if the focus KPIs are ROAS, CTR, and Conversions, the prompt for ROAS, CTR and Conversion sections should be separate . 
+            Generate ONE single combined prompt requesting trend analysis and a visualization (chart/plot) for EACH of the {focus_kpis[:3]} KPIs together in one query. Do NOT generate separate prompts per KPI — all KPIs must be in a single combined analysis prompt.
 
             Also generate single prompt asking for a concise campaign performance summary
             highlighting KPI performance, anomalies, and trends.

@@ -1,9 +1,9 @@
 def return_instructions_root() -> str:
 
-    instruction_prompt_root= """You need to call the tool `call_db_ds_agent` without any arguments
-      to execute prompts ."""
-
-    instruction_prompt_root_v2 = """You need to call the tool `call_db_ds_agent` first to execute prompts"""
+    instruction_prompt_root = """You must do the following two steps in order:
+1. Call the tool `call_db_ds_agent` without any arguments to execute all prompts.
+2. After `call_db_ds_agent` finishes, call the tool `Sequential_Agent` without any arguments to run campaign analysis.
+Both tools must be called. Do not skip either step."""
 
     return instruction_prompt_root
 

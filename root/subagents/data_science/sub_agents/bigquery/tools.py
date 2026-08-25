@@ -15,6 +15,7 @@
 """This file contains the tools used by the database agent."""
 
 import datetime
+import hashlib
 import logging
 import os
 import re
@@ -37,7 +38,9 @@ project = os.getenv("BQ_PROJECT_ID", None)
 location = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
 llm_client = Client(vertexai=True, project=project, location=location)
 
-MAX_NUM_ROWS = 500 # 80 to 500 by Krishna on 5-Sept-2025
+MAX_NUM_ROWS = 150  # reduced from 500; daily campaigns run 30–90 days max
+
+_bq_result_cache: dict[str, list] = {}
 
 
 database_settings = None
@@ -233,6 +236,7 @@ You are a BigQuery SQL expert tasked with answering user's questions about BigQu
 - **SQL Syntax:** Return syntactically and semantically correct SQL for BigQuery with proper relation mapping (i.e., project_id, owner, table, and column relation). Use SQL `AS` statement to assign a new name temporarily to a table column or even a table wherever needed. Always enclose subqueries and union queries in parentheses.
 - **Column Usage:** Use *ONLY* the column names (column_name) mentioned in the Table Schema. Do *NOT* use any other column names. Associate `column_name` mentioned in the Table Schema only to the `table_name` specified under Table Schema.
 - **FILTERS:** You should write query effectively  to reduce and minimize the total rows to be returned. For example, you can use filters (like `WHERE`, `HAVING`, etc. (like 'COUNT', 'SUM', etc.) in the SQL query.
+- **Column Selection:** Only SELECT the specific columns needed to answer the question. Never use SELECT * or retrieve unnecessary columns. Choose the minimum set of columns that fully answers the question.
 - **LIMIT ROWS:**  The maximum number of rows returned should be less than {MAX_NUM_ROWS}.
 - **Values with apostrophe:** If a value contains an apostrophe ('), wrap the value in double quotes (" ") instead of single quotes in the SQL query.
 
@@ -347,6 +351,13 @@ def run_bigquery_validation(
         )
         return final_result
 
+    cache_key = hashlib.md5(sql_string.encode()).hexdigest()
+    if cache_key in _bq_result_cache:
+        logging.info("BQ cache hit for query %s", cache_key[:8])
+        cached = _bq_result_cache[cache_key]
+        tool_context.state["query_result"] = cached
+        return {"query_result": cached, "error_message": None}
+
     try:
         query_job = get_bq_client().query(sql_string)
         results = query_job.result()  # Get the query results
@@ -367,6 +378,7 @@ def run_bigquery_validation(
             ]  # Convert BigQuery RowIterator to list of dicts
             # return f"Valid SQL. Results: {rows}"
             final_result["query_result"] = rows
+            _bq_result_cache[cache_key] = rows
 
             tool_context.state["query_result"] = rows
 
