@@ -51,12 +51,6 @@ def setup_before_agent_call(callback_context: CallbackContext):
     else:
         print("[DEBUG] 'current_context' not in current context")
 
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        f.write(f"root folder")
-        f.write(f"{callback_context.user_content}\n")
-        f.write(f"{callback_context.user_content.parts[0].text}")
-
     user_message = callback_context.user_content.parts[0]
     if user_message.text:
         original_prompt = user_message.text

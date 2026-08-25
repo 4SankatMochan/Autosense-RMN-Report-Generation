@@ -30,3 +30,4 @@ sentence-transformers
 aiohttp
 google-auth
 requests
+truststore

@@ -706,26 +706,16 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
                 print(f"⚠️ Gemini returned non-JSON format ({e}). Using fallback prompt generation.")
                 prompt_list = []
 
-            # 🪵 Log full raw response for future debugging
+            # Log raw response to stdout (Cloud Logging captures stdout in production)
             try:
-                log_dir = tool_context.state.get("log_dir", "logs")
-                os.makedirs(log_dir, exist_ok=True)
-                ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-                raw_log_path = os.path.join(log_dir, f"gemini_raw_response_{ts}.json")
-
-                raw_data = {
-                    "timestamp": ts,
-                    "prompt_used": fusion_prompt.strip(),
-                    "raw_response": getattr(response, "text", None) or str(response),
-                }
-
-                with open(raw_log_path, "w", encoding="utf-8") as f:
-                    json.dump(raw_data, f, indent=2)
-
-                print(f"🪵 Saved Gemini raw response log: {raw_log_path}")
-            except Exception as log_err:
-                print(f"⚠️ Failed to log raw Gemini response: {log_err}")
+                import logging as _logging
+                _logging.getLogger(__name__).info(
+                    "[prompt_gen] Gemini raw response: prompt_len=%d response_len=%d",
+                    len(fusion_prompt),
+                    len(getattr(response, "text", "") or ""),
+                )
+            except Exception:
+                pass
 
         except Exception as e:
             print(f"⚠️ Gemini call failed: {e}")
@@ -762,31 +752,8 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
                     f"Summarize key insights for {section_name} of {brand_name}'s {time_period} performance report."
                 )
 
-    # 🔟 Save prompt list & user query with timestamp
-    try:
-        log_dir = tool_context.state.get("log_dir", "logs")
-        os.makedirs(log_dir, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-
-        prompt_json_path = os.path.join(log_dir, f"prompt_list_{timestamp}.json")
-        with open(prompt_json_path, "w", encoding="utf-8") as f:
-            json.dump(
-                {"timestamp": timestamp, "session_id": session_id, "prompt_list": prompt_list},
-                f,
-                indent=2,
-            )
-
-        user_query_log = os.path.join(log_dir, f"user_query_{timestamp}.txt")
-        with open(user_query_log, "w", encoding="utf-8") as f:
-            f.write(
-                f"Timestamp: {timestamp}\nSession ID: {session_id}\nUser Query: {user_query}\n"
-            )
-
-        print(f"🪵 Saved prompt list: {prompt_json_path}")
-        print(f"🪵 Saved user query: {user_query_log}")
-
-    except Exception as e:
-        print(f"⚠️ Failed to save logs: {e}")
+    # Prompt list is already stored in tool_context.state — no local file needed.
+    print(f"[prompt_gen] Generated {len(prompt_list)} prompts for session {session_id}")
 
     # ✅ Return compact payload
     tool_context.state["prompt_generated"] = {

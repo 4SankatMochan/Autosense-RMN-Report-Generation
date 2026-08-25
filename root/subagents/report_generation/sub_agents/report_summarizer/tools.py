@@ -226,34 +226,10 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
 
     res = llm_call(prompt, tool_context=tool_context)
 
-    # Save the llm result in a file for debugging and traceability
-    filename = timestamped_filename("report_markdown_debug", "txt")
-    root = os.getcwd()
-    path = os.path.join(root, filename)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(res)
-
     tool_context.state['report_markdown'] = res
     print("report markdown generated:")
     print(res)
 
-
-    # --- Save generated Markdown report to file ---
-    try:
-        # filename = "report_markdown.md"
-        filename = timestamped_filename("report_markdown", "md")
-        root = os.getcwd()
-        path = os.path.join(root, filename)
-
-        # Ensure text is serializable
-        report_text = str(res) if not isinstance(res, str) else res
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(report_text)
-
-        print(f"✅ Report Markdown saved to: {path}")
-
-    except Exception as e:
-        print(f"⚠️ Error saving Markdown file: {e}")
 
     return "report markdown generated"
   
@@ -279,39 +255,7 @@ async def format_report(tool_context: Optional[ToolContext] = None):
     
     
     tool_context.state['report_json'] = res
-    print("report json generated: ")
-    filename = timestamped_filename("report_json", "json")
-    # filename = "report_json.json"
-        # Save to file in repo root (current working directory)
-    root = os.getcwd()
-    path = os.path.join(root, filename)
-
-        # If `res` is not a JSON string, try to convert/pretty-print
-    report_text = res
-    try:
-        if isinstance(res, (dict, list)):
-            report_text = json.dumps(res, ensure_ascii=False, indent=2)
-        else:
-            # try to load and pretty print if it's a JSON string
-            try:
-                parsed = json.loads(res)
-                report_text = json.dumps(parsed, ensure_ascii=False, indent=2)
-            except Exception:
-                # leave as-is (string)
-                report_text = str(res)
-    except Exception:
-        report_text = str(res)
-
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(report_text)
-
-    print(f"Report JSON saved to: {path}")
-
-    # try:
-    #     await generate_pdf_report(tool_context)
-    # except Exception as e:
-    #     print(str(e))
-
+    print("report json generated")
     return "report formatted to json"
 
 

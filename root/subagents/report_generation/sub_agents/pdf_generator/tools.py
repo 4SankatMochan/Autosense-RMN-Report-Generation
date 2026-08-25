@@ -85,9 +85,7 @@ async def generate_pdf_report(tool_context: Optional[ToolContext] = None):
         # else:
         #     report_name = sanitize_filename(report_name)
 
-        output_dir = "./output"
-        os.makedirs(output_dir, exist_ok=True)
-        pdf_generator = JSONToPDF(output_dir=output_dir)
+        pdf_generator = JSONToPDF()
         session_id = tool_context.state["session_id"]
         user_id = tool_context.state["user_id"]
         print(f"user_id : {user_id}")

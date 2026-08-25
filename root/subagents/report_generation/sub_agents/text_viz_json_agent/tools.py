@@ -327,11 +327,6 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
             'ds_text': None,
         }
 
-    print("resulting text_viz_json: ")
-    print(result_data)
+    print(f"[text_viz_json] result_data has {len(result_data)} prompt entries")
     tool_context.state['text_viz_json'] = result_data
-    # save json in local as well 
-    json_output = json.dumps(result_data, indent =4)
-    with open("text_viz_json.json", "w") as f:
-        json.dump(json_output, f, indent=2)
     return result_data

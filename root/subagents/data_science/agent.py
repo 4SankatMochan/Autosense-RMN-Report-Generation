@@ -119,17 +119,6 @@ async def setup_before_agent_call(callback_context: CallbackContext):
     prmpt = re.sub(r'[<>:"/\\|?*]', '', prmpt)
     prmpt = re.match(r'^.{0,150}', prmpt)  # keep well under MAX_PATH
     artifact_name = prmpt.group()
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        # f.write(f"CallbackContext attributes:, {dir(callback_context)}\n")
-        f.write(f"DB DS multi Agent")
-        f.write(f"{callback_context.user_content}\n")
-        f.write(f"{callback_context.user_content.parts[0].text}")
-        # f.write(f"persona is {persona}\n")
-        # f.write(f'persona_report {pd.read_excel(BytesIO(persona_report))}\n')
-        # f.write(f"persona is {persona}\n")
-        # f.write(f'persona_report {pd.read_excel(BytesIO(persona_report))}\n')
-
     user_message = callback_context.user_content.parts[0]
     if user_message.text:
         original_prompt = user_message.text

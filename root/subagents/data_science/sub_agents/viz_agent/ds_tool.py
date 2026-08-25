@@ -29,10 +29,6 @@ async def call_ds_agent(
   {input_data}
   While saving image and chart metadata name of image must be {image_path} and name of chart metadata must be {json_path}
   """
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        f.write(f'call is from ds_tool. \n')
-
     agent_tool = AgentTool(agent=ds_agent)
 
     ds_agent_output = await agent_tool.run_async(

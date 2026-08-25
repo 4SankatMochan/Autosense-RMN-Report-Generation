@@ -169,11 +169,6 @@ async def call_db_agent(
     #     "\n call_db_agent.use_database:"
     #     f' {tool_context.state["all_db_settings"]["use_database"]}'
     # )
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        f.write(f"\n sesssion id from call_db_agent: {tool_context._invocation_context.session.id}\n")
-        f.write(f"{tool_context.state.get('user_query')} \n")
-
     tool_context.state['session_id'] = tool_context._invocation_context.session.id
 
     agent_tool = AgentTool(agent=db_agent)
@@ -228,10 +223,6 @@ async def call_ds_agent(
   {input_data}
 
   """
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        f.write(f'ds_agent from root. \n')
-
     agent_tool = AgentTool(agent=ds_agent)
     validated_input = ToolInput(request=question)
     ds_agent_output = await agent_tool.run_async(
@@ -278,11 +269,6 @@ async def call_viz_agent(
     Actual data to analyze for the previous question is already in the following:
     {input_data}
     """
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        f.write(f'question with data is >>>>>>>:{question_with_data}\n')
-        f.write(f"sesssion id from call_viz_agent: {tool_context._invocation_context.session.id}\n")
-
     agent_tool = AgentTool(agent=dv_agent)
     validated_input = ToolInput(request=question)
     dv_agent_output = await agent_tool.run_async(

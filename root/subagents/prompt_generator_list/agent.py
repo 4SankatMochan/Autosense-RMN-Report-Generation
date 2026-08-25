@@ -108,18 +108,6 @@ def setup_before_agent_call(callback_context: CallbackContext):
 
     df = pd.read_excel(BytesIO(excel_bytes), engine='openpyxl')
     callback_context.state['persona_report'] = excel_to_json(df)
-    log_file_path = os.path.join(os.getcwd(), "debug_log.txt")
-    with open(log_file_path, 'a') as f:
-        # f.write(f"CallbackContext attributes:, {dir(callback_context)}\n")
-        f.write(f"root folder")
-        f.write(f"{callback_context.user_content}\n")
-        f.write(f"{callback_context.user_content.parts[0].text}")
-        # f.write(f"persona is {persona}\n")
-        # f.write(f'persona_report {pd.read_excel(BytesIO(persona_report))}\n')
-#     callback_context.state["report_template"] = """Use any template matching the content
-# """
-#     callback_context.state["persona_context"] = """
-# """
     user_message = callback_context.user_content.parts[0]
     if user_message.text:
         original_prompt = user_message.text

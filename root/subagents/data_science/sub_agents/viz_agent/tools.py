@@ -55,22 +55,7 @@ async def chart_plotting_tool(
     db_data = tool_context.state.get("query_result")
     db_data = pd.DataFrame(db_data)
 
-    with open("debug_log.txt", "a") as f:
-        f.write(f"chart_type: {chart_type}\n")
-        f.write(f"x_axis_label: {x_axis_label}\n")
-        f.write(f"y_axis_label: {y_axis_label}\n")
-        f.write(f"x: {x}\n")
-        f.write(f"y: {y}\n")
-        f.write(f"title: {title}\n")    
-        f.write(f'db Data is : {db_data} \n')
-        f.write(f"db data columns:{tool_context.state.get("query_columns")} \n")
-        f.write(f'categorical column : {categorical_columns} \n')
-        f.write(f'continuous column : {continuous_columns} \n')
-        f.write(f'series_by: {series_by} \n')
-        f.write(f"user_query: {tool_context.state.get('user_query')}\n")
-        # f.write(f"sesssion : {tool_context._invocation_context.session}\n")
-        f.write(f"sesssion id: {tool_context._invocation_context.session.id}\n")
-        f.write("===="*100)
+    print(f"[viz_agent] chart_type={chart_type} x={x} y={y} title={title[:60]!r} session={tool_context._invocation_context.session.id}")
 
 
     def get_suffix_scale(max_val):
@@ -667,13 +652,8 @@ async def chart_plotting_tool(
     plt.tight_layout()
 
 
-    # Generate timestamped filename
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    # output_file = f"chart_{timestamp}.png"
     output_file = f"VizChart.png"
-    plt.savefig(output_file)
-
-    # Save to buffer
+    # Save to in-memory buffer only — no local disk write
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
         
