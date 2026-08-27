@@ -57,8 +57,7 @@ adk_app = AdkApp(agent=root_agent, enable_tracing=False)
 # ── Runtime env vars injected into the Agent Engine container ─────────────────
 env_vars = {k: v for k, v in {
     "GOOGLE_GENAI_USE_VERTEXAI":       os.getenv("GOOGLE_GENAI_USE_VERTEXAI", "1"),
-    "GOOGLE_CLOUD_PROJECT":            PROJECT_ID,
-    "GOOGLE_CLOUD_LOCATION":           LOCATION,
+    # GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION are reserved by Agent Engine — injected automatically
     "NL2SQL_METHOD":                   os.getenv("NL2SQL_METHOD", "BASELINE"),
     "BQ_PROJECT_ID":                   os.getenv("BQ_PROJECT_ID"),
     "BQ_DATASET_ID":                   os.getenv("BQ_DATASET_ID"),
