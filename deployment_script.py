@@ -1,0 +1,121 @@
+"""
+Deploy RMN Report Gen agent to Vertex AI Agent Engine.
+
+Run from Google Cloud Shell (no Windows path issues, already authenticated):
+    # First time deploy:
+    python deployment_script.py
+
+    # Update an existing deployment:
+    python deployment_script.py --update projects/350875723330/locations/us-central1/reasoningEngines/6514040695840309248
+"""
+import argparse
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+import vertexai
+from vertexai import agent_engines
+from vertexai.preview.reasoning_engines import AdkApp
+
+# ── Config ────────────────────────────────────────────────────────────────────
+APP_NAME       = "report-gen-v1"
+EXTRA_PACKAGES = ["./root"]
+
+ROOT_DIR = Path(__file__).parent
+load_dotenv(dotenv_path=ROOT_DIR / ".env")
+
+PROJECT_ID     = os.getenv("GOOGLE_CLOUD_PROJECT")
+LOCATION       = os.getenv("GOOGLE_CLOUD_LOCATION")
+STAGING_BUCKET = os.getenv("GOOGLE_CLOUD_STAGING_BUCKET")
+
+if not all([PROJECT_ID, LOCATION, STAGING_BUCKET]):
+    missing = [k for k, v in {
+        "GOOGLE_CLOUD_PROJECT":        PROJECT_ID,
+        "GOOGLE_CLOUD_LOCATION":       LOCATION,
+        "GOOGLE_CLOUD_STAGING_BUCKET": STAGING_BUCKET,
+    }.items() if not v]
+    raise ValueError(f"Missing env vars: {', '.join(missing)}")
+
+vertexai.init(
+    project=PROJECT_ID,
+    location=LOCATION,
+    staging_bucket=f"gs://{STAGING_BUCKET}",
+)
+
+# ── Requirements ──────────────────────────────────────────────────────────────
+def load_requirements(path):
+    with open(path) as f:
+        return [line.strip() for line in f if line.strip() and not line.startswith("#")]
+
+requirements = load_requirements(ROOT_DIR / "requirements.txt")
+
+# ── ADK App ───────────────────────────────────────────────────────────────────
+from root.agent import root_agent  # noqa: E402 – imported after vertexai.init
+
+adk_app = AdkApp(agent=root_agent, enable_tracing=False)
+
+# ── Runtime env vars injected into the Agent Engine container ─────────────────
+env_vars = {k: v for k, v in {
+    "GOOGLE_GENAI_USE_VERTEXAI":       os.getenv("GOOGLE_GENAI_USE_VERTEXAI", "1"),
+    "GOOGLE_CLOUD_PROJECT":            PROJECT_ID,
+    "GOOGLE_CLOUD_LOCATION":           LOCATION,
+    "NL2SQL_METHOD":                   os.getenv("NL2SQL_METHOD", "BASELINE"),
+    "BQ_PROJECT_ID":                   os.getenv("BQ_PROJECT_ID"),
+    "BQ_DATASET_ID":                   os.getenv("BQ_DATASET_ID"),
+    "BQ_TABLE_ID":                     os.getenv("BQ_TABLE_ID"),
+    "GOOGLE_CLOUD_STORAGE_BUCKET":     os.getenv("GOOGLE_CLOUD_STORAGE_BUCKET"),
+    "BUCKET_NAME":                     os.getenv("BUCKET_NAME"),
+    "ARTIFACT_SERVICE_URI":            os.getenv("ARTIFACT_SERVICE_URI"),
+    "BQML_RAG_CORPUS_NAME":            os.getenv("BQML_RAG_CORPUS_NAME"),
+    "CODE_INTERPRETER_EXTENSION_NAME": os.getenv("CODE_INTERPRETER_EXTENSION_NAME"),
+    "ROOT_AGENT_MODEL":                os.getenv("ROOT_AGENT_MODEL", "gemini-2.5-flash"),
+    "ANALYTICS_AGENT_MODEL":           os.getenv("ANALYTICS_AGENT_MODEL", "gemini-2.5-flash"),
+    "BIGQUERY_AGENT_MODEL":            os.getenv("BIGQUERY_AGENT_MODEL", "gemini-2.5-flash"),
+    "BASELINE_NL2SQL_MODEL":           os.getenv("BASELINE_NL2SQL_MODEL", "gemini-2.5-flash"),
+    "CHASE_NL2SQL_MODEL":              os.getenv("CHASE_NL2SQL_MODEL", "gemini-2.5-flash"),
+    "BQML_AGENT_MODEL":                os.getenv("BQML_AGENT_MODEL", "gemini-2.5-flash"),
+    "VIZ_AGENT_MODEL":                 os.getenv("VIZ_AGENT_MODEL", "gemini-2.5-flash"),
+    "PROMPT_EXECUTOR_AGENT_MODEL":     os.getenv("PROMPT_EXECUTOR_AGENT_MODEL", "gemini-2.5-flash"),
+    "TEXT_VIZ_JSON_AGENT":             os.getenv("TEXT_VIZ_JSON_AGENT", "gemini-2.5-flash"),
+    "SEQUENTIAL_AGENT":                os.getenv("SEQUENTIAL_AGENT", "gemini-2.5-flash"),
+    "PDF_GENERATOR_AGENT_MODEL":       os.getenv("PDF_GENERATOR_AGENT_MODEL", "gemini-2.5-flash"),
+    "GEMINI_MODEL":                    os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
+    "persona_file_path":               os.getenv("persona_file_path"),
+    "persona_report_map_path":         os.getenv("persona_report_map_path"),
+}.items() if v is not None}
+
+# ── Deploy / Update ───────────────────────────────────────────────────────────
+parser = argparse.ArgumentParser(description="Deploy RMN agent to Vertex AI Agent Engine")
+parser.add_argument(
+    "--update",
+    metavar="RESOURCE_NAME",
+    help=(
+        "Resource name of existing deployment to update. "
+        "e.g. projects/350875723330/locations/us-central1/reasoningEngines/6514040695840309248"
+    ),
+)
+args = parser.parse_args()
+
+if args.update:
+    print(f"Updating existing agent engine: {args.update}")
+    remote_app = agent_engines.get(args.update)
+    deployed = remote_app.update(
+        agent_engine=adk_app,
+        requirements=requirements,
+        extra_packages=EXTRA_PACKAGES,
+        env_vars=env_vars,
+    )
+else:
+    print(f"Creating new agent engine: {APP_NAME} ...")
+    deployed = agent_engines.create(
+        agent_engine=adk_app,
+        display_name=APP_NAME,
+        requirements=requirements,
+        extra_packages=EXTRA_PACKAGES,
+        env_vars=env_vars,
+    )
+
+print(f"\n✅ Done!")
+print(f"   Resource name : {deployed.resource_name}")
+print(f"   To update later, run:")
+print(f"   python deployment_script.py --update {deployed.resource_name}")
