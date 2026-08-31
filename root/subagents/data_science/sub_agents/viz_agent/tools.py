@@ -684,6 +684,14 @@ async def chart_plotting_tool(
     await tool_context.save_artifact(image_path, image_artifact)
     await tool_context.save_artifact(json_path, json_artifact)
 
+    # Also upload directly to root/user/{session_id}/ so text_viz_json can find it
+    try:
+        from root.subagents.data_science.tools import _save_chart_to_gcs_root
+        root_session_id = tool_context.state.get("session_id", "")
+        await _save_chart_to_gcs_root(root_session_id, image_path, image_bytes)
+    except Exception as _viz_gcs_err:
+        print(f"[viz-chart-gcs] upload error: {_viz_gcs_err}")
+
     # Return both artifact reference and base64 image
     return {
         "artifact": {

@@ -56,6 +56,20 @@ _VIZ_KEYWORDS = (
 )
 
 
+async def _save_chart_to_gcs_root(session_id: str, fname: str, image_bytes: bytes) -> None:
+    """Upload chart PNG directly to root/user/{session_id}/{fname}/0 so text_viz_json finds it."""
+    bucket_name = os.getenv("BUCKET_NAME")
+    if not bucket_name or not session_id:
+        return
+    try:
+        from google.cloud import storage as _gcs
+        blob = _gcs.Client().bucket(bucket_name).blob(f"root/user/{session_id}/{fname}/0")
+        blob.upload_from_string(image_bytes, content_type="image/png")
+        print(f"[chart-gcs] uploaded → gs://{bucket_name}/root/user/{session_id}/{fname}/0")
+    except Exception as _e:
+        print(f"[chart-gcs] upload error: {_e}")
+
+
 async def _maybe_build_deterministic_chart(question, tool_context, folder_name):
     """Deterministically build & save a chart from ``query_result`` for visualization prompts.
 
@@ -159,6 +173,9 @@ async def _maybe_build_deterministic_chart(question, tool_context, folder_name):
         await tool_context.save_artifact(f"{folder_name}_VizChart.png", image_artifact)
         await tool_context.save_artifact(f"{folder_name}_data.json", json_artifact)
         print(f"{tag} SAVED {str(folder_name)[:50]}_VizChart.png ({chart_type}, series={[str(c) for c in numeric_cols[:4]]})")
+        # Also upload directly to the root session's GCS prefix so text_viz_json finds it
+        root_session_id = tool_context.state.get("session_id", "")
+        await _save_chart_to_gcs_root(root_session_id, f"{folder_name}_VizChart.png", image_bytes)
     except Exception as e:
         import traceback
         print(f"[deterministic-chart] ERROR ({type(e).__name__}): {e}")
