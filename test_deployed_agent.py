@@ -23,7 +23,7 @@ from vertexai import agent_engines
 PROJECT      = "acn-cda"
 LOCATION     = "us-central1"
 DISPLAY_NAME = "report-gen-v2"
-GCS_BUCKET   = "acn-cda-adk-report-gen"
+GCS_BUCKET   = "acn-cda-adk-staging"
 # Pin to the specific engine deployed with all Playground + visualization fixes.
 # Set to None to fall back to display-name lookup (picks newest by resource ID).
 RESOURCE_ID  = "4911709206542811136"
@@ -145,7 +145,7 @@ try:
     bucket = gcs_client.bucket(GCS_BUCKET)
 
     # Search patterns (most-specific first)
-    # PDF writes to: gs://acn-cda-adk-report-gen/root/user/{session_id}/final_report.pdf
+    # PDF writes to: gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf
     # Artifacts (charts) write via ADK save_artifact to artifacts/users/USER/sessions/SID/
     search_prefixes = [
         f"root/user/{session_id}/",                          # PDF report location
