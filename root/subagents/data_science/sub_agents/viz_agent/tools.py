@@ -681,16 +681,26 @@ async def chart_plotting_tool(
     # # Correct async artifact registration
     # await tool_context.save_artifact(output_file, image_artifact)
     # await tool_context.save_artifact('data.json', json_artifact)
+    # Upload PNG via artifact service (image/png reconstructs cleanly)
     await tool_context.save_artifact(image_path, image_artifact)
-    await tool_context.save_artifact(json_path, json_artifact)
-
-    # Also upload directly to root/user/{session_id}/ so text_viz_json can find it
+    # Do NOT use save_artifact for the JSON — text/plain artifacts come back as None from
+    # GcsArtifactService, breaking Pydantic validation in load_artifacts_tool. Upload directly.
+    root_session_id = tool_context.state.get("session_id", "")
     try:
         from root.subagents.data_science.tools import _save_chart_to_gcs_root
-        root_session_id = tool_context.state.get("session_id", "")
         await _save_chart_to_gcs_root(root_session_id, image_path, image_bytes)
     except Exception as _viz_gcs_err:
-        print(f"[viz-chart-gcs] upload error: {_viz_gcs_err}")
+        print(f"[viz-chart-gcs] PNG upload error: {_viz_gcs_err}")
+    _bucket = __import__("os").getenv("BUCKET_NAME")
+    if _bucket and root_session_id:
+        try:
+            from google.cloud import storage as _gcs
+            _gcs.Client().bucket(_bucket).blob(
+                f"root/user/{root_session_id}/{json_path}/0"
+            ).upload_from_string(json_string.encode("utf-8"), content_type="text/plain")
+            print(f"[viz-chart-gcs] JSON uploaded → GCS: {json_path}")
+        except Exception as _jve:
+            print(f"[viz-chart-gcs] JSON upload error: {_jve}")
 
     # Return both artifact reference and base64 image
     return {
