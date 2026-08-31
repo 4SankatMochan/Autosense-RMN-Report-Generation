@@ -95,24 +95,59 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
+import time
+import concurrent.futures
+
+
+def _find_engine_by_name(display_name):
+    """Return the most recently created engine matching display_name, or None."""
+    matches = [e for e in agent_engines.list() if e.display_name == display_name]
+    return matches[-1] if matches else None
+
+
+def _wait_for_engine(display_name, max_wait=1800, interval=30):
+    """Poll until an engine with display_name exists. Returns it or raises."""
+    print(f"  Polling for '{display_name}' (up to {max_wait//60} min) ...")
+    elapsed = 0
+    while elapsed < max_wait:
+        engine = _find_engine_by_name(display_name)
+        if engine:
+            return engine
+        time.sleep(interval)
+        elapsed += interval
+        print(f"  Still waiting ... ({elapsed}s elapsed)")
+    raise TimeoutError(f"Engine '{display_name}' not found after {max_wait}s")
+
+
 if args.update:
     print(f"Updating existing agent engine: {args.update}")
     remote_app = agent_engines.get(args.update)
-    deployed = remote_app.update(
-        agent_engine=adk_app,
-        requirements=requirements,
-        extra_packages=EXTRA_PACKAGES,
-        env_vars=env_vars,
-    )
+    try:
+        deployed = remote_app.update(
+            agent_engine=adk_app,
+            requirements=requirements,
+            extra_packages=EXTRA_PACKAGES,
+            env_vars=env_vars,
+        )
+    except (TimeoutError, concurrent.futures.TimeoutError):
+        print("⏳ SDK polling timed out — the update is still running on GCP.")
+        print("   Check status at: https://console.cloud.google.com/vertex-ai/agents")
+        print(f"   Resource: {args.update}")
+        exit(0)
 else:
     print(f"Creating new agent engine: {APP_NAME} ...")
-    deployed = agent_engines.create(
-        agent_engine=adk_app,
-        display_name=APP_NAME,
-        requirements=requirements,
-        extra_packages=EXTRA_PACKAGES,
-        env_vars=env_vars,
-    )
+    try:
+        deployed = agent_engines.create(
+            agent_engine=adk_app,
+            display_name=APP_NAME,
+            requirements=requirements,
+            extra_packages=EXTRA_PACKAGES,
+            env_vars=env_vars,
+        )
+    except (TimeoutError, concurrent.futures.TimeoutError):
+        print("⏳ SDK polling timed out after 900s — deployment is still running on GCP.")
+        print("   Polling manually for up to 30 more minutes ...")
+        deployed = _wait_for_engine(APP_NAME)
 
 print(f"\n✅ Done!")
 print(f"   Resource name : {deployed.resource_name}")
