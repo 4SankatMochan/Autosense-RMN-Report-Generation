@@ -229,16 +229,38 @@ async def call_db_agent(
     return db_agent_output
 
 
+# Keywords that indicate the user wants narrative analysis/summary text (not just data rows).
+# If NONE of these appear in the question the ds_agent call is skipped — BQ data is enough.
+_ANALYSIS_KEYWORDS = (
+    "analyz", "analysis", "summary", "summarize", "summaris",
+    "explain", "anomal", "insight", "describ", "interpret",
+    "why", "how did", "performance summary", "overall", "conclusion",
+    "recommend", "suggest", "key finding", "highlight",
+)
+
+
 async def call_ds_agent(
     question: str,
     tool_context: ToolContext,
     **kwargs
-    
+
 ):
-    """Tool to call data science (nl2py) agent."""
-    print(f"ds: at time: {datetime.datetime.now().strftime("%H:%M:%S")} called que: {question}")
+    """Tool to call data science (nl2py) agent.
+
+    OPTIMIZATION: skipped for pure data-fetch prompts (tables, ranges, aggregations)
+    where the BQ result is self-explanatory. Only invoked when the question explicitly
+    asks for analysis, summary, anomaly detection, or interpretation.
+    """
+    print(f"ds: at time: {datetime.datetime.now().strftime('%H:%M:%S')} called que: {question}")
     if question == "N/A":
         return tool_context.state["db_agent_output"]
+
+    q_lower = question.lower()
+    needs_analysis = any(kw in q_lower for kw in _ANALYSIS_KEYWORDS)
+    if not needs_analysis:
+        result = tool_context.state.get("db_agent_output", "Data retrieved successfully.")
+        print(f"[ds_agent] SKIP — no analysis keywords; returning db_agent_output directly")
+        return result
 
     input_data = tool_context.state["query_result"]
     # tool_context.state['user_query'] = question   # Present in db_agent
@@ -274,13 +296,34 @@ async def call_viz_agent(
     question: str,
     tool_context: ToolContext,
     **kwargs
-    
+
 ):
-    """Tool to call data visualization agent (supports LLM or direct chart outputs)."""
-    print(f" viz:at time: {datetime.datetime.now().strftime("%H:%M:%S")} called que: {question}")
+    """Tool to call data visualization agent (supports LLM or direct chart outputs).
+
+    OPTIMIZATION: skipped when the deterministic chart builder already saved a PNG to GCS
+    for this question. Saves ~10-20s of LLM round-trips per visualization prompt.
+    """
+    print(f" viz:at time: {datetime.datetime.now().strftime('%H:%M:%S')} called que: {question}")
     print(f"sesssion id from call_viz_agent: {tool_context._invocation_context.session.id}\n")
     if question == "N/A":
         return tool_context.state.get("db_agent_output")
+
+    # --- SKIP if deterministic chart already exists in GCS ---
+    folder_name_check = _question_to_slug(question)
+    _bucket = os.getenv("BUCKET_NAME")
+    _sid = tool_context.state.get("session_id", "")
+    if _bucket and _sid:
+        try:
+            from google.cloud import storage as _gcs
+            _blob = _gcs.Client().bucket(_bucket).blob(
+                f"root/user/{_sid}/{folder_name_check}_VizChart.png/0"
+            )
+            if _blob.exists():
+                print(f"[viz_agent] SKIP — deterministic chart already in GCS for: {question[:70]}")
+                return {"chart": "already_built_deterministically",
+                        "artifact": folder_name_check + "_VizChart.png"}
+        except Exception as _ve:
+            print(f"[viz_agent] GCS check failed ({_ve}), proceeding with LLM viz")
 
     input_data = tool_context.state.get("query_result")
     columns = list(input_data[0].keys())
