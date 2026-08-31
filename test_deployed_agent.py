@@ -104,34 +104,35 @@ print("=" * 70)
 print("QUERY:", query)
 print("=" * 70 + "\n")
 
-# ── Stream query ──────────────────────────────────────────────────────────────
-print(f"{ts()} Starting stream_query() — pipeline takes ~10-20 min server-side ...")
-print(f"{ts()} Stream may close early (inactivity timeout). GCS poll will continue after.\n")
+# ── Query (non-streaming) ─────────────────────────────────────────────────────
+# stream_query() has a ~15-second SSE inactivity timeout that kills long pipelines.
+# query() is a blocking HTTP POST that waits for the full response (no SSE timeout).
+print(f"{ts()} Calling agent.query() — blocking until pipeline completes (up to 20 min) ...")
+print(f"{ts()} No live events; watch GCS poll below for progress.\n")
 
-event_count = 0
-last_event_tool = None
-stream_start = time.time()
-
+query_start = time.time()
+query_response = None
 try:
-    for event in agent.stream_query(
+    query_response = agent.query(
         message=query,
         user_id="test-user",
         session_id=session_id,
-    ):
-        event_count += 1
-        # Track last tool called
-        content = event.get("content") or {}
+    )
+    elapsed = time.time() - query_start
+    print(f"\n{ts()} query() returned in {elapsed:.0f}s")
+    if isinstance(query_response, dict):
+        # Print any text parts in the response
+        content = query_response.get("content") or {}
         parts = content.get("parts", []) if isinstance(content, dict) else []
         for part in parts:
-            if isinstance(part, dict) and part.get("function_call"):
-                last_event_tool = part["function_call"].get("name")
-        print_event(event)
-except Exception as stream_err:
-    print(f"\n{ts()} Stream error: {stream_err}")
-
-stream_elapsed = time.time() - stream_start
-print(f"\n{ts()} Stream ended — {event_count} events in {stream_elapsed:.0f}s")
-print(f"{ts()} Last tool seen: {last_event_tool}")
+            if isinstance(part, dict) and part.get("text"):
+                print(f"\nAGENT RESPONSE:\n{part['text']}\n")
+    elif query_response:
+        print(f"Response: {str(query_response)[:2000]}")
+except Exception as qerr:
+    elapsed = time.time() - query_start
+    print(f"\n{ts()} query() error after {elapsed:.0f}s: {qerr}")
+    import traceback; traceback.print_exc()
 
 # ── GCS poll — keep polling for 20 minutes after stream ends ──────────────────
 print(f"\n{'=' * 70}")
