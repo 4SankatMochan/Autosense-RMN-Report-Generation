@@ -91,8 +91,39 @@ async def generate_pdf_report(tool_context: Optional[ToolContext] = None):
         print(f"user_id : {user_id}")
         output_filename = f"gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf"
         clickable_filename = f"https://storage.cloud.google.com/acn-cda-adk-staging/root/user/{session_id}/final_report.pdf"
-        output_path = pdf_generator.generate_pdf(json_input, gcs_pdf_path = output_filename, clikable_path= clickable_filename)
-        print('PDF end time',time.strftime('%H:%M:%S'))
-        return output_path, clickable_filename
+        output_path = pdf_generator.generate_pdf(json_input, gcs_pdf_path=output_filename, clikable_path=clickable_filename)
+        end_time = time.strftime('%H:%M:%S')
+        print(f'PDF generated at {end_time}')
+
+        # Pipeline timing
+        pipeline_start = tool_context.state.get("pipeline_start_perf")
+        if pipeline_start is not None:
+            total_secs = time.perf_counter() - pipeline_start
+            mins, secs = divmod(int(total_secs), 60)
+            timing_str = f"{mins}m {secs}s"
+        else:
+            timing_str = "N/A"
+
+        # Collect chart URLs from text_viz_json state
+        text_viz = tool_context.state.get("text_viz_json", {})
+        chart_lines = []
+        for pkey, pdata in text_viz.items():
+            if isinstance(pdata, dict) and pdata.get("chart_url"):
+                label = pdata.get("prompt", pkey).replace("_", " ").strip()[:80]
+                chart_lines.append(f"- [{label}]({pdata['chart_url']})")
+
+        chart_section = (
+            "\n\n**Visualizations (" + str(len(chart_lines)) + " charts):**\n" + "\n".join(chart_lines[:15])
+            if chart_lines else ""
+        )
+
+        result_msg = (
+            f"**Report generated successfully in {timing_str}!**\n\n"
+            f"**Download PDF:** {clickable_filename}\n"
+            f"{chart_section}\n\n"
+            f"**GCS path:** {output_filename}"
+        )
+        print(result_msg)
+        return result_msg
     except Exception as e:
         return f"An error occurred while generating the PDF: {str(e)}"

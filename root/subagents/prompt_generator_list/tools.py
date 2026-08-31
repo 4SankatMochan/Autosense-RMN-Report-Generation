@@ -1,6 +1,7 @@
 import re
 import os
 import json
+import asyncio
 from datetime import datetime
 from google.adk.tools import ToolContext
 from vertexai.preview.generative_models import GenerativeModel
@@ -670,11 +671,16 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
             """
 
         try:
-            # ✅ Always pass as list for Vertex AI
-
             model = GenerativeModel(model_name)
-            gen_config=GenerationConfig(temperature=temperature,response_schema=TypeAdapter(List[PromptList]).json_schema(),response_mime_type='application/json')
-            response = model.generate_content(
+            gen_config = GenerationConfig(
+                temperature=temperature,
+                response_schema=TypeAdapter(List[PromptList]).json_schema(),
+                response_mime_type='application/json'
+            )
+            # Run synchronous SDK call in a thread so the event loop stays free
+            # (keeps the Playground streaming connection alive during inference)
+            response = await asyncio.to_thread(
+                model.generate_content,
                 fusion_prompt,
                 generation_config=gen_config
             )
@@ -721,36 +727,38 @@ async def generate_prompt(tool_context: ToolContext, **kwargs):
             print(f"⚠️ Gemini call failed: {e}")
             use_gemini = False
 
-    # 9️⃣ Fallback prompt generator
+    # 9️⃣ Fallback prompt generator — produces same dict structure as Gemini path
     if not use_gemini or not prompt_list:
-        for section_name in report_sections:
-            if "Executive" in section_name:
-                prompt_list.append(
-                    f"State key campaign objectives for {brand_name} in {time_period}. "
-                    f"Summarize {data_granularity.lower()} ROAS, CTR, and Conversions."
-                )
-            elif "Overview" in section_name:
-                prompt_list.append(
-                    f"Provide performance overview across channels for {brand_name} in {time_period}. "
-                    f"Include spend, ROAS, and CTR."
-                )
-            elif "Analysis" in section_name:
-                prompt_list.append(
-                    f"Analyze {data_granularity.lower()} trends for {brand_name} in {time_period}, "
-                    f"focusing on ROAS, CTR, and Conversions."
-                )
-            elif "Recommendations" in section_name:
-                prompt_list.append(
-                    f"Suggest actionable optimizations for future campaigns of {brand_name} based on {time_period} insights."
-                )
-            elif "Context" in section_name:
-                prompt_list.append(
-                    f"List campaign IDs, objectives, duration, and spend details for {brand_name}'s {time_period} campaign."
-                )
-            else:
-                prompt_list.append(
-                    f"Summarize key insights for {section_name} of {brand_name}'s {time_period} performance report."
-                )
+        print("⚠️ Using template fallback for prompt generation")
+        kpi_str = ", ".join(focus_kpis[:3]) if focus_kpis else "ROAS, CTR, Conversions"
+        prompt_list = [
+            {
+                "section_name": "Context",
+                "prompts": [
+                    f"List campaign IDs, objectives, duration, and spend details for brand {brand_name}, "
+                    f"campaign {campaign_id}, covering {time_period}."
+                ]
+            },
+            {
+                "section_name": "Campaign Overview",
+                "prompts": [
+                    f"Provide a performance overview across all channels for brand {brand_name}, "
+                    f"campaign {campaign_id} in {time_period}. Include Total Ad Spend, planned spend, "
+                    f"and spend utilization.",
+                    f"Show aggregated {kpi_str} values grouped by channel for brand {brand_name}, "
+                    f"campaign {campaign_id}.",
+                ]
+            },
+            {
+                "section_name": "Campaign-wise Analysis",
+                "prompts": [
+                    f"For brand {brand_name}, campaign {campaign_id} (objective: {objective}), "
+                    f"show the {data_granularity.lower()} trend of {kpi_str} as charts covering {time_period}.",
+                    f"Provide a concise campaign performance summary for brand {brand_name}, "
+                    f"campaign {campaign_id}, highlighting KPI performance, anomalies, and trends."
+                ]
+            },
+        ]
 
     # Prompt list is already stored in tool_context.state — no local file needed.
     print(f"[prompt_gen] Generated {len(prompt_list)} prompts for session {session_id}")
