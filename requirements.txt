@@ -39,6 +39,6 @@ truststore
 # Misc
 immutabledict==4.2.1
 absl-py==2.2.2
-pydantic==2.11.3
+pydantic>=2.11.3
 deprecated
 pg8000==1.31.2
