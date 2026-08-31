@@ -22,7 +22,7 @@ from vertexai import agent_engines
 
 PROJECT      = "acn-cda"
 LOCATION     = "us-central1"
-DISPLAY_NAME = "report-gen-v1"
+DISPLAY_NAME = "report-gen-v2"
 GCS_BUCKET   = "acn-cda-adk-staging"
 
 vertexai.init(project=PROJECT, location=LOCATION)

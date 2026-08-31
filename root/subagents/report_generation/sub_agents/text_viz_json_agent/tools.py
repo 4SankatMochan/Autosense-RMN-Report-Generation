@@ -239,7 +239,7 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
     for idx, (prompt, blobs_dict) in enumerate(prompt_map.items(), start=1):
         json_blob = blobs_dict.get('json_blob')
         chart_blob = blobs_dict.get('chart_blob')
-        # viz_ds_blob = blobs_dict.get('viz_ds_text')
+        viz_ds_blob = blobs_dict.get('viz_ds_text')
         viz_blob = blobs_dict.get('viz_text')
         db_blob =  blobs_dict.get('db_text')
         ds_blob =  blobs_dict.get('ds_text')
@@ -249,7 +249,7 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
             'chart_url': None,
             'json_data': None,
             'viz_text': None,
-            # 'viz_ds_text': None,
+            'viz_ds_text': None,
             'db_text': None,
             'ds_text': None
         }
@@ -264,7 +264,10 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
             if viz_blob:
                 viz_string = viz_blob.download_as_text()
                 result_data[f'prompt{idx}']['viz_text'] = viz_string
-            ## Need Alignment: Do we need to add db_text and ds_text as well in chart
+        elif viz_ds_blob:
+            # Fallback: chart from ds_agent via viz_agent (no PNG but has analysis text)
+            viz_ds_string = viz_ds_blob.download_as_text()
+            result_data[f'prompt{idx}']['viz_ds_text'] = viz_ds_string
         elif ds_blob:
             ds_string = ds_blob.download_as_text()
             result_data[f'prompt{idx}']['ds_text'] = ds_string

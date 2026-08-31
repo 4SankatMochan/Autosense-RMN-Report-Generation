@@ -24,7 +24,7 @@ from vertexai import agent_engines
 from vertexai.preview.reasoning_engines import AdkApp
 
 # ── Config ────────────────────────────────────────────────────────────────────
-APP_NAME       = "report-gen-v1"
+APP_NAME       = "report-gen-v2"
 EXTRA_PACKAGES = ["./root"]
 
 ROOT_DIR = Path(__file__).parent

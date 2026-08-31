@@ -28,6 +28,15 @@ import json
 from .logging.db_agent_call_logger import log_db_agent
 import datetime
 import asyncio
+import re
+
+
+def _question_to_slug(question: str) -> str:
+    """Stable, per-question artifact prefix — same logic as data_science/agent.py setup_before_agent_call."""
+    s = question.replace("\n", " ")
+    s = re.sub(r"\s+", "_", s.strip())
+    s = re.sub(r'[<>:"/\\|?*]', '', s)
+    return s[:150].lower()
 
 from pydantic import BaseModel 
 class ToolInput(BaseModel):
@@ -186,9 +195,9 @@ async def call_db_agent(
             data=str(db_agent_output).encode("utf-8")
         )
     )
-    # tool_context.state['user_query'] = question # Using user_query to name artifacts in GCS Bucket
-    artifact_name = tool_context.state.get('artifact_name')
-    folder_name = str(artifact_name).lower()
+    # Compute folder_name from the question directly (not from shared state) to avoid race conditions
+    # when multiple prompts execute concurrently and overwrite state['artifact_name'].
+    folder_name = _question_to_slug(question)
     text_path = f"{folder_name}_db_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
@@ -238,8 +247,7 @@ async def call_ds_agent(
             data=str(ds_agent_output).encode("utf-8")
         )
     )
-    artifact_name = tool_context.state.get('artifact_name')
-    folder_name = str(artifact_name).lower()
+    folder_name = _question_to_slug(question)
     text_path = f"{folder_name}_ds_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
@@ -269,6 +277,11 @@ async def call_viz_agent(
     Actual data to analyze for the previous question is already in the following:
     {input_data}
     """
+    # Pin artifact_name in state from this question's slug so chart_plotting_tool reads the correct
+    # prefix. With _MAX_CONCURRENT=1 this write is safe (only one viz call active at a time).
+    folder_name = _question_to_slug(question)
+    tool_context.state['artifact_name'] = folder_name
+
     agent_tool = AgentTool(agent=dv_agent)
     validated_input = ToolInput(request=question)
     dv_agent_output = await agent_tool.run_async(
@@ -282,9 +295,7 @@ async def call_viz_agent(
             data=str(dv_agent_output).encode("utf-8")
         )
     )
-    # Name the artifact file
-    artifact_name = tool_context.state.get('artifact_name')
-    folder_name = str(artifact_name).lower()
+    # folder_name already computed above from question
     text_path = f"{folder_name}_viz_agent.txt"
     # Save the artifact
     await tool_context.save_artifact(text_path, text_artifact)
