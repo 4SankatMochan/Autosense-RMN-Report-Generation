@@ -104,33 +104,66 @@ print("=" * 70)
 print("QUERY:", query)
 print("=" * 70 + "\n")
 
-# ── Query (non-streaming) ─────────────────────────────────────────────────────
-# stream_query() has a ~15-second SSE inactivity timeout that kills long pipelines.
-# query() is a blocking HTTP POST that waits for the full response (no SSE timeout).
-print(f"{ts()} Calling agent.query() — blocking until pipeline completes ...")
+# ── Query via direct REST API (non-streaming, no SSE timeout) ─────────────────
+# AgentEngine SDK only exposes stream_query() which has a ~15s SSE inactivity
+# timeout — kills long pipelines. The underlying REST API has a :query endpoint
+# (synchronous HTTP POST, no SSE timer). We call it directly with a 15-min timeout.
+import urllib.request as _urllib
+import google.auth as _gauth
+import google.auth.transport.requests as _gatr
+
+print(f"{ts()} Calling :query REST endpoint — blocking until pipeline completes ...")
+
+_RESOURCE = agent.resource_name  # e.g. projects/.../reasoningEngines/NNN
+_URL = f"https://us-central1-aiplatform.googleapis.com/v1beta1/{_RESOURCE}:query"
+_TIMEOUT = 900  # 15 min — abort if pipeline takes longer
 
 query_start = time.time()
 query_response = None
 try:
-    query_response = agent.query(
-        message=query,
-        user_id="test-user",
-        session_id=session_id,
+    _creds, _ = _gauth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
+    _creds.refresh(_gatr.Request())
+
+    _payload = json.dumps({
+        "input": {
+            "message": query,
+            "session_id": session_id,
+            "user_id": "test-user",
+        }
+    }).encode()
+
+    _req = _urllib.Request(
+        _URL,
+        data=_payload,
+        headers={
+            "Authorization": f"Bearer {_creds.token}",
+            "Content-Type": "application/json",
+        },
     )
+    with _urllib.urlopen(_req, timeout=_TIMEOUT) as _resp:
+        query_response = json.loads(_resp.read())
+
     elapsed = time.time() - query_start
-    print(f"\n{ts()} query() returned in {elapsed:.0f}s")
-    if isinstance(query_response, dict):
-        # Print any text parts in the response
-        content = query_response.get("content") or {}
+    print(f"\n{ts()} Pipeline completed in {elapsed:.0f}s")
+    # Print the agent's final text response
+    output = query_response.get("output", query_response)
+    if isinstance(output, dict):
+        content = output.get("content") or {}
         parts = content.get("parts", []) if isinstance(content, dict) else []
         for part in parts:
             if isinstance(part, dict) and part.get("text"):
-                print(f"\nAGENT RESPONSE:\n{part['text']}\n")
-    elif query_response:
-        print(f"Response: {str(query_response)[:2000]}")
+                print(f"\n{'='*70}\nAGENT RESPONSE:\n{part['text']}\n{'='*70}")
+    if not any(
+        isinstance(output, dict) and
+        isinstance(output.get("content"), dict) and
+        any(p.get("text") for p in output.get("content", {}).get("parts", []))
+        for _ in [None]
+    ):
+        print(f"\nRaw response (first 3000 chars):\n{str(query_response)[:3000]}")
+
 except Exception as qerr:
     elapsed = time.time() - query_start
-    print(f"\n{ts()} query() error after {elapsed:.0f}s: {qerr}")
+    print(f"\n{ts()} REST query error after {elapsed:.0f}s: {qerr}")
     import traceback; traceback.print_exc()
 
 # ── GCS verification — run once after query() completes ──────────────────────
