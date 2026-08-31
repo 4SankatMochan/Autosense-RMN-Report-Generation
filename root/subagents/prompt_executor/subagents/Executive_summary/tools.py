@@ -1,6 +1,7 @@
 from google.adk.tools import ToolContext
 from typing import List, Optional
 import os
+import asyncio
 from vertexai.preview.generative_models import GenerativeModel
 from google.genai.types import Part, Blob
  
@@ -46,7 +47,8 @@ async def run_executive_summary(
 ):
    
     model = GenerativeModel(os.getenv("GEMINI_MODEL"))
-    response = model.generate_content(
+    response = await asyncio.to_thread(
+        model.generate_content,
         aggregated_results,
         generation_config={
             "temperature": 0.5,
@@ -54,7 +56,7 @@ async def run_executive_summary(
             "max_output_tokens": 2048
         }
     )
- 
+
     try:
         output_text = response.text.strip() if hasattr(response, "text") else ""
         if not output_text:

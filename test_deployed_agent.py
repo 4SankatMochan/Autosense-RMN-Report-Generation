@@ -23,7 +23,10 @@ from vertexai import agent_engines
 PROJECT      = "acn-cda"
 LOCATION     = "us-central1"
 DISPLAY_NAME = "report-gen-v2"
-GCS_BUCKET   = "acn-cda-adk-staging"
+GCS_BUCKET   = "acn-cda-adk-report-gen"
+# Pin to the specific engine deployed with all Playground + visualization fixes.
+# Set to None to fall back to display-name lookup (picks newest by resource ID).
+RESOURCE_ID  = "4911709206542811136"
 
 vertexai.init(project=PROJECT, location=LOCATION)
 START = time.time()
@@ -69,13 +72,20 @@ def print_event(event):
 
 
 # ── Find agent ────────────────────────────────────────────────────────────────
-print(f"{ts()} Looking up '{DISPLAY_NAME}' ...")
-matches = [e for e in agent_engines.list() if e.display_name == DISPLAY_NAME]
-if not matches:
-    print("ERROR: Agent not found.")
-    exit(1)
+if RESOURCE_ID:
+    print(f"{ts()} Using pinned resource ID {RESOURCE_ID} ...")
+    resource_name = f"projects/{PROJECT}/locations/{LOCATION}/reasoningEngines/{RESOURCE_ID}"
+    agent = agent_engines.get(resource_name)
+else:
+    print(f"{ts()} Looking up '{DISPLAY_NAME}' ...")
+    matches = [e for e in agent_engines.list() if e.display_name == DISPLAY_NAME]
+    if not matches:
+        print("ERROR: Agent not found.")
+        exit(1)
+    # Sort by numeric resource ID (highest = most recently created)
+    matches.sort(key=lambda e: int(e.resource_name.split("/")[-1]))
+    agent = matches[-1]
 
-agent = matches[-1]
 print(f"{ts()} Found: {agent.resource_name}\n")
 
 # ── Session ───────────────────────────────────────────────────────────────────
@@ -135,7 +145,7 @@ try:
     bucket = gcs_client.bucket(GCS_BUCKET)
 
     # Search patterns (most-specific first)
-    # PDF writes to: gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf
+    # PDF writes to: gs://acn-cda-adk-report-gen/root/user/{session_id}/final_report.pdf
     # Artifacts (charts) write via ADK save_artifact to artifacts/users/USER/sessions/SID/
     search_prefixes = [
         f"root/user/{session_id}/",                          # PDF report location

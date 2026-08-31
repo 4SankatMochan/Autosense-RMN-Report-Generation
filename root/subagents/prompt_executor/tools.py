@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 # ── Tuning knobs ─────────────────────────────────────────────────────────────
 # Lower concurrency = fewer quota conflicts = fewer timeouts.
 # Raise _MAX_CONCURRENT only if your Vertex AI QPM limit supports it.
-_MAX_CONCURRENT  = 2    # race condition fixed: folder_name computed from question param, not shared state
+_MAX_CONCURRENT  = 5    # race condition fixed: folder_name computed from question param, not shared state
 _CALL_TIMEOUT    = 600  # seconds per individual agent call
 _MAX_RETRIES     = 3    # attempts per prompt before giving up
 _BACKOFF_BASE    = 5    # seconds; doubles each retry (5 → 10 → 20)
@@ -146,18 +146,21 @@ async def call_db_ds_agent(tool_context: ToolContext):
     return "Executed Successfully"
 
 
-# ── Partially-parallel analysis pipeline ────────────────────────────────────
+# ── Analysis pipeline (3 phases) ─────────────────────────────────────────────
 #
 # Dependency graph:
-#   campaign_analysis  ──┬──► recommendation ──► executive_summary
-#   campaign_comparison ─┘
+#   db_ds_agent_output → campaign_analysis
+#                      ↓
+#   campaign_analysis  → campaign_comparison ‖ recommendation
+#                                           ↓
+#                            executive_summary
 #
-#   Phase 1 (parallel):   campaign_analysis ‖ campaign_comparison
-#   Phase 2 (sequential): recommendation        (needs phase-1 outputs)
-#   Phase 3 (sequential): executive_summary     (needs phase-1 + phase-2 outputs)
+#   Phase 1 (sequential): campaign_analysis   (seeds comparison + recommendation)
+#   Phase 2 (parallel):   campaign_comparison ‖ recommendation  (both need analysis)
+#   Phase 3 (sequential): executive_summary   (needs all three)
 
 async def Sequential_Agent(tool_context: ToolContext):
-    """Run analysis sub-agents in dependency order with phase-1 parallelism."""
+    """Run analysis sub-agents in dependency order: analysis → comparison‖recommendation → executive."""
     input_text = "\n".join(map(str, tool_context.state.get("db_ds_agent_output", [])))
     args = {"request": input_text}
 
@@ -168,21 +171,21 @@ async def Sequential_Agent(tool_context: ToolContext):
 
     t0 = time.perf_counter()
 
-    # Phase 1: independent — run in parallel
-    logger.info("Sequential_Agent Phase 1: analysis ‖ comparison")
-    await asyncio.gather(
-        analysis_tool.run_async(args=args, tool_context=tool_context),
-        comparison_tool.run_async(args=args, tool_context=tool_context),
-    )
+    # Phase 1: campaign_analysis alone (comparison reads its output)
+    logger.info("Sequential_Agent Phase 1: campaign_analysis")
+    await analysis_tool.run_async(args=args, tool_context=tool_context)
     logger.info("Phase 1 done in %.1f s", time.perf_counter() - t0)
 
-    # Phase 2: needs phase-1 state keys
-    logger.info("Sequential_Agent Phase 2: recommendation")
+    # Phase 2: comparison ‖ recommendation (both read campaign_analysis_output)
+    logger.info("Sequential_Agent Phase 2: comparison ‖ recommendation")
     t1 = time.perf_counter()
-    await recommendation_tool.run_async(args=args, tool_context=tool_context)
+    await asyncio.gather(
+        comparison_tool.run_async(args=args, tool_context=tool_context),
+        recommendation_tool.run_async(args=args, tool_context=tool_context),
+    )
     logger.info("Phase 2 done in %.1f s", time.perf_counter() - t1)
 
-    # Phase 3: needs phase-1 + phase-2 state keys
+    # Phase 3: executive_summary (reads analysis + comparison + recommendation)
     logger.info("Sequential_Agent Phase 3: executive summary")
     t2 = time.perf_counter()
     await executive_tool.run_async(args=args, tool_context=tool_context)

@@ -1,6 +1,7 @@
 from google.adk.tools import ToolContext
 from typing import List, Optional
 import os
+import asyncio
 from vertexai.preview.generative_models import GenerativeModel
 from google.genai.types import Part, Blob
  
@@ -74,7 +75,8 @@ async def run_recommendation(
     model = GenerativeModel(model_name)
  
     try:
-        response = model.generate_content(
+        response = await asyncio.to_thread(
+            model.generate_content,
             aggregated_results,
             generation_config={
                 "temperature": 0.5,
@@ -82,12 +84,12 @@ async def run_recommendation(
                 "max_output_tokens": 2048
             }
         )
- 
+
         output_text = response.text.strip() if hasattr(response, "text") else ""
         if not output_text:
             return " No comparison generated. Check LLM output or token limit."
         return output_text
- 
+
     except Exception as e:
         print(f" Recommendation generation failed: {e}")
         return f" Error generating recommendation: {e}"
