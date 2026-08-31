@@ -38,6 +38,11 @@ report_markdown_debug*.txt
 # OS
 .DS_Store
 
+# ADK local session/artifact cache
+.adk/
+root/.adk/
+*.db
+
 # Binary/media
 *.gif
 *.mp4

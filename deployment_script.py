@@ -125,6 +125,8 @@ def _wait_for_engine(display_name, max_wait=1800, interval=30):
     raise TimeoutError(f"Engine '{display_name}' not found after {max_wait}s")
 
 
+RESOURCE_LIMITS = {"memory": "4Gi", "cpu": "4"}
+
 if args.update:
     print(f"Updating existing agent engine: {args.update}")
     remote_app = agent_engines.get(args.update)
@@ -134,6 +136,7 @@ if args.update:
             requirements=requirements,
             extra_packages=EXTRA_PACKAGES,
             env_vars=env_vars,
+            resource_limits=RESOURCE_LIMITS,
         )
     except (TimeoutError, concurrent.futures.TimeoutError):
         print("⏳ SDK polling timed out — the update is still running on GCP.")
@@ -149,6 +152,7 @@ else:
             requirements=requirements,
             extra_packages=EXTRA_PACKAGES,
             env_vars=env_vars,
+            resource_limits=RESOURCE_LIMITS,
         )
     except (TimeoutError, concurrent.futures.TimeoutError):
         print("⏳ SDK polling timed out after 900s — deployment is still running on GCP.")

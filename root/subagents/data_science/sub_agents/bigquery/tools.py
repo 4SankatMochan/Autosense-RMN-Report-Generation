@@ -36,7 +36,13 @@ import datetime
 # `data_agent` README for more details.
 project = os.getenv("BQ_PROJECT_ID", None)
 location = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
-llm_client = Client(vertexai=True, project=project, location=location)
+_llm_client = None
+
+def _get_llm_client():
+    global _llm_client
+    if _llm_client is None:
+        _llm_client = Client(vertexai=True, project=project, location=location)
+    return _llm_client
 
 MAX_NUM_ROWS = 150  # reduced from 500; daily campaigns run 30–90 days max
 
@@ -265,7 +271,7 @@ The database structure is defined by the following table schemas (possibly with 
     )
     # config={"temperature": 0.1}
     config={"temperature": 0.01}
-    response = llm_client.models.generate_content(
+    response = _get_llm_client().models.generate_content(
         model=os.getenv("BASELINE_NL2SQL_MODEL"),
         contents=prompt,
         config=config,

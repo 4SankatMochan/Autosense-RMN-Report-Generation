@@ -475,7 +475,6 @@ class GCSJSONToPDF:
         """Generate PDF from JSON input with Accenture branding and dual logos."""
         import json
 
-        output_path = os.path.join(self.output_dir, output_filename)
         print(f"type of json_input at start of generate_pdf: {type(json_input)} with keys: {json_input.keys() if isinstance(json_input, dict) else 'N/A'}")
 
         # === Step 1: Ensure json_input is a dictionary ===

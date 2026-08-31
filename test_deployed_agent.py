@@ -1,8 +1,11 @@
 """
-Test the deployed Agent Engine.
-Run: python test_deployed_agent.py
+Test the deployed Agent Engine - stream + long GCS poll.
+Run: $env:PYTHONUNBUFFERED=1; .\.venv\Scripts\python.exe test_deployed_agent.py
 """
-# Fix Accenture/Zscaler corporate SSL proxy — must be before all other imports
+import sys
+sys.stdout.reconfigure(line_buffering=True)  # flush every print() immediately
+
+# Fix Accenture/Zscaler corporate SSL proxy - must be before all other imports
 try:
     import truststore
     truststore.inject_into_ssl()
@@ -44,16 +47,25 @@ def print_event(event):
             print(f"{ts()} [{author}] TEXT:\n{part['text']}\n")
         elif part.get("function_call"):
             fc = part["function_call"]
-            print(f"{ts()} [{author}] TOOL → {fc.get('name')}({json.dumps(fc.get('args',{}))[:200]})")
+            args_str = json.dumps(fc.get("args", {}))[:300]
+            print(f"{ts()} [{author}] TOOL → {fc.get('name')}({args_str})")
         elif part.get("function_response"):
             fr = part["function_response"]
-            print(f"{ts()} [{author}] RESP ← {fr.get('name')}: {str(fr.get('response',''))[:400]}")
+            resp_str = str(fr.get("response", ""))[:600]
+            print(f"{ts()} [{author}] RESP ← {fr.get('name')}: {resp_str}")
         elif part.get("file_data"):
             d = part["file_data"]
             print(f"{ts()} [{author}] FILE: {d.get('mime_type')} → {d.get('file_uri')}")
         elif part.get("inline_data"):
             d = part["inline_data"]
             print(f"{ts()} [{author}] BINARY: {d.get('mime_type')} ({len(d.get('data',''))} bytes)")
+
+    # Also check for state updates
+    if event.get("actions"):
+        actions = event["actions"]
+        if actions.get("state_delta"):
+            keys = list(actions["state_delta"].keys())
+            print(f"{ts()} [{author}] STATE UPDATE: keys={keys}")
 
 
 # ── Find agent ────────────────────────────────────────────────────────────────
@@ -71,97 +83,130 @@ sess = agent.create_session(user_id="test-user")
 session_id = sess["id"]
 print(f"{ts()} Session: {session_id}\n")
 
-query = (
+import sys as _sys
+_default_query = (
     "For brand Dove, campaign CMP_2025_0107 (objective: Conversion), "
     "show me the daily trend of Total Ad Spend, Impressions, and Clicks as charts. "
     "Also provide a channel-wise comparison and overall campaign performance summary."
 )
+query = " ".join(_sys.argv[1:]) if len(_sys.argv) > 1 else _default_query
 print("=" * 70)
 print("QUERY:", query)
 print("=" * 70 + "\n")
 
-# ── Try non-streaming query() first ──────────────────────────────────────────
-print(f"{ts()} Calling agent.query() — this waits for the FULL response (may take 10-20 min) ...")
-print(f"{ts()} Do NOT close this window.\n")
+# ── Stream query ──────────────────────────────────────────────────────────────
+print(f"{ts()} Starting stream_query() — pipeline takes ~10-20 min server-side ...")
+print(f"{ts()} Stream may close early (inactivity timeout). GCS poll will continue after.\n")
+
+event_count = 0
+last_event_tool = None
+stream_start = time.time()
 
 try:
-    response = agent.query(
-        message=query,
-        user_id="test-user",
-        session_id=session_id,
-    )
-    print(f"\n{ts()} ✅ agent.query() completed!\n")
-    print("=" * 70)
-    if isinstance(response, dict):
-        # Try to extract text from the response
-        content = response.get("content") or response.get("output") or response
-        parts = content.get("parts", []) if isinstance(content, dict) else []
-        for part in parts:
-            if isinstance(part, dict) and part.get("text"):
-                print(part["text"])
-        if not parts:
-            print(json.dumps(response, indent=2, default=str)[:3000])
-    else:
-        print(str(response)[:3000])
-    print("=" * 70)
-
-except Exception as e:
-    print(f"{ts()} agent.query() failed or timed out: {e}\n")
-    print(f"{ts()} Falling back to stream_query() ...\n")
-
-    event_count = 0
     for event in agent.stream_query(
         message=query,
         user_id="test-user",
         session_id=session_id,
     ):
         event_count += 1
+        # Track last tool called
+        content = event.get("content") or {}
+        parts = content.get("parts", []) if isinstance(content, dict) else []
+        for part in parts:
+            if isinstance(part, dict) and part.get("function_call"):
+                last_event_tool = part["function_call"].get("name")
         print_event(event)
-    print(f"\n{ts()} Stream ended — {event_count} events")
+except Exception as stream_err:
+    print(f"\n{ts()} Stream error: {stream_err}")
 
-# ── Search GCS for PDF report ─────────────────────────────────────────────────
+stream_elapsed = time.time() - stream_start
+print(f"\n{ts()} Stream ended — {event_count} events in {stream_elapsed:.0f}s")
+print(f"{ts()} Last tool seen: {last_event_tool}")
+
+# ── GCS poll — keep polling for 20 minutes after stream ends ──────────────────
 print(f"\n{'=' * 70}")
-print(f"{ts()} Searching GCS for PDF/report files ...")
+print(f"{ts()} Stream closed. Now polling GCS for results for up to 20 min ...")
+print(f"{ts()} (If backend continues running, files will appear here)")
+print(f"{'=' * 70}\n")
 
 try:
     from google.cloud import storage as gcs
-    client = gcs.Client(project=PROJECT)
-    bucket = client.bucket(GCS_BUCKET)
+    gcs_client = gcs.Client(project=PROJECT)
+    bucket = gcs_client.bucket(GCS_BUCKET)
 
-    # Search with session_id prefix
-    prefix_patterns = [
-        f"users/test-user/sessions/{session_id}/",
-        f"artifacts/users/test-user/sessions/{session_id}/",
-        f"artifacts/",
+    # Search patterns (most-specific first)
+    # PDF writes to: gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf
+    # Artifacts (charts) write via ADK save_artifact to artifacts/users/USER/sessions/SID/
+    search_prefixes = [
+        f"root/user/{session_id}/",                          # PDF report location
+        f"users/test-user/sessions/{session_id}/",          # ADK artifact session path
+        f"artifacts/users/test-user/sessions/{session_id}/",# ADK artifact alternate path
+        f"agent_state/{session_id}/",                       # ADK state storage
     ]
 
-    found = []
-    for prefix in prefix_patterns:
-        blobs = list(bucket.list_blobs(prefix=prefix, max_results=20))
-        for b in blobs:
-            if b.name not in found:
-                found.append(b.name)
+    found_files: set[str] = set()
+    POLL_INTERVAL   = 30   # seconds between GCS polls
+    POLL_MAX        = 1200 # 20 minutes
 
-    if found:
-        print(f"{ts()} Files found in GCS:")
-        for name in found:
+    poll_start = time.time()
+    poll_round = 0
+
+    while time.time() - poll_start < POLL_MAX:
+        poll_round += 1
+        new_files = []
+
+        for prefix in search_prefixes:
+            blobs = list(bucket.list_blobs(prefix=prefix, max_results=50))
+            for b in blobs:
+                if b.name not in found_files:
+                    found_files.add(b.name)
+                    new_files.append(b)
+
+        if new_files:
+            print(f"{ts()} NEW FILES detected (round {poll_round}):")
+            for b in new_files:
+                size = b.size or 0
+                print(f"  gs://{GCS_BUCKET}/{b.name}  [{size} bytes]  [{b.updated}]")
+            print()
+
+            # Check if PDF or report files appeared (pipeline complete)
+            done_keys = {"final_report.pdf", "report.pdf", "report_markdown", "report_json"}
+            pdf_files = [b for b in new_files if "final_report.pdf" in b.name.lower() or b.name.lower().endswith(".pdf")]
+            if any(any(k in b.name.lower() for k in done_keys) for b in new_files):
+                print(f"\n{ts()} REPORT FILES DETECTED - pipeline completed!")
+                if pdf_files:
+                    for b in pdf_files:
+                        gcs_uri = f"gs://{GCS_BUCKET}/{b.name}"
+                        https_uri = f"https://storage.cloud.google.com/{GCS_BUCKET}/{b.name}"
+                        print(f"  PDF GCS  : {gcs_uri}")
+                        print(f"  PDF HTTPS: {https_uri}")
+                break
+        else:
+            waited = int(time.time() - poll_start)
+            print(f"{ts()} Polling... (round {poll_round}, {waited}s elapsed, session={session_id})")
+
+        time.sleep(POLL_INTERVAL)
+
+    # Final GCS summary
+    print(f"\n{ts()} Poll ended. Total files found for session:")
+    if found_files:
+        for name in sorted(found_files):
             print(f"  gs://{GCS_BUCKET}/{name}")
     else:
-        # Broad search for any recent PDF
+        print("  None — backend did NOT write any files (likely stopped when stream closed)")
+        print()
+        print("  DEBUG: Checking most recent files in bucket (any session)...")
         all_blobs = sorted(
-            bucket.list_blobs(max_results=200),
-            key=lambda b: b.updated,
+            bucket.list_blobs(max_results=100),
+            key=lambda b: b.updated or datetime.min,
             reverse=True,
-        )
-        recent = [b for b in all_blobs[:20]]
-        if recent:
-            print(f"{ts()} Most recent files in bucket (no session-specific files found):")
-            for b in recent:
-                print(f"  gs://{GCS_BUCKET}/{b.name}  [{b.updated}]")
-        else:
-            print(f"{ts()} No files found in gs://{GCS_BUCKET}")
+        )[:15]
+        for b in all_blobs:
+            print(f"    gs://{GCS_BUCKET}/{b.name}  [{b.updated}]")
 
 except Exception as ex:
-    print(f"{ts()} GCS check error: {ex}")
+    print(f"{ts()} GCS error: {ex}")
+    import traceback
+    traceback.print_exc()
 
-print(f"\n{ts()} Done.")
+print(f"\n{ts()} Done. Total elapsed: {time.time()-START:.0f}s")

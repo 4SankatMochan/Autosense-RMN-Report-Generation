@@ -1,9 +1,17 @@
-from root.subagents.data_science.agent import root_agent
 from google.adk.tools import ToolContext
 from google.adk.tools.agent_tool import AgentTool
 import asyncio
 import logging
 import time
+
+_data_science_agent = None
+
+def _get_data_science_agent():
+    global _data_science_agent
+    if _data_science_agent is None:
+        from root.subagents.data_science.agent import root_agent
+        _data_science_agent = root_agent
+    return _data_science_agent
 
 from .subagents.Campaign_analysis.agent import campaign_analysis_root_agent
 from .subagents.Campaign_comparison.agent import campaign_comparison_root_agent
@@ -15,7 +23,7 @@ logger = logging.getLogger(__name__)
 # ── Tuning knobs ─────────────────────────────────────────────────────────────
 # Lower concurrency = fewer quota conflicts = fewer timeouts.
 # Raise _MAX_CONCURRENT only if your Vertex AI QPM limit supports it.
-_MAX_CONCURRENT  = 5    # max simultaneous data-science agent calls
+_MAX_CONCURRENT  = 2    # max simultaneous data-science agent calls (low to stay under 2GB RAM)
 _CALL_TIMEOUT    = 600  # seconds per individual agent call
 _MAX_RETRIES     = 3    # attempts per prompt before giving up
 _BACKOFF_BASE    = 5    # seconds; doubles each retry (5 → 10 → 20)
@@ -42,7 +50,7 @@ async def agent_call(question: str, tool_context: ToolContext) -> dict:
     acquired during backoff — preventing a thundering-herd of retries from
     all firing at once when quota is tight.
     """
-    agent_tool = AgentTool(agent=root_agent)
+    agent_tool = AgentTool(agent=_get_data_science_agent())
     last_err: Exception | None = None
 
     for attempt in range(1, _MAX_RETRIES + 1):
