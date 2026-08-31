@@ -107,8 +107,7 @@ print("=" * 70 + "\n")
 # ── Query (non-streaming) ─────────────────────────────────────────────────────
 # stream_query() has a ~15-second SSE inactivity timeout that kills long pipelines.
 # query() is a blocking HTTP POST that waits for the full response (no SSE timeout).
-print(f"{ts()} Calling agent.query() — blocking until pipeline completes (up to 20 min) ...")
-print(f"{ts()} No live events; watch GCS poll below for progress.\n")
+print(f"{ts()} Calling agent.query() — blocking until pipeline completes ...")
 
 query_start = time.time()
 query_response = None
@@ -134,10 +133,9 @@ except Exception as qerr:
     print(f"\n{ts()} query() error after {elapsed:.0f}s: {qerr}")
     import traceback; traceback.print_exc()
 
-# ── GCS poll — keep polling for 20 minutes after stream ends ──────────────────
+# ── GCS verification — run once after query() completes ──────────────────────
 print(f"\n{'=' * 70}")
-print(f"{ts()} Stream closed. Now polling GCS for results for up to 20 min ...")
-print(f"{ts()} (If backend continues running, files will appear here)")
+print(f"{ts()} Verifying GCS output files for session {session_id} ...")
 print(f"{'=' * 70}\n")
 
 try:
@@ -145,79 +143,32 @@ try:
     gcs_client = gcs.Client(project=PROJECT)
     bucket = gcs_client.bucket(GCS_BUCKET)
 
-    # Search patterns (most-specific first)
-    # PDF writes to: gs://acn-cda-adk-staging/root/user/{session_id}/final_report.pdf
-    # Artifacts (charts) write via ADK save_artifact to artifacts/users/USER/sessions/SID/
     search_prefixes = [
-        f"root/user/{session_id}/",                          # PDF report location
-        f"users/test-user/sessions/{session_id}/",          # ADK artifact session path
-        f"artifacts/users/test-user/sessions/{session_id}/",# ADK artifact alternate path
-        f"agent_state/{session_id}/",                       # ADK state storage
+        f"root/user/{session_id}/",
+        f"users/test-user/sessions/{session_id}/",
+        f"artifacts/users/test-user/sessions/{session_id}/",
+        f"agent_state/{session_id}/",
     ]
 
-    found_files: set[str] = set()
-    POLL_INTERVAL   = 30   # seconds between GCS polls
-    POLL_MAX        = 1200 # 20 minutes
+    found_files = []
+    for prefix in search_prefixes:
+        for b in bucket.list_blobs(prefix=prefix, max_results=100):
+            found_files.append(b)
 
-    poll_start = time.time()
-    poll_round = 0
-
-    while time.time() - poll_start < POLL_MAX:
-        poll_round += 1
-        new_files = []
-
-        for prefix in search_prefixes:
-            blobs = list(bucket.list_blobs(prefix=prefix, max_results=50))
-            for b in blobs:
-                if b.name not in found_files:
-                    found_files.add(b.name)
-                    new_files.append(b)
-
-        if new_files:
-            print(f"{ts()} NEW FILES detected (round {poll_round}):")
-            for b in new_files:
-                size = b.size or 0
-                print(f"  gs://{GCS_BUCKET}/{b.name}  [{size} bytes]  [{b.updated}]")
-            print()
-
-            # Check if PDF or report files appeared (pipeline complete)
-            done_keys = {"final_report.pdf", "report.pdf", "report_markdown", "report_json"}
-            pdf_files = [b for b in new_files if "final_report.pdf" in b.name.lower() or b.name.lower().endswith(".pdf")]
-            if any(any(k in b.name.lower() for k in done_keys) for b in new_files):
-                print(f"\n{ts()} REPORT FILES DETECTED - pipeline completed!")
-                if pdf_files:
-                    for b in pdf_files:
-                        gcs_uri = f"gs://{GCS_BUCKET}/{b.name}"
-                        https_uri = f"https://storage.cloud.google.com/{GCS_BUCKET}/{b.name}"
-                        print(f"  PDF GCS  : {gcs_uri}")
-                        print(f"  PDF HTTPS: {https_uri}")
-                break
-        else:
-            waited = int(time.time() - poll_start)
-            print(f"{ts()} Polling... (round {poll_round}, {waited}s elapsed, session={session_id})")
-
-        time.sleep(POLL_INTERVAL)
-
-    # Final GCS summary
-    print(f"\n{ts()} Poll ended. Total files found for session:")
     if found_files:
-        for name in sorted(found_files):
-            print(f"  gs://{GCS_BUCKET}/{name}")
+        print(f"{ts()} Files written for this session ({len(found_files)} total):")
+        for b in sorted(found_files, key=lambda x: x.updated or datetime.min, reverse=True):
+            size_kb = (b.size or 0) // 1024
+            print(f"  [{size_kb:>5} KB]  gs://{GCS_BUCKET}/{b.name}")
+        pdf_files = [b for b in found_files if b.name.lower().endswith(".pdf")]
+        if pdf_files:
+            print(f"\n{ts()} PDF REPORT:")
+            for b in pdf_files:
+                print(f"  https://storage.cloud.google.com/{GCS_BUCKET}/{b.name}")
     else:
-        print("  None — backend did NOT write any files (likely stopped when stream closed)")
-        print()
-        print("  DEBUG: Checking most recent files in bucket (any session)...")
-        all_blobs = sorted(
-            bucket.list_blobs(max_results=100),
-            key=lambda b: b.updated or datetime.min,
-            reverse=True,
-        )[:15]
-        for b in all_blobs:
-            print(f"    gs://{GCS_BUCKET}/{b.name}  [{b.updated}]")
+        print(f"{ts()} No files found — pipeline may not have completed.")
 
 except Exception as ex:
-    print(f"{ts()} GCS error: {ex}")
-    import traceback
-    traceback.print_exc()
+    print(f"{ts()} GCS check error: {ex}")
 
 print(f"\n{ts()} Done. Total elapsed: {time.time()-START:.0f}s")
