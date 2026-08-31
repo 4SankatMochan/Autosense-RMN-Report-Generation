@@ -160,22 +160,28 @@ async def _maybe_build_deterministic_chart(question, tool_context, folder_name):
         buf.seek(0)
         image_bytes = buf.read()
 
-        image_artifact = Part(inline_data=Blob(data=image_bytes, mime_type="image/png"))
         meta = {
             "title": title,
             "chart_type": chart_type,
             "x": str(date_col) if date_col is not None else None,
             "series": [str(c) for c in numeric_cols[:4]],
         }
-        json_artifact = Part(
-            inline_data=Blob(mime_type="text/plain", data=json.dumps(meta).encode("utf-8"))
-        )
-        await tool_context.save_artifact(f"{folder_name}_VizChart.png", image_artifact)
-        await tool_context.save_artifact(f"{folder_name}_data.json", json_artifact)
-        print(f"{tag} SAVED {str(folder_name)[:50]}_VizChart.png ({chart_type}, series={[str(c) for c in numeric_cols[:4]]})")
-        # Also upload directly to the root session's GCS prefix so text_viz_json finds it
+        # Upload directly to GCS root prefix (bypass artifact service — save_artifact puts
+        # artifacts in a sub-session path that text_viz_json never scans, AND causes
+        # load_artifacts_tool to reconstruct the text/plain blob as None, breaking Pydantic)
         root_session_id = tool_context.state.get("session_id", "")
         await _save_chart_to_gcs_root(root_session_id, f"{folder_name}_VizChart.png", image_bytes)
+        _bucket = os.getenv("BUCKET_NAME")
+        if _bucket and root_session_id:
+            try:
+                from google.cloud import storage as _gcs
+                _gcs.Client().bucket(_bucket).blob(
+                    f"root/user/{root_session_id}/{folder_name}_data.json/0"
+                ).upload_from_string(json.dumps(meta).encode("utf-8"), content_type="text/plain")
+                print(f"{tag} SAVED {str(folder_name)[:50]}_data.json → GCS")
+            except Exception as _je:
+                print(f"{tag} data.json upload error: {_je}")
+        print(f"{tag} SAVED {str(folder_name)[:50]}_VizChart.png ({chart_type}, series={[str(c) for c in numeric_cols[:4]]})")
     except Exception as e:
         import traceback
         print(f"[deterministic-chart] ERROR ({type(e).__name__}): {e}")
@@ -320,8 +326,7 @@ async def call_viz_agent(
             )
             if _blob.exists():
                 print(f"[viz_agent] SKIP — deterministic chart already in GCS for: {question[:70]}")
-                return {"chart": "already_built_deterministically",
-                        "artifact": folder_name_check + "_VizChart.png"}
+                return f"Chart already built deterministically: {folder_name_check}_VizChart.png"
         except Exception as _ve:
             print(f"[viz_agent] GCS check failed ({_ve}), proceeding with LLM viz")
 
