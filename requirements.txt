@@ -36,6 +36,9 @@ aiohttp
 # Embeddings
 sentence-transformers
 
+# Corporate SSL proxy fix (Accenture/Zscaler) — uses OS certificate store
+truststore
+
 # Misc
 immutabledict==4.2.1
 absl-py==2.2.2

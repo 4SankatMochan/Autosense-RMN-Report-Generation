@@ -8,6 +8,12 @@ Run from Google Cloud Shell (no Windows path issues, already authenticated):
     # Update an existing deployment:
     python deployment_script.py --update projects/350875723330/locations/us-central1/reasoningEngines/6514040695840309248
 """
+# Fix Accenture/Zscaler corporate SSL proxy — must be before all other imports
+try:
+    import truststore
+    truststore.inject_into_ssl()
+except ImportError:
+    pass  # Cloud Shell / Linux doesn't need this
 import argparse
 import os
 from pathlib import Path
