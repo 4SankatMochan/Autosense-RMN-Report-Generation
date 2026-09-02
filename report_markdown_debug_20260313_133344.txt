@@ -1,9 +1,0 @@
-# Campaign Performance Report for CMP_2025_0003 (Lux)
-
-## 1. Context
-
-This report provides a comprehensive overview of the campaign performance for 'CMP_2025_0003' under the brand 'Lux'. It is intended for the Marketing and Sales leadership team to understand the campaign's effectiveness, channel contributions, and overall sales patterns, guiding future strategic decisions for optimizing marketing spend, resource allocation, and targeting.
-
-### 1.1. Campaign Details
-
-| Field                  | Value

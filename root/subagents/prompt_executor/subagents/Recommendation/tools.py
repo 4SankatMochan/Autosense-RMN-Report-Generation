@@ -1,4 +1,5 @@
 from google.adk.tools import ToolContext
+import asyncio
 from typing import List, Optional
 import os
 from vertexai.preview.generative_models import GenerativeModel
@@ -65,22 +66,34 @@ def _select_recommendation_model_name():
     return "gemini-2.5-flash"
  
  
+def _to_model_content(data) -> str:
+    """Convert list/dict/other to a plain string the model can accept."""
+    if isinstance(data, dict):
+        return "\n\n".join(
+            f"### {k.replace('_', ' ').title()}\n{v}"
+            for k, v in data.items()
+            if v
+        )
+    if isinstance(data, list):
+        return "\n\n".join(str(item) for item in data if item)
+    return str(data)
+
+
 async def run_recommendation(
-    aggregated_results: list,
+    aggregated_results,
     tool_context: ToolContext
 ):
     model_name = _select_recommendation_model_name()
     print(f"Using recommendation model: {model_name}")
     model = GenerativeModel(model_name)
- 
+    content = _to_model_content(aggregated_results)
+    if not content:
+        raise ValueError("Recommendation requires analysis and comparison outputs but both are missing from session state.")
+
     try:
-        response = model.generate_content(
-            aggregated_results,
-            generation_config={
-                "temperature": 0.5,
-                "top_p": 1.0,
-                "max_output_tokens": 2048
-            }
+        gen_config = {"temperature": 0.5, "top_p": 1.0, "max_output_tokens": 2048}
+        response = await asyncio.to_thread(
+            lambda: model.generate_content(content, generation_config=gen_config)
         )
  
         output_text = response.text.strip() if hasattr(response, "text") else ""

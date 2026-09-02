@@ -52,9 +52,9 @@ APP_URL = APP_URL.rstrip("/")
 APP_NAME = os.environ.get("APP_NAME", "data_science")
 
 # GCS input/output paths for T-T and T-P test cases
-INPUT_GCS_PATH_TP = os.environ.get("INPUT_GCS_PATH_TP", "gs://acn-cda-adk-staging/testing/testcase_files/test_cases_tp.xlsx")
-INPUT_GCS_PATH_TT = os.environ.get("INPUT_GCS_PATH_TT", "gs://acn-cda-adk-staging/testing/testcase_files/test_cases_tt.xlsx")
-OUTPUT_GCS_FOLDER = os.environ.get("OUTPUT_GCS_FOLDER", "gs://acn-cda-adk-staging/testing/testreport_files")
+INPUT_GCS_PATH_TP = os.environ.get("INPUT_GCS_PATH_TP", "gs://acn-cda-rmn-report-gen/testing/testcase_files/test_cases_tp.xlsx")
+INPUT_GCS_PATH_TT = os.environ.get("INPUT_GCS_PATH_TT", "gs://acn-cda-rmn-report-gen/testing/testcase_files/test_cases_tt.xlsx")
+OUTPUT_GCS_FOLDER = os.environ.get("OUTPUT_GCS_FOLDER", "gs://acn-cda-rmn-report-gen/testing/testreport_files")
 
 # Evaluation thresholds
 OUTPUT_SIM_THRESHOLD = float(os.environ.get("OUTPUT_SIM_THRESHOLD", 0.80))

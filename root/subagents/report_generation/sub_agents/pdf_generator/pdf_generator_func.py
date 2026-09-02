@@ -10,7 +10,7 @@ fs = gcsfs.GCSFileSystem()
 from .styles_config import get_styles, get_page_settings, get_image_settings, get_table_styles, get_brand_colors, get_header_footer_settings, add_page_decor # MAX_IMAGE_WIDTH_RATIO, MAX_IMAGE_HEIGHT
 
 class GCSJSONToPDF:
-    def __init__(self, bucket_name="acn-cda-adk-staging", output_dir=None, logo_path=None, cora_logo_path=None):
+    def __init__(self, bucket_name="acn-cda-rmn-report-gen", output_dir=None, logo_path=None, cora_logo_path=None):
         self.bucket_name = bucket_name
         self.output_dir = output_dir
         self.storage_client = storage.Client()
@@ -27,8 +27,8 @@ class GCSJSONToPDF:
         # Set logo paths (either provided or default logos)
         # self.logo_path = logo_path or r"C:\Users\rasheena.a.t\OneDrive - Accenture\Documents\RMN\rmn_agent_work\data_science\sub_agents\phase1_report gen\Phase_1\Accenture_Logo.png"
         # self.cora_logo_path = cora_logo_path or r"C:\Users\rasheena.a.t\OneDrive - Accenture\Documents\RMN\rmn_agent_work\data_science\sub_agents\phase1_report gen\Phase_1\Cora.png"
-        self.logo_path = logo_path or "gs://acn-cda-adk-staging/shared_docs/Accenture_Logo.png"
-        self.cora_logo_path = cora_logo_path or "gs://acn-cda-adk-staging/shared_docs/Cora.png"
+        self.logo_path = logo_path or "gs://acn-cda-rmn-report-gen/shared_docs/Accenture_Logo.png"
+        self.cora_logo_path = cora_logo_path or "gs://acn-cda-rmn-report-gen/shared_docs/Cora.png"
 
     def generate_acronym(self, title: str) -> str:
         """Generate acronym from a title string."""
@@ -475,7 +475,7 @@ class GCSJSONToPDF:
         """Generate PDF from JSON input with Accenture branding and dual logos."""
         import json
 
-        output_path = os.path.join(self.output_dir, output_filename)
+        output_path = os.path.join(self.output_dir, output_filename) if self.output_dir else output_filename
         print(f"type of json_input at start of generate_pdf: {type(json_input)} with keys: {json_input.keys() if isinstance(json_input, dict) else 'N/A'}")
 
         # === Step 1: Ensure json_input is a dictionary ===

@@ -1,6 +1,5 @@
-# from .agent import campaign_analysis_root_agent
 from google.adk.tools import ToolContext
-from google.adk.tools.agent_tool import AgentTool
+import asyncio
 import json
 from google.cloud import storage
 import base64
@@ -61,25 +60,34 @@ async def campaign_analysis_agent(tool_context: Optional[ToolContext] = None, **
     return "Campaign Analysis Executed Successfully"
 
 
+def _to_model_content(data) -> str:
+    """Convert list/dict/other to a plain string the model can accept."""
+    if isinstance(data, dict):
+        return "\n\n".join(
+            f"### {k.replace('_', ' ').title()}\n{v}"
+            for k, v in data.items()
+            if v
+        )
+    if isinstance(data, list):
+        return "\n\n".join(str(item) for item in data if item)
+    return str(data) if data else ""
+
+
 async def run_campaign_analysis(
-    aggregated_results: list,
+    aggregated_results,
     tool_context: ToolContext
 ):
-    """
-    Executes the Campaign Analysis agent on aggregated DB results
-    while conditioning on the original user question.
-    """
+    content = _to_model_content(aggregated_results)
+    if not content:
+        raise ValueError("Campaign analysis requires DB data but db_ds_agent_output is empty — all DB queries failed or returned None.")
+
     model = GenerativeModel(os.getenv("GEMINI_MODEL", "gemini-2.5-flash"))
-    response = model.generate_content(
-        aggregated_results,
-        generation_config={
-            "temperature": 0.5,
-            "top_p": 1.0,
-            "max_output_tokens": 2048
-        }
-    )
- 
+    gen_config = {"temperature": 0.5, "top_p": 1.0, "max_output_tokens": 2048}
+
     try:
+        response = await asyncio.to_thread(
+            lambda: model.generate_content(content, generation_config=gen_config)
+        )
         output_text = response.text.strip() if hasattr(response, "text") else ""
         if not output_text:
             return " No summary generated. Check LLM output or token limit."

@@ -6,27 +6,33 @@ __pycache__/
 .venv/
 *.env
 
-#logs
+# ADK local artifact/session store (never commit — use GCS in production)
+.adk/
+*.db
+
+# Logs and temp files
+logs/
 *debug_log*.txt
 *user_query_*.txt
 *prompt_list_*.json
-
-
-# Ignore logs and temp files
-logs/
-*.json
-!root/subagents/report_generation/sub_agents/report_summarizer/Campaign_Performance_Summary_Text_Viz.json
-test_ssl.py
-
-
-#logs and test results
-*debug_log*.txt
 *evaluation_results*.xlsx
 generated_prompts_*.txt
 report_json*.json
 report_markdown*.md
 report_markdown_debug*.md
 report_markdown_debug*.txt
+output.txt
+get-pip.py
+test_ssl.py
+text_viz_json.json
+session-*.json
+
+# JSON outputs (keep schema files via negation)
+*.json
+!Data/campaign_performance_report.json
+!data_dictionary.json
+!data_dictionary_original.json
+
 # Jupyter
 .ipynb_checkpoints/
 

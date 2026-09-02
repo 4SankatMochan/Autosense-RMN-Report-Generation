@@ -1,4 +1,5 @@
 from google.cloud import storage
+import asyncio
 import base64
 import json
 import re
@@ -16,22 +17,36 @@ def _upload_local_artifacts_to_gcs(session_id: str, bucket_name: str, user_id: s
     same path prefix that the main GCS-scan branch expects, then returns a
     result_data dict in the same format so the rest of the pipeline is unchanged.
 
-    ADK local store layout:
-      artifacts/{art_name}/versions/{version}/metadata.json   ← skipped
-      artifacts/{art_name}/versions/{version}/{art_name}      ← content
+    ADK local store layout (ADK >= 2.x, per-agent):
+      <agent_dir>/.adk/artifacts/users/<user>/sessions/<sid>/artifacts/<name>/versions/<v>/<name>
+    ADK legacy layout (ADK < 2.x, shared):
+      .adk/artifacts/users/<user>/sessions/<sid>/artifacts/<name>/versions/<v>/<name>
     """
     cwd = pathlib.Path(os.getcwd())
-    local_root = cwd / ".adk" / "artifacts" / "users" / user_id / "sessions" / session_id / "artifacts"
-    print(f"[local-fallback] session_id={session_id!r}, looking at: {local_root}")
 
-    if not local_root.exists():
-        print(f"[local-fallback] Artifact dir not found: {local_root}")
-        # Scan all available sessions and pick the most recently-modified one with artifacts
-        sessions_root = cwd / ".adk" / "artifacts" / "users" / user_id / "sessions"
-        print(f"[local-fallback] Scanning all sessions under: {sessions_root}")
+    # Candidate roots in priority order: new per-agent path first, then legacy shared path.
+    candidate_roots = [
+        cwd / "root" / ".adk" / "artifacts" / "users" / user_id / "sessions" / session_id / "artifacts",
+        cwd / ".adk"  / "artifacts" / "users" / user_id / "sessions" / session_id / "artifacts",
+    ]
+
+    local_root = next((r for r in candidate_roots if r.exists()), None)
+
+    if local_root:
+        print(f"[local-fallback] session_id={session_id!r}, using: {local_root}")
+    else:
+        print(f"[local-fallback] Artifact dir not found for session {session_id!r}; scanning all sessions.")
+        # Scan all candidate base directories for the most-recently-modified session.
+        candidate_bases = [
+            cwd / "root" / ".adk" / "artifacts" / "users" / user_id / "sessions",
+            cwd / ".adk"  / "artifacts" / "users" / user_id / "sessions",
+        ]
         best_root = None
         best_mtime = 0.0
-        if sessions_root.exists():
+        for sessions_root in candidate_bases:
+            if not sessions_root.exists():
+                continue
+            print(f"[local-fallback] Scanning: {sessions_root}")
             for session_dir in sessions_root.iterdir():
                 if not session_dir.is_dir():
                     continue
@@ -46,7 +61,7 @@ def _upload_local_artifacts_to_gcs(session_id: str, bucket_name: str, user_id: s
                     best_mtime = mtime
                     best_root = art_dir
         if best_root:
-            print(f"[local-fallback] Falling back to most-recent session: {best_root.parent.name}")
+            print(f"[local-fallback] Using most-recent session artifacts: {best_root.parent.name}")
             local_root = best_root
         else:
             print("[local-fallback] No session directories with artifacts found.")
@@ -234,59 +249,58 @@ async def text_viz_json(tool_context: Optional[ToolContext] = None, **kwargs):
             prompt = filename.replace('_ds_agent.txt', '')
             prompt_map[prompt]['ds_text'] = blob
 
-    # Step 5: Build result_data
+    # Step 5: Build result_data with parallel GCS blob downloads.
+    # Phase A — decide what to download (no I/O yet).
+    to_download = []   # (prompt_key, blob_object, kind)
     result_data = {}
-    for idx, (prompt, blobs_dict) in enumerate(prompt_map.items(), start=1):
-        json_blob = blobs_dict.get('json_blob')
-        chart_blob = blobs_dict.get('chart_blob')
-        # viz_ds_blob = blobs_dict.get('viz_ds_text')
-        viz_blob = blobs_dict.get('viz_text')
-        db_blob =  blobs_dict.get('db_text')
-        ds_blob =  blobs_dict.get('ds_text')
 
-        result_data[f'prompt{idx}'] = {
-            'prompt': prompt.replace("_"," "),
+    for idx, (prompt, blobs_dict) in enumerate(prompt_map.items(), start=1):
+        key       = f'prompt{idx}'
+        json_blob  = blobs_dict.get('json_blob')
+        chart_blob = blobs_dict.get('chart_blob')
+        viz_blob   = blobs_dict.get('viz_text')
+        db_blob    = blobs_dict.get('db_text')
+        ds_blob    = blobs_dict.get('ds_text')
+
+        entry = {
+            'prompt':    prompt.replace("_", " "),
             'chart_url': None,
             'json_data': None,
-            'viz_text': None,
-            # 'viz_ds_text': None,
-            'db_text': None,
-            'ds_text': None
+            'viz_text':  None,
+            'db_text':   None,
+            'ds_text':   None,
         }
+        result_data[key] = entry
 
-        # Download chart if present
-        if chart_blob:              # If chart is availabe
-            result_data[f'prompt{idx}']['chart_url'] = f'gs://{bucket_name}/{chart_blob.name}'
-            # Download JSON if present
+        if chart_blob:
+            entry['chart_url'] = f'gs://{bucket_name}/{chart_blob.name}'
             if json_blob:
-                result_data[f'prompt{idx}']['json_data'] = f'gs://{bucket_name}/{json_blob.name}'
-                # Download viz agent text if present
+                entry['json_data'] = f'gs://{bucket_name}/{json_blob.name}'
             if viz_blob:
-                viz_string = viz_blob.download_as_text()
-                result_data[f'prompt{idx}']['viz_text'] = viz_string
-            ## Need Alignment: Do we need to add db_text and ds_text as well in chart
+                to_download.append((key, viz_blob, 'viz_text'))
         elif ds_blob:
-            ds_string = ds_blob.download_as_text()
-            result_data[f'prompt{idx}']['ds_text'] = ds_string
-
-
+            to_download.append((key, ds_blob, 'ds_text'))
         elif db_blob:
-            db_string = db_blob.download_as_text()
-            try:
-              # Remove markdown formatting lines if present
-              if db_string.startswith("```json"):
-                  db_string = db_string.split("\n", 1)[1]  # Remove first line
-              if db_string.endswith("```"):
-                  db_string = db_string.rsplit("\n", 1)[0]  # Remove last line
+            to_download.append((key, db_blob, 'db_text'))
 
-              # Now parse the cleaned JSON string
-              data = json.loads(db_string)
-
-              # Extract channel names from `nl_results`
-              nl_text = data["nl_results"]
-              result_data[f'prompt{idx}']['db_text'] = nl_text
-            except:
-              result_data[f'prompt{idx}']['db_text'] = db_string
+    # Phase B — download all blobs in parallel (each call is blocking → thread).
+    if to_download:
+        texts = await asyncio.gather(*[
+            asyncio.to_thread(blob.download_as_text)
+            for _, blob, _ in to_download
+        ])
+        for (key, _, kind), text in zip(to_download, texts):
+            if kind == 'db_text':
+                try:
+                    if text.startswith("```json"):
+                        text = text.split("\n", 1)[1]
+                    if text.endswith("```"):
+                        text = text.rsplit("\n", 1)[0]
+                    result_data[key]['db_text'] = json.loads(text)["nl_results"]
+                except Exception:
+                    result_data[key]['db_text'] = text
+            else:
+                result_data[key][kind] = text
 
     # ---- Step 5a: Local-artifact fallback (adk web uses local file store) ----
     # When no GCS blobs were found the artifact service is local-file mode.

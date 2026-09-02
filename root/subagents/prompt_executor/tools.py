@@ -3,22 +3,23 @@ from google.adk.tools import ToolContext
 from google.adk.tools.agent_tool import AgentTool
 import asyncio
 import logging
+import random
 import time
 
-from .subagents.Campaign_analysis.agent import campaign_analysis_root_agent
-from .subagents.Campaign_comparison.agent import campaign_comparison_root_agent
-from .subagents.Executive_summary.agent import executive_summary_root_agent
-from .subagents.Recommendation.agent import recommendation_root_agent
+from .subagents.Campaign_analysis.tools import campaign_analysis_agent
+from .subagents.Campaign_comparison.tools import campaign_comparison_agent
+from .subagents.Recommendation.tools import recommendation_agent
+from .subagents.Executive_summary.tools import executive_summary_agent
 
 logger = logging.getLogger(__name__)
 
 # ── Tuning knobs ─────────────────────────────────────────────────────────────
 # Lower concurrency = fewer quota conflicts = fewer timeouts.
 # Raise _MAX_CONCURRENT only if your Vertex AI QPM limit supports it.
-_MAX_CONCURRENT  = 5    # max simultaneous data-science agent calls
+_MAX_CONCURRENT  = 5    # max simultaneous data-science agent calls (7 and 10 both caused quota retries that slowed total time)
 _CALL_TIMEOUT    = 600  # seconds per individual agent call
 _MAX_RETRIES     = 3    # attempts per prompt before giving up
-_BACKOFF_BASE    = 5    # seconds; doubles each retry (5 → 10 → 20)
+_BACKOFF_BASE    = 5    # seconds; doubles each retry (5 → 10 → 20 s) — gives Vertex AI quota time to recover between retries
 
 _semaphore: asyncio.Semaphore | None = None
 
@@ -72,8 +73,11 @@ async def agent_call(question: str, tool_context: ToolContext) -> dict:
             )
 
         if attempt < _MAX_RETRIES:
-            wait = _BACKOFF_BASE * (2 ** (attempt - 1))  # 5 s, 10 s, 20 s
-            logger.info("Backoff %.0f s before retry %d…", wait, attempt + 1)
+            # Jitter spreads concurrent retries so they don't all hit Vertex AI
+            # at the same instant (thundering herd → more 429s → more retries).
+            base_wait = _BACKOFF_BASE * (2 ** (attempt - 1))  # 2 s, 4 s
+            wait = base_wait + random.uniform(0, base_wait)   # up to 2x with jitter
+            logger.info("Backoff %.1f s before retry %d…", wait, attempt + 1)
             await asyncio.sleep(wait)
 
     logger.error(
@@ -126,13 +130,21 @@ async def call_db_ds_agent(tool_context: ToolContext):
     )
 
     n_failed = sum(1 for r in results if not r["success"] or not r["result"])
+    n_ok = len(results) - n_failed
     logger.info(
         "Done in %.1f s | %d succeeded | %d failed after %d retries each",
         time.perf_counter() - t0,
-        len(results) - n_failed,
+        n_ok,
         n_failed,
         _MAX_RETRIES,
     )
+
+    if n_ok == 0:
+        raise RuntimeError(
+            f"All {len(results)} DB/DS agent calls failed after {_MAX_RETRIES} retries each. "
+            "Check Vertex AI quota (429s) or data-science agent logs. "
+            "Pipeline cannot continue without any data."
+        )
 
     tool_context.state["db_ds_agent_output"] = [r["result"] for r in results]
     return "Executed Successfully"
@@ -149,35 +161,41 @@ async def call_db_ds_agent(tool_context: ToolContext):
 #   Phase 3 (sequential): executive_summary     (needs phase-1 + phase-2 outputs)
 
 async def Sequential_Agent(tool_context: ToolContext):
-    """Run analysis sub-agents in dependency order with phase-1 parallelism."""
-    input_text = "\n".join(map(str, tool_context.state.get("db_ds_agent_output", [])))
-    args = {"request": input_text}
+    """Run analysis sub-agents in dependency order with true Phase 1 parallelism.
 
-    analysis_tool       = AgentTool(agent=campaign_analysis_root_agent)
-    comparison_tool     = AgentTool(agent=campaign_comparison_root_agent)
-    recommendation_tool = AgentTool(agent=recommendation_root_agent)
-    executive_tool      = AgentTool(agent=executive_summary_root_agent)
+    Calls tool functions directly instead of via AgentTool → LlmAgent, saving
+    4 extra Gemini round-trips (one per sub-agent).  Each Gemini call inside
+    the tools now runs in a thread (asyncio.to_thread), so Phase 1's
+    asyncio.gather achieves genuine concurrency.
 
+    Dependency graph:
+      campaign_analysis  ──┬──► recommendation ──► executive_summary
+      campaign_comparison ─┘
+
+    Phase 1 (parallel):   campaign_analysis ‖ campaign_comparison
+    Phase 2 (sequential): recommendation        (needs Phase 1 outputs)
+    Phase 3 (sequential): executive_summary     (needs Phase 1 + Phase 2 outputs)
+    """
     t0 = time.perf_counter()
 
-    # Phase 1: independent — run in parallel
-    logger.info("Sequential_Agent Phase 1: analysis ‖ comparison")
+    # Phase 1: truly parallel — both read state["db_ds_agent_output"] directly
+    logger.info("Sequential_Agent Phase 1: analysis ‖ comparison [direct, concurrent]")
     await asyncio.gather(
-        analysis_tool.run_async(args=args, tool_context=tool_context),
-        comparison_tool.run_async(args=args, tool_context=tool_context),
+        campaign_analysis_agent(tool_context=tool_context),
+        campaign_comparison_agent(tool_context=tool_context),
     )
     logger.info("Phase 1 done in %.1f s", time.perf_counter() - t0)
 
-    # Phase 2: needs phase-1 state keys
+    # Phase 2: reads {campaign_analysis_output, campaign_comparison_output} from state
     logger.info("Sequential_Agent Phase 2: recommendation")
     t1 = time.perf_counter()
-    await recommendation_tool.run_async(args=args, tool_context=tool_context)
+    await recommendation_agent(tool_context=tool_context)
     logger.info("Phase 2 done in %.1f s", time.perf_counter() - t1)
 
-    # Phase 3: needs phase-1 + phase-2 state keys
+    # Phase 3: reads {analysis, comparison, recommendation} from state
     logger.info("Sequential_Agent Phase 3: executive summary")
     t2 = time.perf_counter()
-    await executive_tool.run_async(args=args, tool_context=tool_context)
+    await executive_summary_agent(tool_context=tool_context)
     logger.info("Phase 3 done in %.1f s", time.perf_counter() - t2)
 
     tool_context.state["Sequential_agent_output"] = tool_context.state.get(

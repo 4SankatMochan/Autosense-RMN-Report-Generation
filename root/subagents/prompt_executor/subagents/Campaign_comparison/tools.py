@@ -1,4 +1,5 @@
 from google.adk.tools import ToolContext
+import asyncio
 from typing import List, Optional
 import os
 from vertexai.preview.generative_models import GenerativeModel
@@ -6,8 +7,9 @@ from google.genai.types import Part, Blob
 
 async def campaign_comparison_agent(tool_context: Optional[ToolContext] = None, **kwargs):
     
-    # result = tool_context.state["campaign_analysis_output"]
-    result = tool_context.state.get("campaign_analysis_output")
+    # CampaignComparison runs in Phase 1 parallel with CampaignAnalysis, so
+    # campaign_analysis_output is not in state yet — read raw db_ds data instead.
+    result = tool_context.state.get("db_ds_agent_output", [])
     # campaign comparison agent
     campaign_comparison_output = await run_campaign_comparison(
         result,
@@ -37,22 +39,34 @@ async def campaign_comparison_agent(tool_context: Optional[ToolContext] = None, 
     return "Campaign Comparison Executed Successfully"
 
 
+def _to_model_content(data) -> str:
+    """Convert list/dict/other to a plain string the model can accept."""
+    if isinstance(data, dict):
+        return "\n\n".join(
+            f"### {k.replace('_', ' ').title()}\n{v}"
+            for k, v in data.items()
+            if v
+        )
+    if isinstance(data, list):
+        return "\n\n".join(str(item) for item in data if item)
+    return str(data) if data else ""
+
+
 async def run_campaign_comparison(
-    aggregated_results: list,
+    aggregated_results,
     tool_context: ToolContext
 ):
-   
+    content = _to_model_content(aggregated_results)
+    if not content:
+        raise ValueError("Campaign comparison requires DB data but db_ds_agent_output is empty — all DB queries failed or returned None.")
+
     model = GenerativeModel(os.getenv("GEMINI_MODEL"))
-    response = model.generate_content(
-        aggregated_results,
-        generation_config={
-            "temperature": 0.5,
-            "top_p": 1.0,
-            "max_output_tokens": 2048
-        }
-    )
- 
+    gen_config = {"temperature": 0.5, "top_p": 1.0, "max_output_tokens": 2048}
+
     try:
+        response = await asyncio.to_thread(
+            lambda: model.generate_content(content, generation_config=gen_config)
+        )
         output_text = response.text.strip() if hasattr(response, "text") else ""
         if not output_text:
             return " No comparison generated. Check LLM output or token limit."

@@ -6,6 +6,7 @@ from typing import List, Optional
 from google.adk.tools import ToolContext
 from vertexai.preview.generative_models import GenerativeModel
 from pathlib import Path
+import asyncio
 import json
 import os
 from datetime import datetime
@@ -224,7 +225,7 @@ async def generate_markdown_report(tool_context: Optional[ToolContext] = None):
 
     prompt = main_prompt + custom_prompt
 
-    res = llm_call(prompt, tool_context=tool_context)
+    res = await asyncio.to_thread(lambda: llm_call(prompt, tool_context=tool_context))
 
     tool_context.state['report_markdown'] = res
     print("report markdown generated:")
